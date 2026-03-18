@@ -1,46 +1,134 @@
 # Skill Garden
 
-这是一个个人技能仓库骨架，用来集中管理你自己的 AI Agent 技能。
-
-目标是同时兼容不同 Agent 运行时，并把技能本身集中放在统一位置，便于后续沉淀和迁移。
+集中管理个人 AI Agent 技能，支持本地和远程安装到任意项目。
 
 ## 目录结构
 
-- `.codex/skills/`
-  放 Codex 项目级技能。
-- `.claude/skills/`
-  放 Claude 项目级技能。
-
-## 推荐用法
-
-- 每个技能尽量保持同名目录，方便在不同 Agent 之间对齐。
-- 如果某个技能同时要兼容 Codex 和 Claude，优先保证两个目录下的技能名一致。
-- 真正执行逻辑尽量收敛到一份主脚本，避免两个 Agent 各维护一套分叉实现。
-- 技能自己的私有配置优先放在技能目录里的 `env/` 下，不要把示例值当成真实配置使用。
-- 真实密钥配置建议只放在本地 `push.env`，仓库里只保留 `push.env.example`。
-
-## 新增一个技能
-
-1. 在 `.codex/skills/` 下创建技能目录。
-2. 在 `.claude/skills/` 下创建同名技能目录。
-3. 先写最小可用的 `SKILL.md`。
-4. 如果需要执行脚本，在技能目录下加 `scripts/` 包装入口。
-5. 如果两个 Agent 共用同一份逻辑，把主实现放在其中一侧的稳定路径，再由两边包装脚本去调用。
-
-## 同步到其他项目
-
-可以使用：
-
-```bash
-bash skill-garden/scripts/sync_skills.sh <目标项目目录> [skill-name...]
+```
+skill-garden/
+├── .common/                                    # 通用技能（按平台分目录）
+│   ├── .codex/skills/<name>/                   #   Codex 技能 → <target>/.codex/skills/
+│   │   └── SKILL.md
+│   └── .claude/skills/<name>/                  #   Claude 技能 → <target>/.claude/skills/
+│       └── SKILL.md
+├── .trellis/                                   # Trellis 强化补充包
+│   ├── .agents/skills/<name>/                  #   Agent 技能（带 frontmatter）→ <target>/.agents/skills/
+│   │   └── SKILL.md
+│   └── .claude/commands/trellis/               #   斜杠命令（无 frontmatter）→ <target>/.claude/commands/trellis/
+│       └── <name>.md
+└── scripts/
+    └── install.sh                              # 安装脚本
 ```
 
-如果不传技能名，会把当前仓库里的全部技能都挂到目标项目的 `.codex/skills/` 和 `.claude/skills/`。
+### .trellis 内两份文件的关系
 
-## 当前状态
+同一个技能在 `.trellis/` 下有两份文件，内容一致但格式不同：
 
-当前已经迁入一个技能：
+| 文件 | 格式 | 用途 |
+|------|------|------|
+| `.agents/skills/<name>/SKILL.md` | 带 YAML frontmatter | 被 trellis 的 agent 系统读取 |
+| `.claude/commands/trellis/<name>.md` | 无 frontmatter，纯 markdown | 被 Claude Code 注册为 `/trellis:<name>` 斜杠命令 |
 
-- `sub2api-account-json-fix`
+SKILL.md 的 frontmatter 格式：
 
-它的主实现位于 `.codex/skills/sub2api-account-json-fix/`，Claude 兼容入口位于 `.claude/skills/sub2api-account-json-fix/`。
+```yaml
+---
+name: check-prd
+description: "PRD Check — 准确性校验 + 覆盖度扫描"
+---
+# 命令内容...
+```
+
+`.claude/commands/trellis/<name>.md` 就是去掉 `---...---` 后的内容。
+
+---
+
+## 安装
+
+### 安装前置检测
+
+install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
+
+| 检测条件 | 安装内容 |
+|---------|---------|
+| 目标有 `.codex/` | 安装 `.common/.codex/skills/` |
+| 目标有 `.claude/` | 安装 `.common/.claude/skills/` |
+| 目标有 `.trellis/` | 安装 `.trellis/.agents/skills/` + `.trellis/.claude/commands/trellis/` |
+| 两个都没有 | 默认按 claude 处理 |
+
+### 本地安装
+
+```bash
+# 安装全部（自动检测平台）
+bash skill-garden/scripts/install.sh /path/to/project
+
+# 只安装指定技能
+bash skill-garden/scripts/install.sh /path/to/project check-prd create-prd
+
+# 更新（再次运行即覆盖）
+bash skill-garden/scripts/install.sh /path/to/project
+```
+
+### 远程安装（首次）
+
+```bash
+bash install.sh --repo git@github.com:<user>/skill-garden.git /path/to/project
+```
+
+skill-garden 会被 clone 到 `~/.skill-garden`，然后复制技能到目标项目。
+
+### 远程更新
+
+```bash
+bash ~/.skill-garden/scripts/install.sh /path/to/project
+```
+
+自动 pull 最新后覆盖安装。
+
+---
+
+## 当前技能
+
+### 通用（.common）
+
+| 技能 | 平台 | 说明 |
+|------|------|------|
+| `sub2api-account-json-fix` | codex, claude | sub2api 账号推送 |
+
+### Trellis 补充包（.trellis）
+
+| 技能 | 说明 | 前置 |
+|------|------|------|
+| `analyze-task` | 任务深度分析与细化 | 需要 trellis 项目 |
+| `check-prd` | PRD 准确性校验 + 覆盖度扫描 | 需要 trellis 项目 |
+| `create-prd` | 基于原始需求文档创建 PRD（有据可依） | 需要 trellis 项目 |
+| `plan-version` | 版本开发计划（需求文档 → 任务拆分） | 需要 trellis 项目 |
+| `re-implement` | 需求变更后二次实现 | 需要 trellis 项目 |
+
+---
+
+## 新增技能
+
+### 新增通用技能
+
+1. 在 `.common/.codex/skills/<name>/` 和/或 `.common/.claude/skills/<name>/` 下创建目录
+2. 写 `SKILL.md`（格式取决于平台要求）
+3. 不需要的平台可以只建一侧
+
+### 新增 Trellis 技能
+
+1. 在 `.trellis/.agents/skills/<name>/` 下创建 `SKILL.md`（带 frontmatter）：
+
+```yaml
+---
+name: <name>
+description: "<简要描述>"
+---
+# 命令标题
+
+命令内容...
+```
+
+2. 在 `.trellis/.claude/commands/trellis/` 下创建 `<name>.md`（去掉 frontmatter 的同内容文件）
+
+3. 确保两份文件的**正文内容完全一致**，仅 frontmatter 有无的区别
