@@ -20,6 +20,8 @@ skill-garden/
     └── install.sh                              # 安装脚本
 ```
 
+> **Note**: `.cursor/commands/` 目录已不再维护，统一使用 `.claude/commands/`。
+
 ### .trellis 内两份文件的关系
 
 同一个技能在 `.trellis/` 下有两份文件，内容一致但格式不同：
@@ -104,6 +106,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `create-prd` | 基于原始需求文档创建 PRD（有据可依） | 需要 trellis 项目 |
 | `plan-version` | 版本开发计划（需求文档 → 任务拆分） | 需要 trellis 项目 |
 | `re-implement` | 需求变更后二次实现 | 需要 trellis 项目 |
+| `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 需要 trellis 项目 |
 
 ---
 
