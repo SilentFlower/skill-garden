@@ -102,12 +102,14 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | 技能 | 说明 | 前置 |
 |------|------|------|
 | `analyze-task` | 任务深度分析与细化 | 需要 trellis 项目 |
-| `check-prd` | PRD 准确性校验 + 覆盖度扫描 | 需要 trellis 项目 |
-| `create-prd` | 基于原始需求文档创建 PRD（有据可依） | 需要 trellis 项目 |
+| `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | 需要 trellis 项目 |
+| `check-prd-impl` | 对照 PRD 检查实现 — 找出需求级 BUG | 需要 trellis 项目 |
+| `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 需要 trellis 项目 |
+| `check-all` | 全维度代码检查（prd-impl → impl → cross-layer → check） | 需要 trellis 项目 |
+| `create-prd` | 基于原始需求文档创建 PRD（含 UI 文案原封不动约束） | 需要 trellis 项目 |
 | `plan-version` | 版本开发计划（需求文档 → 任务拆分） | 需要 trellis 项目 |
 | `re-implement` | 需求变更后二次实现 | 需要 trellis 项目 |
 | `sync-prd` | 代码或需求变更后的 PRD 回补同步 | 需要 trellis 项目 |
-| `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 需要 trellis 项目 |
 
 ---
 
