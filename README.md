@@ -99,17 +99,31 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 ### Trellis 补充包（.trellis）
 
-| 技能 | 说明 | 前置 |
+#### 推荐命令
+
+日常开发中最常用的 5 个命令：
+
+| 命令 | 说明 | 使用时机 |
+|------|------|---------|
+| `check-all` | 全维度一键检查（正确性 → 假设验证 → 完整性 → 规范性） | 开发完成后、提交前 |
+| `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | PRD 生成后、开发前 |
+| `analyze-task` | 任务深度分析与细化 | 开发前，理解任务全貌 |
+| `sync-prd` | 代码或需求变更后的 PRD 回补同步 | 实现与 PRD 出现偏差时 |
+| `re-implement` | 需求变更后二次实现 | 需求变更需要重新实现时 |
+
+#### 全部技能
+
+| 技能 | 说明 | 备注 |
 |------|------|------|
-| `analyze-task` | 任务深度分析与细化 | 需要 trellis 项目 |
-| `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | 需要 trellis 项目 |
-| `check-prd-impl` | 对照 PRD 检查实现 — 找出需求级 BUG | 需要 trellis 项目 |
-| `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 需要 trellis 项目 |
-| `check-all` | 全维度代码检查（prd-impl → impl → cross-layer → check） | 需要 trellis 项目 |
-| `create-prd` | 基于原始需求文档创建 PRD（含 UI 文案原封不动约束） | 需要 trellis 项目 |
-| `plan-version` | 版本开发计划（需求文档 → 任务拆分） | 需要 trellis 项目 |
-| `re-implement` | 需求变更后二次实现 | 需要 trellis 项目 |
-| `sync-prd` | 代码或需求变更后的 PRD 回补同步 | 需要 trellis 项目 |
+| `check-all` | 全维度代码检查（prd-impl → impl → cross-layer → check） | 包含下面两个 check |
+| `check-prd-impl` | 对照 PRD 检查实现 — 找出需求级 BUG | 已包含在 `check-all` Step 1 |
+| `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 已包含在 `check-all` Step 2 |
+| `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | 独立使用，校验 PRD 本身 |
+| `create-prd` | 基于原始需求文档创建 PRD（含 UI 文案原封不动约束） | — |
+| `analyze-task` | 任务深度分析与细化 | — |
+| `plan-version` | 版本开发计划（需求文档 → 任务拆分） | — |
+| `re-implement` | 需求变更后二次实现 | — |
+| `sync-prd` | 代码或需求变更后的 PRD 回补同步 | — |
 
 ---
 
