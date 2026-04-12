@@ -34,7 +34,7 @@ git diff --name-only
 
 ### Step 1: 对照 PRD 检查实现（check-prd-impl）
 
-按 `.claude/commands/trellis/check-prd-impl.md` 执行。
+按 `.agents/skills/check-prd-impl/SKILL.md` 执行。
 
 **本轮重点**：PRD 中的每条需求和 AC 是否都正确实现了？有没有行为偏差、功能缺失、文案不一致？
 
@@ -44,19 +44,19 @@ git diff --name-only
 
 ### Step 2: 实现假设验证（check-impl）
 
-按 `.claude/commands/trellis/check-impl.md` 执行。
+按 `.agents/skills/check-impl/SKILL.md` 执行。
 
 **本轮重点**：API 响应结构、组件生命周期、历史数据兼容性等假设是否正确？
 
 ### Step 3: 跨层完整性检查（check-cross-layer）
 
-按 `.claude/commands/trellis/check-cross-layer.md` 执行。
+按 `.agents/skills/check-cross-layer/SKILL.md` 执行。
 
 **本轮重点**：变更涉及的所有层、所有引用点是否都同步更新了？
 
 ### Step 4: 代码规范检查（check）
 
-按 `.claude/commands/trellis/check.md` 执行。
+按 `.agents/skills/check/SKILL.md` 执行。
 
 **本轮重点**：代码是否符合项目 spec 中的编码规范？lint 和 typecheck 是否通过？
 
