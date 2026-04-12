@@ -101,10 +101,11 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 #### 推荐命令
 
-日常开发中最常用的 5 个命令：
+日常开发中最常用的命令：
 
 | 命令 | 说明 | 使用时机 |
 |------|------|---------|
+| `push` | 一键 commit → push → 可选 merge 到目标分支 | 代码写完要提交时 |
 | `check-all` | 全维度一键检查（正确性 → 假设验证 → 完整性 → 规范性） | 开发完成后、提交前 |
 | `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | PRD 生成后、开发前 |
 | `analyze-task` | 任务深度分析与细化 | 开发前，理解任务全貌 |
@@ -124,6 +125,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `plan-version` | 版本开发计划（需求文档 → 任务拆分） | — |
 | `re-implement` | 需求变更后二次实现 | — |
 | `sync-prd` | 代码或需求变更后的 PRD 回补同步 | — |
+| `push` | 一键 commit → push → 可选 merge 到目标分支 | merge_target 记录在 config.yaml |
 
 ---
 
