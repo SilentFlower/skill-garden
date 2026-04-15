@@ -98,7 +98,26 @@
 > Requirements 中的每一条都必须指向原文中的具体位置。
 > 如果原始文档没有显式的验收标准，从业务规则中提炼，但必须标注「提炼自：<原文位置>」。
 
-### Step 5: 自检
+### Step 5: 创建 task.json
+
+PRD 写入后，调用框架脚本创建 `task.json`，使任务目录完整可用：
+
+```bash
+python3 .trellis/scripts/task.py create "<PRD标题>" \
+  --slug "<任务目录名去掉日期前缀>" \
+  --priority P2 \
+  --description "<Goal 的一句话摘要>"
+```
+
+> **注意**：
+> - 如果任务目录已由用户手动创建（已有 `prd.md`），脚本会检测到目录已存在并在其中写入 `task.json`
+> - `--slug` 必须与任务目录名的 slug 部分一致，确保 `task.json` 落在正确目录
+> - 根据需求性质设置 `--priority`：紧急修复 P0/P1，常规需求 P2，小改动 P3
+> - 创建完成后，根据 PRD 中的分析补充 `task.json` 中的字段：
+>   - `dev_type`：`frontend` / `backend` / `fullstack`
+>   - `relatedFiles`：PRD Technical Notes 中识别的关键文件路径
+
+### Step 6: 自检
 
 | 检查项 | 方法 |
 |--------|------|
@@ -126,6 +145,6 @@
 | 命令 | 职责 | 时机 |
 |------|------|------|
 | `/trellis:plan-version` | 版本级需求扫描 + 覆盖度确认 | 版本规划阶段 |
-| `/trellis:create-prd` | 单个需求的 PRD 生成（本命令） | 任务开发前 |
+| `/trellis:create-prd` | 单个需求的 PRD + task.json 生成（本命令） | 任务开发前 |
 | `/trellis:check-prd` | 校验已有 PRD 的准确性 + 覆盖度 | PRD 生成后 |
 | `/trellis:brainstorm` | 对话式需求发现（无原始文档时） | 需求模糊时 |
