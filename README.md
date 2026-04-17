@@ -109,6 +109,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `check-all` | 全维度一键检查（正确性 → 假设验证 → 完整性 → 规范性） | 开发完成后、提交前 |
 | `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | PRD 生成后、开发前 |
 | `analyze-task` | 任务深度分析与细化 | 开发前，理解任务全貌 |
+| `draw-uml` | 以 PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
 | `sync-prd` | 代码或需求变更后的 PRD 回补同步 | 实现与 PRD 出现偏差时 |
 | `re-implement` | 需求变更后二次实现 | 需求变更需要重新实现时 |
 
@@ -126,6 +127,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `re-implement` | 需求变更后二次实现 | — |
 | `sync-prd` | 代码或需求变更后的 PRD 回补同步 | — |
 | `push` | 一键 commit → push → 可选 merge 到目标分支 | merge_target 记录在 config.yaml |
+| `draw-uml` | PM 视角用 UML 活动图梳理业务逻辑（先反问再画，每次自动渲染 PNG） | 产物落 `doc/uml/<slug>.{mmd,png}` |
 
 ---
 
