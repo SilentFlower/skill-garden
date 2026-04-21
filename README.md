@@ -11,20 +11,33 @@ skill-garden/
 │   │   └── SKILL.md
 │   └── .claude/skills/<name>/                  #   Claude 技能 → <target>/.claude/skills/
 │       └── SKILL.md
-├── .trellis/                                   # Trellis 强化补充包
-│   ├── .agents/skills/<name>/                  #   Agent 技能（带 frontmatter）→ <target>/.agents/skills/
-│   │   └── SKILL.md
-│   └── .claude/commands/trellis/               #   斜杠命令（无 frontmatter）→ <target>/.claude/commands/trellis/
-│       └── <name>.md
+├── .trellis/                                   # Trellis 强化补充包（按版本分子目录）
+│   ├── old/                                    #   Trellis < 0.5 (默认 fallback)
+│   │   ├── .agents/skills/<name>/SKILL.md
+│   │   └── .claude/commands/trellis/<name>.md
+│   └── 0.5/                                    #   Trellis >= 0.5
+│       ├── .agents/skills/<name>/SKILL.md
+│       └── .claude/commands/trellis/<name>.md
 └── scripts/
-    └── install.sh                              # 安装脚本
+    └── install.sh                              # 安装脚本（读目标 .trellis/.version 智能选 variant）
 ```
 
 > **Note**: `.cursor/commands/` 目录已不再维护，统一使用 `.claude/commands/`。
 
+### .trellis 版本 variant 说明
+
+install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选择对应 variant：
+
+| `.version` | 选用 variant | 备注 |
+|------------|------------|------|
+| `>= 0.5.0`（含 `0.5.0-beta.x`） | `.trellis/0.5/` | 新版：agents 更名 `trellis-implement/trellis-check/trellis-research`，`check-all` 合并为 3 维（check-cross-layer 并入 trellis-check） |
+| 其他（含 `0.4.x`、缺失、无法解析） | `.trellis/old/` | 旧版：agents 名 `implement/check/research`，`check-all` 保留 4 维 |
+
+两个 variant 的技能名集合相同，内容随各自目标版本的 trellis 脚手架调整。
+
 ### .trellis 内两份文件的关系
 
-同一个技能在 `.trellis/` 下有两份文件，内容一致但格式不同：
+同一个技能在 variant 目录下有两份文件，内容一致但格式不同：
 
 | 文件 | 格式 | 用途 |
 |------|------|------|
@@ -55,7 +68,7 @@ install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
 |---------|---------|
 | 目标有 `.codex/` | 安装 `.common/.codex/skills/` |
 | 目标有 `.claude/` | 安装 `.common/.claude/skills/` |
-| 目标有 `.trellis/` | 安装 `.trellis/.agents/skills/` + `.trellis/.claude/commands/trellis/` |
+| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/` 或 `0.5/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/` |
 | 两个都没有 | 默认按 claude 处理 |
 
 ### 本地安装
@@ -117,7 +130,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 | 技能 | 说明 | 备注 |
 |------|------|------|
-| `check-all` | 全维度代码检查（prd-impl → impl → cross-layer → check） | 包含下面两个 check |
+| `check-all` | 全维度代码检查（旧版 4 维：prd-impl → impl → cross-layer → check；新版 3 维：prd-impl → impl → trellis-check） | 包含下面两个 check |
 | `check-prd-impl` | 对照 PRD 检查实现 — 找出需求级 BUG | 已包含在 `check-all` Step 1 |
 | `check-impl` | 实现后假设验证（API 契约、组件上下文、数据历史、数据流） | 已包含在 `check-all` Step 2 |
 | `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | 独立使用，校验 PRD 本身 |
@@ -141,7 +154,12 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 ### 新增 Trellis 技能
 
-1. 在 `.trellis/.agents/skills/<name>/` 下创建 `SKILL.md`（带 frontmatter）：
+**先确定 variant**：新技能要同步加到 `.trellis/old/` 和 `.trellis/0.5/` 两处，还是只加到其中一个？
+- 纯新增（两个版本都适用）→ 两处都加
+- 只适配新版 trellis → 只放 `.trellis/0.5/`
+- 只兼容旧版 → 只放 `.trellis/old/`
+
+1. 在目标 variant 下创建 `.agents/skills/<name>/SKILL.md`（带 frontmatter）：
 
 ```yaml
 ---
@@ -153,6 +171,6 @@ description: "<简要描述>"
 命令内容...
 ```
 
-2. 在 `.trellis/.claude/commands/trellis/` 下创建 `<name>.md`（去掉 frontmatter 的同内容文件）
+2. 在同 variant 下的 `.claude/commands/trellis/` 创建 `<name>.md`（去掉 frontmatter 的同内容文件）
 
 3. 确保两份文件的**正文内容完全一致**，仅 frontmatter 有无的区别

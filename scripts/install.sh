@@ -168,8 +168,6 @@ fi
 # ══════════════════════════════════
 # 3) 安装 .trellis（强化补充包）
 # ══════════════════════════════════
-TRELLIS_AGENTS="$GARDEN/.trellis/.agents/skills"
-TRELLIS_CLAUDE="$GARDEN/.trellis/.claude/commands/trellis"
 
 # 检测目标项目是否为 trellis 项目
 if [[ -d "$TARGET_DIR/.trellis" ]]; then
@@ -177,6 +175,25 @@ if [[ -d "$TARGET_DIR/.trellis" ]]; then
 else
   IS_TRELLIS=false
 fi
+
+# 根据目标项目 .trellis/.version 选择补充包版本目录
+#   >= 0.5.0 → .trellis/0.5/（新版：agents 更名 trellis-*、check-all 合并三维）
+#   其他情况（含缺失/无法解析/旧版）→ .trellis/old/
+TRELLIS_VARIANT="old"
+TRELLIS_VERSION=""
+if [[ "$IS_TRELLIS" == true && -f "$TARGET_DIR/.trellis/.version" ]]; then
+  TRELLIS_VERSION="$(tr -d '[:space:]' < "$TARGET_DIR/.trellis/.version")"
+  V_MAJOR="$(echo "$TRELLIS_VERSION" | cut -d. -f1)"
+  V_MINOR="$(echo "$TRELLIS_VERSION" | cut -d. -f2 | sed 's/[^0-9].*//')"
+  if [[ "$V_MAJOR" =~ ^[0-9]+$ && "$V_MINOR" =~ ^[0-9]+$ ]]; then
+    if (( V_MAJOR > 0 || V_MINOR >= 5 )); then
+      TRELLIS_VARIANT="0.5"
+    fi
+  fi
+fi
+
+TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
+TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
 
 if [[ "$IS_TRELLIS" == false ]]; then
   # 检查用户是否明确指定了 trellis 技能名
@@ -202,6 +219,7 @@ else
   # 确认目标目录与 trellis 项目结构匹配
   # .agents/skills/ → trellis 的 agent 技能目录
   # .claude/commands/trellis/ → trellis 的斜杠命令目录
+  echo "trellis 项目版本: ${TRELLIS_VERSION:-未知}, 使用补充包: .trellis/$TRELLIS_VARIANT/"
 
   # 3a) .agents/skills/
   if [[ -d "$TRELLIS_AGENTS" ]]; then
