@@ -10,7 +10,7 @@ description: "Re-run Implement Agent and Check Agent after PRD change; updates P
 
 ## 使用场景
 
-- 任务已通过 `/trellis:continue` 完成了首次实现
+- 任务已通过 `trellis-continue` 完成了首次实现
 - 实施过程中需求发生了变更或补充
 - PRD 已更新，需要 Implement Agent 根据新需求重新实现
 - 用户在 check 或测试阶段发现需要调整方向
@@ -37,7 +37,7 @@ python3 ./.trellis/scripts/get_context.py
 - 当前任务存在且已激活
 - 任务目录路径
 
-如果没有激活的任务，提示用户先通过 `/trellis:continue` 开始任务。
+如果没有激活的任务，提示用户先通过 `trellis-continue` 开始任务。
 
 ### Step 2: 了解变更内容 `[AI]`
 
@@ -141,7 +141,7 @@ Agent(
 ### 下一步
 - 测试变更
 - 确认无误后提交
-- 运行 `/trellis:finish-work` 检查清单
+- 运行 `trellis-finish-work` 检查清单
 ```
 
 ---
@@ -150,9 +150,9 @@ Agent(
 
 | 入口 | 形态 | 阶段 | 说明 |
 |------|------|------|------|
-| `/trellis:continue` | 命令 | 首次实现 | 完整流程：Research → Context → Implement → Check |
+| `trellis-continue` | 命令 | 首次实现 | 完整流程：Research → Context → Implement → Check |
 | `trellis-re-implement` | skill（本技能） | 二次实现 | 需求变更后：更新 PRD → Implement → Check |
-| `/trellis:finish-work` | 命令 | 完成 | 提交前检查清单 |
+| `trellis-finish-work` | 命令 | 完成 | 提交前检查清单 |
 
 ---
 

@@ -117,7 +117,7 @@ cd <pkg-dir> && git log --oneline -20
 ### 下一步
 - 确认 PRD 内容准确
 - 如有后续开发，PRD 已可作为最新参考
-- 如任务已完成，可运行 `/trellis:finish-work`
+- 如任务已完成，可运行 `trellis-finish-work`
 ```
 
 ---
@@ -130,7 +130,7 @@ cd <pkg-dir> && git log --oneline -20
 | `trellis-verify-prd` | skill | 开发前 | 对照原始需求文档校验 PRD（准确性 + 覆盖度） |
 | `trellis-sync-prd` | skill（本技能） | 事后回补 | 代码已改，PRD 未同步，回补文档 |
 | `trellis-re-implement` | skill | 需求变更 | 先更新 PRD，再调 Implement Agent |
-| `/trellis:finish-work` | 命令 | 完成检查 | 提交前整体检查清单 |
+| `trellis-finish-work` | 命令 | 完成检查 | 提交前整体检查清单 |
 
 ```
 典型流程：

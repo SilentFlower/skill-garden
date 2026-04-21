@@ -104,7 +104,7 @@ python3 ./.trellis/scripts/task.py list
 - <列出 prd.md / task.json 的变更内容>
 
 ### 下一步
-- 如果准备开发：运行 `/trellis:continue` 进入/继续开发流程
+- 如果准备开发：运行 `trellis-continue` 进入/继续开发流程
 - 如果需要进一步讨论：继续对话
 ```
 
@@ -129,7 +129,7 @@ python3 ./.trellis/scripts/task.py list
 |------|------|------|------|
 | `trellis-brainstorm` | skill | 从模糊想法出发，发现需求 | 用户的初始想法（尚无 task） |
 | `trellis-analyze-task` | skill（本技能） | 对已有任务深入分析和细化 | 已存在的 task |
-| `/trellis:continue` | 命令 | 进入/继续开发流程 | 已有 prd.md 的任务 |
+| `trellis-continue` | 命令 | 进入/继续开发流程 | 已有 prd.md 的任务 |
 
 ---
 

@@ -296,7 +296,7 @@ git log --oneline -10
 
 ## 使用时机
 
-- **开发完成后、提交前** — 作为 `/trellis:finish-work` 之前的全面检查
+- **开发完成后、提交前** — 作为 `trellis-finish-work` 之前的全面检查
 - **Code Review 前** — 自查一遍再提交 MR
 - **不确定改动质量时** — 跑一遍全量检查心里有底
 
