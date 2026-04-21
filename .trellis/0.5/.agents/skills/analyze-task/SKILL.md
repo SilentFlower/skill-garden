@@ -8,20 +8,19 @@ description: "任务深度分析与细化"
 
 ---
 
-## 使用方式
+## 适用场景
 
-```
-/trellis:analyze-task [task-slug]
-```
-
-- 如果提供了 `task-slug`，直接分析该任务
-- 如果未提供，列出所有活跃任务让用户选择
+- 已有 task 但需求不够清晰，需要拆解成可执行步骤
+- 任务拿到后还不确定影响面、风险点或不明确处
+- 开发前的深度细化环节
 
 ---
 
 ## 执行步骤
 
 ### Step 1: 定位任务
+
+参数：`task-slug`（可选）。提供时直接定位，未提供时列出所有活跃任务让用户选择。
 
 ```bash
 # 未指定任务时，列出所有活跃任务
@@ -105,7 +104,7 @@ python3 ./.trellis/scripts/task.py list
 - <列出 prd.md / task.json 的变更内容>
 
 ### 下一步
-- 如果准备开发：运行 `/trellis:start` 进入开发流程
+- 如果准备开发：运行 `/trellis:continue` 进入/继续开发流程
 - 如果需要进一步讨论：继续对话
 ```
 
@@ -124,13 +123,13 @@ python3 ./.trellis/scripts/task.py list
 
 ---
 
-## 与其他命令的区别
+## 与其他入口的区别
 
-| 命令 | 用途 | 输入 |
-|------|------|------|
-| `/trellis:brainstorm` | 从模糊想法出发，发现需求 | 用户的初始想法 |
-| `/trellis:analyze-task` | 对已有任务深入分析和细化 | 已存在的 task |
-| `/trellis:start` | 开始开发流程 | 明确的任务 |
+| 入口 | 形态 | 用途 | 输入 |
+|------|------|------|------|
+| `trellis-brainstorm` | skill | 从模糊想法出发，发现需求 | 用户的初始想法（尚无 task） |
+| `trellis-analyze-task` | skill（本技能） | 对已有任务深入分析和细化 | 已存在的 task |
+| `/trellis:continue` | 命令 | 进入/继续开发流程 | 已有 prd.md 的任务 |
 
 ---
 

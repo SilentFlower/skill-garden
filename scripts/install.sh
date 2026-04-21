@@ -61,11 +61,13 @@ install_one() {
 }
 
 # 是否应该处理这个技能
+# 支持 trellis- 前缀去除匹配：指定 analyze-task 也会命中 trellis-analyze-task skill
 should_install() {
   local name="$1"
   [[ ${#SKILL_NAMES[@]} -eq 0 ]] && return 0
+  local stripped="${name#trellis-}"
   for f in "${SKILL_NAMES[@]}"; do
-    [[ "$f" == "$name" ]] && return 0
+    [[ "$f" == "$name" || "$f" == "$stripped" ]] && return 0
   done
   return 1
 }
@@ -194,13 +196,17 @@ fi
 
 TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
 TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
+TRELLIS_CLAUDE_SKILLS="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/skills"
 
 if [[ "$IS_TRELLIS" == false ]]; then
   # 检查用户是否明确指定了 trellis 技能名
   HAS_TRELLIS_REQUEST=false
   if [[ ${#SKILL_NAMES[@]} -gt 0 ]]; then
     for req_name in "${SKILL_NAMES[@]}"; do
-      if [[ -d "$TRELLIS_AGENTS/$req_name" || -f "$TRELLIS_CLAUDE/$req_name.md" ]]; then
+      if [[ -d "$TRELLIS_AGENTS/$req_name" \
+          || -f "$TRELLIS_CLAUDE/$req_name.md" \
+          || -d "$TRELLIS_CLAUDE_SKILLS/$req_name" \
+          || -d "$TRELLIS_CLAUDE_SKILLS/trellis-$req_name" ]]; then
         HAS_TRELLIS_REQUEST=true
         break
       fi
@@ -211,7 +217,7 @@ if [[ "$IS_TRELLIS" == false ]]; then
     echo "⚠ 目标项目不是 trellis 项目（未找到 .trellis/ 目录）"
     echo "  trellis 增强包需要 trellis 框架才能生效，跳过安装"
     echo ""
-  elif [[ -d "$TRELLIS_AGENTS" || -d "$TRELLIS_CLAUDE" ]]; then
+  elif [[ -d "$TRELLIS_AGENTS" || -d "$TRELLIS_CLAUDE" || -d "$TRELLIS_CLAUDE_SKILLS" ]]; then
     echo "跳过 trellis 增强包（目标项目非 trellis 项目）"
     echo ""
   fi
@@ -219,6 +225,7 @@ else
   # 确认目标目录与 trellis 项目结构匹配
   # .agents/skills/ → trellis 的 agent 技能目录
   # .claude/commands/trellis/ → trellis 的斜杠命令目录
+  # .claude/skills/ → Claude harness 自动路由的 skill
   echo "trellis 项目版本: ${TRELLIS_VERSION:-未知}, 使用补充包: .trellis/$TRELLIS_VARIANT/"
 
   # 3a) .agents/skills/
@@ -240,6 +247,17 @@ else
       should_install "$name" || continue
       echo "[$name] commands → .claude/commands/trellis/$name.md"
       install_one "$cmd_file" "$TARGET_DIR/.claude/commands/trellis/$name.md"
+    done
+  fi
+
+  # 3c) .claude/skills/ — Claude harness 自动路由的 skill
+  if [[ -d "$TRELLIS_CLAUDE_SKILLS" ]]; then
+    for skill_dir in "$TRELLIS_CLAUDE_SKILLS"/*/; do
+      [[ ! -d "$skill_dir" ]] && continue
+      name="$(basename "$skill_dir")"
+      should_install "$name" || continue
+      echo "[$name] skills → .claude/skills/$name/"
+      install_one "$skill_dir" "$TARGET_DIR/.claude/skills/$name"
     done
   fi
 fi

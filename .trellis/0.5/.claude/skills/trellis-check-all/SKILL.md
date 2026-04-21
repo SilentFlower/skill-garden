@@ -1,5 +1,5 @@
 ---
-name: check-all
+name: trellis-check-all
 description: "Full-dimension code review before commit/PR: Step 1 checks PRD implementation correctness (break down PRD → trace each item in code → mark deviations / missing / literal-text mismatches), Step 2 validates assumptions across 5 dimensions (API contract, component context, data history, data flow trace, verification tests), Step 3 delegates to trellis-check for cross-layer completeness + spec compliance. Outputs a consolidated report with prioritized issues (P0 functional bugs → P1 completeness+compliance). Pauses interactively when ❌/🔴 found. Use for a full pre-commit / pre-PR sanity pass — e.g. 「全面检查」「提交前看看有没有问题」「跑一遍 check-all」「帮我从 PRD 到代码都过一遍」. For lint/spec-only, use trellis-check directly."
 ---
 # Check All — 全维度代码检查
