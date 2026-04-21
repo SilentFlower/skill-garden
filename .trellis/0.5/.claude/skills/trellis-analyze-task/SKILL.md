@@ -1,6 +1,6 @@
 ---
 name: trellis-analyze-task
-description: "Analyzes and refines an existing task in .trellis/tasks/. Reads task.json + prd.md, gathers related code context, then outputs an analysis report (overview, scope, risks, ambiguities) and interactively asks clarifying questions one at a time to update prd.md/task.json in real-time. Use when the user wants to analyze, refine, or dig deeper into an already-created task (e.g. 「分析任务」「细化任务」「看看这个任务要做啥」「这个任务怎么做」). For brand-new features without a task yet, use trellis-brainstorm instead."
+description: "Analyze and refine an existing task under .trellis/tasks/: read task.json + prd.md + related code, output scope/risks/ambiguities report, then ask clarifying questions one at a time to update prd.md/task.json in real-time. Triggers: 「分析任务」「细化任务」「这个任务怎么做」. For brand-new features without a task yet, use trellis-brainstorm."
 ---
 # 任务深度分析与细化
 

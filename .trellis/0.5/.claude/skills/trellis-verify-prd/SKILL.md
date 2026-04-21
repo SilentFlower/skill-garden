@@ -1,6 +1,6 @@
 ---
 name: trellis-verify-prd
-description: "Verifies an existing prd.md against the user's original requirements document (spec screenshots, requirement tables, prose). Runs two passes: forward check (each PRD item → confirm it matches the source) and reverse coverage scan (each version-level change in source → confirm PRD covers it). Flags deviations by type (missing / misinterpreted / embellished / UI-copy mismatch) and proposes edits with user confirmation. Use when the user wants to audit a PRD for fidelity to source requirements — e.g. 「校验 PRD」「对照原始需求」「PRD 有没有漏 / 曲解」「verify PRD」—— especially after PRD generation and before breaking work into tasks. For generating a new PRD from vague ideas, use trellis-brainstorm instead. For checking implementation against the PRD after coding, use trellis-check-all."
+description: "Audit prd.md against the original requirements doc (screenshots / tables / prose) via forward check (PRD→source) + reverse coverage scan (source→PRD); flag missing, misinterpreted, embellished, or UI-copy-mismatch items and propose edits. Triggers: 「校验 PRD」「对照原始需求」「verify PRD」. Not for PRD generation (trellis-brainstorm) or implementation-vs-PRD check (trellis-check-all)."
 ---
 # 校验 PRD — 对照原始需求文档
 

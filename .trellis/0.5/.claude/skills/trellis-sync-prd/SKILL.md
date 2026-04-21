@@ -1,6 +1,6 @@
 ---
 name: trellis-sync-prd
-description: "Reconciles an out-of-date prd.md with actual code changes and requirement adjustments that landed without a PRD update. Gathers recent code diffs (git diff / git log), collects user-described adjustments, computes added / removed / modified differences, confirms with the user, then updates the PRD body and appends a change-log entry at the end. Use when the user says code or requirements changed but the PRD was not updated in sync — e.g. 「PRD 没同步」「代码改了但 PRD 没更新」「同步一下 PRD」「sync PRD」「事后回补 PRD」「多次小改之后 PRD 已经偏了」. For initial PRD generation from a vague idea, use trellis-brainstorm instead. For auditing PRD fidelity against an original requirements document, use trellis-verify-prd instead. For restarting implementation after PRD change, use trellis-re-implement instead."
+description: "Reconcile an out-of-date prd.md with code/requirement changes that landed without PRD update: gather diffs + user adjustments, confirm, update body, append change-log. Triggers: 「PRD 没同步」「同步 PRD」「事后回补 PRD」「sync PRD」. Not for initial PRD generation (trellis-brainstorm), source-fidelity audit (trellis-verify-prd), or re-running impl after PRD change (trellis-re-implement)."
 ---
 # 同步 PRD - 代码/需求变更后回补 PRD
 
