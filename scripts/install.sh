@@ -34,7 +34,7 @@ usage() {
   bash install.sh /path/to/project
 
   # 只安装指定技能
-  bash install.sh /path/to/project check-prd create-prd
+  bash install.sh /path/to/project verify-prd create-prd
 
 环境变量:
   SKILL_GARDEN_REPO  git 仓库地址
