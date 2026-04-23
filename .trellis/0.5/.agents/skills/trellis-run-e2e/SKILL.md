@@ -14,21 +14,19 @@ description: "Run end-to-end behavior verification by combining a browser driver
 
 ## 本 skill 的定位
 
-skill 只描述**方法论骨架**：三列表场景设计、跨层交叉验证、Toast 观测、回滚边界、偏差立停。所有 URL / header / token 键名 / 表名 / 测试账号 / 可用测试数据等 **项目特定**信息应写在项目的 E2E playbook 里（见下节），skill 执行时优先加载它。
+skill 只描述**方法论骨架**：三列表场景设计、跨层交叉验证、Toast 观测、回滚边界、偏差立停。所有 URL / header / token 键名 / 表名 / 测试账号 / 可用测试数据等 **项目特定**信息应写在项目的 E2E playbook 里（见下节）。skill 执行时优先加载它；本次运行探测/学到的新条目会在 Step 5.5 以 diff 形式提交给用户确认后回写 playbook，**下次直接复用，无需再探测**。
 
 ---
 
-## 项目 Playbook（可选，推荐）
+## 项目 Playbook（自动沉淀）
 
-如果项目已有 E2E playbook，Step 0 会读取它。推荐位置：
+固定位置：
 
 ```
-.trellis/spec/<pkg>/e2e-playbook.md
-或
 .trellis/spec/guides/e2e-playbook.md
 ```
 
-Playbook 建议内容：
+Playbook 内容范围（**跨任务可复用的环境常量**，不含具体场景）：
 
 - **URL 模板**：前端 dev server、后端 API base、账号切换入口
 - **Auth header 模板**：`authorization` 形式、是否需要自定义 header（如 dev-mode 开关）、token 存储键名（sessionStorage/localStorage/cookie）
@@ -37,7 +35,14 @@ Playbook 建议内容：
 - **不可逆副作用清单**：哪些动作会触发外部通知 / 上链 / MQ 投递 / 缓存污染
 - **常见数据重置方式**：有无 truncate-and-seed 脚本、快照恢复、savepoint 惯例
 
-若无 playbook：按通用流程走，Step 0 自检时把空缺的项作为"需用户补充"列出。
+**沉淀机制**：
+
+- **已有 playbook**：Step 0 加载；Step 0–4 执行中若发现 playbook 未记录或与实际不一致的条目，标记进"待沉淀缓存"；Step 5.5 汇总成 diff 让用户确认后增量写入（**append-only 心态**，默认不删旧条目；冲突项单列供人工裁决）
+- **无 playbook**：按通用流程探测；Step 5.5 把整份探测结果作为"全新 playbook" diff 给用户，确认后创建文件
+
+**不纳入 playbook 的内容**（避免污染）：
+
+- 具体测试场景表、任务级一次性测试数据（如本次新建的项目 ID）、PRD 推导出的断言 — 这些留在任务目录 `.trellis/tasks/<task>/research/` 或任务报告里
 
 ---
 
@@ -63,10 +68,10 @@ Playbook 建议内容：
 
 ### Step 0: 环境自检 + 加载 Playbook + 抓登录态
 
-1. **读 playbook**（若存在），拿到 URL/header/测试数据候选
+1. **读 playbook**（`.trellis/spec/guides/e2e-playbook.md`，若存在），拿到 URL/header/测试数据候选。同时**初始化"待沉淀缓存"**——后续 Step 0–4 探测到的"playbook 未记录的新条目 / 与 playbook 不一致的条目"都追加进来，Step 5.5 用
 2. **能力矩阵自检**（上表），缺项时暂停
-3. **前后端可达性**：`curl -sI <frontend-url>`、`curl -sI <backend-api-base>`
-4. **抓登录态 & header 模板**：通过浏览器驱动读 token（playbook 未指明则列出所有 storage keys 供识别），再触发一次真实业务 XHR，从 `browser_network_requests` 观察所需 header，作为后续 `curl` 模板
+3. **前后端可达性**：`curl -sI <frontend-url>`、`curl -sI <backend-api-base>` — 若 URL 由探测得来（playbook 未覆盖或不一致），写入待沉淀缓存
+4. **抓登录态 & header 模板**：通过浏览器驱动读 token（playbook 未指明则列出所有 storage keys 供识别），再触发一次真实业务 XHR，从 `browser_network_requests` 观察所需 header，作为后续 `curl` 模板。**确认后的 token 键名 / header 模板**写入待沉淀缓存
 
 ```js
 // 通用 token 探测（不要猜键名）
@@ -215,6 +220,45 @@ Playbook 建议内容：
 - 别盲目 `UPDATE ... WHERE id=...` — 并发环境下别人可能已经改过，回滚反而破坏后续工作；先比对"当前值 vs 测试后值"再决定是否需要恢复
 - 触发器 / 物化视图 / 异步 outbox 即便主表回滚，**下游可能已发出副作用**，需在报告里强调
 
+### Step 5.5: Playbook 沉淀（diff 确认）
+
+把 Step 0–4 收集的"待沉淀缓存"与现有 `.trellis/spec/guides/e2e-playbook.md` 做比对，以 diff 清单形式列给用户确认后再写入。**用户未确认之前不写文件。**
+
+**diff 预览模板**：
+
+```markdown
+## 📒 Playbook 沉淀预览（待确认）
+
+### ➕ 新增（playbook 无此条目）
+- 前端 dev server: `http://localhost:5173`
+- token 存储位置: `sessionStorage["iqs-token"]`
+- 业务 XHR 必带 header: `authorization: Bearer …`, `x-dev-mode: 1`
+- 流转日志表: `iqs_dispatch_log`
+- 不可逆副作用 / 飞书审批: `POST /fs/approve` 会触发真实飞书通知
+
+### ✏️ 变更（playbook 已有但与实测不一致）
+- 后端 API base: `http://localhost:8080/api` → `http://localhost:8081/api`（旧值端口疑似过期）
+
+### ⚠️ 冲突（需人工裁决，默认不写）
+- playbook 记录 token 在 `localStorage`，本次实测在 `sessionStorage`。可能是环境差异，请判断是否覆盖
+
+### ⏸️ 保持不变（已与 playbook 一致，仅列出确认）
+- 测试账号列表、常见数据重置方式
+```
+
+**用户回应处理**：
+
+- ✅ 全部接受 → 写入 `.trellis/spec/guides/e2e-playbook.md`（不存在则 Write 新建；存在则对应条目用 Edit 增补/修改，**不删除旧条目**）
+- 🟨 部分接受 → 按用户圈选的条目写入
+- ❌ 拒绝 / 跳过 → 不写文件，仅在 Step 6 汇总里标注"N 条新发现未沉淀"
+- **diff 为空**（playbook 已完备） → 静默跳过本步，不打扰用户
+
+**原则**：
+
+- 沉淀的只能是**跨任务可复用**的环境常量；**任务级一次性数据**（新建的项目 ID、本次构造的用例、临时测试凭据）**不进 playbook**
+- 冲突项（⚠️）不擅自覆盖 — 让用户判断是环境差异还是 playbook 过期
+- append-only 心态：旧条目只增不删；用户明确要删才动
+
 ### Step 6: 汇总报告
 
 ```markdown
@@ -235,6 +279,10 @@ Playbook 建议内容：
 - 已恢复：<N 条 / 涉及表>
 - 未恢复 / 不可逆：<如果有>
 - 需用户善后：<如果有>
+
+### Playbook 同步
+- 写入条目：<M 条 / 文件路径>（或"N 条新发现未沉淀（用户跳过）"，或"无变化"）
+- 未解决冲突：<如果有，注明待用户裁决的项>
 
 ### 建议下一步
 - <根据失败/跳过场景的具体建议>
@@ -265,6 +313,8 @@ Playbook 建议内容：
 - ❌ 把 DB 写操作塞进一个 multi-statement string — 拆开更稳
 - ❌ 跳过 Step 0 环境自检直接点按钮 — 浪费好几轮才发现 token 失效或未登录
 - ❌ 跳过"不可逆副作用清单"— 测完才发现发了真的飞书通知，救不回来
+- ❌ 习惯性跳过 Step 5.5 沉淀 — playbook 永远空白，下次还得从零探测
+- ❌ 把任务级一次性数据（新建的项目 ID / 本次才构造的用例）塞进 playbook — 污染跨任务复用，下次用错数据
 
 ---
 
