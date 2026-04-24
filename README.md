@@ -135,7 +135,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `trellis-analyze-task` | skill (Auto-routing) | 任务深度分析与细化 | 开发前，理解任务全貌 |
 | `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
 | `trellis-sync-prd` | skill (Auto-routing) | 代码或需求变更后的 PRD 回补同步 | 实现与 PRD 出现偏差时 |
-| `trellis-run-e2e` | skill (Auto-routing) | 跨层自动化 E2E 验证（Playwright + curl + MySQL MCP），以"场景-路径-期望"表逐条执行 | 代码完成后、PR 前的 UAT 回归 |
+| `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行；强调跨层，不是前端 e2e 套件 | 代码完成后、PR 前的 UAT 回归 |
 | `trellis-re-implement` | skill (Manual-only) | 需求变更后二次实现 | 需求变更需要重新实现时 |
 
 #### 0.5+ 全部技能
@@ -151,7 +151,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） |
 | `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒；`merge_target` 记录在 `config.yaml` |
 | `trellis-re-implement` | skill (Manual-only) | 需求变更后二次实现（调 trellis-implement + trellis-check agent） |
-| `trellis-run-e2e` | skill (Auto-routing) | 跨层自动化 E2E 验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行，附数据恢复 |
+| `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行，附数据恢复；强调跨层，不是前端 e2e 套件 |
 | `trellis-sync-prd` | skill (Auto-routing) | 代码或需求变更后的 PRD 回补同步 |
 | `trellis-verify-prd` | skill (Auto-routing) | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） |
 
