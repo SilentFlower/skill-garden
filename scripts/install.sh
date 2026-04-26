@@ -260,6 +260,51 @@ else
       install_one "$skill_dir" "$TARGET_DIR/.claude/skills/$name"
     done
   fi
+
+  # 3d) workflow.md 顶部注入强化块（不改原文，幂等，备份 .bak）
+  WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/.trellis/workflow.enhancement.md"
+  WF_DST="$TARGET_DIR/.trellis/workflow.md"
+  if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
+    echo "[workflow-enhancement] inject → .trellis/workflow.md (顶部 sentinel 块)"
+    python3 - "$WF_ENHANCE" "$WF_DST" <<'PYEOF'
+import sys, re, shutil
+from pathlib import Path
+
+src = Path(sys.argv[1])
+dst = Path(sys.argv[2])
+BEG = "<!-- BEGIN skill-garden enhancement"
+# sentinel 必须在行首，且 BEGIN 与 END 各自单独成行；
+# 这样即使 admonition 散文里出现了同名字面量也不会被误匹配
+END_LINE_RE = re.compile(
+    r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?^<!-- END skill-garden enhancement[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
+
+block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
+text = dst.read_text(encoding="utf-8")
+
+# 备份原文（仅当 .bak 不存在时创建，保留首次干净基线）
+bak = Path(str(dst) + ".bak")
+if not bak.exists():
+    shutil.copy(dst, bak)
+    backup_note = "（已创建 workflow.md.bak）"
+else:
+    backup_note = "（保留已有 workflow.md.bak）"
+
+if BEG in text:
+    new = END_LINE_RE.sub(block, text, count=1)
+    action = "替换"
+else:
+    new = block + text
+    action = "注入顶部"
+
+if new == text:
+    print(f"  ⚠ 内容未变化（可能 sentinel 异常），保留 .bak 留底")
+else:
+    dst.write_text(new, encoding="utf-8")
+    print(f"  ✓ workflow.md 强化块已{action}{backup_note}")
+PYEOF
+  fi
 fi
 
 echo ""
