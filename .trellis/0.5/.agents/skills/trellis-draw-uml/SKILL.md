@@ -1,6 +1,6 @@
 ---
 name: trellis-draw-uml
-description: "Guides UML activity-diagram creation from fuzzy business descriptions through a PM / business-architect lens: clarifies missing context (roles, triggers, branches, exceptions, terminal states) via targeted questions before drafting, emits Mermaid flowchart source, renders it to PNG via mermaid.ink, and reads the rendered image back into the conversation so the user sees the diagram, not just the code. Use when the user wants a visual representation of a business process or workflow — e.g. 「画个活动图」「帮我梳理流程」「用 UML 表示一下」「业务流程图」「画个流程图」「draw UML」, especially when requirements are fuzzy and need structuring before coding. For prose-level requirements discovery (converging on a PRD scope), use trellis-brainstorm instead. For checking whether an existing PRD matches source requirements, use trellis-verify-prd instead."
+description: "Draft UML activity diagrams from fuzzy business descriptions, when user needs to structure a workflow before coding: ask clarifying questions about roles/branches/exceptions, emit Mermaid source, render to PNG, read image back into the conversation. Triggers: 「画活动图」「梳理流程」「业务流程图」「draw UML」. Not for prose-level PRD discovery (use trellis-brainstorm) or PRD-vs-source audit (use trellis-verify-prd)."
 ---
 # PM 活动图梳理
 
