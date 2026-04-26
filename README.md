@@ -111,6 +111,28 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 自动 pull 最新后覆盖安装。
 
+### 启用 trellis-route 路由 workflow（可选）
+
+`trellis-route` SKILL 装到目标项目后，还需要把 `.trellis/workflow.md` 改造为路由版（让 phase 系统在 dispatch `trellis-implement` / `trellis-check` 子 agent 之前先经 trellis-route 询问用户）：
+
+```bash
+# 1. 装 SKILL（5 份副本：.claude / .agents × 项目级 + skill-garden）
+bash skill-garden/scripts/install.sh /path/to/project trellis-route
+
+# 2. 改 workflow.md（6 处幂等 patch；备份为 .bak）
+bash skill-garden/scripts/install-route-workflow.sh /path/to/project
+```
+
+效果：
+
+- 主 agent 进入 Phase 2.1 / 2.2 时，先调用 `trellis-route` 让用户选 inline / subagent / check-all
+- `[workflow-state:in_progress]` 面包屑明确禁止跳过 trellis-route 直接 dispatch
+- Claude Code + Codex 双端通用（不依赖 PreToolUse hook 拦截子 agent）
+
+可选：项目 `.trellis/config.yaml` 加 `subagent_skip_compile: true`，trellis-route 会在 implement subagent 模式下自动注入"跳过 mvn install / npm run build / tsc"prompt（仅 implement subagent 路径生效）。
+
+回滚 workflow patch：`cp .trellis/workflow.md.bak .trellis/workflow.md`
+
 ---
 
 ## 当前技能
@@ -151,6 +173,7 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 | `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） |
 | `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒；`merge_target` 记录在 `config.yaml` |
 | `trellis-re-implement` | skill (Manual-only) | 需求变更后二次实现（调 trellis-implement + trellis-check agent） |
+| `trellis-route` | skill (Auto-routing) | impl/check 子 agent vs inline 路由（含 check-all 4 选项），先询问用户再 dispatch；可选联动 `.trellis/config.yaml` 的 `subagent_skip_compile` 跳过编译 |
 | `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行，附数据恢复；强调跨层，不是前端 e2e 套件 |
 | `trellis-sync-prd` | skill (Auto-routing) | 代码或需求变更后的 PRD 回补同步 |
 | `trellis-verify-prd` | skill (Auto-routing) | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） |
