@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # skill-garden 安装脚本
-# 远程: bash <(curl -fsSL <raw-url>/install.sh) --repo <git-url> /path/to/project
-# 本地: bash skill-garden/scripts/install.sh /path/to/project
+# 用法: bash skill-garden/scripts/install.sh /path/to/project [skill-name...]
+#
+# 必须从 skill-garden 仓库内运行（脚本会拿同仓库的 .common/ 与 .trellis/
+# 复制到目标项目）。如要更新到上游最新，先 cd skill-garden && git pull。
 
-REPO_URL="${SKILL_GARDEN_REPO:-}"
-CACHE_DIR="${SKILL_GARDEN_DIR:-$HOME/.skill-garden}"
 TARGET_DIR=""
 SKILL_NAMES=()
 
@@ -14,31 +14,24 @@ usage() {
   cat >&2 <<'EOF'
 用法: install.sh [选项] <target-project-dir> [skill-name...]
 
-安装/更新 skill-garden 技能到目标项目。
+把当前 skill-garden 仓库里的技能/override 复制到目标项目。
 
 操作:
-  - 首次安装: clone 仓库 → 复制技能文件到目标项目
-  - 更新: pull 最新 → 覆盖目标项目中的技能文件
-  - 指定技能名: 只安装/更新指定的技能
+  - 全部安装/更新: 不指定 skill-name
+  - 指定技能名:    只安装/更新指定的技能（支持去 trellis- 前缀匹配）
 
 选项:
-  --repo <url>     git 仓库地址（首次安装必须，或设置 SKILL_GARDEN_REPO）
-  --dir <path>     本地缓存目录（默认: ~/.skill-garden）
-  --help           显示帮助
+  --help    显示帮助
 
 示例:
-  # 首次安装全部
-  bash install.sh --repo git@github.com:user/skill-garden.git /path/to/project
-
-  # 更新全部（已 clone 过）
-  bash install.sh /path/to/project
+  # 安装全部
+  bash skill-garden/scripts/install.sh /path/to/project
 
   # 只安装指定技能
-  bash install.sh /path/to/project verify-prd create-prd
+  bash skill-garden/scripts/install.sh /path/to/project verify-prd create-prd
 
-环境变量:
-  SKILL_GARDEN_REPO  git 仓库地址
-  SKILL_GARDEN_DIR   本地缓存目录（默认 ~/.skill-garden）
+  # 仅注入 workflow.md 强化块
+  bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 EOF
 }
 
@@ -75,8 +68,6 @@ should_install() {
 # ── 解析参数 ──
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --repo)  REPO_URL="$2"; shift 2 ;;
-    --dir)   CACHE_DIR="$2"; shift 2 ;;
     --help)  usage; exit 0 ;;
     -*)      echo "未知选项: $1" >&2; usage; exit 2 ;;
     *)
@@ -98,31 +89,18 @@ fi
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd -P)"
 
 # ══════════════════════════════════
-# 1) 获取 skill-garden
+# 1) 定位 skill-garden（必须从仓库内运行）
 # ══════════════════════════════════
-
-# 如果脚本就在 skill-garden 仓库内运行，直接用
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-SCRIPT_GARDEN="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+GARDEN="$(cd "$SCRIPT_DIR/.." && pwd -P)"
 
-if [[ -f "$SCRIPT_GARDEN/README.md" && -d "$SCRIPT_GARDEN/.trellis" ]]; then
-  GARDEN="$SCRIPT_GARDEN"
-  echo "使用本地 skill-garden: $GARDEN"
-else
-  # 远程模式: clone 或 pull
-  GARDEN="$CACHE_DIR"
-  if [[ -d "$GARDEN/.git" ]]; then
-    echo "更新: $GARDEN"
-    git -C "$GARDEN" pull --ff-only 2>/dev/null || echo "  pull 失败，使用缓存继续"
-  elif [[ -n "$REPO_URL" ]]; then
-    echo "克隆: $REPO_URL"
-    git clone "$REPO_URL" "$GARDEN"
-  else
-    echo "错误: 未找到 skill-garden，请指定 --repo <git-url>" >&2
-    exit 2
-  fi
+if [[ ! -f "$GARDEN/README.md" || ! -d "$GARDEN/.trellis" ]]; then
+  echo "❌ 未找到 skill-garden 仓库（$GARDEN 缺 README.md 或 .trellis/）" >&2
+  echo "   请确保从 skill-garden 仓库内运行：bash <skill-garden>/scripts/install.sh ..." >&2
+  exit 2
 fi
 
+echo "使用本地 skill-garden: $GARDEN"
 echo "目标: $TARGET_DIR"
 echo ""
 

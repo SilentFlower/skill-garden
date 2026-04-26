@@ -1,6 +1,6 @@
 # Skill Garden
 
-集中管理个人 AI Agent 技能，支持本地和远程安装到任意项目。
+集中管理个人 AI Agent 技能，支持安装到任意项目。
 
 ## 目录结构
 
@@ -96,21 +96,7 @@ bash skill-garden/scripts/install.sh /path/to/project verify-prd create-prd
 bash skill-garden/scripts/install.sh /path/to/project
 ```
 
-### 远程安装（首次）
-
-```bash
-bash install.sh --repo git@github.com:<user>/skill-garden.git /path/to/project
-```
-
-skill-garden 会被 clone 到 `~/.skill-garden`，然后复制技能到目标项目。
-
-### 远程更新
-
-```bash
-bash ~/.skill-garden/scripts/install.sh /path/to/project
-```
-
-自动 pull 最新后覆盖安装。
+> **说明**：install.sh 必须从 skill-garden 仓库内运行（脚本会拿同仓库的 `.common/` 与 `.trellis/` 复制到目标）。要拿上游最新版，先 `cd skill-garden && git pull`，再跑 install.sh。
 
 ### 启用 trellis-route 路由 workflow（默认随 install.sh 自动注入）
 
