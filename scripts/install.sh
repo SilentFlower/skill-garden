@@ -262,7 +262,7 @@ else
   fi
 
   # 3d) workflow.md 顶部注入强化块（不改原文，幂等，备份 .bak）
-  WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/.trellis/workflow.enhancement.md"
+  WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
   WF_DST="$TARGET_DIR/.trellis/workflow.md"
   if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
     echo "[workflow-enhancement] inject → .trellis/workflow.md (顶部 sentinel 块)"
