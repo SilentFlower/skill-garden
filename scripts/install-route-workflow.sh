@@ -48,6 +48,21 @@ import sys
 from pathlib import Path
 
 target = Path(sys.argv[1])
+
+# 版本检查：仅支持 trellis >= 0.5.0
+import re
+version_file = target / ".trellis" / ".version"
+if not version_file.is_file():
+    sys.exit(f"❌ {version_file} 不存在 — 目标可能不是 trellis 项目，或缺 .version 文件")
+version = version_file.read_text(encoding="utf-8").strip()
+m = re.match(r'^(\d+)\.(\d+)', version)
+if not m:
+    sys.exit(f"❌ 无法解析 .version: {version!r}")
+major, minor = int(m.group(1)), int(m.group(2))
+if (major, minor) < (0, 5):
+    sys.exit(f"❌ trellis-route workflow patch 仅支持 trellis >= 0.5.0；目标版本: {version}")
+print(f"✓ trellis 版本: {version}（>= 0.5.0 ✓）")
+
 wf = target / ".trellis" / "workflow.md"
 
 if not wf.is_file():

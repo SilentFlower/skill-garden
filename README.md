@@ -113,6 +113,8 @@ bash ~/.skill-garden/scripts/install.sh /path/to/project
 
 ### 启用 trellis-route 路由 workflow（可选）
 
+> **要求**：目标项目 trellis `>= 0.5.0`（install-route-workflow.sh 会读 `.trellis/.version` 校验，旧版本拒绝）
+
 `trellis-route` SKILL 装到目标项目后，还需要把 `.trellis/workflow.md` 改造为路由版（让 phase 系统在 dispatch `trellis-implement` / `trellis-check` 子 agent 之前先经 trellis-route 询问用户）：
 
 ```bash
