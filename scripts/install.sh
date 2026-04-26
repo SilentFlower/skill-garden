@@ -3,10 +3,18 @@ set -euo pipefail
 
 # skill-garden 安装脚本
 #
-# 模式 1（仓内）: bash skill-garden/scripts/install.sh /path/to/project
-# 模式 2（URL bootstrap）:
-#   bash <(curl -fsSL <raw-url>/install.sh) --repo <git-url> /path/to/project
-#   远程模式会 clone 到一次性 temp 目录，安装完即删，不留缓存
+# 用法: bash install.sh --repo <git-url-or-local-path> /path/to/project [skill-name...]
+#
+# 脚本会把 --repo 指向的仓库 clone 到一次性 mktemp 目录，复制技能/override
+# 到目标项目，然后 trap 自动删除 temp 目录——零持久缓存。
+#
+# 远程一行安装：
+#   bash <(curl -fsSL <raw-url>/install.sh) --repo git@github.com:user/skill-garden.git /target
+#
+# 本地开发模式（指 --repo 到本地 working clone，clone 出来的是已 commit 状态）：
+#   bash install.sh --repo /path/to/skill-garden-checkout /target
+#
+# 配 SKILL_GARDEN_REPO 环境变量可省略 --repo。
 
 REPO_URL="${SKILL_GARDEN_REPO:-}"
 TARGET_DIR=""
@@ -16,32 +24,34 @@ usage() {
   cat >&2 <<'EOF'
 用法: install.sh [选项] <target-project-dir> [skill-name...]
 
-把 skill-garden 仓库里的技能/override 复制到目标项目。
-
-模式:
-  1) 仓内运行：从一个已 clone 的 skill-garden checkout 跑脚本
-  2) URL bootstrap：通过 --repo <git-url> 临时 clone 后安装（装完即丢，不留缓存）
+把 skill-garden 仓库里的技能/override 临时 clone 后复制到目标项目，
+完成即删 temp 目录，不留任何缓存。
 
 操作:
   - 全部安装/更新: 不指定 skill-name
   - 指定技能名:    只安装/更新指定的技能（支持去 trellis- 前缀匹配）
 
 选项:
-  --repo <url>  git 仓库地址（仅在脚本不在 skill-garden 仓内运行时需要）
+  --repo <url>  git 仓库地址（必需，或设置 SKILL_GARDEN_REPO 环境变量）
+                也可指向本地 working clone 路径，clone 时只取已 commit 状态
   --help        显示帮助
 
 示例:
-  # 仓内：安装全部
-  bash skill-garden/scripts/install.sh /path/to/project
-
-  # 仓内：只装指定技能
-  bash skill-garden/scripts/install.sh /path/to/project verify-prd create-prd
-
-  # 仓内：仅注入 workflow.md 强化块
-  bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
-
-  # URL bootstrap：远程一行装好
+  # 远程一行装好（curl + bash）
   bash <(curl -fsSL <raw>/install.sh) --repo git@github.com:user/skill-garden.git /target
+
+  # 配过 SKILL_GARDEN_REPO 后省 --repo
+  export SKILL_GARDEN_REPO=git@github.com:user/skill-garden.git
+  bash <(curl -fsSL <raw>/install.sh) /target
+
+  # 本地开发：指向自己的 working clone（仅取已 commit 内容）
+  bash install.sh --repo /path/to/skill-garden /target
+
+  # 只安装指定技能
+  bash install.sh --repo <url> /target verify-prd create-prd
+
+  # 仅注入 workflow.md 强化块
+  bash install.sh --repo <url> /target workflow-enhancement
 
 环境变量:
   SKILL_GARDEN_REPO  git 仓库地址（等价 --repo，便于 .bashrc 配一次免敲）
@@ -103,30 +113,28 @@ fi
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd -P)"
 
 # ══════════════════════════════════
-# 1) 定位 skill-garden
-#    优先：脚本所在仓库（仓内模式）
-#    次选：--repo 临时 clone（URL bootstrap，装完即删）
+# 1) 临时 clone skill-garden 到 mktemp 目录
+#    （不再支持仓内模式；统一走 URL/路径 bootstrap）
 # ══════════════════════════════════
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-SCRIPT_GARDEN="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+if [[ -z "$REPO_URL" ]]; then
+  echo "❌ 缺 --repo 参数（或 SKILL_GARDEN_REPO 环境变量）" >&2
+  echo "   bash install.sh --repo <git-url-or-path> $TARGET_DIR" >&2
+  echo "   或者 export SKILL_GARDEN_REPO=<git-url> 后省略 --repo" >&2
+  exit 2
+fi
 
-if [[ -f "$SCRIPT_GARDEN/README.md" && -d "$SCRIPT_GARDEN/.trellis" ]]; then
-  GARDEN="$SCRIPT_GARDEN"
-  echo "使用本地 skill-garden: $GARDEN"
-elif [[ -n "$REPO_URL" ]]; then
-  GARDEN="$(mktemp -d -t skill-garden.XXXXXX)"
-  # 任何路径退出（成功 / 失败 / Ctrl-C）都清理 temp 目录
-  trap 'rm -rf "$GARDEN"' EXIT
-  echo "URL bootstrap: 临时 clone $REPO_URL"
-  echo "  → $GARDEN（装完自动删）"
-  git clone --depth 1 "$REPO_URL" "$GARDEN" >/dev/null 2>&1 || {
-    echo "❌ git clone 失败：$REPO_URL" >&2
-    exit 2
-  }
-else
-  echo "❌ 未在 skill-garden 仓库内运行，且未提供 --repo <url>" >&2
-  echo "   方式 1：cd <skill-garden checkout> 后再跑 scripts/install.sh ..." >&2
-  echo "   方式 2：bash <(curl -fsSL <raw>/install.sh) --repo <git-url> <target>" >&2
+GARDEN="$(mktemp -d -t skill-garden.XXXXXX)"
+# 任何路径退出（成功 / 失败 / Ctrl-C）都清理 temp 目录
+trap 'rm -rf "$GARDEN"' EXIT
+echo "临时 clone $REPO_URL"
+echo "  → $GARDEN（装完自动删）"
+git clone --depth 1 "$REPO_URL" "$GARDEN" >/dev/null 2>&1 || {
+  echo "❌ git clone 失败：$REPO_URL" >&2
+  exit 2
+}
+
+if [[ ! -f "$GARDEN/README.md" || ! -d "$GARDEN/.trellis" ]]; then
+  echo "❌ clone 出来的目录不像 skill-garden（缺 README.md 或 .trellis/）：$REPO_URL" >&2
   exit 2
 fi
 

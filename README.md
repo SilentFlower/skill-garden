@@ -1,6 +1,6 @@
 # Skill Garden
 
-集中管理个人 AI Agent 技能，支持仓内安装与 URL bootstrap 两种模式安装到任意项目。
+集中管理个人 AI Agent 技能，通过 URL bootstrap 安装到任意项目（mktemp 临时 clone，零持久缓存）。
 
 ## 目录结构
 
@@ -83,37 +83,33 @@ install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
 | 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/` 或 `0.5/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（仅 old）+ `.claude/skills/`（仅 0.5）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 顶部 sentinel 块 |
 | 两个都没有 | 默认按 claude 处理 |
 
-### 本地安装
+### 安装
+
+install.sh 把 `--repo` 指向的仓库 clone 到 mktemp 临时目录、复制技能/override 到目标项目、然后自动删除 temp 目录——**零持久缓存**。
 
 ```bash
-# 安装全部（自动检测平台）
-bash skill-garden/scripts/install.sh /path/to/project
-
-# 只安装指定技能
-bash skill-garden/scripts/install.sh /path/to/project verify-prd create-prd
-
-# 更新（再次运行即覆盖）
-bash skill-garden/scripts/install.sh /path/to/project
-```
-
-> **说明**：仓内模式下 install.sh 用脚本所在仓库作为安装源。要拿上游最新版，先 `cd skill-garden && git pull`，再跑 install.sh。
-
-### URL bootstrap 安装（远程一行装好）
-
-新机器没 clone 过 skill-garden 时可走 URL bootstrap，install.sh 会临时 clone 到 mktemp 目录、装完自动删，**不留任何缓存**：
-
-```bash
+# 远程一行装好（curl + bash）
 bash <(curl -fsSL <raw-url>/install.sh) --repo git@github.com:<user>/skill-garden.git /path/to/project
-```
 
-也可以把仓库地址塞进环境变量免敲：
-
-```bash
+# 配过环境变量后省 --repo
 export SKILL_GARDEN_REPO=git@github.com:<user>/skill-garden.git
 bash <(curl -fsSL <raw-url>/install.sh) /path/to/project
+
+# 只装指定技能
+bash <(curl -fsSL <raw-url>/install.sh) --repo <url> /path/to/project verify-prd create-prd
+
+# 仅注入 workflow.md 强化块
+bash <(curl -fsSL <raw-url>/install.sh) --repo <url> /path/to/project workflow-enhancement
 ```
 
-> **取舍**：URL bootstrap 每次都重新 clone（用 `--depth 1` 提速），适合一次性安装。频繁更新仍建议改用仓内模式（保留 working clone，按需 git pull）。
+**本地开发模式**：`--repo` 指向本地 working clone（`git clone` 接受本地路径，但只取已 commit 状态，未 commit 改动不会被装上）：
+
+```bash
+bash /path/to/skill-garden-checkout/scripts/install.sh \
+  --repo /path/to/skill-garden-checkout /target
+```
+
+> **取舍**：URL bootstrap 每次都重新 clone（用 `--depth 1` 提速），适合一次性安装/更新。需要频繁更新可设 alias 配置 `--repo` 默认值，或者把 SKILL_GARDEN_REPO 加 `.bashrc` 配一次后续免敲。
 
 ### 启用 trellis-route 路由 workflow（默认随 install.sh 自动注入）
 
