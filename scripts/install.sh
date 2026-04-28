@@ -276,24 +276,30 @@ else
     done
   fi
 
-  # 3d) workflow.md 顶部注入强化块（不改原文，幂等，备份 .bak）
+  # 3d) workflow.md 注入强化块到 ## Phase Index 锚点之后（幂等，备份 .bak）
+  #
+  # 为何不再注入到顶部？
+  #   trellis 0.5 的 SessionStart hook (_build_workflow_overview) 只抓
+  #   "## Phase Index" → "## Workflow State Breadcrumbs" 区间塞进 system prompt，
+  #   workflow.md 顶部的 sentinel 块完全在抓取范围之外，AI 看不到。
+  #   把强化块插入 "## Phase Index" 锚点之后，能进 hook 抓取窗口。
   WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
   WF_DST="$TARGET_DIR/.trellis/workflow.md"
   if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
-    echo "[workflow-enhancement] inject → .trellis/workflow.md (顶部 sentinel 块)"
+    echo "[workflow-enhancement] inject → .trellis/workflow.md (## Phase Index 锚点之后)"
     python3 - "$WF_ENHANCE" "$WF_DST" <<'PYEOF'
 import sys, re, shutil
 from pathlib import Path
 
 src = Path(sys.argv[1])
 dst = Path(sys.argv[2])
-BEG = "<!-- BEGIN skill-garden enhancement"
-# sentinel 必须在行首，且 BEGIN 与 END 各自单独成行；
-# 这样即使 admonition 散文里出现了同名字面量也不会被误匹配
-END_LINE_RE = re.compile(
+# sentinel 必须各自独占一行；散文内字面量不会被误匹配
+SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?^<!-- END skill-garden enhancement[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
+# Phase Index 标题作为注入锚点（trellis 0.5 hook 抓取范围的起点）
+PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
 
 block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
 text = dst.read_text(encoding="utf-8")
@@ -306,12 +312,20 @@ if not bak.exists():
 else:
     backup_note = "（保留已有 workflow.md.bak）"
 
-if BEG in text:
-    new = END_LINE_RE.sub(block, text, count=1)
-    action = "替换"
+# 第一步：先剔除任何已存在的 sentinel 块（无论位于顶部还是 Phase Index 后）
+# 这同时承担"老版顶部注入 → 新版 Phase Index 后注入"的迁移
+clean = SENTINEL_RE.sub("", text, count=1)
+
+# 第二步：找 ## Phase Index 锚点，在其后插入新块
+m = PHASE_INDEX_RE.search(clean)
+if m:
+    idx = m.end()
+    new = clean[:idx] + "\n" + block + clean[idx:]
+    action = "插入到 ## Phase Index 之后"
 else:
-    new = block + text
-    action = "注入顶部"
+    # 找不到锚点（更老版本 trellis 或私有 fork）→ 回退到顶部
+    new = block + clean
+    action = "注入顶部 (fallback: 未找到 ## Phase Index 锚点)"
 
 if new == text:
     print(f"  ⚠ 内容未变化（可能 sentinel 异常），保留 .bak 留底")
