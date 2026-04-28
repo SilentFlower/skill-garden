@@ -60,6 +60,9 @@ Any `[workflow-state:in_progress]` block in the body is replaced at runtime with
 Flow: trellis-route(implement) → trellis-route(check) → trellis-update-spec → finish
 Next required action: inspect conversation history + git status, then execute the next uncompleted step in that sequence.
 For agent-capable platforms: BEFORE dispatching `trellis-implement` or `trellis-check` sub-agents, you MUST first invoke the `trellis-route` skill to ask the user about execution mode (inline vs subagent, and check vs check-all). Then follow the routing decision exactly. Do NOT directly call `Agent({subagent_type: 'trellis-implement'|'trellis-check'})` without going through `trellis-route` first.
+Default: do not edit code in the main session unless the user opts inline via `trellis-route` (or via the per-turn escape hatch below).
+Use the exact Trellis agent type names when spawning sub-agents: `trellis-implement`, `trellis-check`, or `trellis-research`. Generic/default/generalPurpose sub-agents do not receive `implement.jsonl` / `check.jsonl` injection.
+User override (per-turn escape hatch): if the user's CURRENT message explicitly tells the main session to handle it directly ("你直接改" / "别派 sub-agent" / "main session 写就行" / "do it inline" / "不用 sub-agent"), honor it for this turn — skip `trellis-route` and edit code directly. Per-turn only; do not carry forward; do NOT invent an override the user did not say.
 [/workflow-state:in_progress]
 ```
 
