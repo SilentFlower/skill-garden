@@ -11,7 +11,7 @@
 
 Wherever the upstream tells you to dispatch / load the implement or check target, invoke the `trellis-route` skill **FIRST** with the appropriate `target` and follow whatever next-action it returns. Never call `Agent({subagent_type: 'trellis-implement'|'trellis-check'})` or load `trellis-check`/`trellis-check-all` directly — go through `trellis-route`.
 
-`target=check` returns one of four modes: Check-all inline (recommended pre-commit, **default for Phase 3.1**) / Check-all subagent / Check inline / Check subagent. `target=implement` returns inline or subagent.
+`target=check` returns one of four modes: Check-all inline / Check-all subagent / Check inline / Check subagent. `target=implement` returns inline or subagent. The four modes are surfaced by `trellis-route` itself with its own recommendations — do not pre-decide for the user.
 
 ### Override B — `workflow-state:in_progress` refinements
 
