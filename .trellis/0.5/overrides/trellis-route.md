@@ -5,7 +5,7 @@
 
 ## skill-garden Override: trellis-route routing
 
-**Scope**: every reference to `trellis-implement` / `trellis-check` in the rest of this workflow.md — Skill Routing main table, DO NOT skip skills table, Phase 2.1 (Implement) per-platform branches, Phase 2.2 (Quality check) main branch, and the `workflow-state:in_progress` breadcrumb.
+**Scope**: every reference to `trellis-implement` / `trellis-check` in the rest of this workflow.md — Skill Routing main table, DO NOT skip skills table, Phase 2.1 (Implement) per-platform branches, Phase 2.2 (Quality check) main branch, Phase 3.1 (Quality verification, the pre-commit final check), and the `workflow-state:in_progress` breadcrumb.
 
 ### Override 1 — Skill Routing main table
 
@@ -34,9 +34,9 @@ Regardless of how Phase 2.1 splits per platform (Claude Code / Cursor / OpenCode
   - Per-platform spec injection still happens as documented in the body (Claude Code etc. via hook/plugin reading `implement.jsonl`; Codex via sub-agent definition; Kiro via prelude).
 - **inline** → Read `{TASK_DIR}/prd.md`, consult `{TASK_DIR}/research/`, load the `trellis-before-dev` skill for spec context, then implement directly in the main thread; finish by running project lint and type-check.
 
-### Override 4 — Phase 2.2 (Quality check), all platforms
+### Override 4 — Phase 2.2 / 3.1 (Quality check + final verification), all platforms
 
-Regardless of whether Phase 2.2 calls for direct dispatch of `trellis-check`, execute these two steps:
+Regardless of whether Phase 2.2 calls for direct dispatch of `trellis-check`, or Phase 3.1 calls for `Load the trellis-check skill` (inline), execute these two steps:
 
 **Step 1**: Invoke `trellis-route` skill with `target=check`. The user picks among four modes: Check-all inline (recommended pre-commit) / Check-all subagent / Check inline / Check subagent.
 
@@ -50,6 +50,8 @@ Regardless of whether Phase 2.2 calls for direct dispatch of `trellis-check`, ex
 - **subagent check-all** → Prefer `trellis-check-all` subagent if it exists; otherwise spawn `trellis-check` sub-agent and explicitly include the `trellis-check-all` full workflow (PRD verify → 5-dim assertions → cross-layer → delegate to trellis-check) in the task description.
 
 The check agent's job remains: review code changes against specs, auto-fix issues it finds, run lint and type-check to verify.
+
+**Phase 3.1 specifics**: 3.1 is the pre-commit final verification — when the user has not explicitly chosen a mode, strongly prefer **Check-all inline** (covers PRD verification + 5-dim assumption checks + cross-layer + spec compliance, which is exactly what a pre-commit gate needs). Even when 3.1's body says only `Load the trellis-check skill`, you still go through `trellis-route` first.
 
 ### Override 5 — `workflow-state:in_progress` breadcrumb
 
