@@ -13,10 +13,6 @@ description: |
 
 ---
 
-## Step 1: 确认 target
-
-调用方通常已经在上下文里给了 `target=implement` 或 `target=check`（来自 workflow.md Phase 2.1 / 2.2 step）。如果不确定，先短问用户。
-
 ## Step 1.5: 检查会话偏好（仅 target=implement）
 
 读 `.trellis/.route-prefs.tmp`（4h mtime 内有效）：
@@ -39,31 +35,14 @@ target=check **跳过本步**，每次都询问。
 
 ## Step 1.7: 上下文判断与推荐（无偏好命中时强制执行）
 
-Step 1.5 未命中偏好时，主 agent 在调用 `AskUserQuestion` **之前**必须做一次上下文判断，**自己**挑出最合适的选项并写一段 1-2 句中文推荐理由。**SKILL.md 不再硬编码"哪个是推荐项"——推荐由当下上下文动态决定。**
-
-### target=implement 判断维度
-
-- 改动文件数量 / 涉及包数：少而集中 → 倾向 inline；多包大改 → 倾向 subagent 隔离
-- PRD 清晰度与历史回退次数：清晰且首次实施 → inline；模糊或已多次回退 → subagent 让子 agent 重新思考
-- 主线程上下文剩余压力：紧（>60%） → subagent 转移；宽松 → inline 共享上下文
-- 编译/构建耗时与失败概率：重编译且大概率多轮失败 → subagent 后台跑，不阻塞主线程
-
-### target=check 判断维度
-
-- 当前所处阶段：Phase 3.1（pre-commit 最后关）默认倾向 check-all；Phase 2.2（迭代中）可考虑 check
-- 改动性质：跨层（前后端 + DB / 涉及业务逻辑）→ 必须 check-all（PRD 对照 + 5 维 + 跨层）；纯 lint/格式/重命名 → check 也够
-- 已知 PRD 偏离风险：本任务前几轮已暴露断言/数据流问题 → check-all
-- inline vs subagent 同 implement 的维度（上下文压力、失败概率）
-
-### 输出形式
+Step 1.5 未命中偏好时，主 agent 在调用 `AskUserQuestion` **之前**必须基于当前任务上下文做一次判断，**自己**挑出最合适的选项并写 1-2 句中文推荐理由。**SKILL.md 不硬编码"哪个是推荐项"也不限定判断维度——主 agent 用自己的判断力。**
 
 将推荐选项编号 + 1-2 句中文理由作为 Step 2 `question` 字段的**首句**，例如：
 
 - implement: "任务只改 1 个 vue 文件且 PRD 清晰，建议 #1 inline。本次 implement 走哪种模式？"
-- check: "改动跨前后端 + DB 且即将提交，建议 #1 check-all inline（PRD 对照 + 5 维 + 跨层）。本次 check 走哪种模式？"
-- check（轻量场景）: "本轮只改了变量名和注释，无逻辑变化，建议 #3 check inline 即可。本次 check 走哪种模式？"
+- check: "改动跨前后端 + DB 且即将提交，建议 #1 check-all inline。本次 check 走哪种模式？"
 
-option label 里**不再写"（推荐）"后缀**——推荐落点通过 question 文案体现，用户能看到判断依据并否决。
+option label 里**不写"（推荐）"后缀**——推荐落点通过 question 文案体现，用户能看到判断依据并否决。
 
 ## Step 2: 询问用户
 
@@ -159,7 +138,6 @@ echo "subagent" > .trellis/.route-prefs.tmp
 ## 反模式
 
 - ❌ 本 skill 内部直接调用 `Agent` / `Skill` 工具（违反"决策与执行分离"）
-- ❌ 跳过 trellis-route 直接调 `Skill({trellis-check})` 或 `Agent({trellis-implement})`（违反 workflow.md skill-garden Override A，路由器形同虚设）
 - ❌ 自行编造"工具/权限/平台不支持子代理"等理由跳过 Step 2 询问（**无偏好命中时必须 AskUserQuestion，SKILL.md 没有任何 fallback 分支**；缺能力是平台问题，不是绕过路由的借口）
 - ❌ Step 1.7 推荐理由空着、随便写一句敷衍、或不放进 question 文案（推荐必须基于当前任务的具体上下文，给用户可判断依据）
 - ❌ check 端默认降级到轻量 trellis-check，特别是 pre-commit Phase 3.1（除非 Step 1.7 已显式说明"改动仅 lint/重命名级别"才走 check）
