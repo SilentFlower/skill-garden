@@ -37,26 +37,54 @@ fi
 
 target=check **跳过本步**，每次都询问。
 
+## Step 1.7: 上下文判断与推荐（无偏好命中时强制执行）
+
+Step 1.5 未命中偏好时，主 agent 在调用 `AskUserQuestion` **之前**必须做一次上下文判断，**自己**挑出最合适的选项并写一段 1-2 句中文推荐理由。**SKILL.md 不再硬编码"哪个是推荐项"——推荐由当下上下文动态决定。**
+
+### target=implement 判断维度
+
+- 改动文件数量 / 涉及包数：少而集中 → 倾向 inline；多包大改 → 倾向 subagent 隔离
+- PRD 清晰度与历史回退次数：清晰且首次实施 → inline；模糊或已多次回退 → subagent 让子 agent 重新思考
+- 主线程上下文剩余压力：紧（>60%） → subagent 转移；宽松 → inline 共享上下文
+- 编译/构建耗时与失败概率：重编译且大概率多轮失败 → subagent 后台跑，不阻塞主线程
+
+### target=check 判断维度
+
+- 当前所处阶段：Phase 3.1（pre-commit 最后关）默认倾向 check-all；Phase 2.2（迭代中）可考虑 check
+- 改动性质：跨层（前后端 + DB / 涉及业务逻辑）→ 必须 check-all（PRD 对照 + 5 维 + 跨层）；纯 lint/格式/重命名 → check 也够
+- 已知 PRD 偏离风险：本任务前几轮已暴露断言/数据流问题 → check-all
+- inline vs subagent 同 implement 的维度（上下文压力、失败概率）
+
+### 输出形式
+
+将推荐选项编号 + 1-2 句中文理由作为 Step 2 `question` 字段的**首句**，例如：
+
+- implement: "任务只改 1 个 vue 文件且 PRD 清晰，建议 #1 inline。本次 implement 走哪种模式？"
+- check: "改动跨前后端 + DB 且即将提交，建议 #1 check-all inline（PRD 对照 + 5 维 + 跨层）。本次 check 走哪种模式？"
+- check（轻量场景）: "本轮只改了变量名和注释，无逻辑变化，建议 #3 check inline 即可。本次 check 走哪种模式？"
+
+option label 里**不再写"（推荐）"后缀**——推荐落点通过 question 文案体现，用户能看到判断依据并否决。
+
 ## Step 2: 询问用户
 
-调用 `AskUserQuestion`。**选项 label 前缀 1/2/3/4，方便用户直接打数字快速选**。
+调用 `AskUserQuestion`。**选项 label 前缀 1/2/3/4，方便用户直接打数字快速选**。`question` 字段首句必须是 Step 1.7 输出的推荐理由（1-2 句中文），**不可省略**。
 
 ### target = implement（4 选项）
 
-- **question**: "本次 implement 走哪种模式？"
+- **question**: "[Step 1.7 推荐理由 1-2 句] 本次 implement 走哪种模式？"
 - **header**: "Impl 模式"
 - **options**:
-  1. label "1. Inline（推荐）", description "本次主 agent 直接执行，更快，共享上下文"
+  1. label "1. Inline", description "本次主 agent 直接执行，更快，共享上下文"
   2. label "2. Subagent", description "本次 dispatch 子 agent，隔离独立思考"
   3. label "3. Inline 本会话", description "本次 + 4h 内所有 implement 都 inline，不再问"
   4. label "4. Subagent 本会话", description "本次 + 4h 内所有 implement 都 dispatch 子 agent，不再问"
 
 ### target = check（4 选项）
 
-- **question**: "本次 check 走哪种模式？"
+- **question**: "[Step 1.7 推荐理由 1-2 句] 本次 check 走哪种模式？"
 - **header**: "Check 模式"
-- **options**（check-all 默认推荐）:
-  1. label "1. Check-all inline（推荐）", description "全面检查（PRD 对照 + 5 维 + spec），主 agent 执行"
+- **options**:
+  1. label "1. Check-all inline", description "全面检查（PRD 对照 + 5 维 + spec），主 agent 执行"
   2. label "2. Check-all subagent", description "全面检查，dispatch 子 agent"
   3. label "3. Check inline", description "轻量检查（lint/type/spec），主 agent 执行"
   4. label "4. Check subagent", description "轻量检查，dispatch 子 agent"
@@ -121,14 +149,20 @@ echo "subagent" > .trellis/.route-prefs.tmp
 
 1. **决策与执行分离**：本 skill 只输出指令，下一轮由主 agent 调工具
 2. **严格执行用户选择**：路由结论一旦输出，主 agent 必须按指令执行，不可"出于谨慎"再换路径
-3. **本会话偏好仅 implement 适用**：check 每次询问（避免累积偏好导致提交前漏跑 check-all）
-4. **config 联动仅 implement subagent 路径**：`subagent_skip_compile` 仅在 target=implement + 选 subagent 时读取并注入 prompt
+3. **无偏好命中必问，无任何 fallback**：Step 1.5 未命中偏好时，Step 2 询问是强制步骤；缺工具/权限是平台问题，**不是**绕过询问的合法理由
+4. **推荐由主 agent 上下文判断生成**（Step 1.7），不在 SKILL.md 里硬编码"哪个是推荐项"——避免静态偏好和当下任务实际不匹配
+5. **本会话偏好仅 implement 适用**：check 每次询问（避免累积偏好导致提交前漏跑 check-all）
+6. **config 联动仅 implement subagent 路径**：`subagent_skip_compile` 仅在 target=implement + 选 subagent 时读取并注入 prompt
 
 ---
 
 ## 反模式
 
 - ❌ 本 skill 内部直接调用 `Agent` / `Skill` 工具（违反"决策与执行分离"）
+- ❌ 跳过 trellis-route 直接调 `Skill({trellis-check})` 或 `Agent({trellis-implement})`（违反 workflow.md skill-garden Override A，路由器形同虚设）
+- ❌ 自行编造"工具/权限/平台不支持子代理"等理由跳过 Step 2 询问（**无偏好命中时必须 AskUserQuestion，SKILL.md 没有任何 fallback 分支**；缺能力是平台问题，不是绕过路由的借口）
+- ❌ Step 1.7 推荐理由空着、随便写一句敷衍、或不放进 question 文案（推荐必须基于当前任务的具体上下文，给用户可判断依据）
+- ❌ check 端默认降级到轻量 trellis-check，特别是 pre-commit Phase 3.1（除非 Step 1.7 已显式说明"改动仅 lint/重命名级别"才走 check）
 - ❌ check-all 选项被错误降级为普通 trellis-check（必须优先 trellis-check-all skill / subagent）
 - ❌ 给 check 任何模式附加"跳过编译"指令（check 的核心职责就是跑编译/typecheck）
 - ❌ 询问后忽视用户答案默认 subagent

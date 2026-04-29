@@ -11,13 +11,12 @@
 
 Wherever the upstream tells you to dispatch / load the implement or check target, invoke the `trellis-route` skill **FIRST** with the appropriate `target` and follow whatever next-action it returns. Never call `Agent({subagent_type: 'trellis-implement'|'trellis-check'})` or load `trellis-check`/`trellis-check-all` directly — go through `trellis-route`.
 
-`target=check` returns one of four modes: Check-all inline / Check-all subagent / Check inline / Check subagent. `target=implement` returns inline or subagent. The four modes are surfaced by `trellis-route` itself with its own recommendations — do not pre-decide for the user.
+`target=check` returns 4 modes (check-all/check × inline/subagent); `target=implement` returns inline or subagent. trellis-route's Step 1.7 makes a per-call context-based recommendation, then `AskUserQuestion` asks the user. Never pre-decide or skip the ask with fabricated reasons ("tool unavailable", "default inline") — SKILL.md has no fallback.
 
 ### Override B — `workflow-state:in_progress` refinements
 
-The upstream `[workflow-state:in_progress]` body already states (1) default no-inline, (2) use exact agent type names, (3) per-turn escape hatch — keep those. Two refinements on top:
+The upstream `[workflow-state:in_progress]` body already states (1) default no-inline, (2) use exact agent type names, (3) per-turn escape hatch — keep those. One refinement on top:
 
 - **Flow** is `trellis-route(implement) → trellis-route(check) → trellis-update-spec → finish` (replaces upstream `trellis-implement → trellis-check → ...`).
-- The per-turn escape hatch ("你直接改" / "do it inline" / etc.), when triggered, **also skips `trellis-route`** — go straight inline.
 
 <!-- END skill-garden enhancement v0.5 -->
