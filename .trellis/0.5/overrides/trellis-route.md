@@ -13,14 +13,14 @@ Wherever the upstream tells you to dispatch / load the implement or check target
 
 `target=check` returns 4 modes (check-all/check × inline/subagent); `target=implement` returns inline or subagent. trellis-route's Step 1.7 makes a per-call context-based recommendation, then `AskUserQuestion` asks the user. Never pre-decide or skip the ask with fabricated reasons ("tool unavailable", "default inline") — SKILL.md has no fallback.
 
-**进入 Phase 2.1 / 2.2 / 3.1 时的唯一动作**：直接 `Skill({skill: "trellis-route", args: "target=implement|check"})`。
+**The only action when entering Phase 2.1 / 2.2 / 3.1**: directly call `Skill({skill: "trellis-route", args: "target=implement|check"})`.
 
-调 skill **之前**禁止在主对话里：
-- 写"开干吗 / 准备好了吗 / 我下一条再调"等预询问
-- 陈述"我倾向 X" 或文字预览 inline/subagent 选项
-- 提前展示 Step 1.7 推荐理由 / Step 2 选项
+Before invoking the skill, **never** do any of these in the main conversation:
+- write pre-questions like "ready to start? / shall I proceed? / I'll call it in my next message"
+- state "I lean towards X" or text-preview inline/subagent options
+- surface Step 1.7 recommendation rationale / Step 2 options ahead of time
 
-理由：Step 1.7 推荐由 skill 内部生成、通过 Step 2 `AskUserQuestion` 呈现——这是**唯一**询问点。前置加戏会造成双重询问、用户被迫用文字回答而非数字快捷键，破坏路径。
+Why: Step 1.7's recommendation is generated inside the skill and surfaced via Step 2's `AskUserQuestion` — the **only** prompt point. Pre-invoke chatter creates double-asking, forces users to reply in prose instead of using number shortcuts, and breaks the routing path.
 
 ### Override B — `workflow-state:in_progress` refinements
 
