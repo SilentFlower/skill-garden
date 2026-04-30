@@ -283,6 +283,9 @@ else
   #   "## Phase Index" → "## Workflow State Breadcrumbs" 区间塞进 system prompt，
   #   workflow.md 顶部的 sentinel 块完全在抓取范围之外，AI 看不到。
   #   把强化块插入 "## Phase Index" 锚点之后，能进 hook 抓取窗口。
+  #   另外，Codex 等平台的 UserPromptSubmit hook 每轮只读取
+  #   [workflow-state:<status>] 块；因此在 in_progress 块内追加一个极小
+  #   sentinel，避免旧的 trellis-implement → trellis-check 面包屑继续压过路由。
   WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
   WF_DST="$TARGET_DIR/.trellis/workflow.md"
   if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
@@ -298,10 +301,53 @@ SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?^<!-- END skill-garden enhancement[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
+STATE_SENTINEL_RE = re.compile(
+    r"^<!-- BEGIN skill-garden workflow-state trellis-route[^\n]*-->\n.*?^<!-- END skill-garden workflow-state trellis-route[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
+NO_TASK_SENTINEL_RE = re.compile(
+    r"^<!-- BEGIN skill-garden workflow-state no-task-gate[^\n]*-->\n.*?^<!-- END skill-garden workflow-state no-task-gate[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
+PLANNING_SENTINEL_RE = re.compile(
+    r"^<!-- BEGIN skill-garden workflow-state planning-handoff[^\n]*-->\n.*?^<!-- END skill-garden workflow-state planning-handoff[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
 # Phase Index 标题作为注入锚点（trellis 0.5 hook 抓取范围的起点）
 PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
+# workflow-state 状态块是每轮 <workflow-state> 的直接来源
+NO_TASK_RE = re.compile(r"^(\[workflow-state:no_task\]\n)", re.MULTILINE)
+PLANNING_RE = re.compile(r"^(\[workflow-state:planning\]\n)", re.MULTILINE)
+IN_PROGRESS_RE = re.compile(r"^(\[workflow-state:in_progress\]\n)", re.MULTILINE)
 
 block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
+no_task_block = """<!-- BEGIN skill-garden workflow-state no-task-gate v0.5 -->
+CRITICAL POST-TASK HANDOFF:
+If you create or resume a Trellis task in this turn, task creation is not permission to implement inline.
+After the PRD/context is ready and the task is started, the next implementation action is Phase 2.1 and must go through `trellis-route(implement)`.
+If the task is still planning, continue requirements/context work only; do not write implementation code.
+Only skip Trellis when the current user message explicitly opts out with phrases like "skip trellis", "no task", "just do it", "直接改", or "先别建任务".
+Do not infer opt-out from urgency, small scope, or missing details.
+<!-- END skill-garden workflow-state no-task-gate v0.5 -->
+
+"""
+planning_block = """<!-- BEGIN skill-garden workflow-state planning-handoff v0.5 -->
+CRITICAL PLANNING HANDOFF:
+Planning is not implementation permission.
+Complete or update `prd.md` and required context first.
+After the task moves to `in_progress`, the next action is `trellis-route(implement)`, not editing files directly.
+<!-- END skill-garden workflow-state planning-handoff v0.5 -->
+
+"""
+in_progress_block = """<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
+CRITICAL ROUTING OVERRIDE:
+If the next action is implementation, quality check, or final quality verification, invoke `trellis-route` first.
+Required flow:
+`trellis-route(implement)` → run the selected implementation path → `trellis-route(check)` → run the selected check path → `trellis-update-spec` → finish.
+This rule overrides any older wording below that directly calls `trellis-implement` / `trellis-check`.
+<!-- END skill-garden workflow-state trellis-route v0.5 -->
+
+"""
 text = dst.read_text(encoding="utf-8")
 
 # 备份原文（仅当 .bak 不存在时创建，保留首次干净基线）
@@ -314,24 +360,55 @@ else:
 
 # 第一步：先剔除任何已存在的 sentinel 块（无论位于顶部还是 Phase Index 后）
 # 这同时承担"老版顶部注入 → 新版 Phase Index 后注入"的迁移
-clean = SENTINEL_RE.sub("", text, count=1)
+clean = SENTINEL_RE.sub("", text)
+clean = STATE_SENTINEL_RE.sub("", clean)
+clean = NO_TASK_SENTINEL_RE.sub("", clean)
+clean = PLANNING_SENTINEL_RE.sub("", clean)
 
 # 第二步：找 ## Phase Index 锚点，在其后插入新块
 m = PHASE_INDEX_RE.search(clean)
 if m:
     idx = m.end()
-    new = clean[:idx] + "\n" + block + clean[idx:]
+    phase_new = clean[:idx] + "\n" + block + clean[idx:]
     action = "插入到 ## Phase Index 之后"
 else:
     # 找不到锚点（更老版本 trellis 或私有 fork）→ 回退到顶部
-    new = block + clean
+    phase_new = block + clean
     action = "注入顶部 (fallback: 未找到 ## Phase Index 锚点)"
 
+# 第三步：把每轮 hook 会读取的 no_task / planning / in_progress 面包屑也补上强提示
+state_actions = []
+nm = NO_TASK_RE.search(phase_new)
+if nm:
+    idx = nm.end()
+    phase_new = phase_new[:idx] + no_task_block + phase_new[idx:]
+    state_actions.append("[workflow-state:no_task]")
+else:
+    state_actions.append("未找到 [workflow-state:no_task]")
+
+pm = PLANNING_RE.search(phase_new)
+if pm:
+    idx = pm.end()
+    phase_new = phase_new[:idx] + planning_block + phase_new[idx:]
+    state_actions.append("[workflow-state:planning]")
+else:
+    state_actions.append("未找到 [workflow-state:planning]")
+
+sm = IN_PROGRESS_RE.search(phase_new)
+if sm:
+    idx = sm.end()
+    new = phase_new[:idx] + in_progress_block + phase_new[idx:]
+    state_actions.append("[workflow-state:in_progress]")
+else:
+    new = phase_new
+    state_actions.append("未找到 [workflow-state:in_progress]")
+state_action = "，并已更新 " + " / ".join(state_actions)
+
 if new == text:
-    print(f"  ⚠ 内容未变化（可能 sentinel 异常），保留 .bak 留底")
+    print(f"  ✓ workflow.md 强化块已是最新，无需改动{backup_note}")
 else:
     dst.write_text(new, encoding="utf-8")
-    print(f"  ✓ workflow.md 强化块已{action}{backup_note}")
+    print(f"  ✓ workflow.md 强化块已{action}{state_action}{backup_note}")
 PYEOF
   fi
 fi

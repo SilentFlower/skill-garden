@@ -43,7 +43,7 @@ install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选�
 | `.agents/skills/<name>/SKILL.md` | `<target>/.agents/skills/<name>/` | 被 trellis 的 agent 系统读取 |
 | `.claude/commands/trellis/<name>.md` | `<target>/.claude/commands/trellis/<name>.md` | Claude Code 斜杠命令 `/trellis:<name>`（适合显式动作，如 finish-work / continue） |
 | `.claude/skills/trellis-<name>/SKILL.md` | `<target>/.claude/skills/trellis-<name>/` | Claude harness 按 description 自动路由（适合自然语触发，如 analyze-task） |
-| `overrides/<override>.md` | 注入到 `<target>/.trellis/workflow.md` 顶部 sentinel 块 | 强化覆盖 trellis 上游 workflow.md 的指定段落（PRIORITY: HIGHEST，正文不动） |
+| `overrides/<override>.md` | 注入到 `<target>/.trellis/workflow.md` 的 `## Phase Index` 后，并在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 内追加小 sentinel | 强化覆盖 trellis 上游 workflow.md 的指定段落（PRIORITY: HIGHEST，上游原文不改） |
 
 > **原则**：一个指令要么保留 command 版、要么做成 skill 版（skill 化后删除 command 副本），避免同一入口有两种触发方式导致混淆。
 
@@ -80,7 +80,7 @@ install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
 |---------|---------|
 | 目标有 `.codex/` | 安装 `.common/.codex/skills/` |
 | 目标有 `.claude/` | 安装 `.common/.claude/skills/` |
-| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/` 或 `0.5/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（仅 old）+ `.claude/skills/`（仅 0.5）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 顶部 sentinel 块 |
+| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/` 或 `0.5/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（仅 old）+ `.claude/skills/`（仅 0.5）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 的 Phase Index 和 workflow-state sentinel 块 |
 | 两个都没有 | 默认按 claude 处理 |
 
 ### 安装
@@ -115,10 +115,10 @@ bash /path/to/skill-garden-checkout/scripts/install.sh \
 
 > **要求**：目标项目 trellis `>= 0.5.0`（install.sh 读 `.trellis/.version` 选 `0.5/` 变体）。
 
-`install.sh` 安装到 trellis 项目时，默认会从 `.trellis/0.5/overrides/trellis-route.md` 取模板，把整段 override 块注入到目标 `.trellis/workflow.md` **顶部**（用 `<!-- BEGIN/END skill-garden enhancement -->` sentinel 包裹）。块声明 `PRIORITY: HIGHEST`，让 phase 系统在 dispatch `trellis-implement` / `trellis-check` 子 agent 之前先经 `trellis-route` 询问用户。
+`install.sh` 安装到 trellis 项目时，默认会从 `.trellis/0.5/overrides/trellis-route.md` 取模板，把整段 override 块注入到目标 `.trellis/workflow.md` 的 `## Phase Index` 后（用 `<!-- BEGIN/END skill-garden enhancement -->` sentinel 包裹）。同时会在 `[workflow-state:no_task]` 内追加英文 post-task handoff sentinel，在 `[workflow-state:planning]` 内追加英文 planning handoff sentinel，在 `[workflow-state:in_progress]` 内追加英文 `trellis-route` sentinel，让每轮 hook 注入的 `<workflow-state>` 也能看到“建完任务不等于可直接实现”和“实现/检查先路由”的优先级。
 
 ```bash
-# 一键装：包括 trellis-route SKILL（.agents/.claude 双份）+ workflow.md 顶部注入
+# 一键装：包括 trellis-route SKILL（.agents/.claude 双份）+ workflow.md 双 sentinel 注入
 bash skill-garden/scripts/install.sh /path/to/project
 
 # 只重灌强化块（不重装 SKILL）：
@@ -127,11 +127,13 @@ bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 
 特性：
 
-- **正文不动**：trellis 上游 `workflow.md` body 一字不改，未来 sync 上游版本零冲突
-- **幂等**：sentinel 块存在则替换为最新内容，不存在则顶部插入；重复运行 install.sh 安全
+- **上游原文不改**：只追加/替换 `skill-garden` sentinel，未来 sync 上游版本时更容易处理
+- **幂等**：sentinel 块存在则替换为最新内容，不存在则插入；重复运行 install.sh 安全
 - **首次基线**：`workflow.md.bak` 仅在不存在时创建，保留首版干净基线
 - 主 agent 进入 Phase 2.1 / 2.2 时，按 override 块要求先调 `trellis-route` 让用户选 inline / subagent / check-all
-- `[workflow-state:in_progress]` 面包屑改写为禁止跳过 trellis-route 直接 dispatch
+- `[workflow-state:no_task]` 面包屑追加英文 post-task handoff，避免创建/恢复任务后同一轮直接 inline
+- `[workflow-state:planning]` 面包屑追加英文 planning handoff，避免 PRD/上下文未完成时直接写实现
+- `[workflow-state:in_progress]` 面包屑追加英文 route gate，禁止跳过 trellis-route 直接 dispatch
 - Claude Code + Codex 双端通用（不依赖 PreToolUse hook 拦截子 agent）
 
 可选：项目 `.trellis/config.yaml` 加 `subagent_skip_compile: true`，trellis-route 会在 implement subagent 模式下自动注入"跳过 mvn install / npm run build / tsc"prompt（仅 implement subagent 路径生效）。
