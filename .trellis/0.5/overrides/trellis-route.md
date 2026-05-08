@@ -1,6 +1,6 @@
-<!-- BEGIN skill-garden enhancement v0.5 -->
-
 ## skill-garden Override: trellis-route routing
+
+<!-- BEGIN skill-garden enhancement v0.5 -->
 
 > Long-form rules complementing the per-turn breadcrumb. Source: github.com/SilentFlower/skill-garden.
 

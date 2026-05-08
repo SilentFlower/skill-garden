@@ -276,27 +276,33 @@ else
     done
   fi
 
-  # 3d) workflow.md 注入强化块到 ## Phase Index 锚点之后（幂等，备份 .bak）
+  # 3d) workflow.md 注入独立 skill-garden 章节（幂等，备份 .bak）
   #
   # 为何不再注入到顶部？
-  #   trellis 0.5 的 SessionStart hook (_build_workflow_overview) 只抓
-  #   "## Phase Index" → "## Workflow State Breadcrumbs" 区间塞进 system prompt，
+  #   trellis 0.5 的 SessionStart hook 从 "## Phase Index" 开始抓 workflow 片段，
   #   workflow.md 顶部的 sentinel 块完全在抓取范围之外，AI 看不到。
-  #   把强化块插入 "## Phase Index" 锚点之后，能进 hook 抓取窗口。
+  #   把独立 "## skill-garden Override" 章节插入 "## Workflow State Breadcrumbs" 前，
+  #   能被 Claude/Codex 读到，同时紧贴 workflow-state 面包屑章节。
   #   另外，Codex 等平台的 UserPromptSubmit hook 每轮只读取
-  #   [workflow-state:<status>] 块；因此在 in_progress 块内追加一个极小
-  #   sentinel，避免旧的 trellis-implement → trellis-check 面包屑继续压过路由。
+  #   [workflow-state:<status>] 块；因此在 in_progress 块末尾追加
+  #   skill-garden guard，让它出现在上游默认 direct-dispatch 文案之后。
   WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
   WF_DST="$TARGET_DIR/.trellis/workflow.md"
   if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
-    echo "[workflow-enhancement] inject → .trellis/workflow.md (## Phase Index 锚点之后)"
+    echo "[workflow-enhancement] inject → .trellis/workflow.md (独立 skill-garden 章节 + workflow-state guard)"
     python3 - "$WF_ENHANCE" "$WF_DST" <<'PYEOF'
 import sys, re, shutil
 from pathlib import Path
 
 src = Path(sys.argv[1])
 dst = Path(sys.argv[2])
-# sentinel 必须各自独占一行；散文内字面量不会被误匹配
+# sentinel / heading 必须各自独占一行；散文内字面量不会被误匹配
+SKILL_GARDEN_SECTION_RE = re.compile(
+    r"^## skill-garden Override: trellis-route routing[^\n]*\n+"
+    r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?"
+    r"^<!-- END skill-garden enhancement[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
 SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?^<!-- END skill-garden enhancement[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
@@ -313,16 +319,24 @@ PLANNING_SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden workflow-state planning-handoff[^\n]*-->\n.*?^<!-- END skill-garden workflow-state planning-handoff[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
-# Phase Index 标题作为注入锚点（trellis 0.5 hook 抓取范围的起点）
+# workflow-state 章节作为首选注入锚点；独立 skill-garden 章节放在它前面
+WORKFLOW_STATE_HEADING_RE = re.compile(r"^(## Workflow State Breadcrumbs[^\n]*\n)", re.MULTILINE)
+# Phase Index 标题作为 fallback 注入锚点（trellis 0.5 hook 抓取范围的起点）
 PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
 # workflow-state 状态块是每轮 <workflow-state> 的直接来源
-NO_TASK_RE = re.compile(r"^(\[workflow-state:no_task\]\n)", re.MULTILINE)
-PLANNING_RE = re.compile(r"^(\[workflow-state:planning\]\n)", re.MULTILINE)
-IN_PROGRESS_RE = re.compile(r"^(\[workflow-state:in_progress\]\n)", re.MULTILINE)
+NO_TASK_BLOCK_RE = re.compile(
+    r"(?ms)^(\[workflow-state:no_task\]\n)(.*?)(^\[/workflow-state:no_task\])"
+)
+PLANNING_BLOCK_RE = re.compile(
+    r"(?ms)^(\[workflow-state:planning\]\n)(.*?)(^\[/workflow-state:planning\])"
+)
+IN_PROGRESS_BLOCK_RE = re.compile(
+    r"(?ms)^(\[workflow-state:in_progress\]\n)(.*?)(^\[/workflow-state:in_progress\])"
+)
 
 block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
 no_task_block = """<!-- BEGIN skill-garden workflow-state no-task-gate v0.5 -->
-POST-TASK HANDOFF:
+FINAL NO-TASK GUARD (skill-garden):
 Creating/resuming a task ≠ permission to implement inline.
 After PRD ready and task started, next impl action = `trellis-route(implement)`.
 Don't infer opt-out from "small/urgent/unclear" — opt-out requires an explicit phrase in the current message (see C below).
@@ -330,19 +344,21 @@ Don't infer opt-out from "small/urgent/unclear" — opt-out requires an explicit
 
 """
 planning_block = """<!-- BEGIN skill-garden workflow-state planning-handoff v0.5 -->
-PLANNING HANDOFF:
+FINAL PLANNING GUARD (skill-garden):
 Planning is not implementation permission.
 Complete prd.md + context first.
 After in_progress, next action = `trellis-route(implement)`, not direct edits.
 <!-- END skill-garden workflow-state planning-handoff v0.5 -->
 
 """
-in_progress_block = """<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
-ROUTING OVERRIDE:
-At Phase 2.1/2.2/3.1, invoke `trellis-route(implement|check)` — never call `trellis-implement`/`trellis-check` sub-agents directly.
-Precedence: If any later line in this block mentions direct `trellis-implement` / `trellis-check` dispatch, this ROUTING OVERRIDE wins.
-Flow: trellis-route(implement) → trellis-route(check) → trellis-update-spec → finish.
-ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?", "what's next?") — invoke `trellis-route(check)` instead. PRD sub-PRs ≠ phase boundaries. Prior "inline" applies to that turn only.
+in_progress_block = """
+<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
+FINAL ROUTE GUARD (skill-garden):
+This guard is intentionally appended after upstream in_progress breadcrumbs and overrides earlier direct-dispatch defaults in this same <workflow-state>.
+At Phase 2.1/2.2/3.1, invoke `trellis-route(implement|check)` first.
+Do NOT spawn `trellis-implement` / `trellis-check` directly from the main session unless `trellis-route` just selected a subagent mode.
+If `trellis-route` selected inline mode, load `trellis-before-dev` / `trellis-check` / `trellis-check-all` as applicable and execute in the main session.
+ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?", "what's next?") — invoke `trellis-route(check)` instead.
 <!-- END skill-garden workflow-state trellis-route v0.5 -->
 
 """
@@ -356,50 +372,67 @@ if not bak.exists():
 else:
     backup_note = "（保留已有 workflow.md.bak）"
 
-# 第一步：先剔除任何已存在的 sentinel 块（无论位于顶部还是 Phase Index 后）
-# 这同时承担"老版顶部注入 → 新版 Phase Index 后注入"的迁移
-clean = SENTINEL_RE.sub("", text)
+# 第一步：先剔除任何已存在的 skill-garden section / sentinel 块
+# 这同时承担"旧位置 → 新独立章节位置"的迁移
+clean = SKILL_GARDEN_SECTION_RE.sub("", text)
+clean = SENTINEL_RE.sub("", clean)
 clean = STATE_SENTINEL_RE.sub("", clean)
 clean = NO_TASK_SENTINEL_RE.sub("", clean)
 clean = PLANNING_SENTINEL_RE.sub("", clean)
 
-# 第二步：找 ## Phase Index 锚点，在其后插入新块
-m = PHASE_INDEX_RE.search(clean)
-if m:
-    idx = m.end()
-    phase_new = clean[:idx] + "\n" + block + clean[idx:]
-    action = "插入到 ## Phase Index 之后"
+# 第二步：优先插到 ## Workflow State Breadcrumbs 之前，形成独立的 ## skill-garden Override 章节；
+# 没有该标题时退回 ## Phase Index 后，再没有才顶部。
+wm = WORKFLOW_STATE_HEADING_RE.search(clean)
+if wm:
+    idx = wm.start()
+    phase_new = clean[:idx].rstrip() + "\n\n" + block + clean[idx:]
+    action = "插入到 ## Workflow State Breadcrumbs 之前"
 else:
-    # 找不到锚点（更老版本 trellis 或私有 fork）→ 回退到顶部
-    phase_new = block + clean
-    action = "注入顶部 (fallback: 未找到 ## Phase Index 锚点)"
+    m = PHASE_INDEX_RE.search(clean)
+    if m:
+        idx = m.end()
+        phase_new = clean[:idx] + "\n" + block + clean[idx:]
+        action = "插入到 ## Phase Index 之后 (fallback: 未找到 ## Workflow State Breadcrumbs)"
+    else:
+        phase_new = block + clean
+        action = "注入顶部 (fallback: 未找到 workflow-state / Phase Index 锚点)"
 
 # 第三步：把每轮 hook 会读取的 no_task / planning / in_progress 面包屑也补上强提示
 state_actions = []
-nm = NO_TASK_RE.search(phase_new)
+nm = NO_TASK_BLOCK_RE.search(phase_new)
 if nm:
-    idx = nm.end()
-    phase_new = phase_new[:idx] + no_task_block + phase_new[idx:]
+    phase_new = NO_TASK_BLOCK_RE.sub(
+        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + no_task_block + m.group(3),
+        phase_new,
+        count=1,
+    )
     state_actions.append("[workflow-state:no_task]")
 else:
     state_actions.append("未找到 [workflow-state:no_task]")
 
-pm = PLANNING_RE.search(phase_new)
+pm = PLANNING_BLOCK_RE.search(phase_new)
 if pm:
-    idx = pm.end()
-    phase_new = phase_new[:idx] + planning_block + phase_new[idx:]
+    phase_new = PLANNING_BLOCK_RE.sub(
+        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + planning_block + m.group(3),
+        phase_new,
+        count=1,
+    )
     state_actions.append("[workflow-state:planning]")
 else:
     state_actions.append("未找到 [workflow-state:planning]")
 
-sm = IN_PROGRESS_RE.search(phase_new)
+sm = IN_PROGRESS_BLOCK_RE.search(phase_new)
 if sm:
-    idx = sm.end()
-    new = phase_new[:idx] + in_progress_block + phase_new[idx:]
+    new = IN_PROGRESS_BLOCK_RE.sub(
+        lambda m: m.group(1) + m.group(2).rstrip() + in_progress_block + m.group(3),
+        phase_new,
+        count=1,
+    )
     state_actions.append("[workflow-state:in_progress]")
 else:
     new = phase_new
     state_actions.append("未找到 [workflow-state:in_progress]")
+new = new.rstrip() + "\n"
 state_action = "，并已更新 " + " / ".join(state_actions)
 
 if new == text:
