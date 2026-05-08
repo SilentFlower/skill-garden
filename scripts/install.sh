@@ -345,6 +345,7 @@ If the next action is implementation, quality check, or final quality verificati
 Required flow:
 `trellis-route(implement)` → run the selected implementation path → `trellis-route(check)` → run the selected check path → `trellis-update-spec` → finish.
 This rule overrides any older wording below that directly calls `trellis-implement` / `trellis-check`.
+ANTI-DEFER: at any phase boundary (implementation milestone reached / pre-check / pre-commit), if you catch yourself drafting a meta question to the user ("should I X or Y?", "what's next?", "continue?", or any equivalent) — STOP. That's the signal to invoke `trellis-route(check)` directly, not to ask. PRD-level PR1/PR2/PR3 sub-PRs are NOT Trellis phase boundaries — do not pause between them. A prior "inline" override applies only to the turn that contained it; do not assume it propagates to later turns.
 <!-- END skill-garden workflow-state trellis-route v0.5 -->
 
 """
