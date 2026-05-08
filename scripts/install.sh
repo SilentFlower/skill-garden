@@ -138,6 +138,29 @@ if [[ ! -f "$GARDEN/README.md" || ! -d "$GARDEN/.trellis" ]]; then
   exit 2
 fi
 
+# ── install.sh 自更新检查（防止本地缓存的旧脚本运行老逻辑）──
+#
+# 为何要做：使用方可能从 /tmp/skill-garden 等本地缓存目录直接调 install.sh，
+# 那里的脚本可能是几小时前的旧版（清理 regex / 注入位置已演进）。`--repo` 只
+# 决定 override 数据源，不更新 install.sh 自身代码——必须 exec 远程版本才能
+# 用上最新逻辑。AI agent 尤其容易踩这个坑（看到 /tmp 已有就直接复用）。
+#
+# 跳过条件：curl bootstrap (`bash <(curl ...)`) 时 $0 是 /dev/fd/... 进程替换，
+# 没有真实文件路径，本身就是远程最新版；本地脚本与远程一致时 cmp 返回 0 也跳过。
+# 防循环：`SKILL_GARDEN_BOOTSTRAPPED` 环境变量在 re-exec 时设置一次，远程版本
+# 进入时此变量已非空，自然不再 re-exec。
+if [[ -z "${SKILL_GARDEN_BOOTSTRAPPED:-}" ]]; then
+  SELF_PATH="$(readlink -f "$0" 2>/dev/null || echo "$0")"
+  GARDEN_INSTALL="$GARDEN/scripts/install.sh"
+  if [[ -f "$SELF_PATH" && -f "$GARDEN_INSTALL" ]] && ! cmp -s "$SELF_PATH" "$GARDEN_INSTALL"; then
+    echo "⚠ 检测到本地 install.sh 与远程不一致，切换到远程最新版本继续 ..."
+    export SKILL_GARDEN_BOOTSTRAPPED=1
+    REEXEC_ARGS=("--repo" "$REPO_URL" "$TARGET_DIR")
+    [[ ${#SKILL_NAMES[@]} -gt 0 ]] && REEXEC_ARGS+=("${SKILL_NAMES[@]}")
+    exec bash "$GARDEN_INSTALL" "${REEXEC_ARGS[@]}"
+  fi
+fi
+
 echo "目标: $TARGET_DIR"
 echo ""
 

@@ -111,6 +111,8 @@ bash /path/to/skill-garden-checkout/scripts/install.sh \
 
 > **取舍**：URL bootstrap 每次都重新 clone（用 `--depth 1` 提速），适合一次性安装/更新。需要频繁更新可设 alias 配置 `--repo` 默认值，或者把 SKILL_GARDEN_REPO 加 `.bashrc` 配一次后续免敲。
 
+> **install.sh 自更新**：脚本启动时 `cmp` 自身与从 `--repo` 刚 clone 出的 `scripts/install.sh`，不一致则 `exec` 远程版本继续（透传所有参数；`SKILL_GARDEN_BOOTSTRAPPED` 环境变量防循环；curl bootstrap 模式下 `$0` 是 `/dev/fd/...` 进程替换，自动跳过自检）。这意味着即使本地缓存目录（如 `/tmp/skill-garden`）里的 install.sh 已经过期，也会自动跑最新的清理 / 注入逻辑——AI agent 或自动化场景从本地路径调用时不必担心踩到老版本的清理 regex 或注入位置。**首次升级仍需走一次 URL bootstrap 拿到含自检代码的版本**，之后再用本地路径调用就会自动追新。
+
 ### 启用 trellis-route 路由 workflow（默认随 install.sh 自动注入）
 
 > **要求**：目标项目 trellis `>= 0.5.0`（install.sh 读 `.trellis/.version` 选 `0.5/` 变体）。
