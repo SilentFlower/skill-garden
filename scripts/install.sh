@@ -340,6 +340,7 @@ After in_progress, next action = `trellis-route(implement)`, not direct edits.
 in_progress_block = """<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
 ROUTING OVERRIDE:
 At Phase 2.1/2.2/3.1, invoke `trellis-route(implement|check)` — never call `trellis-implement`/`trellis-check` sub-agents directly.
+Precedence: If any later line in this block mentions direct `trellis-implement` / `trellis-check` dispatch, this ROUTING OVERRIDE wins.
 Flow: trellis-route(implement) → trellis-route(check) → trellis-update-spec → finish.
 ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?", "what's next?") — invoke `trellis-route(check)` instead. PRD sub-PRs ≠ phase boundaries. Prior "inline" applies to that turn only.
 <!-- END skill-garden workflow-state trellis-route v0.5 -->
