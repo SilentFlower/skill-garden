@@ -301,11 +301,13 @@ else
 
   # 3d) workflow.md 注入独立 skill-garden 章节（幂等，备份 .bak）
   #
-  # 为何不再注入到顶部？
-  #   trellis 0.5 的 SessionStart hook 从 "## Phase Index" 开始抓 workflow 片段，
-  #   workflow.md 顶部的 sentinel 块完全在抓取范围之外，AI 看不到。
-  #   把独立 "## skill-garden Override" 章节插入 "## Workflow State Breadcrumbs" 前，
-  #   能被 Claude/Codex 读到，同时紧贴 workflow-state 面包屑章节。
+  # 注入位置选择：
+  #   trellis 0.5 的 SessionStart hook 抓取范围是 "## Phase Index" 起、
+  #   "## Customizing Trellis (for forks)" 之前（不含），独立章节必须落在该
+  #   区间内才会被 AI 看到。首选放到 "## Phase 3: Finish" 段末（紧贴
+  #   "## Customizing Trellis" 之前），让阅读顺序保持 Phase Index → Phase 1/2/3
+  #   主线先讲完、override 作为补充收尾，不切断核心流程。fallback 退到
+  #   "## Phase Index" 之后（即抓取范围起点），最差兜底放顶部。
   #   另外，Codex 等平台的 UserPromptSubmit hook 每轮只读取
   #   [workflow-state:<status>] 块；因此在 in_progress 块末尾追加
   #   skill-garden guard，让它出现在上游默认 direct-dispatch 文案之后。
@@ -342,8 +344,10 @@ PLANNING_SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden workflow-state planning-handoff[^\n]*-->\n.*?^<!-- END skill-garden workflow-state planning-handoff[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
-# workflow-state 章节作为首选注入锚点；独立 skill-garden 章节放在它前面
-WORKFLOW_STATE_HEADING_RE = re.compile(r"^(## Workflow State Breadcrumbs[^\n]*\n)", re.MULTILINE)
+# Phase 3: Finish 段末作为首选注入锚点：匹配 ## Phase 3: Finish 标题起、
+# 到下一个 ## 标题（通常是 ## Customizing Trellis）或 EOF 之前的全部内容；
+# m.end() 即落在下一 ## 标题之前的位置，正好把 override 章节补在主线 phase 之后。
+PHASE3_END_RE = re.compile(r"(?ms)^## Phase 3: Finish[^\n]*\n.*?(?=^## |\Z)")
 # Phase Index 标题作为 fallback 注入锚点（trellis 0.5 hook 抓取范围的起点）
 PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
 # workflow-state 状态块是每轮 <workflow-state> 的直接来源
@@ -403,22 +407,23 @@ clean = STATE_SENTINEL_RE.sub("", clean)
 clean = NO_TASK_SENTINEL_RE.sub("", clean)
 clean = PLANNING_SENTINEL_RE.sub("", clean)
 
-# 第二步：优先插到 ## Workflow State Breadcrumbs 之前，形成独立的 ## skill-garden Override 章节；
-# 没有该标题时退回 ## Phase Index 后，再没有才顶部。
-wm = WORKFLOW_STATE_HEADING_RE.search(clean)
-if wm:
-    idx = wm.start()
+# 第二步：优先插到 ## Phase 3: Finish 段末（即下一 ## 标题之前），形成独立的
+# ## skill-garden Override 章节；找不到 Phase 3 时退回 ## Phase Index 后，
+# 都没有才顶部。
+m3 = PHASE3_END_RE.search(clean)
+if m3:
+    idx = m3.end()
     phase_new = clean[:idx].rstrip() + "\n\n" + block + clean[idx:]
-    action = "插入到 ## Workflow State Breadcrumbs 之前"
+    action = "插入到 ## Phase 3: Finish 段末"
 else:
     m = PHASE_INDEX_RE.search(clean)
     if m:
         idx = m.end()
         phase_new = clean[:idx] + "\n" + block + clean[idx:]
-        action = "插入到 ## Phase Index 之后 (fallback: 未找到 ## Workflow State Breadcrumbs)"
+        action = "插入到 ## Phase Index 之后 (fallback: 未找到 ## Phase 3: Finish)"
     else:
         phase_new = block + clean
-        action = "注入顶部 (fallback: 未找到 workflow-state / Phase Index 锚点)"
+        action = "注入顶部 (fallback: 未找到 Phase 3 / Phase Index 锚点)"
 
 # 第三步：把每轮 hook 会读取的 no_task / planning / in_progress 面包屑也补上强提示
 state_actions = []
