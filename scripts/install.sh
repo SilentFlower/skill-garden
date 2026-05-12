@@ -217,8 +217,9 @@ else
 fi
 
 # 根据目标项目 .trellis/.version 选择补充包版本目录
-#   >= 0.5.0 → .trellis/0.5/（新版：agents 更名 trellis-*、check-all 合并三维）
-#   其他情况（含缺失/无法解析/旧版）→ .trellis/old/
+#   >= 0.6.0（含 0.6.0-beta.x、未来 1.x） → .trellis/0.6/（精简版：仅 push/check-all/draw-uml/run-full-chain/route 5 个 skill）
+#   = 0.5.x                                → .trellis/0.5/（完整版：13 个 skill）
+#   其他情况（含缺失/无法解析/< 0.5）       → .trellis/old/
 TRELLIS_VARIANT="old"
 TRELLIS_VERSION=""
 if [[ "$IS_TRELLIS" == true && -f "$TARGET_DIR/.trellis/.version" ]]; then
@@ -226,7 +227,9 @@ if [[ "$IS_TRELLIS" == true && -f "$TARGET_DIR/.trellis/.version" ]]; then
   V_MAJOR="$(echo "$TRELLIS_VERSION" | cut -d. -f1)"
   V_MINOR="$(echo "$TRELLIS_VERSION" | cut -d. -f2 | sed 's/[^0-9].*//')"
   if [[ "$V_MAJOR" =~ ^[0-9]+$ && "$V_MINOR" =~ ^[0-9]+$ ]]; then
-    if (( V_MAJOR > 0 || V_MINOR >= 5 )); then
+    if (( V_MAJOR >= 1 || V_MINOR >= 6 )); then
+      TRELLIS_VARIANT="0.6"
+    elif (( V_MINOR >= 5 )); then
       TRELLIS_VARIANT="0.5"
     fi
   fi
