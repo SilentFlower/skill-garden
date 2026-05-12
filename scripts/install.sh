@@ -217,7 +217,7 @@ else
 fi
 
 # 根据目标项目 .trellis/.version 选择补充包版本目录
-#   >= 0.6.0（含 0.6.0-beta.x、未来 1.x） → .trellis/0.6/（精简版：仅 push/check-all/draw-uml/run-full-chain/route 5 个 skill）
+#   >= 0.6.0（含 0.6.0-beta.x、未来 1.x） → .trellis/0.6/（精简版：仅 push/check-all/draw-uml/run-full-chain/plan-version/route 6 个 skill）
 #   = 0.5.x                                → .trellis/0.5/（完整版：13 个 skill）
 #   其他情况（含缺失/无法解析/< 0.5）       → .trellis/old/
 TRELLIS_VARIANT="old"
