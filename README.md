@@ -168,7 +168,7 @@ bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 | `trellis-extract-prd` | skill (Auto-routing) | 基于原始需求文档**严格提取**单个需求的 PRD + task.json（含 UI 文案原封不动约束） | 任务开发前、有正式需求文档时 |
 | `trellis-verify-task` | skill (Auto-routing) | 校验任务三件套（prd / design / implement）准确性 + 覆盖度 + 跨层一致性，一次性给完整修正清单 | 三件套生成后、开发前 |
 | `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒 | 代码写完要提交时 |
-| `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（PRD 实现对照 + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
+| `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（三件套实现对照 prd/design/implement + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
 | `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
 | `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行 | 代码完成后、PR 前的 UAT 回归 |
 | `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） | 新版本启动、需求文档转任务清单时 |
