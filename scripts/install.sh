@@ -347,6 +347,10 @@ PLANNING_SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden workflow-state planning-handoff[^\n]*-->\n.*?^<!-- END skill-garden workflow-state planning-handoff[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
+PUSH_PROGRESS_RECOVERY_SENTINEL_RE = re.compile(
+    r"^<!-- BEGIN skill-garden workflow-state push-progress-recovery[^\n]*-->\n.*?^<!-- END skill-garden workflow-state push-progress-recovery[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
 # Phase 3: Finish 段末作为首选注入锚点：匹配 ## Phase 3: Finish 标题起、
 # 到下一个 ## 标题（通常是 ## Customizing Trellis）或 EOF 之前的全部内容；
 # m.end() 即落在下一 ## 标题之前的位置，正好把 override 章节补在主线 phase 之后。
@@ -381,6 +385,21 @@ After in_progress, next action = `trellis-route(implement)`, not direct edits.
 <!-- END skill-garden workflow-state planning-handoff v0.5 -->
 
 """
+push_progress_block = """<!-- BEGIN skill-garden workflow-state push-progress-recovery v0.6 -->
+PUSH PROGRESS RECOVERY (skill-garden):
+If you haven't already checked this session, scan `.trellis/tasks/*/task.json` for
+any task with status="in_progress". If found, this is an unfinished task from a
+previous session (likely paused mid-push). Read its `last_push_snapshot` field
+(schema: snapshot_at / branch / pushed_commits / completed_steps / partial_step /
+next_step / notes) and tell the user concisely:
+  「发现未完成任务 <title>：上次 push 完成到 <completed_steps>，下一步 <next_step>。要继续吗？」
+Then suggest `python3 ./.trellis/scripts/task.py start <task_path>` to re-bind the
+active-task pointer to this session before resuming work.
+Skip this hint if (a) you've already relayed the recovery info this session, or
+(b) no in_progress task carries a `last_push_snapshot` field.
+<!-- END skill-garden workflow-state push-progress-recovery v0.6 -->
+
+"""
 in_progress_block = """
 <!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
 FINAL ROUTE GUARD (skill-garden):
@@ -409,6 +428,7 @@ clean = SENTINEL_RE.sub("", clean)
 clean = STATE_SENTINEL_RE.sub("", clean)
 clean = NO_TASK_SENTINEL_RE.sub("", clean)
 clean = PLANNING_SENTINEL_RE.sub("", clean)
+clean = PUSH_PROGRESS_RECOVERY_SENTINEL_RE.sub("", clean)
 
 # 第二步：优先插到 ## Phase 3: Finish 段末（即下一 ## 标题之前），形成独立的
 # ## skill-garden Override 章节；找不到 Phase 3 时退回 ## Phase Index 后，
@@ -433,7 +453,7 @@ state_actions = []
 nm = NO_TASK_BLOCK_RE.search(phase_new)
 if nm:
     phase_new = NO_TASK_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + no_task_block + m.group(3),
+        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + no_task_block + push_progress_block + m.group(3),
         phase_new,
         count=1,
     )
