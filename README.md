@@ -19,9 +19,9 @@ skill-garden/
 │   │   ├── .agents/skills/<name>/SKILL.md                         # agent 技能
 │   │   ├── .claude/commands/trellis/<name>.md                     # 斜杠命令（非 skill 化的保留）
 │   │   └── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（skill 化的）
-│   └── 0.6/                                    #   Trellis >= 0.6（精简版：仅保留 6 个高频 skill）
-│       ├── .agents/skills/trellis-<name>/SKILL.md                 # agent 技能（5 个）
-│       ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（5 个）
+│   └── 0.6/                                    #   Trellis >= 0.6（精简版：保留 9 个核心 skill）
+│       ├── .agents/skills/trellis-<name>/SKILL.md                 # agent 技能（8 个 + route）
+│       ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（8 个 + route）
 │       └── overrides/trellis-route.md                             # workflow.md 强化覆盖
 └── scripts/
     └── install.sh                              # 安装脚本（读目标 .trellis/.version 智能选 variant）
@@ -35,7 +35,7 @@ install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选�
 
 | `.version` | 选用 variant | 备注 |
 |------------|------------|------|
-| `>= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`） | `.trellis/0.6/` | 精简版：仅保留 6 个高频 skill（`push` / `check-all` / `draw-uml` / `run-full-chain` / `plan-version` / `route`）+ `trellis-route` override；其余 7 个 0.5 包 skill 暂不进 0.6 |
+| `>= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`） | `.trellis/0.6/` | 精简版：保留 9 个核心 skill（`push` / `check-all` / `draw-uml` / `run-full-chain` / `plan-version` / `route` / `extract-prd` / `verify-task` / `create-command`）+ `trellis-route` override；其余 4 个 0.5 包 skill 暂不进 0.6 |
 | `0.5.x`（含 `0.5.0-beta.x`） | `.trellis/0.5/` | 完整版：agents 更名 `trellis-implement/trellis-check/trellis-research`；`check-all` skill 化并融合 `check-prd-impl` + `check-impl`（3 维：PRD 实现 + 假设验证 + trellis-check）；部分指令 skill 化（放 `.claude/skills/trellis-<name>/`，不再保留 command 版） |
 | 其他（含 `0.4.x`、缺失、无法解析） | `.trellis/old/` | 旧版：agents 名 `implement/check/research`，`check-all` 保留 4 维，全部保留 command 形态 |
 
@@ -161,22 +161,32 @@ bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 
 #### 0.6+ 推荐技能
 
-在 `.trellis/.version >= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`）时安装的 skill 集合（精简版，6 个 skill，全部 skill 化）：
+在 `.trellis/.version >= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`）时安装的 skill 集合（精简版，9 个 skill，全部 skill 化）：
 
 | 技能 | 形态 | 说明 | 使用时机 |
 |------|------|------|---------|
+| `trellis-extract-prd` | skill (Auto-routing) | 基于原始需求文档**严格提取**单个需求的 PRD + task.json（含 UI 文案原封不动约束） | 任务开发前、有正式需求文档时 |
+| `trellis-verify-task` | skill (Auto-routing) | 校验任务三件套（prd / design / implement）准确性 + 覆盖度 + 跨层一致性，一次性给完整修正清单 | 三件套生成后、开发前 |
 | `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒 | 代码写完要提交时 |
 | `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（PRD 实现对照 + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
 | `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
 | `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行 | 代码完成后、PR 前的 UAT 回归 |
 | `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） | 新版本启动、需求文档转任务清单时 |
+| `trellis-create-command` | skill (Manual-only) | 创建新的 trellis 入口（command 或 skill 形态），同步 agents 副本与 skill-garden 0.6 包，统一 frontmatter | 给项目加新工具入口时 |
 | `trellis-route` | skill (Auto-routing) | impl/check 子 agent vs inline 路由（含 check-all 选项），先询问用户再 dispatch | 进入 Phase 2.1 / 2.2 时由 workflow override 自动触发 |
 
-> 0.6 精简版只保留这 6 个高频 skill，配套 `overrides/trellis-route.md` 注入到目标 `workflow.md`。其余 7 个 0.5 包 skill（`analyze-task` / `create-command` / `create-prd` / `migrate-skill` / `re-implement` / `sync-prd` / `verify-prd`）暂不进 0.6 包；如需要可后续单独添加。
+> 0.6 精简版保留这 9 个核心 skill，配套 `overrides/trellis-route.md` 注入到目标 `workflow.md`。
+>
+> **从 0.5 升级到 0.6 的命名变化**：
+> - `trellis-create-prd` → `trellis-extract-prd`（强调"严格提取"语义，与上游对话式 `trellis-brainstorm` 形成 extract vs generate 对照）
+> - `trellis-verify-prd` → `trellis-verify-task`（从单层 PRD 校验扩展为 prd / design / implement 三件套统一校验，一次性给完整修正清单）
+> - `trellis-create-command` 内部 0.5 路径全部改为 0.6，并明确 command 形态不分发到 skill-garden 0.6 包（0.6 不维护 commands 目录）
+>
+> 其余 4 个 0.5 包 skill（`analyze-task` / `migrate-skill` / `re-implement` / `sync-prd`）暂不进 0.6 包；如需要可后续单独添加。
 
 #### 0.6+ 全部技能
 
-与"推荐技能"一致（6 个），无额外技能。
+与"推荐技能"一致（9 个），无额外技能。
 
 ---
 
