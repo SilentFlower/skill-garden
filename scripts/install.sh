@@ -394,16 +394,17 @@ After in_progress, next action = `trellis-route(implement)`, not direct edits.
 """
 push_progress_block = """<!-- BEGIN skill-garden workflow-state push-progress-recovery v0.6 -->
 PUSH PROGRESS RECOVERY (skill-garden):
-If you haven't already checked this session, scan `.trellis/tasks/*/task.json` for
-any task with status="in_progress". If found, this is an unfinished task from a
-previous session (likely paused mid-push). Read its `last_push_snapshot` field
-(schema: snapshot_at / branch / pushed_commits / completed_steps / partial_step /
-next_step / notes) and tell the user concisely:
+If you haven't already relayed recovery in this session, scan
+`.trellis/tasks/*/task.json` for entries where status="in_progress" AND a
+`last_push_snapshot` field is present (schema: snapshot_at / branch /
+pushed_commits / completed_steps / partial_step / next_step / notes).
+For each match, surface to the user:
   「发现未完成任务 <title>：上次 push 完成到 <completed_steps>，下一步 <next_step>。要继续吗？」
-Then suggest `python3 ./.trellis/scripts/task.py start <task_path>` to re-bind the
-active-task pointer to this session before resuming work.
-Skip this hint if (a) you've already relayed the recovery info this session, or
-(b) no in_progress task carries a `last_push_snapshot` field.
+If multiple match, list them with `snapshot_at` so the user can pick.
+Then suggest `python3 ./.trellis/scripts/task.py start <task_path>` to
+re-bind the active-task pointer before resuming work.
+Skip this hint if (a) you've already relayed recovery this session, or
+(b) no in_progress task carries `last_push_snapshot`.
 <!-- END skill-garden workflow-state push-progress-recovery v0.6 -->
 
 """
