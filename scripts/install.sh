@@ -351,6 +351,10 @@ PUSH_PROGRESS_RECOVERY_SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden workflow-state push-progress-recovery[^\n]*-->\n.*?^<!-- END skill-garden workflow-state push-progress-recovery[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
+IN_PROGRESS_SNAPSHOT_SENTINEL_RE = re.compile(
+    r"^<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n.*?^<!-- END skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n*",
+    re.DOTALL | re.MULTILINE,
+)
 # Phase 3: Finish 段末作为首选注入锚点：匹配 ## Phase 3: Finish 标题起、
 # 到下一个 ## 标题（通常是 ## Customizing Trellis）或 EOF 之前的全部内容；
 # m.end() 即落在下一 ## 标题之前的位置，正好把 override 章节补在主线 phase 之后。
@@ -366,6 +370,9 @@ PLANNING_BLOCK_RE = re.compile(
 )
 IN_PROGRESS_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:in_progress\]\n)(.*?)(^\[/workflow-state:in_progress\])"
+)
+IN_PROGRESS_INLINE_BLOCK_RE = re.compile(
+    r"(?ms)^(\[workflow-state:in_progress-inline\]\n)(.*?)(^\[/workflow-state:in_progress-inline\])"
 )
 
 block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
@@ -411,6 +418,18 @@ ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?
 <!-- END skill-garden workflow-state trellis-route v0.5 -->
 
 """
+push_snapshot_block = """<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot v0.6 -->
+IN-PROGRESS PUSH SNAPSHOT (skill-garden):
+The active task's task.json may carry a `last_push_snapshot` field (schema:
+snapshot_at / branch / pushed_commits / completed_steps / partial_step /
+next_step / notes). Before starting new work this turn, read that field; if
+present, briefly relay `partial_step` + `next_step` so the user knows you
+recognize the paused state instead of restarting from scratch. Skip if you
+have already relayed this snapshot earlier in the session, or if the field
+is absent.
+<!-- END skill-garden workflow-state in-progress-push-snapshot v0.6 -->
+
+"""
 text = dst.read_text(encoding="utf-8")
 
 # 备份原文（仅当 .bak 不存在时创建，保留首次干净基线）
@@ -429,6 +448,7 @@ clean = STATE_SENTINEL_RE.sub("", clean)
 clean = NO_TASK_SENTINEL_RE.sub("", clean)
 clean = PLANNING_SENTINEL_RE.sub("", clean)
 clean = PUSH_PROGRESS_RECOVERY_SENTINEL_RE.sub("", clean)
+clean = IN_PROGRESS_SNAPSHOT_SENTINEL_RE.sub("", clean)
 
 # 第二步：优先插到 ## Phase 3: Finish 段末（即下一 ## 标题之前），形成独立的
 # ## skill-garden Override 章节；找不到 Phase 3 时退回 ## Phase Index 后，
@@ -475,7 +495,7 @@ else:
 sm = IN_PROGRESS_BLOCK_RE.search(phase_new)
 if sm:
     new = IN_PROGRESS_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + in_progress_block + m.group(3),
+        lambda m: m.group(1) + m.group(2).rstrip() + in_progress_block + push_snapshot_block + m.group(3),
         phase_new,
         count=1,
     )
@@ -483,6 +503,17 @@ if sm:
 else:
     new = phase_new
     state_actions.append("未找到 [workflow-state:in_progress]")
+
+sim = IN_PROGRESS_INLINE_BLOCK_RE.search(new)
+if sim:
+    new = IN_PROGRESS_INLINE_BLOCK_RE.sub(
+        lambda m: m.group(1) + m.group(2).rstrip() + "\n\n" + push_snapshot_block + m.group(3),
+        new,
+        count=1,
+    )
+    state_actions.append("[workflow-state:in_progress-inline]")
+else:
+    state_actions.append("未找到 [workflow-state:in_progress-inline]")
 new = new.rstrip() + "\n"
 state_action = "，并已更新 " + " / ".join(state_actions)
 
