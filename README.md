@@ -17,11 +17,11 @@ skill-garden/
 │   │   └── .claude/commands/trellis/<name>.md
 │   ├── 0.5/                                    #   Trellis 0.5.x（完整版：13 个 skill）
 │   │   ├── .agents/skills/<name>/SKILL.md                         # agent 技能
-│   │   ├── .claude/commands/trellis/<name>.md                     # 斜杠命令（非 skill 化的保留）
-│   │   └── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（skill 化的）
+│   │   ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill
+│   │   └── overrides/trellis-route.md                             # workflow.md 强化覆盖
 │   └── 0.6/                                    #   Trellis >= 0.6（精简版：保留 9 个核心 skill）
-│       ├── .agents/skills/trellis-<name>/SKILL.md                 # agent 技能（8 个 + route）
-│       ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（8 个 + route）
+│       ├── .agents/skills/trellis-<name>/SKILL.md                 # agent 技能（9 个）
+│       ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（9 个）
 │       └── overrides/trellis-route.md                             # workflow.md 强化覆盖
 └── scripts/
     └── install.sh                              # 安装脚本（读目标 .trellis/.version 智能选 variant）
@@ -39,7 +39,7 @@ install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选�
 | `0.5.x`（含 `0.5.0-beta.x`） | `.trellis/0.5/` | 完整版：agents 更名 `trellis-implement/trellis-check/trellis-research`；`check-all` skill 化并融合 `check-prd-impl` + `check-impl`（3 维：PRD 实现 + 假设验证 + trellis-check）；部分指令 skill 化（放 `.claude/skills/trellis-<name>/`，不再保留 command 版） |
 | 其他（含 `0.4.x`、缺失、无法解析） | `.trellis/old/` | 旧版：agents 名 `implement/check/research`，`check-all` 保留 4 维，全部保留 command 形态 |
 
-三个 variant 的技能名集合不完全相同，0.6 是 0.5 的子集（精简版），内容随各自目标版本的 trellis 脚手架调整。
+三个 variant 的技能名集合不完全相同，0.6 是 0.5 的精简 / 重命名版本，内容随各自目标版本的 trellis 脚手架调整。
 
 ### 四种安装目标
 
@@ -48,18 +48,19 @@ install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选�
 | `.agents/skills/<name>/SKILL.md` | `<target>/.agents/skills/<name>/` | 被 trellis 的 agent 系统读取 |
 | `.claude/commands/trellis/<name>.md` | `<target>/.claude/commands/trellis/<name>.md` | Claude Code 斜杠命令 `/trellis:<name>`（适合显式动作，如 finish-work / continue） |
 | `.claude/skills/trellis-<name>/SKILL.md` | `<target>/.claude/skills/trellis-<name>/` | Claude harness 按 description 自动路由（适合自然语触发，如 analyze-task） |
-| `overrides/<override>.md` | 作为独立 `## skill-garden Override...` 章节注入到 `<target>/.trellis/workflow.md` 的 `## Workflow State Breadcrumbs` 前，并在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 内追加小 sentinel | 强化覆盖 trellis 上游 workflow.md 的指定段落（PRIORITY: HIGHEST，上游原文不改） |
+| `overrides/<override>.md` | 作为独立 `## skill-garden Override...` 章节注入到 `<target>/.trellis/workflow.md` 的 Phase 3 之后（fallback 到 `## Phase Index` 后），并在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 内追加小 sentinel | 强化覆盖 trellis 上游 workflow.md 的指定段落（PRIORITY: HIGHEST，上游原文不改） |
 
 > **原则**：一个指令要么保留 command 版、要么做成 skill 版（skill 化后删除 command 副本），避免同一入口有两种触发方式导致混淆。
 
 ### .trellis 内同名文件的关系
 
-同一个技能在 variant 目录下有两份文件，内容一致但格式不同：
+同一个技能通常在 variant 目录下有两份文件，正文内容一致，入口形态不同：
 
 | 文件 | 格式 | 用途 |
 |------|------|------|
 | `.agents/skills/<name>/SKILL.md` | 带 YAML frontmatter | 被 trellis 的 agent 系统读取 |
-| `.claude/commands/trellis/<name>.md` | 无 frontmatter，纯 markdown | 被 Claude Code 注册为 `/trellis:<name>` 斜杠命令 |
+| `.claude/skills/trellis-<name>/SKILL.md` | 带 YAML frontmatter；`name` 使用 `trellis-<name>` | 被 Claude harness 按 description 自动路由 |
+| `.claude/commands/trellis/<name>.md` | 无 frontmatter，纯 markdown | 仅 old 变体使用，被 Claude Code 注册为 `/trellis:<name>` 斜杠命令 |
 
 SKILL.md 的 frontmatter 格式：
 
@@ -71,7 +72,7 @@ description: "PRD Check — 准确性校验 + 覆盖度扫描"
 # 命令内容...
 ```
 
-`.claude/commands/trellis/<name>.md` 就是去掉 `---...---` 后的内容。
+`.claude/skills/` 与 `.agents/skills/` 的正文应保持一致，只允许 frontmatter 的 `name` / `description` 按入口调整。old 变体的 `.claude/commands/trellis/<name>.md` 是去掉 `---...---` 后的纯正文。
 
 ---
 
@@ -85,7 +86,7 @@ install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
 |---------|---------|
 | 目标有 `.codex/` | 安装 `.common/.codex/skills/` |
 | 目标有 `.claude/` | 安装 `.common/.claude/skills/` |
-| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/`、`0.5/` 或 `0.6/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（仅 old）+ `.claude/skills/`（0.5 / 0.6）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 的 Phase Index 和 workflow-state sentinel 块 |
+| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/`、`0.5/` 或 `0.6/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（old）+ `.claude/skills/`（0.5 / 0.6）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 的 Phase 3 后和 workflow-state sentinel 块 |
 | 两个都没有 | 默认按 claude 处理 |
 
 ### 安装
@@ -120,9 +121,9 @@ bash /path/to/skill-garden-checkout/scripts/install.sh \
 
 ### 启用 trellis-route 路由 workflow（默认随 install.sh 自动注入）
 
-> **要求**：目标项目 trellis `>= 0.5.0`（install.sh 读 `.trellis/.version` 选 `0.5/` 变体）。
+> **要求**：目标项目 trellis `>= 0.5.0`（install.sh 读 `.trellis/.version` 选 `0.5/` 或 `0.6/` 变体）。
 
-`install.sh` 安装到 trellis 项目时，默认会从 `.trellis/0.5/overrides/trellis-route.md` 取模板，把整段 override 作为独立 `## skill-garden Override: trellis-route routing` 章节注入到目标 `.trellis/workflow.md` 的 `## Workflow State Breadcrumbs` 前；`<!-- BEGIN/END skill-garden enhancement -->` sentinel 位于这个独立标题下面。同时会在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 结束前追加 `FINAL ... GUARD` sentinel。guard 保留上游正文和默认面包屑不变，但因为位于每轮 `<workflow-state>` 的最后，明确覆盖前面的默认判断。
+`install.sh` 安装到 trellis 项目时，默认会从当前变体的 `overrides/trellis-route.md` 取模板，把整段 override 作为独立 `## skill-garden Override: trellis-route routing` 章节注入到目标 `.trellis/workflow.md` 的 Phase 3 之后（找不到锚点时回退到 `## Phase Index` 后）；`<!-- BEGIN/END skill-garden enhancement -->` sentinel 位于这个独立标题下面。同时会在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 结束前追加 `FINAL ... GUARD` sentinel。guard 保留上游正文和默认面包屑不变，但因为位于每轮 `<workflow-state>` 的最后，明确覆盖前面的默认判断。
 
 ```bash
 # 一键装：包括 trellis-route SKILL（.agents/.claude 双份）+ workflow-state guard 注入
@@ -167,7 +168,7 @@ bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 |------|------|------|---------|
 | `trellis-extract-prd` | skill (Auto-routing) | 基于原始需求文档**严格提取**单个需求的 PRD + task.json（含 UI 文案原封不动约束） | 任务开发前、有正式需求文档时 |
 | `trellis-verify-task` | skill (Auto-routing) | 校验任务三件套（prd / design / implement）准确性 + 覆盖度 + 跨层一致性，一次性给完整修正清单 | 三件套生成后、开发前 |
-| `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒 | 代码写完要提交时 |
+| `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 0.5 活动任务读取 + Step 3 `last_push_snapshot` 任务进度快照 | 代码写完要提交时 |
 | `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（三件套实现对照 prd/design/implement + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
 | `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
 | `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行 | 代码完成后、PR 前的 UAT 回归 |
@@ -267,8 +268,8 @@ bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
 ### 新增 Trellis 技能
 
 **Step 1. 选 variant**：新技能要加到哪个版本目录？
-- 两个版本都适用 → `.trellis/old/` 和 `.trellis/0.5/` 都加
-- 只适配新版 trellis → 只放 `.trellis/0.5/`
+- 兼容所有 trellis → `.trellis/old/`、`.trellis/0.5/`、`.trellis/0.6/` 都加（按各版本命名和能力调整）
+- 只适配新版 trellis → 放 `.trellis/0.5/` 和 / 或 `.trellis/0.6/`
 - 只兼容旧版 → 只放 `.trellis/old/`
 
 **Step 2. 选形态**：command 还是 skill？
@@ -292,7 +293,7 @@ description: "<简要描述>"
 
 然后按形态二选一：
 
-- **command 形态**：同时在 `.claude/commands/trellis/<name>.md` 写一份（去掉 frontmatter 的同内容文件）
-- **skill 形态**：同时在 `.claude/skills/trellis-<name>/SKILL.md` 写一份（frontmatter 的 `name` 改为 `trellis-<name>`，`description` 需要精确到能让 Claude 按自然语触发；正文与 agents 版保持一致）
+- **command 形态**：同时在 `.claude/commands/trellis/<name>.md` 写一份（去掉 frontmatter 的同内容文件；目前主要用于 old 变体）
+- **skill 形态**：同时在 `.claude/skills/trellis-<name>/SKILL.md` 写一份（frontmatter 的 `name` 改为 `trellis-<name>`，`description` 需要精确到能让 Claude 按自然语触发；正文与 agents 版保持一致；0.5 / 0.6 默认使用这种形态）
 
 **Step 4. 内容一致性**：两份副本的正文内容必须完全相同，只允许 frontmatter 差异。
