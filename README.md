@@ -1,299 +1,127 @@
 # Skill Garden
 
-集中管理个人 AI Agent 技能，通过 URL bootstrap 安装到任意项目（mktemp 临时 clone，零持久缓存）。
-
-## 目录结构
+集中管理 AI Agent 技能,通过 URL bootstrap 安装到任意项目(mktemp 临时 clone,零持久缓存)。
 
 ```
 skill-garden/
-├── .common/                                    # 通用技能（按平台分目录）
-│   ├── .codex/skills/<name>/                   #   Codex 技能 → <target>/.codex/skills/
-│   │   └── SKILL.md
-│   └── .claude/skills/<name>/                  #   Claude 技能 → <target>/.claude/skills/
-│       └── SKILL.md
-├── .trellis/                                   # Trellis 强化补充包（按版本分子目录）
-│   ├── old/                                    #   Trellis < 0.5 (默认 fallback)
-│   │   ├── .agents/skills/<name>/SKILL.md
-│   │   └── .claude/commands/trellis/<name>.md
-│   ├── 0.5/                                    #   Trellis 0.5.x（完整版：13 个 skill）
-│   │   ├── .agents/skills/<name>/SKILL.md                         # agent 技能
-│   │   ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill
-│   │   └── overrides/trellis-route.md                             # workflow.md 强化覆盖
-│   └── 0.6/                                    #   Trellis >= 0.6（精简版：保留 9 个核心 skill）
-│       ├── .agents/skills/trellis-<name>/SKILL.md                 # agent 技能（9 个）
-│       ├── .claude/skills/trellis-<name>/SKILL.md                 # Claude harness 自动路由 skill（9 个）
-│       └── overrides/trellis-route.md                             # workflow.md 强化覆盖
-└── scripts/
-    └── install.sh                              # 安装脚本（读目标 .trellis/.version 智能选 variant）
+├── .common/                                  # 通用技能(按平台)
+│   ├── .codex/skills/<name>/                 #   → <target>/.codex/skills/
+│   └── .claude/skills/<name>/                #   → <target>/.claude/skills/
+├── .trellis/                                 # Trellis 强化补充包(按版本)
+│   ├── old/                                  #   < 0.5 (fallback)
+│   ├── 0.5/                                  #   0.5.x:完整版 13 个 skill
+│   └── 0.6/                                  #   ≥ 0.6:精简版 9 个 skill + workflow override
+└── scripts/install.sh                        # 一键安装(读目标 .trellis/.version 智能选 variant)
 ```
-
-> **Note**: `.cursor/commands/` 目录已不再维护，统一使用 `.claude/commands/`。
-
-### .trellis 版本 variant 说明
-
-install.sh 会读取目标项目的 `.trellis/.version`，按语义化版本选择对应 variant：
-
-| `.version` | 选用 variant | 备注 |
-|------------|------------|------|
-| `>= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`） | `.trellis/0.6/` | 精简版：保留 9 个核心 skill（`push` / `check-all` / `draw-uml` / `run-full-chain` / `plan-version` / `route` / `extract-prd` / `verify-task` / `create-command`）+ `trellis-route` override；其余 4 个 0.5 包 skill 暂不进 0.6 |
-| `0.5.x`（含 `0.5.0-beta.x`） | `.trellis/0.5/` | 完整版：agents 更名 `trellis-implement/trellis-check/trellis-research`；`check-all` skill 化并融合 `check-prd-impl` + `check-impl`（3 维：PRD 实现 + 假设验证 + trellis-check）；部分指令 skill 化（放 `.claude/skills/trellis-<name>/`，不再保留 command 版） |
-| 其他（含 `0.4.x`、缺失、无法解析） | `.trellis/old/` | 旧版：agents 名 `implement/check/research`，`check-all` 保留 4 维，全部保留 command 形态 |
-
-三个 variant 的技能名集合不完全相同，0.6 是 0.5 的精简 / 重命名版本，内容随各自目标版本的 trellis 脚手架调整。
-
-### 四种安装目标
-
-| 源路径（variant 内） | 目标路径 | 用途 |
-|------|------|------|
-| `.agents/skills/<name>/SKILL.md` | `<target>/.agents/skills/<name>/` | 被 trellis 的 agent 系统读取 |
-| `.claude/commands/trellis/<name>.md` | `<target>/.claude/commands/trellis/<name>.md` | Claude Code 斜杠命令 `/trellis:<name>`（适合显式动作，如 finish-work / continue） |
-| `.claude/skills/trellis-<name>/SKILL.md` | `<target>/.claude/skills/trellis-<name>/` | Claude harness 按 description 自动路由（适合自然语触发，如 analyze-task） |
-| `overrides/<override>.md` | 作为独立 `## skill-garden Override...` 章节注入到 `<target>/.trellis/workflow.md` 的 Phase 3 之后（fallback 到 `## Phase Index` 后），并在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 内追加小 sentinel | 强化覆盖 trellis 上游 workflow.md 的指定段落（PRIORITY: HIGHEST，上游原文不改） |
-
-> **原则**：一个指令要么保留 command 版、要么做成 skill 版（skill 化后删除 command 副本），避免同一入口有两种触发方式导致混淆。
-
-### .trellis 内同名文件的关系
-
-同一个技能通常在 variant 目录下有两份文件，正文内容一致，入口形态不同：
-
-| 文件 | 格式 | 用途 |
-|------|------|------|
-| `.agents/skills/<name>/SKILL.md` | 带 YAML frontmatter | 被 trellis 的 agent 系统读取 |
-| `.claude/skills/trellis-<name>/SKILL.md` | 带 YAML frontmatter；`name` 使用 `trellis-<name>` | 被 Claude harness 按 description 自动路由 |
-| `.claude/commands/trellis/<name>.md` | 无 frontmatter，纯 markdown | 仅 old 变体使用，被 Claude Code 注册为 `/trellis:<name>` 斜杠命令 |
-
-SKILL.md 的 frontmatter 格式：
-
-```yaml
----
-name: verify-prd
-description: "PRD Check — 准确性校验 + 覆盖度扫描"
----
-# 命令内容...
-```
-
-`.claude/skills/` 与 `.agents/skills/` 的正文应保持一致，只允许 frontmatter 的 `name` / `description` 按入口调整。old 变体的 `.claude/commands/trellis/<name>.md` 是去掉 `---...---` 后的纯正文。
 
 ---
 
 ## 安装
 
-### 安装前置检测
-
-install.sh 会自动检测目标项目的类型，只安装到匹配的目录：
-
-| 检测条件 | 安装内容 |
-|---------|---------|
-| 目标有 `.codex/` | 安装 `.common/.codex/skills/` |
-| 目标有 `.claude/` | 安装 `.common/.claude/skills/` |
-| 目标有 `.trellis/` | 读 `.trellis/.version` 选 `old/`、`0.5/` 或 `0.6/`，安装对应目录的 `.agents/skills/` + `.claude/commands/trellis/`（old）+ `.claude/skills/`（0.5 / 0.6）+ 把 `overrides/*.md` 注入到目标 `.trellis/workflow.md` 的 Phase 3 后和 workflow-state sentinel 块 |
-| 两个都没有 | 默认按 claude 处理 |
-
-### 安装
-
-install.sh 把 `--repo` 指向的仓库 clone 到 mktemp 临时目录、复制技能/override 到目标项目、然后自动删除 temp 目录——**零持久缓存**。
+`install.sh` clone 仓库到 mktemp、复制技能到目标项目、自动删 temp —— 零持久缓存。
 
 ```bash
-# 远程一行装好（curl + bash）
-bash <(curl -fsSL <raw-url>/install.sh) --repo git@github.com:<user>/skill-garden.git /path/to/project
+# 远程一行装(默认 --scope=trellis)
+bash <(curl -fsSL <raw-url>/install.sh) --repo git@github.com:<user>/skill-garden.git /target
 
 # 配过环境变量后省 --repo
 export SKILL_GARDEN_REPO=git@github.com:<user>/skill-garden.git
-bash <(curl -fsSL <raw-url>/install.sh) /path/to/project
+bash <(curl -fsSL <raw-url>/install.sh) /target
 
-# 只装指定技能
-bash <(curl -fsSL <raw-url>/install.sh) --repo <url> /path/to/project verify-prd create-prd
+# 只装通用技能(.common)
+bash install.sh --scope common --repo <url> /target
 
-# 仅注入 workflow.md 强化块
-bash <(curl -fsSL <raw-url>/install.sh) --repo <url> /path/to/project workflow-enhancement
+# 全装(trellis + common)
+bash install.sh --scope all --repo <url> /target
+
+# 只装指定技能(支持去 trellis- 前缀匹配)
+bash install.sh --scope all --repo <url> /target craft-rpa trellis-push
+
+# 本地开发(指向自己的 working clone,只取已 commit 状态)
+bash install.sh --repo /path/to/skill-garden-checkout /target
 ```
 
-**本地开发模式**：`--repo` 指向本地 working clone（`git clone` 接受本地路径，但只取已 commit 状态，未 commit 改动不会被装上）：
+**`--scope` 决定装哪类**:`trellis`(默认)/ `common` / `all`。`bash install.sh --help` 看完整。
+
+**安装目标自动适配**:
+- 目标有 `.codex/` → 装 `.common/.codex/`
+- 目标有 `.claude/` → 装 `.common/.claude/`
+- 目标有 `.trellis/` → 按 `.trellis/.version` 读 0.6 / 0.5 / old,装对应 variant 的 `.agents/` + `.claude/skills/`(+`commands/`,old 才有)+ 注入 `overrides/*` 到 `workflow.md`
+
+**install.sh 自更新**:本地缓存的旧脚本启动时 `cmp` 自身与远程,不一致则 `exec` 远程版本继续。AI agent 从本地路径调用也不会踩到老逻辑。
+
+---
+
+## trellis-route override 注入
+
+`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 默认把 `overrides/trellis-route.md` 作为独立 `## skill-garden Override` 章节注入 `.trellis/workflow.md`(Phase 3 后,fallback 到 Phase Index 后),并在 `[workflow-state:no_task]` / `planning` / `in_progress]` 末尾追加 `FINAL ... GUARD` sentinel。
+
+特性:幂等(已有则替换)、最小侵入(不改上游正文)、备份首版 `workflow.md.bak`、Claude Code + Codex 双端通用。
 
 ```bash
-bash /path/to/skill-garden-checkout/scripts/install.sh \
-  --repo /path/to/skill-garden-checkout /target
+# 只重灌 override + workflow-state guard(不重装 SKILL)
+bash install.sh --repo <url> /target workflow-enhancement
 ```
 
-> **取舍**：URL bootstrap 每次都重新 clone（用 `--depth 1` 提速），适合一次性安装/更新。需要频繁更新可设 alias 配置 `--repo` 默认值，或者把 SKILL_GARDEN_REPO 加 `.bashrc` 配一次后续免敲。
-
-> **install.sh 自更新**：脚本启动时 `cmp` 自身与从 `--repo` 刚 clone 出的 `scripts/install.sh`，不一致则 `exec` 远程版本继续（透传所有参数；`SKILL_GARDEN_BOOTSTRAPPED` 环境变量防循环；curl bootstrap 模式下 `$0` 是 `/dev/fd/...` 进程替换，自动跳过自检）。这意味着即使本地缓存目录（如 `/tmp/skill-garden`）里的 install.sh 已经过期，也会自动跑最新的清理 / 注入逻辑——AI agent 或自动化场景从本地路径调用时不必担心踩到老版本的清理 regex 或注入位置。**首次升级仍需走一次 URL bootstrap 拿到含自检代码的版本**，之后再用本地路径调用就会自动追新。
-
-### 启用 trellis-route 路由 workflow（默认随 install.sh 自动注入）
-
-> **要求**：目标项目 trellis `>= 0.5.0`（install.sh 读 `.trellis/.version` 选 `0.5/` 或 `0.6/` 变体）。
-
-`install.sh` 安装到 trellis 项目时，默认会从当前变体的 `overrides/trellis-route.md` 取模板，把整段 override 作为独立 `## skill-garden Override: trellis-route routing` 章节注入到目标 `.trellis/workflow.md` 的 Phase 3 之后（找不到锚点时回退到 `## Phase Index` 后）；`<!-- BEGIN/END skill-garden enhancement -->` sentinel 位于这个独立标题下面。同时会在 `[workflow-state:no_task]` / `[workflow-state:planning]` / `[workflow-state:in_progress]` 结束前追加 `FINAL ... GUARD` sentinel。guard 保留上游正文和默认面包屑不变，但因为位于每轮 `<workflow-state>` 的最后，明确覆盖前面的默认判断。
-
-```bash
-# 一键装：包括 trellis-route SKILL（.agents/.claude 双份）+ workflow-state guard 注入
-bash skill-garden/scripts/install.sh /path/to/project
-
-# 只重灌强化块 / 注入 workflow-state guard（不重装 SKILL）：
-bash skill-garden/scripts/install.sh /path/to/project workflow-enhancement
-```
-
-特性：
-
-- **最小侵入**：不改写上游正文，也不删除默认面包屑，只在各 `[workflow-state:*]` 末尾追加最终守卫
-- **幂等**：sentinel 块存在则替换为最新内容，不存在则插入；重复运行 install.sh 安全
-- **首次基线**：`workflow.md.bak` 仅在不存在时创建，保留首版干净基线
-- 主 agent 进入 Phase 2.1 / 2.2 时，按 override 块要求先调 `trellis-route` 让用户选 inline / subagent / check-all
-- `[workflow-state:no_task]` 面包屑追加英文 post-task handoff，避免创建/恢复任务后同一轮直接 inline
-- `[workflow-state:planning]` 面包屑追加英文 planning handoff，避免 PRD/上下文未完成时直接写实现
-- `[workflow-state:in_progress]` 面包屑追加英文 route gate，禁止跳过 trellis-route 直接 dispatch
-- Claude Code + Codex 双端通用（不依赖 PreToolUse hook 拦截子 agent）
-
-可选：项目 `.trellis/config.yaml` 加 `subagent_skip_compile: true`，trellis-route 会在 implement subagent 模式下自动注入"跳过 mvn install / npm run build / tsc"prompt（仅 implement subagent 路径生效）。
-
-回滚：删 sentinel 块整段 / `cp .trellis/workflow.md.bak .trellis/workflow.md`。
+回滚:删 sentinel 块整段,或 `cp .trellis/workflow.md.bak .trellis/workflow.md`。
 
 ---
 
 ## 当前技能
 
-### 通用（.common）
+### 通用(`.common`,`--scope=common|all`)
 
 | 技能 | 平台 | 说明 |
 |------|------|------|
-| `sub2api-account-json-fix` | codex, claude | sub2api 账号推送 |
+| `sub2api-account-json-fix` | codex / claude | sub2api 账号 JSON 批量补全 + 推送 |
+| `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 
-### Trellis 补充包（.trellis）
+### Trellis 0.6+ (`--scope=trellis|all`,9 个核心 skill)
 
-#### 0.6+ 推荐技能
+按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入 `trellis-route` override 到 workflow:
 
-在 `.trellis/.version >= 0.6.0`（含 `0.6.0-beta.x`、未来 `1.x`）时安装的 skill 集合（精简版，9 个 skill，全部 skill 化）：
+| 技能 | 形态 | 何时用 |
+|------|------|--------|
+| `trellis-extract-prd` | Auto | 任务开发前、有正式需求文档,严格提取 PRD |
+| `trellis-verify-task` | Auto | 三件套生成后,校验准确性 + 覆盖度 + 跨层一致性 |
+| `trellis-check-all` | Auto | 开发完、提交前,全维度代码检查(三件套对照 + 假设验证 + trellis-check) |
+| `trellis-run-full-chain` | Auto | PR 前 UAT 回归,跨层全链路(UI + API + DB) |
+| `trellis-draw-uml` | Auto | 需要可视化业务流程,自动渲染 PNG 并展示 |
+| `trellis-route` | Auto | Phase 2.1/2.2 由 workflow override 自动触发,询问 inline / subagent |
+| `trellis-push` | Manual | 一键 commit + push + 可选 merge,含 `last_push_snapshot` 任务进度快照 |
+| `trellis-plan-version` | Manual | 新版本启动,需求 → 任务拆分 + 工时评估 + 人员分工 |
+| `trellis-create-command` | Manual | 给项目加新 trellis 入口(command / skill),同步 agents + skill-garden 副本 |
 
-| 技能 | 形态 | 说明 | 使用时机 |
-|------|------|------|---------|
-| `trellis-extract-prd` | skill (Auto-routing) | 基于原始需求文档**严格提取**单个需求的 PRD + task.json（含 UI 文案原封不动约束） | 任务开发前、有正式需求文档时 |
-| `trellis-verify-task` | skill (Auto-routing) | 校验任务三件套（prd / design / implement）准确性 + 覆盖度 + 跨层一致性，一次性给完整修正清单 | 三件套生成后、开发前 |
-| `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 0.5 活动任务读取 + Step 3 `last_push_snapshot` 任务进度快照 | 代码写完要提交时 |
-| `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（三件套实现对照 prd/design/implement + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
-| `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
-| `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行 | 代码完成后、PR 前的 UAT 回归 |
-| `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） | 新版本启动、需求文档转任务清单时 |
-| `trellis-create-command` | skill (Manual-only) | 创建新的 trellis 入口（command 或 skill 形态），同步 agents 副本与 skill-garden 0.6 包，统一 frontmatter | 给项目加新工具入口时 |
-| `trellis-route` | skill (Auto-routing) | impl/check 子 agent vs inline 路由（含 check-all 选项），先询问用户再 dispatch | 进入 Phase 2.1 / 2.2 时由 workflow override 自动触发 |
+### Trellis 0.5 / old
 
-> 0.6 精简版保留这 9 个核心 skill，配套 `overrides/trellis-route.md` 注入到目标 `workflow.md`。
->
-> **从 0.5 升级到 0.6 的命名变化**：
-> - `trellis-create-prd` → `trellis-extract-prd`（强调"严格提取"语义，与上游对话式 `trellis-brainstorm` 形成 extract vs generate 对照）
-> - `trellis-verify-prd` → `trellis-verify-task`（从单层 PRD 校验扩展为 prd / design / implement 三件套统一校验，一次性给完整修正清单）
-> - `trellis-create-command` 内部 0.5 路径全部改为 0.6，并明确 command 形态不分发到 skill-garden 0.6 包（0.6 不维护 commands 目录）
->
-> 其余 4 个 0.5 包 skill（`analyze-task` / `migrate-skill` / `re-implement` / `sync-prd`）暂不进 0.6 包；如需要可后续单独添加。
+按 `.trellis/.version` 自动适配,详细清单见 `.trellis/0.5/README.md` 或 `bash install.sh --help`。0.5 多 4 个 skill(`analyze-task` / `migrate-skill` / `re-implement` / `sync-prd`),old 是无 `trellis-` 前缀的 command 形态。
 
-#### 0.6+ 全部技能
-
-与"推荐技能"一致（9 个），无额外技能。
-
----
-
-#### 0.5+ 推荐技能
-
-在 `.trellis/.version = 0.5.x` 时安装的 skill 集合（全部已 skill 化，删除了 command 版）：
-
-| 技能 | 形态 | 说明 | 使用时机 |
-|------|------|------|---------|
-| `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒 | 代码写完要提交时 |
-| `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（PRD 实现对照 + 假设验证 + trellis-check 三维） | 开发完成后、提交前 |
-| `trellis-verify-prd` | skill (Auto-routing) | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） | PRD 生成后、开发前 |
-| `trellis-analyze-task` | skill (Auto-routing) | 任务深度分析与细化 | 开发前，理解任务全貌 |
-| `trellis-draw-uml` | skill (Auto-routing) | PM / 业务架构师视角用 UML 活动图梳理业务（每次自动渲染 PNG 并读图展示） | 需要可视化理解业务流程时 |
-| `trellis-sync-prd` | skill (Auto-routing) | 代码或需求变更后的 PRD 回补同步 | 实现与 PRD 出现偏差时 |
-| `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行；强调跨层，不是前端 e2e 套件 | 代码完成后、PR 前的 UAT 回归 |
-| `trellis-re-implement` | skill (Manual-only) | 需求变更后二次实现 | 需求变更需要重新实现时 |
-
-#### 0.5+ 全部技能
-
-| 技能 | 形态 | 说明 |
-|------|------|------|
-| `trellis-analyze-task` | skill (Auto-routing) | 任务深度分析与细化 |
-| `trellis-check-all` | skill (Auto-routing) | 全维度代码检查（内嵌融合前身 `check-prd-impl` + `check-impl`；Step 3 调用 trellis-check agent） |
-| `trellis-create-command` | skill (Manual-only) | 创建新的 trellis 入口（command 或 skill 形态），同步 agents 副本与 skill-garden，统一 frontmatter |
-| `trellis-create-prd` | skill (Manual-only) | 基于原始需求文档创建 PRD（含 UI 文案原封不动约束）+ `task.json` |
-| `trellis-draw-uml` | skill (Auto-routing) | PM 视角用 UML 活动图梳理业务逻辑（先反问再画，每次自动渲染 PNG）；产物落 `doc/uml/<slug>.{mmd,png}` |
-| `trellis-migrate-skill` | skill (Manual-only) | 把已有 `/trellis:<X>` 命令迁移成 `.claude/skills/trellis-<X>/` skill，含对齐扫描 / 形态决策 / 融合判断 / 4 份副本同步 / README + 验证 / commit 模板 |
-| `trellis-plan-version` | skill (Manual-only) | 版本开发计划（需求文档 → 任务拆分 + 工时评估 + 人员分工） |
-| `trellis-push` | skill (Manual-only) | 一键 commit → push → 可选 merge 到目标分支；含 Step 1.5 智能 PRD 同步提醒；`merge_target` 记录在 `config.yaml` |
-| `trellis-re-implement` | skill (Manual-only) | 需求变更后二次实现（调 trellis-implement + trellis-check agent） |
-| `trellis-route` | skill (Auto-routing) | impl/check 子 agent vs inline 路由（含 check-all 4 选项），先询问用户再 dispatch；可选联动 `.trellis/config.yaml` 的 `subagent_skip_compile` 跳过编译 |
-| `trellis-run-full-chain` | skill (Auto-routing) | 跨层全链路验证（Playwright UI + curl API + MySQL MCP），以"场景-路径-期望"表逐条执行，附数据恢复；强调跨层，不是前端 e2e 套件 |
-| `trellis-sync-prd` | skill (Auto-routing) | 代码或需求变更后的 PRD 回补同步 |
-| `trellis-verify-prd` | skill (Auto-routing) | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） |
-
----
-
-#### old 推荐命令
-
-在 `.trellis/.version < 0.5.0` 时安装的 command 集合（全部为 command 形态，无 `trellis-` 前缀）：
-
-| 命令 | 说明 | 使用时机 |
-|------|------|---------|
-| `push` | 一键 commit → push → 可选 merge 到目标分支 | 代码写完要提交时 |
-| `check-all` | 全维度一键检查（依次调用 `check-prd-impl` → `check-impl` → trellis-check agent 三维） | 开发完成后、提交前 |
-| `check-prd` | PRD 准确性校验 + 覆盖度扫描 | PRD 生成后、开发前 |
-| `analyze-task` | 任务深度分析与细化 | 开发前，理解任务全貌 |
-| `draw-uml` | PM / 业务架构师视角用 UML 活动图梳理业务 | 需要可视化理解业务流程时 |
-| `sync-prd` | 代码或需求变更后的 PRD 回补同步 | 实现与 PRD 出现偏差时 |
-| `re-implement` | 需求变更后二次实现 | 需求变更需要重新实现时 |
-
-#### old 全部命令
-
-| 命令 | 说明 |
-|------|------|
-| `analyze-task` | 任务深度分析与细化 |
-| `check-all` | 全维度一键检查，依次拆 3 个独立调用：`check-prd-impl` → `check-impl` → trellis-check agent |
-| `check-impl` | 代码 vs 实际行为的偏差检查 |
-| `check-prd` | PRD 准确性校验 + 覆盖度扫描（含 UI 文案逐字一致性） |
-| `check-prd-impl` | 代码 vs PRD 的偏差检查 |
-| `create-prd` | 基于原始需求文档创建 PRD |
-| `draw-uml` | PM 视角用 UML 活动图梳理业务逻辑；产物落 `doc/uml/<slug>.{mmd,png}` |
-| `plan-version` | 版本开发计划（需求文档 → 任务拆分） |
-| `push` | 一键 commit → push → 可选 merge 到目标分支；`merge_target` 记录在 `config.yaml` |
-| `re-implement` | 需求变更后二次实现 |
-| `sync-prd` | 代码或需求变更后的 PRD 回补同步 |
 ---
 
 ## 新增技能
 
-### 新增通用技能
+### 通用(`.common`)
 
-1. 在 `.common/.codex/skills/<name>/` 和/或 `.common/.claude/skills/<name>/` 下创建目录
-2. 写 `SKILL.md`（格式取决于平台要求）
-3. 不需要的平台可以只建一侧
+1. 在 `.common/.codex/skills/<name>/` 和/或 `.common/.claude/skills/<name>/` 下建目录
+2. 写 `SKILL.md`(YAML frontmatter + 正文)
+3. 不需要的平台可只建一侧
 
-### 新增 Trellis 技能
+### Trellis(`.trellis/<variant>`)
 
-**Step 1. 选 variant**：新技能要加到哪个版本目录？
-- 兼容所有 trellis → `.trellis/old/`、`.trellis/0.5/`、`.trellis/0.6/` 都加（按各版本命名和能力调整）
-- 只适配新版 trellis → 放 `.trellis/0.5/` 和 / 或 `.trellis/0.6/`
-- 只兼容旧版 → 只放 `.trellis/old/`
+**形态二选一**:
+- **command**:高风险显式动作(`finish-work` / `continue`),`.claude/commands/trellis/<name>.md`(无 frontmatter,仅 old 用)
+- **skill**:自然语触发(`trellis-analyze-task` / `trellis-check-all`),`.claude/skills/trellis-<name>/SKILL.md`(带 frontmatter,name = `trellis-<name>`)
 
-**Step 2. 选形态**：command 还是 skill？
-- **command** 适合高风险、需显式确认的动作（`finish-work` / `continue`）
-- **skill** 适合可由自然语触发的查询/分析/检查类（`trellis-analyze-task` / `trellis-check-all`）
-- **原则**：同一指令不要同时保留 command 和 skill 版（skill 化后删除 command 副本）
+**所有 trellis 技能必须**同时写一份 `.agents/skills/<name>/SKILL.md`(给 trellis agent 系统),正文与 `.claude/` 副本一致,仅 frontmatter 的 `name` / `description` 可按入口微调。
 
-**Step 3. 落盘**：
-
-每个新指令必定写入 `.agents/skills/<name>/SKILL.md`（给 trellis agent 系统用）：
+frontmatter 格式:
 
 ```yaml
 ---
 name: <name>
-description: "<简要描述>"
+description: "<简要描述,Auto-routing 需精确到自然语触发>"
 ---
 # 命令标题
-
-命令内容...
 ```
 
-然后按形态二选一：
-
-- **command 形态**：同时在 `.claude/commands/trellis/<name>.md` 写一份（去掉 frontmatter 的同内容文件；目前主要用于 old 变体）
-- **skill 形态**：同时在 `.claude/skills/trellis-<name>/SKILL.md` 写一份（frontmatter 的 `name` 改为 `trellis-<name>`，`description` 需要精确到能让 Claude 按自然语触发；正文与 agents 版保持一致；0.5 / 0.6 默认使用这种形态）
-
-**Step 4. 内容一致性**：两份副本的正文内容必须完全相同，只允许 frontmatter 差异。
+新建 trellis 入口推荐用 `/trellis-create-command` skill,会自动同步 4 份副本 + skill-garden 包。
