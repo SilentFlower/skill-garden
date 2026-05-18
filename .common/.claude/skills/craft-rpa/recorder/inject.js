@@ -9,7 +9,8 @@
  *   - 鼠标坐标（page / client / offset 三套坐标）
  *   - 元素状态（可见 / 禁用 / 选中 / 必填）
  *   - 元素布局（boundingBox）
- *   - 祖先链（最近 5 层父节点）
+ *   - 祖先链（最近 5 层父节点，结构化摘要）
+ *   - DOM 上下文 outerHTML（contextHTML，语义容器优先 + 2KB 截断；AI 判别业务/噪音 click 用）
  *   - iframe 路径（在哪个 frame 里）
  *   - ARIA 信息（role / accessible name）
  *
@@ -59,6 +60,12 @@
      * @type {number}
      */
     const MAX_ANCESTOR_DEPTH = 5;
+
+    /**
+     * contextHTML 最大字符长度(超过截断)
+     * @type {number}
+     */
+    const MAX_CONTEXT_HTML = 2048;
 
     // ============ 发送队列 ============
 
@@ -345,6 +352,54 @@
     }
 
     /**
+     * 提取元素的 DOM 上下文 outerHTML
+     * 策略：语义容器(form/fieldset/[role=dialog]/main/.modal/.popup)优先,
+     *      找不到回退 2 层祖先;总截断 MAX_CONTEXT_HTML 字节。
+     * sensitive 字段处理：跟随 REDACT_SENSITIVE 开关 —— true 时把 outerHTML
+     *      中 sensitive input 的 value 替换为 [REDACTED len=N]。
+     *
+     * 与 ancestors(结构化祖先链)互补：ancestors 给 tag/id/class 摘要,
+     * contextHTML 给原 HTML 文本,AI 在判别"业务 click vs fingerprint 噪音"
+     * 时(rpa-draft 关键场景)有完整 DOM 上下文,而非仅靠 selectors 推断。
+     *
+     * @param {Element} el 当前事件 target
+     * @return {string|undefined} outerHTML(可能含 [...truncated len=N] 标记);
+     *      detached DOM / 计算失败返 undefined
+     */
+    function getContextHTML(el) {
+        if (!el || el.nodeType !== 1) return undefined;
+        try {
+            // 1. 找最近语义容器
+            const containerSelector = 'form, fieldset, [role=dialog], main, .modal, .popup';
+            const container = el.closest ? el.closest(containerSelector) : null;
+            let target;
+            if (container) {
+                target = container;
+            } else {
+                // 2. 回退 2 层祖先(或更少)
+                target = el.parentElement?.parentElement || el.parentElement || el;
+            }
+            let html = target.outerHTML || '';
+            // 3. sensitive redact(仅当 REDACT_SENSITIVE=true)
+            if (REDACT_SENSITIVE) {
+                html = html.replace(
+                    /<input([^>]*?(?:type="password"|name="(?:password|secret|token|captcha)[^"]*")[^>]*?)\bvalue="([^"]*)"/gi,
+                    (m, attrs, val) => m.replace(/value="[^"]*"/, `value="[REDACTED len=${val.length}]"`)
+                );
+            }
+            // 4. 截断 MAX_CONTEXT_HTML
+            if (html.length > MAX_CONTEXT_HTML) {
+                const origLen = html.length;
+                html = html.slice(0, MAX_CONTEXT_HTML) + `<!-- ...truncated len=${origLen} -->`;
+            }
+            return html;
+        } catch (e) {
+            // outerHTML 计算失败(detached DOM / shadow root 越界等)不抛错
+            return undefined;
+        }
+    }
+
+    /**
      * 提取元素的祖先链（最近 N 层父节点），方便人工判读上下文
      * @param {Element} el
      * @return {Array}
@@ -460,6 +515,10 @@
 
             // 祖先上下文（最近 5 层父节点，提供位置语义）
             ancestors: getAncestors(el),
+
+            // DOM 上下文 outerHTML（语义容器优先,2KB 截断;与 ancestors 互补——
+            // 后者是结构化摘要,这里是原 HTML 文本,AI 判别业务/噪音 click 时用）
+            contextHTML: getContextHTML(el),
 
             // 敏感字段标记
             sensitive: isSensitive || undefined,

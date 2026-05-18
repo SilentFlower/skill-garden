@@ -150,6 +150,8 @@ bash $SKILL_DIR/scripts/run.sh start
    例:`input(email)` + `input(password)` + `click(登录)` + `network(POST /api/login → 200)` + `pageload(/dashboard)` = "Step 1 — 用户登录"
 2. **给步骤起业务命名**:基于元素 accessibleName / URL / 上下文推断(登录 / 下单 / 创建实例 / 退订),不要叫 "Step 1 — Click button"
 3. **标注噪音但不删原文**:对明显无业务意义的事件(高频 mousemove、纯 focus / blur、统计埋点 xhr)在产出里灰显或归类到"噪音观察"段,**但 trace.md 原文不动**
+
+   ⚠ **关键警示**:trace.md 速览表中 `[BUSINESS-IN-NOISE]` 标记的事件**永远不能当噪音过滤**——它们是被埋在 fingerprint frames 噪音段里的业务 click(典型场景:支付 modal 内的 Credit Card / Close 按钮,被前后大量 ThreatMetrix fingerprint frame 包围)。AI 看到此标记必须**反向验证**该 interaction 是否对应一个业务步骤,并在 rpa-draft.md 中显式覆盖。`[NOISE?]` 仅是参考标记不是真值,但 `[BUSINESS-IN-NOISE]` 是"已经发现的反例",优先级最高。
 4. **保留选择器全集**:RPA 改造时不同工具偏好不同选择器(UiPath 喜欢 ID,Selenium 偏 XPath,Playwright 喜欢 role+name),不要只挑一个
 5. **保留敏感字段原值**:RPA 流程通常需要固定填值,直接呈现,不要替换为占位
 6. **输出 RPA 改造草案**:推荐结构
@@ -193,6 +195,57 @@ bash $SKILL_DIR/scripts/run.sh start
 | **不落对话** | 草案体量通常数 KB ~ 数十 KB,写文件后只给用户:**路径 + 关键发现摘要(3-5 点)**,不在对话里贴正文 |
 | **重生成** | 重新精修同一会话 → 覆盖 `rpa-draft.md`(不加时间戳后缀,会话隔离已由父目录 `<ts>/` 完成) |
 | **跨会话对照** | 不合并 jsonl;由 AI 在精修时读多个 `sessions/<ts>/trace.md`,产出独立的"对照"草案(用户显式要求时) |
+
+---
+
+## RPA 实施模板(撞 → 修循环)
+
+> 本段沉淀自 `oracle-register` 等实战任务的撞坑经验:rpa-draft.md 给出的 selector 表 **绝不是 ground truth**,实施期默认会撞 2-3 次;不内置失败回路就只能盯眼看,几小时排错变成几分钟。
+
+### rpa-draft 不是 ground truth
+
+trace.md 是机械翻译;rpa-draft.md 是 AI 基于 trace 的**推断**——它没看过真实 DOM,只看到了选择器集合 + 文本 + 祖先链。对 react-select / 自定义 radio / 隐藏 checkbox 等第三方深度定制 SPA(典型:oracle.com / cybersource 支付),selector 表只能当 **first guess**:
+
+- 真实跑起来 `getByRole('option')` 找不到、`getByLabel(/X/)` 命中错的元素、提交按钮一直 disabled —— 都是预期内的
+- 默认会撞 2-3 次,撞了不是 rpa-draft 写错,是 selector 推断本质上的不确定性
+- 撞了**不要硬猜下一个选择器**——dump DOM 看真实结构,再回头改
+
+### 必备四件套
+
+实施 RPA 脚本时必须内置(任一缺失都让排错时长 ×5):
+
+1. **dumpFailure** —— 失败时落:
+   - `screenshot.png`(fullPage)
+   - `url.txt`(失败时的 URL,SPA 单 URL 时也要)
+   - `dom.html`(主 frame `page.content()`)
+   - `frame_N_<url>.html`(所有非主 frame 的 `f.content()`)—— iframe 支付 / 跨域 widget 唯一能看到真实 DOM 的方式
+   - `error.json`(step / message / stack)
+2. **Playwright tracing** —— `ctx.tracing.start({snapshots: true, sources: true})` / `ctx.tracing.stop({path: 'trace.zip'})`,失败后用 `npx playwright show-trace trace.zip` 回放可视化排查
+3. **Atomic status machine** —— `pending → running → succeeded / dead`;
+   - 退出 hook(SIGINT / SIGTERM / uncaughtException)把 `running` 回写 `pending` 避免账户被悬挂
+   - `accounts.json.tmp` + rename 原子写,避免半成品状态
+4. **noise / business hint 参考但自验** —— 看到 trace.md 里 `[BUSINESS-IN-NOISE]` 标记的 interaction 当作 **"必须验证是否漏点"的提示**,不直接信任 AI 的噪音过滤结论。被埋在 fingerprint frame 噪音里的支付按钮(Credit Card / Close)是这个标记的典型对象
+
+### 7 类 Playwright stubborn elements 速查
+
+撞 `Timeout` / `intercepts pointer events` / `not visible` / `outside of the viewport` / `getByRole 命中错元素` / Submit 永远 disabled / 等不到 URL 跳转 时,先对照 `<repo>/.trellis/spec/guides/playwright-stubborn-elements-guide.md` 的 7 类速查表 + Click 三层 actionability 跳过参考(.click → force:true → evaluate(el => el.click))。该 guide 含 oracle-register 实战的具体修法和 selector 优先级修订版。
+
+> 注:guide 路径以 `<repo>` 占位,因为 craft-rpa skill 可装到全局 home(`~/.claude/skills/`),而 spec 通常在具体项目仓库。
+
+### 何时升级 timing 应对
+
+实施期撞到下面任一现象,**立刻升级 timing 策略**,不要硬调 selector:
+
+- onBlur validation 不触发(Continue 按钮永远 disabled)→ 字段内 `pressSequentially(value, {delay: 80-150})` + `press('Tab')` 主动 blur,而非一次性 `fill()`
+- 后端风控 ban / step 间瞬时切换被检测 → step 间加 500-2000ms `humanPause` 随机停顿
+- 字段完全无鼠标移动被 fingerprint(很少需要)→ `page.mouse.move` 加少量随机轨迹
+
+不是所有 input 都要逐字符——**只在校验逻辑挂在 onBlur 或 Continue 一直 disabled 的字段**上加。
+
+### 已知限制(写进 SKILL.md 避免反复踩)
+
+- **Shadow DOM 内 outerHTML 提取**:浏览器 API 限制,跨 shadow root 拿不到,inject.js 的 `target.contextHTML` 字段在 shadow root 元素上会缺失;只能用 selectors / accessibleName 推断
+- **跨域 iframe 元素**:同源策略限制,inject.js 在跨域 iframe 内单独运行但无法跨域访问父 frame 上下文;`target.contextHTML` 在跨域 iframe 内取自当前 frame 上下文(不含父 frame)
 
 ---
 
