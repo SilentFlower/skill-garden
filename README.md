@@ -54,7 +54,7 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 
 ## trellis-route override 注入
 
-`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 默认把 `overrides/trellis-route.md` 作为独立 `## skill-garden Override` 章节注入 `.trellis/workflow.md`(Phase 3 后,fallback 到 Phase Index 后),并在 `[workflow-state:no_task]` / `planning` / `in_progress]` 末尾追加 `FINAL ... GUARD` sentinel。
+`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 默认把 `overrides/trellis-route.md` 作为 `## Phase Index` 尾部的 `### skill-garden Override` 小节注入 `.trellis/workflow.md`(`## Phase 1: Plan` 前,fallback 到 Phase Index 后),并在 `[workflow-state:no_task]` / `planning` / `in_progress]` 末尾追加 `FINAL ... GUARD` sentinel。
 
 特性:幂等(已有则替换)、最小侵入(不改上游正文)、备份首版 `workflow.md.bak`、Claude Code + Codex 双端通用。
 

@@ -334,11 +334,11 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
       done
     fi
 
-    # 3d) workflow.md 注入独立 skill-garden 章节(幂等,备份 .bak)
+    # 3d) workflow.md 注入 Phase Index 尾部的 skill-garden 章节(幂等,备份 .bak)
     WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
     WF_DST="$TARGET_DIR/.trellis/workflow.md"
     if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
-      echo "[workflow-enhancement] inject → .trellis/workflow.md (独立 skill-garden 章节 + workflow-state guard)"
+      echo "[workflow-enhancement] inject → .trellis/workflow.md (Phase Index 尾部 skill-garden 章节 + workflow-state guard)"
       python3 - "$WF_ENHANCE" "$WF_DST" <<'PYEOF'
 import sys, re, shutil
 from pathlib import Path
@@ -347,7 +347,7 @@ src = Path(sys.argv[1])
 dst = Path(sys.argv[2])
 # sentinel / heading 必须各自独占一行;散文内字面量不会被误匹配
 SKILL_GARDEN_SECTION_RE = re.compile(
-    r"^## skill-garden Override: trellis-route routing[^\n]*\n+"
+    r"^#{2,3} skill-garden Override: trellis-route routing[^\n]*\n+"
     r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?"
     r"^<!-- END skill-garden enhancement[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
@@ -376,7 +376,7 @@ IN_PROGRESS_SNAPSHOT_SENTINEL_RE = re.compile(
     r"^<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n.*?^<!-- END skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n*",
     re.DOTALL | re.MULTILINE,
 )
-PHASE3_END_RE = re.compile(r"(?ms)^## Phase 3: Finish[^\n]*\n.*?(?=^## |\Z)")
+PHASE1_RE = re.compile(r"(?m)^## Phase 1: Plan[^\n]*$")
 PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
 NO_TASK_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:no_task\]\n)(.*?)(^\[/workflow-state:no_task\])"
@@ -464,11 +464,11 @@ clean = PLANNING_SENTINEL_RE.sub("", clean)
 clean = PUSH_PROGRESS_RECOVERY_SENTINEL_RE.sub("", clean)
 clean = IN_PROGRESS_SNAPSHOT_SENTINEL_RE.sub("", clean)
 
-m3 = PHASE3_END_RE.search(clean)
-if m3:
-    idx = m3.end()
-    phase_new = clean[:idx].rstrip() + "\n\n" + block + clean[idx:]
-    action = "插入到 ## Phase 3: Finish 段末"
+m1 = PHASE1_RE.search(clean)
+if m1:
+    idx = m1.start()
+    phase_new = clean[:idx].rstrip() + "\n\n" + block + "\n" + clean[idx:]
+    action = "插入到 ## Phase Index 末尾(## Phase 1: Plan 前)"
 else:
     m = PHASE_INDEX_RE.search(clean)
     if m:

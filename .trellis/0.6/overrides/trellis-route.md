@@ -1,4 +1,4 @@
-## skill-garden Override: trellis-route routing
+### skill-garden Override: trellis-route routing
 
 <!-- BEGIN skill-garden enhancement v0.5 -->
 
@@ -6,7 +6,7 @@
 
 **Scope**: Phase 2.1 / 2.2 / 3.1 dispatch decisions, plus the Skill Routing + DO-NOT-skip tables. Per-turn breadcrumb covers the high-level rules; this file holds the specifics that don't fit there.
 
-### Override A — No pre-invoke chatter
+#### Override A — No pre-invoke chatter
 
 `trellis-route` returns 4 modes for `target=check` (check-all/check × inline/subagent) and 2 for `target=implement`. Step 1.7's recommendation is generated INSIDE the skill and surfaced via Step 2's `AskUserQuestion` — the **only** prompt point.
 
@@ -17,7 +17,7 @@ Before invoking the skill, **never**:
 
 Why: pre-invoke chatter creates double-asking, forces users to reply in prose instead of using the skill's number shortcuts (1/2/3/4), and breaks the routing path.
 
-### Override B — Anti-defer rule (long-form details)
+#### Override B — Anti-defer rule (long-form details)
 
 The per-turn ANTI-DEFER summarizes; here are the three forbidden patterns in full.
 
