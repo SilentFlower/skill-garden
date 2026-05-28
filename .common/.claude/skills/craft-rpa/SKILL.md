@@ -1,6 +1,6 @@
 ---
 name: craft-rpa
-description: "Capture browser interactions into per-session JSONL and produce AI-friendly markdown traces for RPA改造参考. Self-contained skill: ships a persistent-profile Chrome recorder (Playwright + auto-injected listener) that captures clicks/inputs/network/navigation/errors with multi-selectors (testId > id > name > role > text > css > xpath); each `start` writes into <cwd>/.craft-rpa/sessions/<YYYY-MM-DD_HH-MM-SS>/session.jsonl (isolated, no overwrite); jsonl-to-trace converter under scripts/ outputs markdown trace (机械翻译不删信息) for AI to synthesize business steps. Sensitive fields NOT redacted by default (RPA needs raw values). Use when user wants to record real browser flows on third-party systems (incl. strict-CSP sites like oracle.com), produce flow references for hand-built RPA scripts (UiPath / Power Automate / Selenium / Playwright), or remotely control browser via Dashboard. Triggers: 「录制浏览器流程」「生成 RPA 流程参考」「session.jsonl 转 trace」「Dashboard 反向控浏览器」「craft rpa」「record browser flow」. Not for headless CI test runs, cross-machine parallel recording, or anti-bot bypass."
+description: "录制真实浏览器流程为按会话保存的 JSONL,并转换成 RPA 改造参考用的 markdown trace。适用于录制浏览器流程、生成 RPA 流程参考、session.jsonl 转 trace、Dashboard 反向控浏览器、craft rpa、record browser flow；不用于 CI 测试、并行录制或反爬绕过。"
 ---
 
 # Craft RPA
