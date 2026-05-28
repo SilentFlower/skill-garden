@@ -57,6 +57,11 @@ def powershell_text(script: str) -> str | None:
     return run_text(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script])
 
 
+def powershell_literal(value: str) -> str:
+    """把字符串转成 PowerShell 单引号字面量。"""
+    return "'" + value.replace("'", "''") + "'"
+
+
 def resolve_project_path(raw_path: str) -> Path:
     """解析并校验项目路径。"""
     project_path = Path(raw_path).expanduser()
@@ -79,6 +84,20 @@ def wsl_to_windows_path(path: Path) -> str:
         return converted
 
     raise RuntimeError("无法通过 wslpath 转换项目路径，请确认当前环境是 WSL。")
+
+
+def assert_windows_path_accessible(path: str) -> None:
+    """确认 Windows 侧能访问传给 IDEA 的项目目录。"""
+    script = f"if (Test-Path -LiteralPath {powershell_literal(path)} -PathType Container) {{ 'OK' }} else {{ 'MISSING' }}"
+    result = powershell_text(script)
+    if result == "OK":
+        return
+
+    raise RuntimeError(
+        "Windows 侧无法访问转换后的 WSL 项目路径："
+        f"{path}。请先在 Windows 文件资源管理器中确认该路径可打开，"
+        "或把项目放到 Windows 盘 / WSL 普通用户目录后重试。"
+    )
 
 
 def normalize_wsl_windows_executable(executable: str) -> str:
@@ -271,19 +290,18 @@ def build_command(platform_name: str, project_path: Path, target: str, idea: str
     """生成启动 IDEA 的命令、展示用项目路径和启动入口。"""
     if platform_name == "wsl" and target != "linux":
         project_arg = wsl_to_windows_path(project_path)
+        assert_windows_path_accessible(project_arg)
         idea_entry = find_windows_idea(idea, from_wsl=True)
         if not idea_entry:
             raise RuntimeError("未找到 Windows 侧 IDEA。请设置 IDEA_EXECUTABLE 或使用 --idea 指定 idea64.exe。")
 
         idea_entry = normalize_wsl_windows_executable(idea_entry)
-        escaped_idea = idea_entry.replace("'", "''")
-        escaped_project = project_arg.replace("'", "''")
         command = [
             "powershell.exe",
             "-NoProfile",
             "-NonInteractive",
             "-Command",
-            f"Start-Process -FilePath '{escaped_idea}' -ArgumentList @('{escaped_project}')",
+            f"Start-Process -FilePath {powershell_literal(idea_entry)} -ArgumentList @({powershell_literal(project_arg)})",
         ]
         return command, project_arg, idea_entry
 

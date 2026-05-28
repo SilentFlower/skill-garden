@@ -71,6 +71,7 @@ python .claude/skills/open-idea/scripts/open_idea.py $ARGUMENTS
 
 - 默认把项目路径通过 `wslpath -w` 转成 Windows 路径。
 - 默认调用 Windows 侧 IDEA。
+- 启动前必须用 Windows 侧 `Test-Path` 校验转换后的项目路径可访问；不可访问时直接报错并提示用户改用 Windows 盘、WSL 普通用户目录或先修复 Windows 对 WSL UNC 路径的访问。
 - 如需强制使用 Linux 侧 IDEA，可加：
 
 ```bash
@@ -84,7 +85,7 @@ python .claude/skills/open-idea/scripts/open_idea.py . --target linux
 - 使用了哪个 IDEA 启动入口。
 - 打开的项目路径。
 - 如果是 `--dry-run`，说明没有真正启动。
-- 如果失败，给出缺失的配置项或可执行文件路径建议。
+- 如果失败，给出缺失的配置项、可执行文件路径建议，或 Windows 无法访问 WSL 项目路径的具体原因。
 
 ## 反模式
 
