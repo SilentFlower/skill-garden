@@ -73,6 +73,7 @@ bash install.sh --repo <url> /target workflow-enhancement
 
 | 技能 | 平台 | 说明 |
 |------|------|------|
+| `open-idea` | codex / claude | 跨平台唤起 IntelliJ IDEA 打开项目目录，支持 WSL 调 Windows IDEA |
 | `sub2api-account-json-fix` | codex / claude | sub2api 账号 JSON 批量补全 + 推送 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 
