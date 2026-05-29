@@ -5,14 +5,26 @@ from __future__ import annotations
 
 import argparse
 import glob
+import json
 import os
 import platform
 import re
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Iterable, Sequence
+
+
+IJENT_PROBLEM_PLUGIN_IDS = ("com.jetbrains.station", "intellij.platform.ijent.impl")
+IJENT_PROBLEM_PATTERNS = (
+    "Station",
+    "Remote Execution Agent",
+    "ijent",
+    "IJent",
+    "WslIjent",
+)
 
 
 def is_wsl() -> bool:
@@ -57,6 +69,24 @@ def powershell_text(script: str) -> str | None:
     return run_text(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script])
 
 
+def powershell_json(script: str) -> list[dict[str, object]]:
+    """通过 Windows PowerShell 执行脚本并解析 JSON 对象列表。"""
+    output = powershell_text(script)
+    if not output:
+        return []
+
+    try:
+        value = json.loads(output)
+    except json.JSONDecodeError:
+        return []
+
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    if isinstance(value, dict):
+        return [value]
+    return []
+
+
 def powershell_literal(value: str) -> str:
     """把字符串转成 PowerShell 单引号字面量。"""
     return "'" + value.replace("'", "''") + "'"
@@ -81,23 +111,82 @@ def wsl_to_windows_path(path: Path) -> str:
     """把 WSL 路径转换为 Windows 可识别路径。"""
     converted = run_text(["wslpath", "-w", str(path)])
     if converted:
-        return converted
+        return prefer_legacy_wsl_unc(converted)
 
     raise RuntimeError("无法通过 wslpath 转换项目路径，请确认当前环境是 WSL。")
 
 
-def assert_windows_path_accessible(path: str) -> None:
-    """确认 Windows 侧能访问传给 IDEA 的项目目录。"""
+def prefer_legacy_wsl_unc(windows_path: str) -> str:
+    """优先使用 IDEA 更稳定的 wsl$ UNC 路径。"""
+    prefix = "\\\\wsl.localhost\\"
+    if windows_path.startswith(prefix):
+        return "\\\\wsl$\\" + windows_path[len(prefix) :]
+    return windows_path
+
+
+def wsl_distro_name(windows_path: str | None = None) -> str | None:
+    """推断当前 WSL 发行版名，用于预热对应实例。
+
+    优先读环境变量 WSL_DISTRO_NAME；取不到时再从 wsl.localhost / wsl$ 形式的
+    UNC 路径里解析发行版名。
+    """
+    distro = os.environ.get("WSL_DISTRO_NAME")
+    if distro:
+        return distro
+
+    if windows_path:
+        match = re.match(r"\\\\wsl(?:\.localhost|\$)\\([^\\]+)\\", windows_path)
+        if match:
+            return match.group(1)
+
+    return None
+
+
+def warm_wsl(distro: str | None) -> None:
+    """启动 IDEA 前预热 WSL 互操作，降低 2025.3 IJent 文件系统冷启动崩溃概率。
+
+    WSL 未完全就绪时用 Windows 侧 IDEA 打开 wsl.localhost 上的项目，IDEA 早期初始化
+    WSL 文件系统后端（IJent/EEL）可能竞态抛 NPE 导致启动失败。这里先在目标发行版里
+    跑一条空命令把 WSL 互操作与后端服务拉起来。best-effort，失败不阻断启动。
+    """
+    command = ["wsl.exe", "-d", distro, "-e", "true"] if distro else ["wsl.exe", "-e", "true"]
+    print(f"预热 WSL 互操作：{distro or '默认发行版'} …")
+    run_text(command)
+
+
+def assert_windows_path_accessible(path: str, attempts: int = 6, delay: float = 0.5) -> None:
+    """确认 Windows 侧能访问传给 IDEA 的项目目录。
+
+    轮询重试若干次：WSL 刚启动时 wsl.localhost 共享可能短暂不可达，多等几次既能确认
+    可访问，也顺带给 WSL 文件系统预热，进一步降低 IDEA 冷启动崩溃概率。
+    """
     script = f"if (Test-Path -LiteralPath {powershell_literal(path)} -PathType Container) {{ 'OK' }} else {{ 'MISSING' }}"
-    result = powershell_text(script)
-    if result == "OK":
-        return
+    for index in range(attempts):
+        if powershell_text(script) == "OK":
+            return
+        # 末次失败不再等待，直接抛错
+        if index < attempts - 1:
+            time.sleep(delay)
 
     raise RuntimeError(
         "Windows 侧无法访问转换后的 WSL 项目路径："
         f"{path}。请先在 Windows 文件资源管理器中确认该路径可打开，"
         "或把项目放到 Windows 盘 / WSL 普通用户目录后重试。"
     )
+
+
+def assert_preferred_wsl_path_accessible(path: str) -> str:
+    """校验首选 WSL UNC 路径，不可用时回退到 wsl.localhost 形式。"""
+    try:
+        assert_windows_path_accessible(path)
+        return path
+    except RuntimeError:
+        fallback = path.replace("\\\\wsl$\\", "\\\\wsl.localhost\\", 1)
+        if fallback == path:
+            raise
+        assert_windows_path_accessible(fallback)
+        print(f"提示：{path} 不可访问，已回退到 {fallback}")
+        return fallback
 
 
 def normalize_wsl_windows_executable(executable: str) -> str:
@@ -290,7 +379,9 @@ def build_command(platform_name: str, project_path: Path, target: str, idea: str
     """生成启动 IDEA 的命令、展示用项目路径和启动入口。"""
     if platform_name == "wsl" and target != "linux":
         project_arg = wsl_to_windows_path(project_path)
-        assert_windows_path_accessible(project_arg)
+        # 预热 WSL 并轮询等待共享就绪，规避 2025.3 IJent 文件系统冷启动竞态崩溃
+        warm_wsl(wsl_distro_name(project_arg))
+        project_arg = assert_preferred_wsl_path_accessible(project_arg)
         idea_entry = find_windows_idea(idea, from_wsl=True)
         if not idea_entry:
             raise RuntimeError("未找到 Windows 侧 IDEA。请设置 IDEA_EXECUTABLE 或使用 --idea 指定 idea64.exe。")
@@ -330,6 +421,131 @@ def build_command(platform_name: str, project_path: Path, target: str, idea: str
     return [idea_entry, project_arg], project_arg, idea_entry
 
 
+def windows_idea_processes() -> list[dict[str, object]]:
+    """读取 Windows 侧 IDEA 进程、窗口句柄和命令行。"""
+    script = r"""
+$items = Get-CimInstance Win32_Process | Where-Object {
+  $_.Name -in @("idea64.exe", "idea.exe")
+} | ForEach-Object {
+  $process = Get-Process -Id $_.ProcessId -ErrorAction SilentlyContinue
+  [PSCustomObject]@{
+    ProcessId = $_.ProcessId
+    ExecutablePath = $_.ExecutablePath
+    CommandLine = $_.CommandLine
+    MainWindowHandle = if ($process) { $process.MainWindowHandle } else { 0 }
+    MainWindowTitle = if ($process) { $process.MainWindowTitle } else { "" }
+    Responding = if ($process) { $process.Responding } else { $null }
+  }
+}
+$items | ConvertTo-Json -Compress
+"""
+    return powershell_json(script)
+
+
+def windows_latest_idea_logs(limit: int = 3) -> list[str]:
+    """返回 Windows 侧最近的 IDEA 日志路径。"""
+    script = f"""
+$root = Join-Path $env:LOCALAPPDATA 'JetBrains'
+if (Test-Path $root) {{
+  Get-ChildItem -Path (Join-Path $root 'IntelliJIdea*\\log\\idea.log') -File -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -First {limit} -ExpandProperty FullName
+}}
+"""
+    output = powershell_text(script)
+    if not output:
+        return []
+    return [line.strip() for line in output.splitlines() if line.strip()]
+
+
+def windows_log_tail(path: str, lines: int = 260) -> list[str]:
+    """读取 Windows 侧 IDEA 日志尾部。"""
+    script = (
+        f"Get-Content -LiteralPath {powershell_literal(path)} -Tail {lines} "
+        "-ErrorAction SilentlyContinue"
+    )
+    output = powershell_text(script)
+    if not output:
+        return []
+    return output.splitlines()
+
+
+def text_contains_any(value: str, patterns: Iterable[str]) -> bool:
+    """判断文本是否包含任一模式，忽略大小写。"""
+    lowered = value.lower()
+    return any(pattern.lower() in lowered for pattern in patterns)
+
+
+def diagnose_windows_start_failure(project_arg: str) -> list[str]:
+    """根据 IDEA 日志给出 Windows/WSL 启动失败诊断。"""
+    messages: list[str] = []
+    logs = windows_latest_idea_logs()
+    for log_path in logs:
+        tail = windows_log_tail(log_path)
+        related_lines = [
+            line
+            for line in tail
+            if text_contains_any(line, (*IJENT_PROBLEM_PATTERNS, "SEVERE", "ERROR", project_arg))
+        ]
+        if not related_lines:
+            continue
+
+        messages.append(f"最近日志：{log_path}")
+        if any(text_contains_any(line, IJENT_PROBLEM_PATTERNS) for line in related_lines):
+            plugin_list = "、".join(IJENT_PROBLEM_PLUGIN_IDS)
+            messages.append(
+                "检测到 Station / Remote Execution Agent / IJent 相关启动异常。"
+                f"可临时禁用插件 {plugin_list} 后重试；脚本不会自动修改用户 IDEA 配置。"
+            )
+        break
+
+    if not messages:
+        messages.append("未在最近 IDEA 日志中识别到明确原因，请查看 IDEA 日志进一步排查。")
+    return messages
+
+
+def verify_windows_idea_started(project_arg: str, idea_entry: str, project_name: str, timeout: float) -> bool:
+    """验证 Windows 侧 IDEA 是否创建了目标项目窗口。"""
+    deadline = time.time() + timeout
+    normalized_project = project_arg.lower()
+    normalized_idea = idea_entry.lower()
+    normalized_project_name = project_name.lower()
+    last_matching: list[dict[str, object]] = []
+
+    while time.time() < deadline:
+        processes = windows_idea_processes()
+        last_matching = [
+            process
+            for process in processes
+            if (
+                normalized_project in str(process.get("CommandLine") or "").lower()
+                or normalized_project_name in str(process.get("MainWindowTitle") or "").lower()
+                or normalized_idea == str(process.get("ExecutablePath") or "").lower()
+            )
+        ]
+        for process in last_matching:
+            title = str(process.get("MainWindowTitle") or "")
+            handle = int(process.get("MainWindowHandle") or 0)
+            if handle and normalized_project_name in title.lower():
+                print(f"已确认 IDEA 打开项目窗口：PID {process.get('ProcessId')}，标题：{title}")
+                return True
+        time.sleep(1)
+
+    print("警告：已发起 IDEA 启动，但未确认目标项目窗口已打开。", file=sys.stderr)
+    if last_matching:
+        for process in last_matching[:5]:
+            print(
+                "进程："
+                f"PID={process.get('ProcessId')} "
+                f"MainWindowHandle={process.get('MainWindowHandle')} "
+                f"MainWindowTitle={process.get('MainWindowTitle')}",
+                file=sys.stderr,
+            )
+    for message in diagnose_windows_start_failure(project_arg):
+        print(f"诊断：{message}", file=sys.stderr)
+    return False
+
+
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
     """解析命令行参数。"""
     parser = argparse.ArgumentParser(description="跨平台唤起 IntelliJ IDEA 并打开项目目录。")
@@ -342,6 +558,8 @@ def parse_args(argv: Sequence[str]) -> argparse.Namespace:
         help="启动目标。WSL 中默认 auto 会唤起 Windows IDEA；需要 Linux IDEA 时传 linux。",
     )
     parser.add_argument("--dry-run", action="store_true", help="只打印命令，不真正启动 IDEA。")
+    parser.add_argument("--no-verify", action="store_true", help="启动后不校验 IDEA 项目窗口。")
+    parser.add_argument("--verify-timeout", type=float, default=35.0, help="等待 IDEA 项目窗口的秒数，默认 35。")
     return parser.parse_args(argv)
 
 
@@ -377,6 +595,9 @@ def main(argv: Sequence[str]) -> int:
         return 1
 
     print("已发起 IDEA 启动请求。")
+    if not args.no_verify and target == "windows":
+        if not verify_windows_idea_started(project_arg, idea_entry, project_path.name, args.verify_timeout):
+            return 2
     return 0
 
 
