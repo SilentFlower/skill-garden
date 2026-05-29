@@ -25,6 +25,10 @@ IJENT_PROBLEM_PATTERNS = (
     "IJent",
     "WslIjent",
 )
+WSL_WORKING_DIRECTORY_PROBLEM_PATTERNS = (
+    "DOS working directory is expected",
+    "Failed to get WSL mount root",
+)
 
 
 def is_wsl() -> bool:
@@ -92,6 +96,11 @@ def powershell_literal(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
 
+def windows_user_profile() -> str | None:
+    """读取 Windows 用户目录，用作从 WSL 启动 Windows IDEA 时的安全工作目录。"""
+    return powershell_text("$env:USERPROFILE")
+
+
 def resolve_project_path(raw_path: str) -> Path:
     """解析并校验项目路径。"""
     project_path = Path(raw_path).expanduser()
@@ -111,13 +120,13 @@ def wsl_to_windows_path(path: Path) -> str:
     """把 WSL 路径转换为 Windows 可识别路径。"""
     converted = run_text(["wslpath", "-w", str(path)])
     if converted:
-        return prefer_legacy_wsl_unc(converted)
+        return converted
 
     raise RuntimeError("无法通过 wslpath 转换项目路径，请确认当前环境是 WSL。")
 
 
-def prefer_legacy_wsl_unc(windows_path: str) -> str:
-    """优先使用 IDEA 更稳定的 wsl$ UNC 路径。"""
+def legacy_wsl_unc(windows_path: str) -> str:
+    """把 wsl.localhost UNC 路径转换成旧版 wsl$ UNC 路径。"""
     prefix = "\\\\wsl.localhost\\"
     if windows_path.startswith(prefix):
         return "\\\\wsl$\\" + windows_path[len(prefix) :]
@@ -176,12 +185,12 @@ def assert_windows_path_accessible(path: str, attempts: int = 6, delay: float = 
 
 
 def assert_preferred_wsl_path_accessible(path: str) -> str:
-    """校验首选 WSL UNC 路径，不可用时回退到 wsl.localhost 形式。"""
+    """校验首选 WSL UNC 路径，不可用时回退到 wsl$ 形式。"""
     try:
         assert_windows_path_accessible(path)
         return path
     except RuntimeError:
-        fallback = path.replace("\\\\wsl$\\", "\\\\wsl.localhost\\", 1)
+        fallback = legacy_wsl_unc(path)
         if fallback == path:
             raise
         assert_windows_path_accessible(fallback)
@@ -387,12 +396,17 @@ def build_command(platform_name: str, project_path: Path, target: str, idea: str
             raise RuntimeError("未找到 Windows 侧 IDEA。请设置 IDEA_EXECUTABLE 或使用 --idea 指定 idea64.exe。")
 
         idea_entry = normalize_wsl_windows_executable(idea_entry)
+        working_directory = windows_user_profile() or "C:\\"
         command = [
             "powershell.exe",
             "-NoProfile",
             "-NonInteractive",
             "-Command",
-            f"Start-Process -FilePath {powershell_literal(idea_entry)} -ArgumentList @({powershell_literal(project_arg)})",
+            (
+                f"Start-Process -FilePath {powershell_literal(idea_entry)} "
+                f"-ArgumentList @({powershell_literal(project_arg)}) "
+                f"-WorkingDirectory {powershell_literal(working_directory)}"
+            ),
         ]
         return command, project_arg, idea_entry
 
@@ -476,6 +490,20 @@ def text_contains_any(value: str, patterns: Iterable[str]) -> bool:
     return any(pattern.lower() in lowered for pattern in patterns)
 
 
+def ijent_wsl_markers(lines: Iterable[str]) -> set[str]:
+    """从 IDEA 日志中提取 IJent 使用过的 WSL 发行版标记。"""
+    markers: set[str] = set()
+    for line in lines:
+        for match in re.finditer(r"IjentId\([^)]*wsl-([^)]+)\)", line):
+            markers.add(match.group(1))
+    return markers
+
+
+def normalize_wsl_marker(value: str) -> str:
+    """把日志中的 WSL 标记归一化，便于和发行版名做保守比较。"""
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
 def diagnose_windows_start_failure(project_arg: str) -> list[str]:
     """根据 IDEA 日志给出 Windows/WSL 启动失败诊断。"""
     messages: list[str] = []
@@ -485,17 +513,41 @@ def diagnose_windows_start_failure(project_arg: str) -> list[str]:
         related_lines = [
             line
             for line in tail
-            if text_contains_any(line, (*IJENT_PROBLEM_PATTERNS, "SEVERE", "ERROR", project_arg))
+            if text_contains_any(line, (*IJENT_PROBLEM_PATTERNS, *WSL_WORKING_DIRECTORY_PROBLEM_PATTERNS, "SEVERE", "ERROR", project_arg))
         ]
         if not related_lines:
             continue
 
         messages.append(f"最近日志：{log_path}")
+        if any(text_contains_any(line, WSL_WORKING_DIRECTORY_PROBLEM_PATTERNS) for line in related_lines):
+            messages.append(
+                "检测到 IDEA/WSL 认为进程工作目录不是 Windows 本地目录。"
+                "从 WSL 启动 Windows IDEA 时必须给 Start-Process 显式设置 Windows 本地 WorkingDirectory，"
+                "例如用户目录；项目 UNC 路径只作为参数传入。"
+            )
+
+        project_distro = wsl_distro_name(project_arg)
+        if project_distro:
+            expected_marker = normalize_wsl_marker(project_distro)
+            unexpected_markers = sorted(
+                marker
+                for marker in ijent_wsl_markers(related_lines)
+                if normalize_wsl_marker(marker) != expected_marker
+            )
+            if unexpected_markers:
+                messages.append(
+                    "检测到 IDEA 日志中的 IJent WSL 发行版与项目路径不一致："
+                    f"项目使用 {project_distro}，日志出现 {', '.join(unexpected_markers)}。"
+                    "请先清理不用的旧 WSL 发行版、旧 SDK 或 JetBrains WSL 缓存后重试。"
+                )
+
         if any(text_contains_any(line, IJENT_PROBLEM_PATTERNS) for line in related_lines):
             plugin_list = "、".join(IJENT_PROBLEM_PLUGIN_IDS)
             messages.append(
                 "检测到 Station / Remote Execution Agent / IJent 相关启动异常。"
-                f"可临时禁用插件 {plugin_list} 后重试；脚本不会自动修改用户 IDEA 配置。"
+                "优先检查 WSL 发行版是否仍存在、项目路径是否指向当前发行版、"
+                "IDEA 是否使用 Windows 本地 WorkingDirectory 启动，以及 JetBrains WSL 缓存是否残留旧发行版。"
+                f"仅在临时隔离问题时再考虑禁用插件 {plugin_list}；脚本不会自动修改用户 IDEA 配置。"
             )
         break
 
