@@ -52,18 +52,27 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 
 ---
 
-## trellis-route override 注入
+## Trellis workflow override 注入
 
-`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 默认把 `overrides/trellis-route.md` 作为 `## Phase Index` 尾部的 `### skill-garden Override` 小节注入 `.trellis/workflow.md`(`## Phase 1: Plan` 前,fallback 到 Phase Index 后),并在 `[workflow-state:no_task]` / `planning` / `in_progress]` 末尾追加 `FINAL ... GUARD` sentinel。
+`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 会幂等注入 workflow override 到 `.trellis/workflow.md`。
+
+Trellis 0.6 使用 `overrides/workflow.md` 作为 `## Phase Index` 顶部的集中 hub,统一承载 routing gate、finish-work bookkeeping guard、push progress recovery / snapshot。`overrides/workflow-states/*.md` 分别维护 `[workflow-state:no_task]` / `planning` / `in_progress` / `in_progress-inline` 的短 sentinel,安装后每个状态只保留一个合并后的 skill-garden sentinel,不再分散追加多块 override。
+
+0.6 的 finish-work guard 只约束 `session_auto_commit: false` 时的 archive / journal bookkeeping commit:不补做 `chore(task): archive ...` 或 `chore: record journal` 这类提交,只报告 `.trellis/tasks/**` / `.trellis/workspace/**` 脏文件；Phase 3.4 中经用户确认的代码工作提交不受影响。
+
+Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入方式。0.6 不再保留单独的 `overrides/trellis-route.md`,routing 规则统一归入 0.6 workflow hub。
 
 特性:幂等(已有则替换)、最小侵入(不改上游正文)、备份首版 `workflow.md.bak`、Claude Code + Codex 双端通用。
 
 ```bash
-# 只重灌 override + workflow-state guard(不重装 SKILL)
+# 只重灌 workflow override + workflow-state sentinel(不重装 SKILL)
 bash install.sh --repo <url> /target workflow-enhancement
+
+# 0.6 中等价于重灌集中 hub,用于刷新 finish-work bookkeeping guard
+bash install.sh --repo <url> /target finish-work-enhancement
 ```
 
-回滚:删 sentinel 块整段,或 `cp .trellis/workflow.md.bak .trellis/workflow.md`。
+回滚:删除 `<!-- BEGIN skill-garden overrides ... -->` hub 和各状态块里的 skill-garden sentinel,或 `cp .trellis/workflow.md.bak .trellis/workflow.md`。
 
 ---
 
@@ -79,7 +88,7 @@ bash install.sh --repo <url> /target workflow-enhancement
 
 ### Trellis 0.6+ (`--scope=trellis|all`,9 个核心 skill)
 
-按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入 `trellis-route` override 到 workflow:
+按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub:
 
 | 技能 | 形态 | 何时用 |
 |------|------|--------|

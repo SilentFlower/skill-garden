@@ -67,8 +67,11 @@ usage() {
   # 只安装指定技能(--scope 仍生效,限制候选范围)
   bash install.sh --scope all --repo <url> /target craft-rpa trellis-push
 
-  # 仅注入 workflow.md 强化块(只在 --scope=trellis|all 时生效)
+  # 仅重灌 workflow.md 强化块(只在 --scope=trellis|all 时生效)
   bash install.sh --repo <url> /target workflow-enhancement
+
+  # 仅重灌 0.6 workflow override hub(含 finish-work bookkeeping guard)
+  bash install.sh --repo <url> /target finish-work-enhancement
 
 环境变量:
   SKILL_GARDEN_REPO  git 仓库地址(等价 --repo,便于 .bashrc 配一次免敲)
@@ -334,49 +337,74 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
       done
     fi
 
-    # 3d) workflow.md 注入 Phase Index 尾部的 skill-garden 章节(幂等,备份 .bak)
-    WF_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
+    # 3d) workflow.md 注入 Phase Index 顶部的 skill-garden 章节(幂等,备份 .bak)
+    WF_HUB_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow.md"
+    WF_ROUTE_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
+    WF_STATE_ENHANCE_DIR="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow-states"
     WF_DST="$TARGET_DIR/.trellis/workflow.md"
-    if [[ -f "$WF_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
-      echo "[workflow-enhancement] inject → .trellis/workflow.md (Phase Index 尾部 skill-garden 章节 + workflow-state guard)"
-      python3 - "$WF_ENHANCE" "$WF_DST" <<'PYEOF'
+    DO_WORKFLOW_ENHANCE=false
+    if [[ "$TRELLIS_VARIANT" == "0.6" && -f "$WF_HUB_ENHANCE" && -f "$WF_DST" ]]; then
+      if should_install "workflow-enhancement" || should_install "finish-work-enhancement"; then
+        DO_WORKFLOW_ENHANCE=true
+        ENHANCE_LABEL="workflow-enhancement"
+        ENHANCE_DESC="0.6 Phase Index 集中 hub + 合并 workflow-state sentinel"
+        if ! should_install "workflow-enhancement" && should_install "finish-work-enhancement"; then
+          ENHANCE_LABEL="finish-work-enhancement"
+        fi
+      fi
+    elif [[ -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
+      DO_WORKFLOW_ENHANCE=true
+      ENHANCE_LABEL="workflow-enhancement"
+      ENHANCE_DESC="Phase Index 顶部 skill-garden 章节 + workflow-state guard"
+    fi
+    if [[ "$DO_WORKFLOW_ENHANCE" == true ]]; then
+      echo "[$ENHANCE_LABEL] inject → .trellis/workflow.md ($ENHANCE_DESC)"
+      python3 - "$WF_HUB_ENHANCE" "$WF_ROUTE_ENHANCE" "$WF_STATE_ENHANCE_DIR" "$WF_DST" "$TRELLIS_VARIANT" <<'PYEOF'
 import sys, re, shutil
 from pathlib import Path
 
-src = Path(sys.argv[1])
-dst = Path(sys.argv[2])
+hub_src = Path(sys.argv[1])
+route_src = Path(sys.argv[2])
+state_dir = Path(sys.argv[3])
+dst = Path(sys.argv[4])
+variant = sys.argv[5]
+is_v06 = variant == "0.6" and hub_src.is_file()
+
 # sentinel / heading 必须各自独占一行;散文内字面量不会被误匹配
-SKILL_GARDEN_SECTION_RE = re.compile(
-    r"^#{2,3} skill-garden Override: trellis-route routing[^\n]*\n+"
+SECTION_PATTERNS = [
+    r"^#{2,4} HIGHEST PRIORITY: skill-garden overrides[^\n]*\n+"
+    r"^<!-- BEGIN skill-garden overrides[^\n]*-->\n.*?"
+    r"^<!-- END skill-garden overrides[^\n]*-->\n*",
+    r"^#{2,4} (?:skill-garden Override: trellis-route routing|HIGHEST PRIORITY: skill-garden trellis-route routing gate)[^\n]*\n+"
     r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?"
     r"^<!-- END skill-garden enhancement[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden enhancement[^\n]*-->\n.*?^<!-- END skill-garden enhancement[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-STATE_SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden workflow-state trellis-route[^\n]*-->\n.*?^<!-- END skill-garden workflow-state trellis-route[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-NO_TASK_SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden workflow-state no-task-gate[^\n]*-->\n.*?^<!-- END skill-garden workflow-state no-task-gate[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-PLANNING_SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden workflow-state planning-handoff[^\n]*-->\n.*?^<!-- END skill-garden workflow-state planning-handoff[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-PUSH_PROGRESS_RECOVERY_SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden workflow-state push-progress-recovery[^\n]*-->\n.*?^<!-- END skill-garden workflow-state push-progress-recovery[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-IN_PROGRESS_SNAPSHOT_SENTINEL_RE = re.compile(
-    r"^<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n.*?^<!-- END skill-garden workflow-state in-progress-push-snapshot[^\n]*-->\n*",
-    re.DOTALL | re.MULTILINE,
-)
-PHASE1_RE = re.compile(r"(?m)^## Phase 1: Plan[^\n]*$")
+    r"^#{2,4} HIGHEST PRIORITY: skill-garden finish-work bookkeeping guard[^\n]*\n+"
+    r"^<!-- BEGIN skill-garden finish-work override[^\n]*-->\n.*?"
+    r"^<!-- END skill-garden finish-work override[^\n]*-->\n*",
+]
+SECTION_RES = [re.compile(p, re.DOTALL | re.MULTILINE) for p in SECTION_PATTERNS]
+SENTINEL_NAMES = [
+    "skill-garden overrides",
+    "skill-garden enhancement",
+    "skill-garden finish-work override",
+    "skill-garden workflow-state no-task-gate",
+    "skill-garden workflow-state planning-handoff",
+    "skill-garden workflow-state trellis-route",
+    "skill-garden workflow-state push-progress-recovery",
+    "skill-garden workflow-state in-progress-push-snapshot",
+    "skill-garden workflow-state no_task",
+    "skill-garden workflow-state planning",
+    "skill-garden workflow-state in_progress",
+    "skill-garden workflow-state in_progress_inline",
+]
+SENTINEL_RES = [
+    re.compile(
+        r"^<!-- BEGIN " + re.escape(name) + r"[^\n]*-->\n.*?"
+        r"^<!-- END " + re.escape(name) + r"[^\n]*-->\n*",
+        re.DOTALL | re.MULTILINE,
+    )
+    for name in SENTINEL_NAMES
+]
 PHASE_INDEX_RE = re.compile(r"^(## Phase Index[^\n]*\n)", re.MULTILINE)
 NO_TASK_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:no_task\]\n)(.*?)(^\[/workflow-state:no_task\])"
@@ -391,24 +419,23 @@ IN_PROGRESS_INLINE_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:in_progress-inline\]\n)(.*?)(^\[/workflow-state:in_progress-inline\])"
 )
 
-block = src.read_text(encoding="utf-8").rstrip() + "\n\n"
-no_task_block = """<!-- BEGIN skill-garden workflow-state no-task-gate v0.5 -->
-FINAL NO-TASK GUARD (skill-garden):
+LEGACY_NO_TASK_BLOCK = """<!-- BEGIN skill-garden workflow-state no-task-gate v0.5 -->
+HIGHEST PRIORITY NO-TASK GUARD (skill-garden):
 Creating/resuming a task ≠ permission to implement inline.
 After PRD ready and task started, next impl action = `trellis-route(implement)`.
 Don't infer opt-out from "small/urgent/unclear" — opt-out requires an explicit phrase in the current message (see C below).
 <!-- END skill-garden workflow-state no-task-gate v0.5 -->
 
 """
-planning_block = """<!-- BEGIN skill-garden workflow-state planning-handoff v0.5 -->
-FINAL PLANNING GUARD (skill-garden):
+LEGACY_PLANNING_BLOCK = """<!-- BEGIN skill-garden workflow-state planning-handoff v0.5 -->
+HIGHEST PRIORITY PLANNING GUARD (skill-garden):
 Planning is not implementation permission.
 Complete prd.md + context first.
 After in_progress, next action = `trellis-route(implement)`, not direct edits.
 <!-- END skill-garden workflow-state planning-handoff v0.5 -->
 
 """
-push_progress_block = """<!-- BEGIN skill-garden workflow-state push-progress-recovery v0.6 -->
+LEGACY_PUSH_PROGRESS_BLOCK = """<!-- BEGIN skill-garden workflow-state push-progress-recovery v0.6 -->
 PUSH PROGRESS RECOVERY (skill-garden):
 If you haven't already relayed recovery in this session, scan
 `.trellis/tasks/*/task.json` for entries where status="in_progress" AND a
@@ -424,18 +451,20 @@ Skip this hint if (a) you've already relayed recovery this session, or
 <!-- END skill-garden workflow-state push-progress-recovery v0.6 -->
 
 """
-in_progress_block = """
-<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
-FINAL ROUTE GUARD (skill-garden):
+LEGACY_IN_PROGRESS_BLOCK = """<!-- BEGIN skill-garden workflow-state trellis-route v0.5 -->
+HIGHEST PRIORITY ROUTE GUARD (skill-garden):
 This guard is intentionally appended after upstream in_progress breadcrumbs and overrides earlier direct-dispatch defaults in this same <workflow-state>.
-At Phase 2.1/2.2/3.1, invoke `trellis-route(implement|check)` first.
-Do NOT spawn `trellis-implement` / `trellis-check` directly from the main session unless `trellis-route` just selected a subagent mode.
+At Phase 2.1/2.2/3.1, invoke `trellis-route(implement|check)` first, including every check / check-all path.
+Codex `dispatch_mode: sub-agent` only makes subagent a selectable route outcome; it is not permission to bypass `trellis-route`.
+Do NOT spawn `trellis-implement` / `trellis-check` / `trellis-check-all` directly from the main session unless `trellis-route` just selected a subagent mode.
 If `trellis-route` selected inline mode, load `trellis-before-dev` / `trellis-check` / `trellis-check-all` as applicable and execute in the main session.
-ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?", "what's next?") — invoke `trellis-route(check)` instead.
+If `trellis-route` or its interactive helper is unavailable, present the same numbered route choices in normal chat and wait for the user's selection; do not record an inline/subagent choice yourself.
+CHECK RULE: check never uses `.trellis/.route-prefs.tmp`; ask every time before `trellis-check`, `trellis-check-all`, or their subagents.
+ANTI-DEFER: at phase boundaries, never ask meta questions ("X or Y?", "continue?", "what's next?") — invoke `trellis-route(check)` instead, or ask the numbered route choices if the helper is unavailable.
 <!-- END skill-garden workflow-state trellis-route v0.5 -->
 
 """
-push_snapshot_block = """<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot v0.6 -->
+LEGACY_PUSH_SNAPSHOT_BLOCK = """<!-- BEGIN skill-garden workflow-state in-progress-push-snapshot v0.6 -->
 IN-PROGRESS PUSH SNAPSHOT (skill-garden):
 The active task's task.json may carry a `last_push_snapshot` field (schema:
 snapshot_at / branch / pushed_commits / completed_steps / partial_step /
@@ -447,6 +476,41 @@ is absent.
 <!-- END skill-garden workflow-state in-progress-push-snapshot v0.6 -->
 
 """
+
+def strip_skill_garden_blocks(value):
+    for regex in SECTION_RES:
+        value = regex.sub("", value)
+    for regex in SENTINEL_RES:
+        value = regex.sub("", value)
+    return value
+
+def inject_after_phase_index(value, block):
+    match = PHASE_INDEX_RE.search(value)
+    if match:
+        return (
+            value[:match.end()] + "\n" + block.rstrip() + "\n\n" +
+            value[match.end():].lstrip("\n")
+        ), "插入到 ## Phase Index 顶部"
+    return block.rstrip() + "\n\n" + value, "注入顶部 (fallback: 未找到 Phase Index 锚点)"
+
+def replace_state(value, regex, block):
+    match = regex.search(value)
+    if not match:
+        return value, False
+
+    def repl(m):
+        body = m.group(2).lstrip("\n").rstrip()
+        body_part = body + "\n" if body else ""
+        return m.group(1) + block + body_part + m.group(3)
+
+    return regex.sub(repl, value, count=1), True
+
+def read_state_block(filename):
+    path = state_dir / filename
+    if not path.is_file():
+        raise FileNotFoundError(f"missing workflow-state override: {path}")
+    return path.read_text(encoding="utf-8").strip() + "\n\n"
+
 text = dst.read_text(encoding="utf-8")
 
 bak = Path(str(dst) + ".bak")
@@ -456,74 +520,32 @@ if not bak.exists():
 else:
     backup_note = "(保留已有 workflow.md.bak)"
 
-clean = SKILL_GARDEN_SECTION_RE.sub("", text)
-clean = SENTINEL_RE.sub("", clean)
-clean = STATE_SENTINEL_RE.sub("", clean)
-clean = NO_TASK_SENTINEL_RE.sub("", clean)
-clean = PLANNING_SENTINEL_RE.sub("", clean)
-clean = PUSH_PROGRESS_RECOVERY_SENTINEL_RE.sub("", clean)
-clean = IN_PROGRESS_SNAPSHOT_SENTINEL_RE.sub("", clean)
-
-m1 = PHASE1_RE.search(clean)
-if m1:
-    idx = m1.start()
-    phase_new = clean[:idx].rstrip() + "\n\n" + block + "\n" + clean[idx:]
-    action = "插入到 ## Phase Index 末尾(## Phase 1: Plan 前)"
-else:
-    m = PHASE_INDEX_RE.search(clean)
-    if m:
-        idx = m.end()
-        phase_new = clean[:idx] + "\n" + block + clean[idx:]
-        action = "插入到 ## Phase Index 之后 (fallback: 未找到 ## Phase 3: Finish)"
-    else:
-        phase_new = block + clean
-        action = "注入顶部 (fallback: 未找到 Phase 3 / Phase Index 锚点)"
+clean = strip_skill_garden_blocks(text)
+source = hub_src if is_v06 else route_src
+block = source.read_text(encoding="utf-8").rstrip()
+phase_new, action = inject_after_phase_index(clean, block)
 
 state_actions = []
-nm = NO_TASK_BLOCK_RE.search(phase_new)
-if nm:
-    phase_new = NO_TASK_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + no_task_block + push_progress_block + m.group(3),
-        phase_new,
-        count=1,
-    )
-    state_actions.append("[workflow-state:no_task]")
+if is_v06:
+    state_specs = [
+        ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, read_state_block("no_task.md")),
+        ("[workflow-state:planning]", PLANNING_BLOCK_RE, read_state_block("planning.md")),
+        ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, read_state_block("in_progress.md")),
+        ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, read_state_block("in_progress-inline.md")),
+    ]
 else:
-    state_actions.append("未找到 [workflow-state:no_task]")
+    state_specs = [
+        ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, LEGACY_NO_TASK_BLOCK + LEGACY_PUSH_PROGRESS_BLOCK),
+        ("[workflow-state:planning]", PLANNING_BLOCK_RE, LEGACY_PLANNING_BLOCK),
+        ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, LEGACY_IN_PROGRESS_BLOCK + LEGACY_PUSH_SNAPSHOT_BLOCK),
+        ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, LEGACY_PUSH_SNAPSHOT_BLOCK),
+    ]
 
-pm = PLANNING_BLOCK_RE.search(phase_new)
-if pm:
-    phase_new = PLANNING_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + "\n" + planning_block + m.group(3),
-        phase_new,
-        count=1,
-    )
-    state_actions.append("[workflow-state:planning]")
-else:
-    state_actions.append("未找到 [workflow-state:planning]")
+new = phase_new
+for label, regex, state_block in state_specs:
+    new, replaced = replace_state(new, regex, state_block)
+    state_actions.append(label if replaced else f"未找到 {label}")
 
-sm = IN_PROGRESS_BLOCK_RE.search(phase_new)
-if sm:
-    new = IN_PROGRESS_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + in_progress_block + push_snapshot_block + m.group(3),
-        phase_new,
-        count=1,
-    )
-    state_actions.append("[workflow-state:in_progress]")
-else:
-    new = phase_new
-    state_actions.append("未找到 [workflow-state:in_progress]")
-
-sim = IN_PROGRESS_INLINE_BLOCK_RE.search(new)
-if sim:
-    new = IN_PROGRESS_INLINE_BLOCK_RE.sub(
-        lambda m: m.group(1) + m.group(2).rstrip() + "\n\n" + push_snapshot_block + m.group(3),
-        new,
-        count=1,
-    )
-    state_actions.append("[workflow-state:in_progress-inline]")
-else:
-    state_actions.append("未找到 [workflow-state:in_progress-inline]")
 new = new.rstrip() + "\n"
 state_action = ",并已更新 " + " / ".join(state_actions)
 
