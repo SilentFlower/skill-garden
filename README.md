@@ -58,7 +58,7 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 
 Trellis 0.6 使用 `overrides/workflow.md` 作为 `## Phase Index` 顶部的集中 hub,统一承载 routing gate、finish-work bookkeeping guard、push progress recovery / snapshot。`overrides/workflow-states/*.md` 分别维护 `[workflow-state:no_task]` / `planning` / `in_progress` / `in_progress-inline` 的短 sentinel,安装后每个状态只保留一个合并后的 skill-garden sentinel,不再分散追加多块 override。
 
-0.6 的 finish-work guard 只约束 `session_auto_commit: false` 时的 archive / journal bookkeeping commit:不补做 `chore(task): archive ...` 或 `chore: record journal` 这类提交,只报告 `.trellis/tasks/**` / `.trellis/workspace/**` 脏文件；Phase 3.4 中经用户确认的代码工作提交不受影响。
+0.6 的 finish-work guard 明确 `session_auto_commit` 只管 `task.py archive` / `add_session.py` 对自身 bookkeeping 文件(`.trellis/tasks/**` 归档、`.trellis/workspace/**` journal)的提交,对代码提交没有任何控制权:无论开关为 true 还是 false,代码提交都走 Phase 3.4、经用户确认后才提交,绝不因 `session_auto_commit: true` 而自动提交代码或跳过确认;`false` 时 archive / journal 仅落盘,不补做 `chore(task): archive ...` / `chore: record journal` 提交,只报告 `.trellis/tasks/**` / `.trellis/workspace/**` 脏文件供人工处理。
 
 Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入方式。0.6 不再保留单独的 `overrides/trellis-route.md`,routing 规则统一归入 0.6 workflow hub。
 
