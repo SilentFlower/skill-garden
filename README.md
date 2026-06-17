@@ -10,7 +10,7 @@ skill-garden/
 ├── .trellis/                                 # Trellis 强化补充包(按版本)
 │   ├── old/                                  #   < 0.5 (fallback)
 │   ├── 0.5/                                  #   0.5.x:完整版 13 个 skill
-│   └── 0.6/                                  #   ≥ 0.6:精简版 9 个 skill + workflow override
+│   └── 0.6/                                  #   ≥ 0.6:精简版 10 个 skill + workflow/skill override
 └── scripts/install.sh                        # 一键安装(读目标 .trellis/.version 智能选 variant)
 ```
 
@@ -46,7 +46,7 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 **安装目标自动适配**:
 - 目标有 `.codex/` → 装 `.common/.codex/`
 - 目标有 `.claude/` → 装 `.common/.claude/`
-- 目标有 `.trellis/` → 按 `.trellis/.version` 读 0.6 / 0.5 / old,装对应 variant 的 `.agents/` + `.claude/skills/`(+`commands/`,old 才有)+ 注入 `overrides/*` 到 `workflow.md`
+- 目标有 `.trellis/` → 按 `.trellis/.version` 读 0.6 / 0.5 / old,装对应 variant 的 `.agents/` + `.claude/skills/`(+`commands/`,old 才有)+ 注入 `overrides/*`
 
 **install.sh 自更新**:本地缓存的旧脚本启动时 `cmp` 自身与远程,不一致则 `exec` 远程版本继续。AI agent 从本地路径调用也不会踩到老逻辑。
 
@@ -68,11 +68,21 @@ Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入�
 # 只重灌 workflow override + workflow-state sentinel(不重装 SKILL)
 bash install.sh --repo <url> /target workflow-enhancement
 
-# 0.6 中等价于重灌集中 hub,用于刷新 finish-work bookkeeping guard
+# 0.6 中只重灌 finish-work skill override,不刷新 workflow.md
 bash install.sh --repo <url> /target finish-work-enhancement
 ```
 
 回滚:删除 `<!-- BEGIN skill-garden overrides ... -->` hub 和各状态块里的 skill-garden sentinel,或 `cp .trellis/workflow.md.bak .trellis/workflow.md`。
+
+## Trellis skill override 注入
+
+Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN/END` 增量块注入到目标项目已有的 skill / command,不复制、不维护整份 Trellis 原生入口。
+
+当前只有 `overrides/skills/trellis-finish-work.md`,用于在 `trellis-finish-work` 归档前加入英文 `Release Operations Inference Step`。它会注入已有的 `.agents/skills/trellis-finish-work/SKILL.md`、`.claude/skills/trellis-finish-work/SKILL.md` 和 `.claude/commands/trellis/finish-work.md`;目标不存在则跳过。
+
+特性:幂等(已有同名块先替换)、最小侵入(只注入一段 override)、备份首版 `<target>.flower-skill-garden.bak`。`finish-work-enhancement` 只刷新这段 skill override。
+
+回滚:删除目标文件里的 `<!-- BEGIN skill-garden skill override trellis-finish-work ... -->` 块,或从 `.flower-skill-garden.bak` 恢复。
 
 ---
 
@@ -86,9 +96,9 @@ bash install.sh --repo <url> /target finish-work-enhancement
 | `sub2api-account-json-fix` | codex / claude | sub2api 账号 JSON 批量补全 + 推送 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 
-### Trellis 0.6+ (`--scope=trellis|all`,9 个核心 skill)
+### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
 
-按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub:
+按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub 和 finish-work skill override:
 
 | 技能 | 形态 | 何时用 |
 |------|------|--------|
@@ -99,8 +109,16 @@ bash install.sh --repo <url> /target finish-work-enhancement
 | `trellis-draw-uml` | Auto | 需要可视化业务流程,自动渲染 PNG 并展示 |
 | `trellis-route` | Auto | Phase 2.1/2.2 由 workflow override 自动触发,询问 inline / subagent |
 | `trellis-push` | Manual | 一键 commit + push + 可选 merge,含 `last_push_snapshot` 任务进度快照 |
+| `trellis-release` | Manual | 正式上线前汇总多个任务的 `release.md`,生成版本 / 批次上线操作单 |
 | `trellis-plan-version` | Manual | 新版本启动,需求 → 任务拆分 + 工时评估 + 人员分工 |
 | `trellis-create-command` | Manual | 给项目加新 trellis 入口(command / skill),同步 agents + skill-garden 副本 |
+
+Release operations inference 由 0.6 finish-work skill override 提供,不复制、不 fork、不维护
+Trellis 原生 `trellis-finish-work` skill。用户显式运行 finish-work 前,agent 会根据任务文档、提交和
+文件名信号智能判断是否需要记录上线事项;识别到 SQL、配置、批处理 / 部署脚本 / 数据修复、
+外部系统 / 依赖平台上线等事项时,写入 `<task>/release.md`;明确无事项时不创建文件。
+`trellis-release` 只负责版本 / 上线批次汇总,输出 `.trellis/releases/<release-name>.md`,
+不执行任何上线操作。
 
 ### Trellis 0.5 / old
 

@@ -70,7 +70,7 @@ usage() {
   # 仅重灌 workflow.md 强化块(只在 --scope=trellis|all 时生效)
   bash install.sh --repo <url> /target workflow-enhancement
 
-  # 仅重灌 0.6 workflow override hub(含 finish-work bookkeeping guard)
+  # 仅重灌 0.6 finish-work skill override(不刷新 workflow.md)
   bash install.sh --repo <url> /target finish-work-enhancement
 
 环境变量:
@@ -276,6 +276,7 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
   TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
   TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
   TRELLIS_CLAUDE_SKILLS="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/skills"
+  TRELLIS_SKILL_OVERRIDES="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/skills"
 
   if [[ "$IS_TRELLIS" == false ]]; then
     # 检查用户是否明确指定了 trellis 技能名
@@ -344,13 +345,10 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
     WF_DST="$TARGET_DIR/.trellis/workflow.md"
     DO_WORKFLOW_ENHANCE=false
     if [[ "$TRELLIS_VARIANT" == "0.6" && -f "$WF_HUB_ENHANCE" && -f "$WF_DST" ]]; then
-      if should_install "workflow-enhancement" || should_install "finish-work-enhancement"; then
+      if should_install "workflow-enhancement"; then
         DO_WORKFLOW_ENHANCE=true
         ENHANCE_LABEL="workflow-enhancement"
         ENHANCE_DESC="0.6 Phase Index 集中 hub + 合并 workflow-state sentinel"
-        if ! should_install "workflow-enhancement" && should_install "finish-work-enhancement"; then
-          ENHANCE_LABEL="finish-work-enhancement"
-        fi
       fi
     elif [[ -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
       DO_WORKFLOW_ENHANCE=true
@@ -555,6 +553,73 @@ else:
     dst.write_text(new, encoding="utf-8")
     print(f"  ✓ workflow.md 强化块已{action}{state_action}{backup_note}")
 PYEOF
+    fi
+
+    # 3e) skill override 注入:只改目标已有的上游 skill / command,不维护完整副本
+    if [[ -d "$TRELLIS_SKILL_OVERRIDES" ]]; then
+      for override_file in "$TRELLIS_SKILL_OVERRIDES"/*.md; do
+        [[ ! -f "$override_file" ]] && continue
+        name="$(basename "$override_file" .md)"
+        DO_SKILL_OVERRIDE=false
+        if should_install "$name"; then
+          DO_SKILL_OVERRIDE=true
+        elif [[ "$name" == "trellis-finish-work" ]] && should_install "finish-work-enhancement"; then
+          DO_SKILL_OVERRIDE=true
+        fi
+        [[ "$DO_SKILL_OVERRIDE" == true ]] || continue
+        echo "[$name] inject skill override"
+        python3 - "$override_file" "$TARGET_DIR" "$name" <<'PYEOF'
+import sys, re, shutil
+from pathlib import Path
+
+src = Path(sys.argv[1])
+target = Path(sys.argv[2])
+name = sys.argv[3]
+block = src.read_text(encoding="utf-8").rstrip()
+
+def strip_override(value):
+    regex = re.compile(
+        r"^#{2,4} HIGHEST PRIORITY: skill-garden .*\n+"
+        r"^<!-- BEGIN skill-garden skill override " + re.escape(name) + r"[^\n]*-->\n.*?"
+        r"^<!-- END skill-garden skill override " + re.escape(name) + r"[^\n]*-->\n*",
+        re.DOTALL | re.MULTILINE,
+    )
+    return regex.sub("", value)
+
+def inject_after_frontmatter(value):
+    match = re.match(r"^---\n.*?\n---\n", value, re.DOTALL)
+    if match:
+        return value[:match.end()] + "\n" + block + "\n\n" + value[match.end():].lstrip("\n")
+    return block + "\n\n" + value.lstrip("\n")
+
+targets = [
+    target / ".agents" / "skills" / name / "SKILL.md",
+    target / ".claude" / "skills" / name / "SKILL.md",
+    target / ".claude" / "commands" / "trellis" / f"{name[8:] if name.startswith('trellis-') else name}.md",
+]
+existing = [p for p in targets if p.is_file()]
+if not existing:
+    print("  · skip:未找到目标已有 finish-work skill/command")
+    raise SystemExit(0)
+
+for dst in existing:
+    text = dst.read_text(encoding="utf-8")
+    new = inject_after_frontmatter(strip_override(text)).rstrip() + "\n"
+    rel = dst.relative_to(target)
+    if new == text:
+        print(f"  ✓ {rel} override 已是最新")
+        continue
+
+    bak = Path(str(dst) + ".flower-skill-garden.bak")
+    if not bak.exists():
+        shutil.copy(dst, bak)
+        backup_note = "(已创建 .flower-skill-garden.bak)"
+    else:
+        backup_note = "(保留已有 .flower-skill-garden.bak)"
+    dst.write_text(new, encoding="utf-8")
+    print(f"  ✓ {rel} 已注入 override {backup_note}")
+PYEOF
+      done
     fi
   fi
 else
