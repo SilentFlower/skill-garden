@@ -29,12 +29,12 @@ layout: center      # ← 第 2 页的 per-slide frontmatter
 
 | 字段 | 说明 | 示例 |
 |------|------|------|
-| `theme` | 主题包;`default` 内置,其余自动按需安装 | `default` / `seriph` |
+| `theme` | 主题包;v52 起 **含 default 都是独立 npm 包**,需安装(脚本 `dev`/`export` 前会按此自动预装) | `default` / `seriph` |
 | `title` | 标题(标签页 + 导出文件名) | `我的演示` |
 | `info` | 简介(支持 Markdown) | `多行用 \|` |
 | `transition` | 全局切页动画 | `slide-left` / `fade` / `slide-up` |
 | `class` | 给每页根元素加的 class | `text-center` |
-| `mdc` | 启用 MDC 语法 | `true` |
+| `mdc` | 启用 MDC 语法。⚠️ 慎开:开后 `:Word`(ASCII 冒号紧跟单词)会被当内联组件,吞掉文字 | 默认不开 |
 | `lineNumbers` | 代码块显示行号 | `true` |
 | `drawings` | 画笔/批注持久化配置 | `{ persist: false }` |
 
@@ -144,5 +144,19 @@ const b = 2
 | `slidev format [entry]` | 格式化 md | — |
 | `slidev theme eject` | 释出当前主题到本地 | `--dir`(默认 `theme`) |
 
-- 导出依赖 `playwright-chromium`;缺浏览器时先 `npx playwright install chromium`。
+- 导出依赖 `playwright-chromium`(npm 包,非仅浏览器二进制):缺包报 `please install it via npm i -D playwright-chromium`;缺浏览器再 `npx playwright install chromium`。`slidev.sh export` 两者都会幂等装。
 - `pptx` 默认 `--with-clicks`(把点击动画展开成多页)。
+
+## 11. 实测易踩的坑(写之前过一遍)
+
+| 坑 | 现象 | 规避 |
+|----|------|------|
+| 主题包未装 | 后台起 dev 启动即退出,日志 `theme "…" was not found and cannot prompt for installation` | headmatter 的 `theme` 对应包要装;脚本 `dev`/`export` 会自动预装。官方短名 → `@slidev/theme-<name>`,社区主题 → `slidev-theme-<name>` |
+| 导出缺 npm 包 | `export` 报 `npm i -D playwright-chromium` | 用 `slidev.sh export`(已幂等装);别只 `npx playwright install chromium` |
+| MDC 吞文字 | `mdc: true` 下 `分布:POST` → `Failed to resolve component: POST`,文字消失 | 不用 MDC 行内语法就别开 `mdc`;中文冒号用全角 `:`,英文冒号后加空格 |
+| 单页超屏被裁 | 内容下半截不见,且无提示(Slidev 页面不滚动) | 一页一主题;拆页 / 调小字号 / 局部 `<style>` 压缩行高;截图自检 |
+| 深层 Mermaid 超高 | `flowchart TD` 多级决策树底部被裁 | 改 HTML 卡片布局,或 `flowchart LR` / 调小 ```` ```mermaid {scale: 0.5} ```` |
+| emoji 豆腐块 | 预览 / 导出里 emoji 全是 □ | 系统装 `fonts-noto-color-emoji`;装不了就别用 emoji |
+| v-clicks 误判 | 截图首屏 `<v-clicks>` 内容"空白" | 正常,渐进动画未点击时隐藏;PDF 导出会展开所有点击态 |
+
+- 局部 `<style>`:slidev 中**每页的 `<style>` 自动作用于当前页**(无需 `scoped`),适合单页压缩表格行高 / 字号而不影响其他页。

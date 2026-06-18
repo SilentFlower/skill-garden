@@ -5,7 +5,9 @@
 #   - 运行时状态(PID / 日志 / 真实 URL)写「当前工作目录」下的 .slidev-craft/,与 skill 代码解耦;
 #     可用环境变量 SLIDEV_CRAFT_HOME 覆盖到任意路径。
 #   - dev 是长跑服务:后台 nohup 起,轮询日志解析真实 URL(端口被占时 Slidev 会在 3030~4000 自增)。
-#   - export 是一次性产出:先幂等确保 chromium,再透传 Slidev 自身的成功输出(它会打印 ✓ exported to ...)。
+#   - export 是一次性产出:先幂等确保 playwright-chromium(npm 包)+ chromium 浏览器,再透传 Slidev 成功输出(✓ exported to ...)。
+#   - 主题包(含 default,Slidev v52 起为独立 npm 包)在 dev/export 前按 headmatter 的 theme 自动预装 ——
+#     后台 nohup 模式无法交互式确认安装,缺包会导致 dev 启动即退出。
 #   - 所有 Slidev 命令字串与默认值均依据 Slidev 源码核实(dev 默认端口 3030、export --format pdf|png|pptx|md)。
 set -euo pipefail
 
@@ -32,13 +34,15 @@ craft-slides / slidev.sh —— Slidev 演示生命周期封装
   slidev.sh status                       查看 dev 是否在跑 + URL + 入口 + 日志路径
   slidev.sh stop                         优雅停止 dev(SIGINT,3s 未退再 SIGTERM)
   slidev.sh export [entry] [--format pdf|png|pptx|md] [--output <path>] [更多 slidev 透传参数]
-                                         导出(默认 pdf);先幂等确保 chromium
+                                         导出(默认 pdf);先幂等确保 playwright-chromium 包 + chromium 浏览器 + 主题包
   slidev.sh build [entry] [更多 slidev 透传参数]
                                          构建可托管静态站到 dist/
 
 说明:
   - dev / export / build 默认在「当前目录」作为 Slidev 项目运行(需有 slides.md 与已安装依赖)。
   - new 之后请 `cd <dir> && npm install` 再 dev。
+  - 主题包(含 default,v52 起为独立包)在 dev/export 前按 headmatter 的 theme 自动预装;手动装: npm i @slidev/theme-<name>。
+  - 彩色 emoji 需系统装有 emoji 字体(如 fonts-noto-color-emoji),否则预览/导出里 emoji 会显示成 □ 豆腐块。
   - 运行时状态写 ./.slidev-craft/(可用 SLIDEV_CRAFT_HOME 覆盖),建议在仓库根 .gitignore 加一行 .slidev-craft/。
 EOF
 }
@@ -56,6 +60,41 @@ _report_url() {
   if [ -f "$STATE_DIR/.dev.url" ]; then
     echo "  URL: $(cat "$STATE_DIR/.dev.url")"
   fi
+}
+
+# 把 headmatter 的 theme 名解析成 npm 包名,逻辑对齐 Slidev 源码
+# (packages/slidev/node/integrations/themes.ts + resolver.ts):
+#   官方短名经 officialThemes 映射;@ 前缀原样;其余社区主题用 slidev-theme-<name> 惯例;
+#   none / 空 → 无主题包(不安装)。
+_theme_pkg() {
+  local name="$1"
+  case "$name" in
+    ""|default)   echo "@slidev/theme-default" ;;   # 未写 theme 时 Slidev 默认用 default
+    none)         echo "" ;;                          # 显式无主题
+    seriph)       echo "@slidev/theme-seriph" ;;
+    apple-basic)  echo "@slidev/theme-apple-basic" ;;
+    shibainu)     echo "@slidev/theme-shibainu" ;;
+    bricks)       echo "@slidev/theme-bricks" ;;
+    @*)           echo "$name" ;;                      # 已是 @scope/pkg 完整包名
+    *)            echo "slidev-theme-$name" ;;         # 社区主题命名惯例
+  esac
+}
+
+# 依据入口 headmatter 的 theme 预装主题包。
+# Slidev v52 起 default 主题也是独立 npm 包;后台 nohup 模式无法交互式自动安装,
+# 缺包会让 dev 启动即退出(日志:theme "..." was not found and cannot prompt for installation),
+# 故 dev / export 前先确保安装。
+_ensure_theme() {
+  local entry="${1:-$DEFAULT_ENTRY}" name pkg
+  [ -f "$entry" ] || return 0
+  # headmatter 必在文件头;只扫前 40 行取第一处 theme:
+  name="$(sed -n '1,40p' "$entry" | grep -oE '^theme:[[:space:]]*[^[:space:]#]+' | head -n1 | sed -E 's/^theme:[[:space:]]*//')"
+  pkg="$(_theme_pkg "$name")"
+  [ -n "$pkg" ] || return 0
+  [ -d "node_modules/$pkg" ] && return 0
+  echo "[craft-slides] 预装主题包 $pkg ..."
+  npm i "$pkg" >/dev/null 2>&1 \
+    || echo "  (主题安装失败;若 dev/export 报找不到主题,手动执行: npm i $pkg)"
 }
 
 cmd_new() {
@@ -85,12 +124,18 @@ cmd_new() {
     echo "[craft-slides] 已写入 $slides"
   fi
 
-  # 2) package.json:最小可跑配置;@slidev/cli 自带 default 主题,无需额外装
+  # 2) package.json:最小可跑配置。注意 v52 起 default 主题亦为独立 npm 包,必须写入依赖,
+  #    否则 `npm install` 后 dev 仍会因找不到主题而启动即退出。
   local pkg="$dir/package.json"
+  local theme_pkg theme_dep=""
+  theme_pkg="$(_theme_pkg "$theme")"
+  # theme: none 时 theme_pkg 为空,不写入依赖(避免非法的空键)
+  [ -n "$theme_pkg" ] && theme_dep=",
+    \"$theme_pkg\": \"latest\""
   if [ -f "$pkg" ]; then
     echo "[craft-slides] $pkg 已存在,跳过"
   else
-    cat >"$pkg" <<'JSON'
+    cat >"$pkg" <<JSON
 {
   "name": "slidev-deck",
   "type": "module",
@@ -101,11 +146,11 @@ cmd_new() {
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^52.0.0"
+    "@slidev/cli": "^52.0.0"$theme_dep
   }
 }
 JSON
-    echo "[craft-slides] 已写入 $pkg"
+    echo "[craft-slides] 已写入 $pkg${theme_pkg:+ (主题包: $theme_pkg)}"
   fi
 
   echo
@@ -139,6 +184,9 @@ cmd_dev() {
     return 1
   fi
 
+  # 预装 headmatter 指定的主题包(含 default);后台模式缺主题会启动即退出
+  _ensure_theme "$entry"
+
   echo "[craft-slides] 启动 dev: npx slidev $entry --port $port"
   nohup npx slidev "$entry" --port "$port" >"$LOG_FILE" 2>&1 &
   local pid=$!
@@ -151,6 +199,9 @@ cmd_dev() {
     if ! kill -0 "$pid" 2>/dev/null; then
       echo "[craft-slides] dev 进程启动后立即退出,最后日志:" >&2
       tail -n 20 "$LOG_FILE" >&2 2>/dev/null || true
+      if grep -q "was not found and cannot prompt" "$LOG_FILE" 2>/dev/null; then
+        echo "  提示:主题包缺失。检查 slides.md headmatter 的 theme,并执行 npm i @slidev/theme-<name> 后重试" >&2
+      fi
       rm -f "$PID_FILE"
       return 1
     fi
@@ -223,10 +274,20 @@ cmd_export() {
     return 1
   fi
 
-  # 幂等确保 chromium;失败不致命(Slidev 缺浏览器时会再给具体报错)
-  echo "[craft-slides] 确保 Playwright chromium ..."
+  # 幂等确保导出依赖:Slidev export 由 playwright-chromium(npm 包)驱动 ——
+  # 仅 `npx playwright install chromium`(浏览器二进制)不够,缺 npm 包会报
+  # "please install it via `npm i -D playwright-chromium`"。
+  if [ ! -d node_modules/playwright-chromium ]; then
+    echo "[craft-slides] 安装导出依赖 playwright-chromium ..."
+    npm i -D playwright-chromium >/dev/null 2>&1 \
+      || echo "  (playwright-chromium 安装失败;手动执行: npm i -D playwright-chromium)"
+  fi
+  echo "[craft-slides] 确保 Playwright chromium 浏览器 ..."
   npx playwright install chromium >/dev/null 2>&1 \
-    || echo "  (playwright install 跳过/失败;若导出报缺浏览器,手动执行: npx playwright install chromium)"
+    || echo "  (浏览器安装跳过/失败;若导出报缺浏览器,手动执行: npx playwright install chromium)"
+
+  # 导出同样需要主题包(否则渲染阶段报找不到主题)
+  _ensure_theme "$entry"
 
   local args=(slidev export "$entry" --format "$fmt")
   [ -n "$output" ] && args+=(--output "$output")

@@ -1,13 +1,13 @@
 ---
 # Slidev headmatter:整份演示的全局配置(只在第一页 frontmatter 生效)
-theme: default            # 主题:default 内置;换主题改这里(如 seriph / @slidev/theme-seriph)
+theme: default            # 主题:v52 起 default 也是独立包(脚本会自动装);换主题改这里(如 seriph / @slidev/theme-seriph)
 title: 演示标题            # 浏览器标签与导出文件名
 info: |
   ## 演示标题
   一句话副标题 / 作者 / 场合
 transition: slide-left    # 全局切页动画:slide-left / fade / slide-up ...
 class: text-center        # 给每页根元素加的 class(UnoCSS 原子类)
-mdc: true                 # 启用 MDC 语法(可在 markdown 里写 {.class} 等)
+# mdc: true               # MDC 行内语法({.class} 等)。默认不开:开了之后 `:Word`(冒号紧跟单词)会被当内联组件吞掉文字。确需 MDC 时再取消注释
 ---
 
 # 演示标题
