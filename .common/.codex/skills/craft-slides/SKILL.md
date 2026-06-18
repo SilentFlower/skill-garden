@@ -40,14 +40,28 @@ description: "基于 Slidev 端到端制作演示文稿:把主题/大纲生成�
 
 ## 端到端工作流
 
+### Step 0: 选主题(每次做演示必做)
+
+开始做演示前,**先把下面 5 套精选主题列给用户,请其选择**(不要替用户预设、不要跳过)。用户已明确风格(深色 / 科技感 / 某主题名)则直接匹配并简要确认;用户说"你定"则用 `seriph`。
+
+| 菜单标签 | `--theme` 短名 | 配色 | 气质 / 适用 |
+|----------|---------------|------|-------------|
+| Seriph | `seriph` | 深色 | 衬线·极简,正式分享、理念阐述 |
+| Vercel / Geist | `geist` | 亮色 | 现代科技,产品 / 技术发布 |
+| Nord | `nord` | 深色 | 冷色石板灰,长篇技术讲解 |
+| Apple Basic | `apple-basic` | 亮色 | 仿 Keynote 极简,通用 |
+| Dracula | `dracula` | 深色 | 紫色开发风,代码多 |
+
+> 这 5 套各自带一份适配模板 `templates/slides.<短名>.md`(已配好 `theme` + `colorSchema` + 中文友好排版),`new --theme <短名>` 会自动套用对应模板;其它社区主题短名也支持,只是回退到通用 `slides.md` 模板。
+
 ### Step 1: 脚手架(新建项目)
 
 ```bash
-bash "$SKILL_DIR/scripts/slidev.sh" new my-deck
+bash "$SKILL_DIR/scripts/slidev.sh" new my-deck --theme <用户选的短名>
 cd my-deck && npm install
 ```
 
-生成最小项目:`package.json`(deps = `@slidev/cli` + headmatter `theme` 对应的主题包)+ `slides.md`(来自模板)。
+生成最小项目:`package.json`(deps = `@slidev/cli` + 所选主题对应的主题包)+ `slides.md`(来自该主题的适配模板;无 `--theme` 或无匹配模板时用通用模板)。
 已有 Slidev 项目则跳过本步,直接进项目目录。
 
 ### Step 2: 写内容(核心价值)
@@ -93,7 +107,7 @@ bash "$SKILL_DIR/scripts/slidev.sh" export --format pdf     # 或 pptx / png
 
 | 用户说 | 跑 |
 |--------|----|
-| "做一套关于 X 的幻灯片 / 用 slidev 做 PPT" | `new` 建项目 → Step 2 写 `slides.md` → 起 `dev` 贴 URL |
+| "做一套关于 X 的幻灯片 / 用 slidev 做 PPT" | **先列 5 套主题清单让用户选**(Step 0)→ `new --theme <短名>` 建项目 → Step 2 写 `slides.md` → 起 `dev` 贴 URL |
 | "预览 / 看看效果 / 起服务" | `slidev.sh dev`,贴真实 URL |
 | "在跑吗 / 停 / 重启" | `slidev.sh status` / `stop`(重启 = stop 后再 dev) |
 | "导出 PDF / 导出 PPT / 导出图片" | `slidev.sh export --format pdf\|pptx\|png`,贴输出路径 |
@@ -150,6 +164,7 @@ bash "$SKILL_DIR/scripts/slidev.sh" export --format pdf     # 或 pptx / png
 
 ### 工具层
 
+- ❌ 跳过选主题直接 `new` —— 每次做演示先列 5 套精选主题清单让用户选(Step 0;用户已指定风格除外)
 - ❌ 手敲 `nohup npx slidev` 起服务 —— 走 `slidev.sh dev`,否则 PID / URL 失管
 - ❌ 导出前不确认 chromium / playwright-chromium 就报错甩给用户 —— `export` 子命令已幂等装两者,仍失败再给手动指引
 - ❌ 内容里大量用 emoji 却没确认系统有 emoji 字体 —— 先装 `fonts-noto-color-emoji`,否则全是豆腐块

@@ -30,6 +30,8 @@ craft-slides / slidev.sh —— Slidev 演示生命周期封装
 
 用法:
   slidev.sh new <dir> [--theme <name>]   生成最小 Slidev 项目(package.json + slides.md 骨架)
+                                         精选主题短名: seriph / geist / nord / apple-basic / dracula
+                                         (有同名 templates/slides.<name>.md 时用其适配模板,否则用通用模板)
   slidev.sh dev [entry] [--port N]       后台起预览(默认 slides.md / 端口 3030),返回真实 URL
   slidev.sh status                       查看 dev 是否在跑 + URL + 入口 + 日志路径
   slidev.sh stop                         优雅停止 dev(SIGINT,3s 未退再 SIGTERM)
@@ -75,6 +77,10 @@ _theme_pkg() {
     apple-basic)  echo "@slidev/theme-apple-basic" ;;
     shibainu)     echo "@slidev/theme-shibainu" ;;
     bricks)       echo "@slidev/theme-bricks" ;;
+    # 精选社区主题:显式列出便于自文档化、防社区改名(逻辑上与下方惯例分支等价)
+    geist)        echo "slidev-theme-geist" ;;         # Vercel / Geist 风
+    nord)         echo "slidev-theme-nord" ;;          # Nord 冷色
+    dracula)      echo "slidev-theme-dracula" ;;       # Dracula 深色紫
     @*)           echo "$name" ;;                      # 已是 @scope/pkg 完整包名
     *)            echo "slidev-theme-$name" ;;         # 社区主题命名惯例
   esac
@@ -111,13 +117,21 @@ cmd_new() {
 
   mkdir -p "$dir"
 
-  # 1) slides.md 入口:从模板复制,已存在则不覆盖
+  # 1) slides.md 入口:优先用每主题适配模板 templates/slides.<theme>.md
+  #    (其 headmatter 已含 theme + colorSchema + 中文友好配置,原样复制即可);
+  #    无匹配主题模板时回退通用 slides.md,并按 --theme 替换 headmatter 第一处 theme 行。
+  #    已存在则不覆盖。
   local slides="$dir/slides.md"
+  local themed_tmpl=""
+  [ -n "$theme" ] && [ -f "$TEMPLATES_DIR/slides.$theme.md" ] && themed_tmpl="$TEMPLATES_DIR/slides.$theme.md"
   if [ -f "$slides" ]; then
     echo "[craft-slides] $slides 已存在,跳过(不覆盖)"
+  elif [ -n "$themed_tmpl" ]; then
+    cp "$themed_tmpl" "$slides"
+    echo "[craft-slides] 已写入 $slides (主题模板: slides.$theme.md)"
   else
     cp "$TEMPLATES_DIR/slides.md" "$slides"
-    # 指定主题时替换 headmatter 第一处 theme 行
+    # 通用模板:指定主题时替换 headmatter 第一处 theme 行(兜底任意社区主题短名)
     if [ -n "$theme" ]; then
       sed -i.bak "0,/^theme: .*/s//theme: $theme/" "$slides" && rm -f "$slides.bak"
     fi

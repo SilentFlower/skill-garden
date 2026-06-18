@@ -30,6 +30,7 @@ layout: center      # ← 第 2 页的 per-slide frontmatter
 | 字段 | 说明 | 示例 |
 |------|------|------|
 | `theme` | 主题包;v52 起 **含 default 都是独立 npm 包**,需安装(脚本 `dev`/`export` 前会按此自动预装) | `default` / `seriph` |
+| `colorSchema` | 强制主题亮/暗(不写则跟随主题默认 / 系统) | `dark` / `light` / `all` |
 | `title` | 标题(标签页 + 导出文件名) | `我的演示` |
 | `info` | 简介(支持 Markdown) | `多行用 \|` |
 | `transition` | 全局切页动画 | `slide-left` / `fade` / `slide-up` |
