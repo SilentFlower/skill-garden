@@ -111,7 +111,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 | `trellis-draw-uml` | Auto | 需要可视化业务流程,自动渲染 PNG 并展示 |
 | `trellis-route` | Auto | Phase 2.1/2.2 由 workflow override 自动触发,询问 inline / subagent |
 | `trellis-push` | Manual | 一键 commit + push + 可选 merge,含 `last_push_snapshot` 任务进度快照 |
-| `trellis-release` | Manual | 正式上线前汇总多个任务的 `release.md`,生成版本 / 批次上线操作单 |
+| `trellis-release` | Manual | 正式上线前核对任务文档、`release.md` 和 git 证据,生成版本 / 批次上线操作单 |
 | `trellis-plan-version` | Manual | 新版本启动,需求 → 任务拆分 + 工时评估 + 人员分工 |
 | `trellis-create-command` | Manual | 给项目加新 trellis 入口(command / skill),同步 agents + skill-garden 副本 |
 
@@ -119,8 +119,8 @@ Release operations inference 由 0.6 finish-work skill override 提供,不复制
 Trellis 原生 `trellis-finish-work` skill。用户显式运行 finish-work 前,agent 会根据任务文档、提交和
 文件名信号智能判断是否需要记录上线事项;识别到 SQL、配置、批处理 / 部署脚本 / 数据修复、
 外部系统 / 依赖平台上线等事项时,写入 `<task>/release.md`;明确无事项时不创建文件。
-`trellis-release` 只负责版本 / 上线批次汇总,输出 `.trellis/releases/<release-name>.md`,
-不执行任何上线操作。
+`trellis-release` 负责在正式上线前重新核对任务文档、已有 `release.md` 和 git 证据,
+输出 `.trellis/releases/YYYY-MM-DD-<release-slug>.md`,不执行任何上线操作。
 
 ### Trellis 0.5 / old
 
