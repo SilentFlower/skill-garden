@@ -392,6 +392,7 @@ SENTINEL_NAMES = [
     "skill-garden workflow-state in-progress-push-snapshot",
     "skill-garden workflow-state no_task",
     "skill-garden workflow-state planning",
+    "skill-garden workflow-state planning_inline",
     "skill-garden workflow-state in_progress",
     "skill-garden workflow-state in_progress_inline",
 ]
@@ -409,6 +410,9 @@ NO_TASK_BLOCK_RE = re.compile(
 )
 PLANNING_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:planning\]\n)(.*?)(^\[/workflow-state:planning\])"
+)
+PLANNING_INLINE_BLOCK_RE = re.compile(
+    r"(?ms)^(\[workflow-state:planning-inline\]\n)(.*?)(^\[/workflow-state:planning-inline\])"
 )
 IN_PROGRESS_BLOCK_RE = re.compile(
     r"(?ms)^(\[workflow-state:in_progress\]\n)(.*?)(^\[/workflow-state:in_progress\])"
@@ -528,6 +532,7 @@ if is_v06:
     state_specs = [
         ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, read_state_block("no_task.md")),
         ("[workflow-state:planning]", PLANNING_BLOCK_RE, read_state_block("planning.md")),
+        ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, read_state_block("planning-inline.md")),
         ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, read_state_block("in_progress.md")),
         ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, read_state_block("in_progress-inline.md")),
     ]
@@ -535,6 +540,7 @@ else:
     state_specs = [
         ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, LEGACY_NO_TASK_BLOCK + LEGACY_PUSH_PROGRESS_BLOCK),
         ("[workflow-state:planning]", PLANNING_BLOCK_RE, LEGACY_PLANNING_BLOCK),
+        ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, LEGACY_PLANNING_BLOCK),
         ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, LEGACY_IN_PROGRESS_BLOCK + LEGACY_PUSH_SNAPSHOT_BLOCK),
         ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, LEGACY_PUSH_SNAPSHOT_BLOCK),
     ]
