@@ -108,7 +108,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 | `trellis-verify-task` | Auto | 三件套生成后,校验准确性 + 覆盖度 + 跨层一致性 |
 | `trellis-check-all` | Auto | 开发完、提交前,全维度代码检查(三件套对照 + 假设验证 + trellis-check) |
 | `trellis-run-full-chain` | Auto | PR 前 UAT 回归,跨层全链路(UI + API + DB) |
-| `trellis-draw-uml` | Auto | 需要可视化业务流程,自动渲染 PNG 并展示 |
+| `trellis-visualize` | Auto | 把架构、流程、业务规则和状态流转生成离线 HTML/SVG 图解,兼容旧 UML / 活动图诉求 |
 | `trellis-route` | Auto | Phase 2.1/2.2 由 workflow override 自动触发,询问 inline / subagent |
 | `trellis-push` | Manual | 一键 commit + push + 可选 merge,含 `last_push_snapshot` 任务进度快照 |
 | `trellis-release` | Manual | 正式上线前核对任务文档、`release.md` 和 git 证据,生成版本 / 批次上线操作单 |
