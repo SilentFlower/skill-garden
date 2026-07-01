@@ -96,6 +96,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 | `sub2api-account-json-fix` | codex / claude | sub2api 账号 JSON 批量补全 + 推送 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 | `craft-slides` | codex / claude | 基于 Slidev 端到端做演示:大纲 → slides.md → 预览 → 导出 PDF/PPTX/PNG,自带 slidev.sh + 语法速查 + 模板 |
+| `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,压缩空话、套话和机械句式 |
 | `torrent-analyze` | codex / claude | 自包含磁链验车工具，直接查询 whatslink API、解析 hash、缓存结果，并可选生成截图拼图、模糊和字体渲染 |
 
 ### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
