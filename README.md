@@ -93,7 +93,6 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 | 技能 | 平台 | 说明 |
 |------|------|------|
 | `open-idea` | codex / claude | 跨平台唤起 IntelliJ IDEA 打开项目目录，支持 WSL 调 Windows IDEA |
-| `sub2api-account-json-fix` | codex / claude | sub2api 账号 JSON 批量补全 + 推送 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 | `craft-slides` | codex / claude | 基于 Slidev 端到端做演示:大纲 → slides.md → 预览 → 导出 PDF/PPTX/PNG,自带 slidev.sh + 语法速查 + 模板 |
 | `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,压缩空话、套话和机械句式 |
