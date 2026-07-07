@@ -596,6 +596,11 @@ def inject_after_frontmatter(value):
     match = re.match(r"^---\n.*?\n---\n", value, re.DOTALL)
     if match:
         return value[:match.end()] + "\n" + block + "\n\n" + value[match.end():].lstrip("\n")
+    # 无 frontmatter 的 command 文件首行标题常被平台当作命令描述来源;
+    # override 放到标题后,避免把高优先级 override 标题暴露成命令名。
+    h1 = re.match(r"^# [^\n]*\n", value)
+    if h1:
+        return value[:h1.end()] + "\n" + block + "\n\n" + value[h1.end():].lstrip("\n")
     return block + "\n\n" + value.lstrip("\n")
 
 targets = [
