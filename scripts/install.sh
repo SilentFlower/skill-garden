@@ -108,6 +108,13 @@ should_install() {
   return 1
 }
 
+# intent routing 的声明、helper 与 workflow hub 共享同一组安装别名。
+should_install_intent_routing() {
+  should_install "workflow-enhancement" \
+    || should_install "task-intent" \
+    || should_install "intent-routing"
+}
+
 # ── 解析参数 ──
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -198,6 +205,46 @@ echo "目标: $TARGET_DIR"
 echo "scope: $SCOPE (trellis=$INSTALL_TRELLIS, common=$INSTALL_COMMON)"
 echo ""
 
+# 在任何 common/trellis 资产复制前解析目标变体并执行 0.6 required transform。
+# 这样 --scope=all 的 transform 漂移也保持整个安装目标零写入。
+IS_TRELLIS=false
+TRELLIS_VARIANT="old"
+TRELLIS_VERSION=""
+if [[ -d "$TARGET_DIR/.trellis" ]]; then
+  IS_TRELLIS=true
+  if [[ -f "$TARGET_DIR/.trellis/.version" ]]; then
+    TRELLIS_VERSION="$(tr -d '[:space:]' < "$TARGET_DIR/.trellis/.version")"
+    V_MAJOR="$(echo "$TRELLIS_VERSION" | cut -d. -f1)"
+    V_MINOR="$(echo "$TRELLIS_VERSION" | cut -d. -f2 | sed 's/[^0-9].*//')"
+    if [[ "$V_MAJOR" =~ ^[0-9]+$ && "$V_MINOR" =~ ^[0-9]+$ ]]; then
+      if (( V_MAJOR >= 1 || V_MINOR >= 6 )); then
+        TRELLIS_VARIANT="0.6"
+      elif (( V_MINOR >= 5 )); then
+        TRELLIS_VARIANT="0.5"
+      fi
+    fi
+  fi
+fi
+
+TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
+TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
+TRELLIS_CLAUDE_SKILLS="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/skills"
+TRELLIS_SKILL_OVERRIDES="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/skills"
+TRELLIS_TRANSFORMS="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/transforms"
+TRELLIS_TRANSFORM_RUNNER="$GARDEN/scripts/apply-trellis-transforms.py"
+TRELLIS_TASK_INTENT="$GARDEN/.trellis/$TRELLIS_VARIANT/scripts/task_intent.py"
+
+if [[ "$INSTALL_TRELLIS" == true \
+    && "$IS_TRELLIS" == true \
+    && "$TRELLIS_VARIANT" == "0.6" \
+    && -d "$TRELLIS_TRANSFORMS" \
+    && -f "$TRELLIS_TRANSFORM_RUNNER" ]] \
+    && should_install_intent_routing; then
+  echo "[intent-routing] apply declarative transforms"
+  python3 "$TRELLIS_TRANSFORM_RUNNER" \
+    "$TRELLIS_TRANSFORMS" "$TARGET_DIR" "${SKILL_NAMES[@]}"
+fi
+
 # ══════════════════════════════════
 # 2) 安装 .common(通用技能) —— 仅当 INSTALL_COMMON=true
 # ══════════════════════════════════
@@ -247,37 +294,6 @@ fi
 # 3) 安装 .trellis(强化补充包) —— 仅当 INSTALL_TRELLIS=true
 # ══════════════════════════════════
 if [[ "$INSTALL_TRELLIS" == true ]]; then
-  # 检测目标项目是否为 trellis 项目
-  if [[ -d "$TARGET_DIR/.trellis" ]]; then
-    IS_TRELLIS=true
-  else
-    IS_TRELLIS=false
-  fi
-
-  # 根据目标项目 .trellis/.version 选择补充包版本目录
-  #   >= 0.6.0(含 0.6.0-beta.x、未来 1.x) → .trellis/0.6/(精简版:9 个核心 skill)
-  #   = 0.5.x                              → .trellis/0.5/(完整版:13 个 skill)
-  #   其他情况(含缺失/无法解析/< 0.5)        → .trellis/old/
-  TRELLIS_VARIANT="old"
-  TRELLIS_VERSION=""
-  if [[ "$IS_TRELLIS" == true && -f "$TARGET_DIR/.trellis/.version" ]]; then
-    TRELLIS_VERSION="$(tr -d '[:space:]' < "$TARGET_DIR/.trellis/.version")"
-    V_MAJOR="$(echo "$TRELLIS_VERSION" | cut -d. -f1)"
-    V_MINOR="$(echo "$TRELLIS_VERSION" | cut -d. -f2 | sed 's/[^0-9].*//')"
-    if [[ "$V_MAJOR" =~ ^[0-9]+$ && "$V_MINOR" =~ ^[0-9]+$ ]]; then
-      if (( V_MAJOR >= 1 || V_MINOR >= 6 )); then
-        TRELLIS_VARIANT="0.6"
-      elif (( V_MINOR >= 5 )); then
-        TRELLIS_VARIANT="0.5"
-      fi
-    fi
-  fi
-
-  TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
-  TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
-  TRELLIS_CLAUDE_SKILLS="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/skills"
-  TRELLIS_SKILL_OVERRIDES="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/skills"
-
   if [[ "$IS_TRELLIS" == false ]]; then
     # 检查用户是否明确指定了 trellis 技能名
     HAS_TRELLIS_REQUEST=false
@@ -304,6 +320,13 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
   else
     # 确认目标目录与 trellis 项目结构匹配
     echo "trellis 项目版本: ${TRELLIS_VERSION:-未知}, 使用补充包: .trellis/$TRELLIS_VARIANT/"
+
+    # workflow 会引用 task_intent.py；独立安装必须同步 helper，不能只改提示词。
+    if [[ "$TRELLIS_VARIANT" == "0.6" && -f "$TRELLIS_TASK_INTENT" ]] \
+        && should_install_intent_routing; then
+      echo "[task-intent] trellis/script → .trellis/scripts/task_intent.py"
+      install_one "$TRELLIS_TASK_INTENT" "$TARGET_DIR/.trellis/scripts/task_intent.py"
+    fi
 
     # 3a) .agents/skills/
     if [[ -d "$TRELLIS_AGENTS" ]]; then
@@ -338,19 +361,19 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
       done
     fi
 
-    # 3d) workflow.md 注入 Phase Index 顶部的 skill-garden 章节(幂等,备份 .bak)
+    # 3d) workflow.md 注入 Phase Index 顶部的 skill-garden 章节(幂等,首次备份)
     WF_HUB_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow.md"
     WF_ROUTE_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
     WF_STATE_ENHANCE_DIR="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow-states"
     WF_DST="$TARGET_DIR/.trellis/workflow.md"
     DO_WORKFLOW_ENHANCE=false
     if [[ "$TRELLIS_VARIANT" == "0.6" && -f "$WF_HUB_ENHANCE" && -f "$WF_DST" ]]; then
-      if should_install "workflow-enhancement"; then
+      if should_install_intent_routing; then
         DO_WORKFLOW_ENHANCE=true
         ENHANCE_LABEL="workflow-enhancement"
         ENHANCE_DESC="0.6 Phase Index 集中 hub + 合并 workflow-state sentinel"
       fi
-    elif [[ -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] && should_install "workflow-enhancement"; then
+    elif [[ -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] && should_install_intent_routing; then
       DO_WORKFLOW_ENHANCE=true
       ENHANCE_LABEL="workflow-enhancement"
       ENHANCE_DESC="Phase Index 顶部 skill-garden 章节 + workflow-state guard"
@@ -515,13 +538,6 @@ def read_state_block(filename):
 
 text = dst.read_text(encoding="utf-8")
 
-bak = Path(str(dst) + ".bak")
-if not bak.exists():
-    shutil.copy(dst, bak)
-    backup_note = "(已创建 workflow.md.bak)"
-else:
-    backup_note = "(保留已有 workflow.md.bak)"
-
 clean = strip_skill_garden_blocks(text)
 source = hub_src if is_v06 else route_src
 block = source.read_text(encoding="utf-8").rstrip()
@@ -530,7 +546,6 @@ phase_new, action = inject_after_phase_index(clean, block)
 state_actions = []
 if is_v06:
     state_specs = [
-        ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, read_state_block("no_task.md")),
         ("[workflow-state:planning]", PLANNING_BLOCK_RE, read_state_block("planning.md")),
         ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, read_state_block("planning-inline.md")),
         ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, read_state_block("in_progress.md")),
@@ -554,8 +569,21 @@ new = new.rstrip() + "\n"
 state_action = ",并已更新 " + " / ".join(state_actions)
 
 if new == text:
-    print(f"  ✓ workflow.md 强化块已是最新,无需改动{backup_note}")
+    print("  ✓ workflow.md 强化块已是最新,无需改动")
 else:
+    if is_v06:
+        project_root = dst.parent.parent
+        bak = project_root / ".trellis" / ".backup-flower" / ".trellis" / "workflow.md"
+        backup_label = bak.relative_to(project_root).as_posix()
+    else:
+        bak = Path(str(dst) + ".bak")
+        backup_label = "workflow.md.bak"
+    if not bak.exists():
+        bak.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(dst, bak)
+        backup_note = f"(已创建 {backup_label})"
+    else:
+        backup_note = f"(保留已有 {backup_label})"
     dst.write_text(new, encoding="utf-8")
     print(f"  ✓ workflow.md 强化块已{action}{state_action}{backup_note}")
 PYEOF

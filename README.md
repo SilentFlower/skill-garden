@@ -11,7 +11,9 @@ skill-garden/
 │   ├── old/                                  #   < 0.5 (fallback)
 │   ├── 0.5/                                  #   0.5.x:完整版 13 个 skill
 │   └── 0.6/                                  #   ≥ 0.6:精简版 10 个 skill + workflow/skill override
-└── scripts/install.sh                        # 一键安装(读目标 .trellis/.version 智能选 variant)
+└── scripts/
+    ├── install.sh                            # 一键安装(读目标 .trellis/.version 智能选 variant)
+    └── apply-trellis-transforms.py           # 0.6 insert/replace/remove 声明执行器
 ```
 
 ---
@@ -56,23 +58,27 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 
 `--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 会幂等注入 workflow override 到 `.trellis/workflow.md`。
 
-Trellis 0.6 使用 `overrides/workflow.md` 作为 `## Phase Index` 顶部的集中 hub,统一承载 routing gate、finish-work bookkeeping guard、push progress recovery / snapshot。`overrides/workflow-states/*.md` 分别维护 `[workflow-state:no_task]` / `planning` / `in_progress` / `in_progress-inline` 的短 sentinel,安装后每个状态只保留一个合并后的 skill-garden sentinel,不再分散追加多块 override。
+Trellis 0.6 先通过 `overrides/transforms/*.json` 对目标已有 workflow、skill、command、hook 执行声明式 `insert / replace / remove`。selector 使用精确原文，required 漂移会在任何 common/Trellis 强化资产复制前停止；成功后以 managed marker 幂等升级，并把首次原文备份到 `.trellis/.backup-flower/<目标相对路径>`。Markdown 默认使用 HTML marker，Python hook 必须显式使用 `hash` marker，JavaScript 类目标可使用 `slash`；旧 HTML marker 可按声明原位迁移。`workflow.md` 集中 hub 仍注入 `## Phase Index` 顶部，`planning` / `in_progress` / `in_progress-inline` 继续使用短 sentinel；`no_task` 原 body 已由 transform 直接替换，不再保留 additive sentinel 文件。Codex/Claude SessionStart、start/brainstorm 入口也由同一声明升级，自动创建和安全 discard 通过 `task_intent.py` 实际执行。
 
 0.6 的 finish-work guard 明确 `session_auto_commit` 只管 `task.py archive` / `add_session.py` 对自身 bookkeeping 文件(`.trellis/tasks/**` 归档、`.trellis/workspace/**` journal)的提交,对代码提交没有任何控制权:无论开关为 true 还是 false,代码提交都走 Phase 3.4、经用户确认后才提交,绝不因 `session_auto_commit: true` 而自动提交代码或跳过确认;`false` 时 archive / journal 仅落盘,不补做 `chore(task): archive ...` / `chore: record journal` 提交,只报告 `.trellis/tasks/**` / `.trellis/workspace/**` 脏文件供人工处理。
 
 Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入方式。0.6 不再保留单独的 `overrides/trellis-route.md`,routing 规则统一归入 0.6 workflow hub。
 
-特性:幂等(已有则替换)、最小侵入(不改上游正文)、备份首版 `workflow.md.bak`、Claude Code + Codex 双端通用。
+特性:required 全量预检、非目标原文保持、managed marker 幂等、首次备份集中到 `.trellis/.backup-flower/`、Claude Code + Codex 双端通用。独立安装器使用 `scripts/apply-trellis-transforms.py`，协议与 flower-trellis 的 JS consumer 保持一致。
 
 ```bash
 # 只重灌 workflow override + workflow-state sentinel(不重装 SKILL)
 bash install.sh --repo <url> /target workflow-enhancement
 
+# 上一命令的 intent routing 别名
+bash install.sh --repo <url> /target task-intent
+bash install.sh --repo <url> /target intent-routing
+
 # 0.6 中只重灌 finish-work skill override,不刷新 workflow.md
 bash install.sh --repo <url> /target finish-work-enhancement
 ```
 
-回滚:删除 `<!-- BEGIN skill-garden overrides ... -->` hub 和各状态块里的 skill-garden sentinel,或 `cp .trellis/workflow.md.bak .trellis/workflow.md`。
+回滚:从 `.trellis/.backup-flower/<目标相对路径>` 恢复首次原文；不要只删 transform marker，因为 `remove` marker 也是防止旧原文回流的幂等 tombstone。
 
 ## Trellis skill override 注入
 
