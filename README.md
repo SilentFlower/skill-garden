@@ -76,6 +76,9 @@ bash install.sh --repo <url> /target intent-routing
 
 # 0.6 中只重灌 finish-work skill override,不刷新 workflow.md
 bash install.sh --repo <url> /target finish-work-enhancement
+
+# 0.6 中只重灌 Update-Spec 自主判断 override,不刷新 workflow.md
+bash install.sh --repo <url> /target update-spec-enhancement
 ```
 
 回滚:从 `.trellis/.backup-flower/<目标相对路径>` 恢复首次原文；不要只删 transform marker，因为 `remove` marker 也是防止旧原文回流的幂等 tombstone。
@@ -84,11 +87,16 @@ bash install.sh --repo <url> /target finish-work-enhancement
 
 Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN/END` 增量块注入到目标项目已有的 skill / command,不复制、不维护整份 Trellis 原生入口。
 
-当前只有 `overrides/skills/trellis-finish-work.md`,用于在 `trellis-finish-work` 归档前加入英文 `Release Operations Inference Step`。它会注入已有的 `.agents/skills/trellis-finish-work/SKILL.md`、`.claude/skills/trellis-finish-work/SKILL.md` 和 `.claude/commands/trellis/finish-work.md`;目标不存在则跳过。
+当前包含:
 
-特性:幂等(已有同名块先替换)、最小侵入(只注入一段 override)、备份首版 `<target>.flower-skill-garden.bak`。`finish-work-enhancement` 只刷新这段 skill override。
+- `overrides/skills/trellis-finish-work.md`:在 `trellis-finish-work` 归档前加入 release audit 与精确 bookkeeping 规则。
+- `overrides/skills/trellis-update-spec.md`:让 Phase 3.3 自主返回 `no-op` / `written` / `needs-review`,限制最小必要 spec 写入,并在 interactive `no-op` / `written` 后同轮进入 `trellis-push`。
 
-回滚:删除目标文件里的 `<!-- BEGIN skill-garden skill override trellis-finish-work ... -->` 块,或从 `.flower-skill-garden.bak` 恢复。
+每个 override 都会注入目标已有的 `.agents/skills/<name>/SKILL.md`、`.claude/skills/<name>/SKILL.md` 和 `.claude/commands/trellis/<short-name>.md`;目标不存在则跳过。
+
+特性:幂等(已有同名块先替换)、最小侵入(只注入一段 override)、备份首版 `<target>.flower-skill-garden.bak`。`finish-work-enhancement` 和 `update-spec-enhancement` 分别只刷新对应 override。
+
+回滚:删除目标文件里的对应 `<!-- BEGIN skill-garden skill override <name> ... -->` 块,或从 `.flower-skill-garden.bak` 恢复。
 
 ---
 
@@ -106,7 +114,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 
 ### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
 
-按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub 和 finish-work skill override:
+按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub、finish-work 和 Update-Spec skill override:
 
 | 技能 | 形态 | 何时用 |
 |------|------|--------|

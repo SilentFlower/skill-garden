@@ -599,6 +599,8 @@ PYEOF
           DO_SKILL_OVERRIDE=true
         elif [[ "$name" == "trellis-finish-work" ]] && should_install "finish-work-enhancement"; then
           DO_SKILL_OVERRIDE=true
+        elif [[ "$name" == "trellis-update-spec" ]] && should_install "update-spec-enhancement"; then
+          DO_SKILL_OVERRIDE=true
         fi
         [[ "$DO_SKILL_OVERRIDE" == true ]] || continue
         echo "[$name] inject skill override"
@@ -638,7 +640,7 @@ targets = [
 ]
 existing = [p for p in targets if p.is_file()]
 if not existing:
-    print("  · skip:未找到目标已有 finish-work skill/command")
+    print(f"  · skip:未找到目标已有 {name} skill/command")
     raise SystemExit(0)
 
 for dst in existing:
