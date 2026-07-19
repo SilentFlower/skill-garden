@@ -16,6 +16,7 @@ PATCH_SCHEMA_VERSION = 2
 BUNDLE_SCHEMA_VERSION = 1
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LEGACY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+SEMVER_RE = re.compile(r"^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$")
 OPERATIONS = {"insert", "replace", "remove"}
 TARGET_KINDS = {
     "workflow",
@@ -41,10 +42,428 @@ CREATABLE_TARGET_KINDS = {"json", "yaml", "toml"}
 TARGET_POLICIES = {"each-existing", "at-least-one", "required-all"}
 MARKER_STYLES = {"html", "hash", "slash", "none"}
 INSTALL_MODES = {"full-or-selected", "full-only"}
+SEVERITIES = {"error", "warning", "info"}
+ASSERTION_TYPES = {"absent-literal", "required-literal", "max-occurrences"}
 
 
 class PatchError(RuntimeError):
     """表示 Patch 声明、预检或应用阶段无法安全继续。"""
+
+
+def _read_json(file: Path, label: str) -> dict[str, Any]:
+    try:
+        return _assert_object(json.loads(file.read_text(encoding="utf-8")), label)
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise PatchError(f"{label} 无法读取:{error}") from error
+
+
+def _require_string(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise PatchError(f"{label} 必须是非空字符串")
+    return value
+
+
+def _require_string_array(value: Any, label: str) -> list[str]:
+    if not isinstance(value, list) or not value:
+        raise PatchError(f"{label} 必须是非空字符串数组")
+    return [_require_string(item, f"{label}[{index}]") for index, item in enumerate(value)]
+
+
+def _validate_compatibility(raw: dict[str, Any]) -> dict[str, Any]:
+    if raw.get("schemaVersion") != 1:
+        raise PatchError("compatibility schemaVersion 必须为 1")
+    variant = _require_string(raw.get("variant"), "compatibility.variant")
+    line = raw.get("compatibleLine")
+    if (
+        not isinstance(line, dict)
+        or not isinstance(line.get("major"), int)
+        or isinstance(line.get("major"), bool)
+        or line["major"] < 0
+        or not isinstance(line.get("minor"), int)
+        or isinstance(line.get("minor"), bool)
+        or line["minor"] < 0
+    ):
+        raise PatchError("compatibility.compatibleLine 必须包含非负整数 major/minor")
+    if variant != f"{line['major']}.{line['minor']}":
+        raise PatchError("compatibility.variant 必须匹配 compatibleLine")
+    tested_versions = _require_string_array(
+        raw.get("testedVersions"),
+        "compatibility.testedVersions",
+    )
+    if len(set(tested_versions)) != len(tested_versions):
+        raise PatchError("compatibility.testedVersions 不能重复")
+    for index, version in enumerate(tested_versions):
+        if not SEMVER_RE.fullmatch(version):
+            raise PatchError(
+                f"compatibility.testedVersions[{index}] 必须是完整 semver"
+            )
+    if raw.get("untestedPatchPolicy") != "warning":
+        raise PatchError("compatibility.untestedPatchPolicy 当前只允许 warning")
+    if raw.get("newLinePolicy") != "error":
+        raise PatchError("compatibility.newLinePolicy 当前只允许 error")
+    return raw
+
+
+def _validate_conflict_target(value: Any, label: str) -> str:
+    target = _require_string(value, label)
+    posix = PurePosixPath(target)
+    windows = PureWindowsPath(target)
+    if "\\" in target or posix.is_absolute() or windows.is_absolute() or windows.drive:
+        raise PatchError(f"{label} 必须是项目内 POSIX 相对路径")
+    if any(part in {"", ".", ".."} for part in target.split("/")):
+        raise PatchError(f"{label} 包含不安全路径片段")
+    return target
+
+
+def _validate_assertion(raw: Any, label: str) -> dict[str, Any]:
+    assertion = _assert_object(raw, label)
+    assertion_type = assertion.get("type")
+    if assertion_type not in ASSERTION_TYPES:
+        raise PatchError(f"{label}.type 非法:{assertion_type}")
+    if assertion_type == "max-occurrences":
+        _require_string(assertion.get("value"), f"{label}.value")
+        maximum = assertion.get("max")
+        if not isinstance(maximum, int) or isinstance(maximum, bool) or maximum < 0:
+            raise PatchError(f"{label}.max 必须是非负整数")
+    else:
+        _require_string_array(assertion.get("values"), f"{label}.values")
+    return assertion
+
+
+def _validate_conflicts(raw: dict[str, Any]) -> dict[str, Any]:
+    if raw.get("schemaVersion") != 1:
+        raise PatchError("conflicts schemaVersion 必须为 1")
+    rules = raw.get("rules")
+    if not isinstance(rules, list):
+        raise PatchError("conflicts.rules 必须是数组")
+    seen: set[str] = set()
+    for index, rule_value in enumerate(rules):
+        label = f"conflicts.rules[{index}]"
+        rule = _assert_object(rule_value, label)
+        rule_id = _assert_id(rule.get("id"), f"{label}.id")
+        if rule_id in seen:
+            raise PatchError(f"conflict rule id 重复:{rule_id}")
+        seen.add(rule_id)
+        if rule.get("severity") not in SEVERITIES:
+            raise PatchError(f"{label}.severity 非法:{rule.get('severity')}")
+        _validate_conflict_target(rule.get("target"), f"{label}.target")
+        operation_ids = _require_string_array(
+            rule.get("whenOperations"),
+            f"{label}.whenOperations",
+        )
+        for operation_index, operation_id in enumerate(operation_ids):
+            _assert_id(operation_id, f"{label}.whenOperations[{operation_index}]")
+        _validate_assertion(rule.get("assertion"), f"{label}.assertion")
+        _require_string(rule.get("owner"), f"{label}.owner")
+        _require_string(rule.get("reason"), f"{label}.reason")
+    return raw
+
+
+def load_patch_policy(overrides_dir: Path) -> dict[str, Any]:
+    """读取并校验共享版本兼容与最终产物冲突声明。
+
+    Args:
+        overrides_dir: 包含 compatibility.json 与 conflicts.json 的目录。
+
+    Returns:
+        已校验的 compatibility 与 conflicts 对象。
+
+    Raises:
+        PatchError: policy 缺失、JSON 非法或声明不满足协议。
+    """
+    root = overrides_dir.resolve(strict=True)
+    return {
+        "compatibility": _validate_compatibility(
+            _read_json(root / "compatibility.json", "compatibility policy")
+        ),
+        "conflicts": _validate_conflicts(
+            _read_json(root / "conflicts.json", "conflict policy")
+        ),
+    }
+
+
+def _parse_version(value: Any) -> dict[str, Any] | None:
+    if not isinstance(value, str):
+        return None
+    match = SEMVER_RE.fullmatch(value)
+    if not match:
+        return None
+    return {
+        "value": value,
+        "major": int(match.group(1)),
+        "minor": int(match.group(2)),
+        "patch": int(match.group(3)),
+        "prerelease": match.group(4),
+    }
+
+
+def _diagnostic(
+    diagnostic_id: str,
+    severity: str,
+    target: str,
+    owner: str,
+    reason: str,
+    evidence: list[str],
+) -> dict[str, Any]:
+    return {
+        "id": diagnostic_id,
+        "severity": severity,
+        "target": target,
+        "owner": owner,
+        "reason": reason,
+        "evidence": evidence,
+    }
+
+
+def _summarize(diagnostics: list[dict[str, Any]]) -> dict[str, int]:
+    summary = {"errors": 0, "warnings": 0, "info": 0}
+    for item in diagnostics:
+        if item["severity"] == "error":
+            summary["errors"] += 1
+        elif item["severity"] == "warning":
+            summary["warnings"] += 1
+        else:
+            summary["info"] += 1
+    return summary
+
+
+def evaluate_patch_compatibility(
+    version: str,
+    compatibility: dict[str, Any],
+) -> dict[str, Any]:
+    """按登记版本与兼容线评估目标 Trellis 版本。
+
+    Args:
+        version: 目标项目 `.trellis/.version` 的去空白值。
+        compatibility: 已校验的 compatibility policy。
+
+    Returns:
+        version status 与结构化 diagnostics。
+    """
+    parsed = _parse_version(version)
+    if parsed is None:
+        return {
+            "version": {"value": version or "", "status": "invalid"},
+            "diagnostics": [
+                _diagnostic(
+                    "invalid-upstream-version",
+                    "error",
+                    ".trellis/.version",
+                    "patch-compatibility",
+                    "0.6 Patch 需要可解析的 Trellis semver 版本。",
+                    [version or "<empty>"],
+                )
+            ],
+        }
+    if parsed["value"] in compatibility["testedVersions"]:
+        return {
+            "version": {"value": parsed["value"], "status": "tested"},
+            "diagnostics": [],
+        }
+    line = compatibility["compatibleLine"]
+    if parsed["major"] == line["major"] and parsed["minor"] == line["minor"]:
+        return {
+            "version": {
+                "value": parsed["value"],
+                "status": "untested-compatible",
+            },
+            "diagnostics": [
+                _diagnostic(
+                    "untested-upstream",
+                    "warning",
+                    ".trellis/.version",
+                    "patch-compatibility",
+                    "目标版本位于兼容线内但尚未登记 baseline；只有完整预检和冲突断言通过后才允许继续。",
+                    [parsed["value"]],
+                )
+            ],
+        }
+    return {
+        "version": {"value": parsed["value"], "status": "unsupported"},
+        "diagnostics": [
+            _diagnostic(
+                "unsupported-upstream-line",
+                "error",
+                ".trellis/.version",
+                "patch-compatibility",
+                "该 Trellis minor/major 尚无受支持 Patch baseline；请使用匹配的 Flower 版本或 --no-enhance。",
+                [parsed["value"]],
+            )
+        ],
+    }
+
+
+def evaluate_patch_conflicts(
+    plan: dict[str, Any],
+    conflicts: dict[str, Any],
+) -> dict[str, Any]:
+    """对 Patch 计划中的最终内存文件执行确定性冲突断言。
+
+    Args:
+        plan: `prepare_patches` 返回的完整计划。
+        conflicts: 已校验的 conflicts policy。
+
+    Returns:
+        只包含本次已选 operation 的结构化 diagnostics。
+    """
+    catalog_operations = plan.get("catalogOperations")
+    if isinstance(catalog_operations, list):
+        operation_targets = {
+            operation["id"]: set(operation["targets"])
+            for operation in catalog_operations
+        }
+        for rule in conflicts["rules"]:
+            for operation_id in rule["whenOperations"]:
+                targets = operation_targets.get(operation_id)
+                if targets is None:
+                    raise PatchError(
+                        f"conflict rule {rule['id']} 引用未知 operation:{operation_id}"
+                    )
+                if rule["target"] not in targets:
+                    raise PatchError(
+                        f"conflict rule {rule['id']} target 未被 operation "
+                        f"{operation_id} 修改:{rule['target']}"
+                    )
+    selected_operations = {
+        operation_id
+        for file_plan in plan["files"]
+        for operation_id in file_plan["operations"]
+    }
+    files = {file_plan["target"]: file_plan["next"] for file_plan in plan["files"]}
+    diagnostics: list[dict[str, Any]] = []
+    for rule in conflicts["rules"]:
+        if not all(item in selected_operations for item in rule["whenOperations"]):
+            continue
+        value = files.get(rule["target"])
+        if not isinstance(value, str):
+            continue
+        assertion = rule["assertion"]
+        evidence: list[str] = []
+        if assertion["type"] == "absent-literal":
+            evidence.extend(
+                f"仍存在:{literal}"
+                for literal in assertion["values"]
+                if literal in value
+            )
+        elif assertion["type"] == "required-literal":
+            evidence.extend(
+                f"缺少:{literal}"
+                for literal in assertion["values"]
+                if literal not in value
+            )
+        else:
+            count = value.count(assertion["value"])
+            if count > assertion["max"]:
+                evidence.append(
+                    f"出现 {count} 次，允许最多 {assertion['max']} 次:{assertion['value']}"
+                )
+        if evidence:
+            diagnostics.append(
+                _diagnostic(
+                    rule["id"],
+                    rule["severity"],
+                    rule["target"],
+                    rule["owner"],
+                    rule["reason"],
+                    evidence,
+                )
+            )
+    for item in plan["results"]:
+        if item["status"] == "missing-target":
+            diagnostics.append(
+                _diagnostic(
+                    f"missing-target:{item['id']}:{item['target']}",
+                    "info",
+                    item["target"],
+                    item["patch"],
+                    "目标平台入口未安装，按声明跳过。",
+                    [item["id"]],
+                )
+            )
+        elif item["status"] == "optional-skip":
+            diagnostics.append(
+                _diagnostic(
+                    f"optional-skip:{item['id']}:{item['target']}",
+                    "warning",
+                    item["target"],
+                    item["patch"],
+                    "可选 Patch 未应用，需要评审其漂移原因。",
+                    [item.get("reason", "unknown")],
+                )
+            )
+    return {"diagnostics": diagnostics}
+
+
+def build_patch_conflict_report(
+    version: str,
+    plan: dict[str, Any],
+    policy: dict[str, Any],
+) -> dict[str, Any]:
+    """合并版本与最终产物诊断并生成稳定排序报告。
+
+    Args:
+        version: 目标 Trellis 版本。
+        plan: `prepare_patches` 返回的完整计划。
+        policy: `load_patch_policy` 返回的共享 policy。
+
+    Returns:
+        包含 version、diagnostics 与 severity 汇总的报告。
+    """
+    compatibility = evaluate_patch_compatibility(version, policy["compatibility"])
+    conflicts = evaluate_patch_conflicts(plan, policy["conflicts"])
+    severity_order = {"error": 0, "warning": 1, "info": 2}
+    diagnostics = sorted(
+        compatibility["diagnostics"] + conflicts["diagnostics"],
+        key=lambda item: (
+            severity_order[item["severity"]],
+            item["id"],
+            item["target"],
+        ),
+    )
+    return {
+        "version": compatibility["version"],
+        "diagnostics": diagnostics,
+        "summary": _summarize(diagnostics),
+    }
+
+
+def assert_no_patch_conflict_errors(report: dict[str, Any]) -> None:
+    """在报告含 error 时抛出聚合异常。
+
+    Args:
+        report: `build_patch_conflict_report` 返回的报告。
+
+    Raises:
+        PatchError: 报告至少包含一个 error diagnostic。
+    """
+    errors = [item for item in report["diagnostics"] if item["severity"] == "error"]
+    if not errors:
+        return
+    detail = "; ".join(
+        f"{item['id']}@{item['target']}:{item['reason']}"
+        for item in errors
+    )
+    error = PatchError(f"Patch 冲突检查失败:{detail}")
+    error.patch_conflict_report = report
+    raise error
+
+
+def format_patch_diagnostic(diagnostic: dict[str, Any]) -> str:
+    """格式化包含规则、目标、原因和证据的 Patch diagnostic。
+
+    Args:
+        diagnostic: 冲突报告中的单条 diagnostic。
+
+    Returns:
+        可直接输出到 CLI 的稳定文本。
+    """
+    labels = {"error": "错误", "warning": "警告", "info": "信息"}
+    evidence = " | ".join(diagnostic["evidence"]) or "<none>"
+    return (
+        f"Patch {labels.get(diagnostic['severity'], diagnostic['severity'])}:"
+        f"{diagnostic['id']}@{diagnostic['target']}"
+        f"({diagnostic['reason']};证据:{evidence})"
+    )
 
 
 def _assert_object(value: Any, label: str) -> dict[str, Any]:
@@ -634,7 +1053,7 @@ def _normalize_operation(
 def _load_catalog(
     overrides_dir: Path,
     skills: list[str],
-) -> tuple[list[str], list[dict[str, Any]], list[Path]]:
+) -> tuple[list[str], list[dict[str, Any]], list[Path], list[dict[str, Any]]]:
     patches_dir = overrides_dir / "patches"
     bundles_dir = overrides_dir / "bundles"
     patch_by_ref: dict[str, dict[str, Any]] = {}
@@ -709,7 +1128,20 @@ def _load_catalog(
     for ref in patch_by_ref:
         if ref not in referenced:
             raise PatchError(f"未被 bundle 引用的 patch:{ref}")
-    return bundles, list(patches.values()), sorted(set(catalog_files))
+    catalog_operations = [
+        {
+            "id": operation["id"],
+            "targets": [target["path"] for target in operation["targets"]],
+        }
+        for patch in patch_by_ref.values()
+        for operation in patch["operations"]
+    ]
+    return (
+        bundles,
+        list(patches.values()),
+        sorted(set(catalog_files)),
+        catalog_operations,
+    )
 
 
 def prepare_patches(
@@ -725,14 +1157,17 @@ def prepare_patches(
         skills: 可选精细安装过滤名。
 
     Returns:
-        包含 bundles、patches、files、results 与 catalogHash 的预检计划。
+        包含 bundles、patches、files、results、catalogHash 与 catalogOperations 的预检计划。
 
     Raises:
         PatchError: schema、selector、路径或 required Patch 无法安全应用。
     """
     overrides_dir = overrides_dir.resolve(strict=True)
     target_root = target_root.resolve(strict=True)
-    bundles, patches, catalog_files = _load_catalog(overrides_dir, skills or [])
+    bundles, patches, catalog_files, catalog_operations = _load_catalog(
+        overrides_dir,
+        skills or [],
+    )
     files: dict[str, dict[str, Any]] = {}
     results: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
@@ -908,6 +1343,7 @@ def prepare_patches(
         "files": list(files.values()),
         "results": results,
         "catalogHash": catalog_hash,
+        "catalogOperations": catalog_operations,
     }
 
 
@@ -935,7 +1371,7 @@ def apply_prepared(target_root: Path, plan: dict[str, Any]) -> dict[str, Any]:
         plan: `prepare_patches` 返回的计划。
 
     Returns:
-        changed、unchanged、skipped、targets、backupNotes 和 provenance 汇总。
+        changed、unchanged、missingTargets、optionalSkipped、targets、backupNotes 和 provenance 汇总。
 
     Raises:
         PatchError: 预检后目标发生存在性或内容漂移。
@@ -991,13 +1427,14 @@ def apply_prepared(target_root: Path, plan: dict[str, Any]) -> dict[str, Any]:
             for index, operation_id in enumerate(file_plan["operations"])
         ],
     }
+    missing_targets = sum(item["status"] == "missing-target" for item in plan["results"])
+    optional_skipped = sum(item["status"] == "optional-skip" for item in plan["results"])
     return {
         "changed": changed,
         "unchanged": unchanged,
-        "skipped": sum(
-            item["status"] in {"missing-target", "optional-skip"}
-            for item in plan["results"]
-        ),
+        "skipped": missing_targets + optional_skipped,
+        "missingTargets": missing_targets,
+        "optionalSkipped": optional_skipped,
         "targets": [item["target"] for item in plan["files"]],
         "backupNotes": backup_notes,
         "results": plan["results"],
@@ -1022,16 +1459,37 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 2
     try:
-        plan = prepare_patches(Path(args[0]), Path(args[1]), args[2:])
-        result = apply_prepared(Path(args[1]), plan)
+        overrides_dir = Path(args[0])
+        target_root = Path(args[1])
+        policy = load_patch_policy(overrides_dir)
+        version_file = target_root / ".trellis/.version"
+        version = version_file.read_text(encoding="utf-8").strip() if version_file.is_file() else ""
+        compatibility = evaluate_patch_compatibility(version, policy["compatibility"])
+        compatibility_report = {
+            "version": compatibility["version"],
+            "diagnostics": compatibility["diagnostics"],
+            "summary": _summarize(compatibility["diagnostics"]),
+        }
+        # 未支持版本必须先返回 --no-enhance 指引，不能被旧 catalog 的 selector 漂移掩盖。
+        assert_no_patch_conflict_errors(compatibility_report)
+        plan = prepare_patches(overrides_dir, target_root, args[2:])
+        report = build_patch_conflict_report(version, plan, policy)
+        for diagnostic in report["diagnostics"]:
+            if diagnostic["severity"] == "warning":
+                print(f"  · {format_patch_diagnostic(diagnostic)}")
+        assert_no_patch_conflict_errors(report)
+        result = apply_prepared(target_root, plan)
     except (OSError, UnicodeError, json.JSONDecodeError, PatchError) as error:
         print(f"❌ {error}", file=sys.stderr)
         return 1
     print(
         "  ✓ Patch "
         f"changed={result['changed']} unchanged={result['unchanged']} "
-        f"skipped={result['skipped']}"
+        f"missing-target={result['missingTargets']} "
+        f"optional-skip={result['optionalSkipped']}"
     )
+    if report["summary"]["info"]:
+        print(f"  · Patch 信息:{report['summary']['info']} 个目标入口未安装")
     for item in result["results"]:
         if item["status"] == "optional-skip":
             print(
