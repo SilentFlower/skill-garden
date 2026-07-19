@@ -205,8 +205,8 @@ echo "目标: $TARGET_DIR"
 echo "scope: $SCOPE (trellis=$INSTALL_TRELLIS, common=$INSTALL_COMMON)"
 echo ""
 
-# 在任何 common/trellis 资产复制前解析目标变体并执行 0.6 required transform。
-# 这样 --scope=all 的 transform 漂移也保持整个安装目标零写入。
+# 在任何 common/trellis 资产复制前解析目标变体并执行 0.6 required Patch。
+# 这样 --scope=all 的 Patch 漂移也保持全部资产零复制。
 IS_TRELLIS=false
 TRELLIS_VARIANT="old"
 TRELLIS_VERSION=""
@@ -229,20 +229,19 @@ fi
 TRELLIS_AGENTS="$GARDEN/.trellis/$TRELLIS_VARIANT/.agents/skills"
 TRELLIS_CLAUDE="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/commands/trellis"
 TRELLIS_CLAUDE_SKILLS="$GARDEN/.trellis/$TRELLIS_VARIANT/.claude/skills"
-TRELLIS_SKILL_OVERRIDES="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/skills"
-TRELLIS_TRANSFORMS="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/transforms"
-TRELLIS_TRANSFORM_RUNNER="$GARDEN/scripts/apply-trellis-transforms.py"
+TRELLIS_OVERRIDES="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides"
+TRELLIS_PATCH_RUNNER="$GARDEN/scripts/apply-trellis-patches.py"
 TRELLIS_TASK_INTENT="$GARDEN/.trellis/$TRELLIS_VARIANT/scripts/task_intent.py"
 
 if [[ "$INSTALL_TRELLIS" == true \
     && "$IS_TRELLIS" == true \
     && "$TRELLIS_VARIANT" == "0.6" \
-    && -d "$TRELLIS_TRANSFORMS" \
-    && -f "$TRELLIS_TRANSFORM_RUNNER" ]] \
-    && should_install_intent_routing; then
-  echo "[intent-routing] apply declarative transforms"
-  python3 "$TRELLIS_TRANSFORM_RUNNER" \
-    "$TRELLIS_TRANSFORMS" "$TARGET_DIR" "${SKILL_NAMES[@]}"
+    && -d "$TRELLIS_OVERRIDES/patches" \
+    && -d "$TRELLIS_OVERRIDES/bundles" \
+    && -f "$TRELLIS_PATCH_RUNNER" ]]; then
+  echo "[patches] preflight + apply Skill-Garden Patch catalog"
+  python3 "$TRELLIS_PATCH_RUNNER" \
+    "$TRELLIS_OVERRIDES" "$TARGET_DIR" "${SKILL_NAMES[@]}"
 fi
 
 # ══════════════════════════════════
@@ -361,35 +360,24 @@ if [[ "$INSTALL_TRELLIS" == true ]]; then
       done
     fi
 
-    # 3d) workflow.md 注入 Phase Index 顶部的 skill-garden 章节(幂等,首次备份)
-    WF_HUB_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow.md"
+    # 3d) 0.5/old legacy workflow 注入；0.6 已在资产复制前由 Patch runner 完成。
     WF_ROUTE_ENHANCE="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/trellis-route.md"
-    WF_STATE_ENHANCE_DIR="$GARDEN/.trellis/$TRELLIS_VARIANT/overrides/workflow-states"
     WF_DST="$TARGET_DIR/.trellis/workflow.md"
     DO_WORKFLOW_ENHANCE=false
-    if [[ "$TRELLIS_VARIANT" == "0.6" && -f "$WF_HUB_ENHANCE" && -f "$WF_DST" ]]; then
-      if should_install_intent_routing; then
-        DO_WORKFLOW_ENHANCE=true
-        ENHANCE_LABEL="workflow-enhancement"
-        ENHANCE_DESC="0.6 Phase Index 集中 hub + 合并 workflow-state sentinel"
-      fi
-    elif [[ -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] && should_install_intent_routing; then
+    if [[ "$TRELLIS_VARIANT" != "0.6" && -f "$WF_ROUTE_ENHANCE" && -f "$WF_DST" ]] \
+        && should_install_intent_routing; then
       DO_WORKFLOW_ENHANCE=true
       ENHANCE_LABEL="workflow-enhancement"
       ENHANCE_DESC="Phase Index 顶部 skill-garden 章节 + workflow-state guard"
     fi
     if [[ "$DO_WORKFLOW_ENHANCE" == true ]]; then
       echo "[$ENHANCE_LABEL] inject → .trellis/workflow.md ($ENHANCE_DESC)"
-      python3 - "$WF_HUB_ENHANCE" "$WF_ROUTE_ENHANCE" "$WF_STATE_ENHANCE_DIR" "$WF_DST" "$TRELLIS_VARIANT" <<'PYEOF'
+      python3 - "$WF_ROUTE_ENHANCE" "$WF_DST" <<'PYEOF'
 import sys, re, shutil
 from pathlib import Path
 
-hub_src = Path(sys.argv[1])
-route_src = Path(sys.argv[2])
-state_dir = Path(sys.argv[3])
-dst = Path(sys.argv[4])
-variant = sys.argv[5]
-is_v06 = variant == "0.6" and hub_src.is_file()
+route_src = Path(sys.argv[1])
+dst = Path(sys.argv[2])
 
 # sentinel / heading 必须各自独占一行;散文内字面量不会被误匹配
 SECTION_PATTERNS = [
@@ -530,35 +518,20 @@ def replace_state(value, regex, block):
 
     return regex.sub(repl, value, count=1), True
 
-def read_state_block(filename):
-    path = state_dir / filename
-    if not path.is_file():
-        raise FileNotFoundError(f"missing workflow-state override: {path}")
-    return path.read_text(encoding="utf-8").strip() + "\n\n"
-
 text = dst.read_text(encoding="utf-8")
 
 clean = strip_skill_garden_blocks(text)
-source = hub_src if is_v06 else route_src
-block = source.read_text(encoding="utf-8").rstrip()
+block = route_src.read_text(encoding="utf-8").rstrip()
 phase_new, action = inject_after_phase_index(clean, block)
 
 state_actions = []
-if is_v06:
-    state_specs = [
-        ("[workflow-state:planning]", PLANNING_BLOCK_RE, read_state_block("planning.md")),
-        ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, read_state_block("planning-inline.md")),
-        ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, read_state_block("in_progress.md")),
-        ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, read_state_block("in_progress-inline.md")),
-    ]
-else:
-    state_specs = [
-        ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, LEGACY_NO_TASK_BLOCK + LEGACY_PUSH_PROGRESS_BLOCK),
-        ("[workflow-state:planning]", PLANNING_BLOCK_RE, LEGACY_PLANNING_BLOCK),
-        ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, LEGACY_PLANNING_BLOCK),
-        ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, LEGACY_IN_PROGRESS_BLOCK + LEGACY_PUSH_SNAPSHOT_BLOCK),
-        ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, LEGACY_PUSH_SNAPSHOT_BLOCK),
-    ]
+state_specs = [
+    ("[workflow-state:no_task]", NO_TASK_BLOCK_RE, LEGACY_NO_TASK_BLOCK + LEGACY_PUSH_PROGRESS_BLOCK),
+    ("[workflow-state:planning]", PLANNING_BLOCK_RE, LEGACY_PLANNING_BLOCK),
+    ("[workflow-state:planning-inline]", PLANNING_INLINE_BLOCK_RE, LEGACY_PLANNING_BLOCK),
+    ("[workflow-state:in_progress]", IN_PROGRESS_BLOCK_RE, LEGACY_IN_PROGRESS_BLOCK + LEGACY_PUSH_SNAPSHOT_BLOCK),
+    ("[workflow-state:in_progress-inline]", IN_PROGRESS_INLINE_BLOCK_RE, LEGACY_PUSH_SNAPSHOT_BLOCK),
+]
 
 new = phase_new
 for label, regex, state_block in state_specs:
@@ -571,13 +544,8 @@ state_action = ",并已更新 " + " / ".join(state_actions)
 if new == text:
     print("  ✓ workflow.md 强化块已是最新,无需改动")
 else:
-    if is_v06:
-        project_root = dst.parent.parent
-        bak = project_root / ".trellis" / ".backup-flower" / ".trellis" / "workflow.md"
-        backup_label = bak.relative_to(project_root).as_posix()
-    else:
-        bak = Path(str(dst) + ".bak")
-        backup_label = "workflow.md.bak"
+    bak = Path(str(dst) + ".bak")
+    backup_label = "workflow.md.bak"
     if not bak.exists():
         bak.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(dst, bak)
@@ -587,80 +555,6 @@ else:
     dst.write_text(new, encoding="utf-8")
     print(f"  ✓ workflow.md 强化块已{action}{state_action}{backup_note}")
 PYEOF
-    fi
-
-    # 3e) skill override 注入:只改目标已有的上游 skill / command,不维护完整副本
-    if [[ -d "$TRELLIS_SKILL_OVERRIDES" ]]; then
-      for override_file in "$TRELLIS_SKILL_OVERRIDES"/*.md; do
-        [[ ! -f "$override_file" ]] && continue
-        name="$(basename "$override_file" .md)"
-        DO_SKILL_OVERRIDE=false
-        if should_install "$name"; then
-          DO_SKILL_OVERRIDE=true
-        elif [[ "$name" == "trellis-finish-work" ]] && should_install "finish-work-enhancement"; then
-          DO_SKILL_OVERRIDE=true
-        elif [[ "$name" == "trellis-update-spec" ]] && should_install "update-spec-enhancement"; then
-          DO_SKILL_OVERRIDE=true
-        fi
-        [[ "$DO_SKILL_OVERRIDE" == true ]] || continue
-        echo "[$name] inject skill override"
-        python3 - "$override_file" "$TARGET_DIR" "$name" <<'PYEOF'
-import sys, re, shutil
-from pathlib import Path
-
-src = Path(sys.argv[1])
-target = Path(sys.argv[2])
-name = sys.argv[3]
-block = src.read_text(encoding="utf-8").rstrip()
-
-def strip_override(value):
-    regex = re.compile(
-        r"^#{2,4} HIGHEST PRIORITY: skill-garden .*\n+"
-        r"^<!-- BEGIN skill-garden skill override " + re.escape(name) + r"[^\n]*-->\n.*?"
-        r"^<!-- END skill-garden skill override " + re.escape(name) + r"[^\n]*-->\n*",
-        re.DOTALL | re.MULTILINE,
-    )
-    return regex.sub("", value)
-
-def inject_after_frontmatter(value):
-    match = re.match(r"^---\n.*?\n---\n", value, re.DOTALL)
-    if match:
-        return value[:match.end()] + "\n" + block + "\n\n" + value[match.end():].lstrip("\n")
-    # 无 frontmatter 的 command 文件首行标题常被平台当作命令描述来源;
-    # override 放到标题后,避免把高优先级 override 标题暴露成命令名。
-    h1 = re.match(r"^# [^\n]*\n", value)
-    if h1:
-        return value[:h1.end()] + "\n" + block + "\n\n" + value[h1.end():].lstrip("\n")
-    return block + "\n\n" + value.lstrip("\n")
-
-targets = [
-    target / ".agents" / "skills" / name / "SKILL.md",
-    target / ".claude" / "skills" / name / "SKILL.md",
-    target / ".claude" / "commands" / "trellis" / f"{name[8:] if name.startswith('trellis-') else name}.md",
-]
-existing = [p for p in targets if p.is_file()]
-if not existing:
-    print(f"  · skip:未找到目标已有 {name} skill/command")
-    raise SystemExit(0)
-
-for dst in existing:
-    text = dst.read_text(encoding="utf-8")
-    new = inject_after_frontmatter(strip_override(text)).rstrip() + "\n"
-    rel = dst.relative_to(target)
-    if new == text:
-        print(f"  ✓ {rel} override 已是最新")
-        continue
-
-    bak = Path(str(dst) + ".flower-skill-garden.bak")
-    if not bak.exists():
-        shutil.copy(dst, bak)
-        backup_note = "(已创建 .flower-skill-garden.bak)"
-    else:
-        backup_note = "(保留已有 .flower-skill-garden.bak)"
-    dst.write_text(new, encoding="utf-8")
-    print(f"  ✓ {rel} 已注入 override {backup_note}")
-PYEOF
-      done
     fi
   fi
 else

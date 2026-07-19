@@ -10,10 +10,10 @@ skill-garden/
 ├── .trellis/                                 # Trellis 强化补充包(按版本)
 │   ├── old/                                  #   < 0.5 (fallback)
 │   ├── 0.5/                                  #   0.5.x:完整版 13 个 skill
-│   └── 0.6/                                  #   ≥ 0.6:精简版 10 个 skill + workflow/skill override
+│   └── 0.6/                                  #   ≥ 0.6:精简版 10 个 skill + Patch 目录
 └── scripts/
     ├── install.sh                            # 一键安装(读目标 .trellis/.version 智能选 variant)
-    └── apply-trellis-transforms.py           # 0.6 insert/replace/remove 声明执行器
+    └── apply-trellis-patches.py              # 0.6 Patch 声明执行器
 ```
 
 ---
@@ -54,49 +54,40 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 
 ---
 
-## Trellis workflow override 注入
+## Trellis Patch
 
-`--scope=trellis|all` 且目标项目是 trellis(≥ 0.5)时,`install.sh` 会幂等注入 workflow override 到 `.trellis/workflow.md`。
+`--scope=trellis|all` 且目标项目是 Trellis 0.6 时，`install.sh` 会在复制强化资产前统一执行 Patch Engine：
 
-Trellis 0.6 先通过 `overrides/transforms/*.json` 对目标已有 workflow、skill、command、hook 执行声明式 `insert / replace / remove`。selector 使用精确原文，required 漂移会在任何 common/Trellis 强化资产复制前停止；成功后以 managed marker 幂等升级，并把首次原文备份到 `.trellis/.backup-flower/<目标相对路径>`。Markdown 默认使用 HTML marker，Python hook 必须显式使用 `hash` marker，JavaScript 类目标可使用 `slash`；旧 HTML marker 可按声明原位迁移。`workflow.md` 集中 hub 仍注入 `## Phase Index` 顶部，`planning` / `in_progress` / `in_progress-inline` 继续使用短 sentinel；`no_task` 原 body 已由 transform 直接替换，不再保留 additive sentinel 文件。Codex/Claude SessionStart、start/brainstorm 入口也由同一声明升级，自动创建和安全 discard 通过 `task_intent.py` 实际执行。
+- `overrides/patches/<target>/<name>/patch.json`：按目标组织单个 `insert / replace / remove` 声明，selector、baseline 和 content 与声明放在同一叶子目录。
+- `overrides/bundles/*.json`：只定义安装别名与 Patch 组合，不承载修改逻辑。
+- required Patch 先全量预检；任一目标漂移时，在 common/Trellis 资产复制前失败且零写入。
+- 成功后写入 managed marker、备份首次原文到 `.trellis/.backup-flower/<目标相对路径>`，并记录可追溯 provenance。
+- 旧 transform marker、workflow sentinel 和 skill additive override 由 Patch 自身迁移；0.6 不再维护第二套注入协议。
+
+Workflow hub、五个 workflow state、Update-Spec、Finish-Work、共享 hook，以及 Codex/Claude 平台配置都走同一执行链。Markdown、Python、JSON、YAML 和 TOML 的结构差异由受控 selector adapter 处理，而不是由安装器分支直接改文件。
 
 0.6 的 finish-work guard 明确 `session_auto_commit` 只管 `task.py archive` / `add_session.py` 对自身 bookkeeping 文件(`.trellis/tasks/**` 归档、`.trellis/workspace/**` journal)的提交,对代码提交没有任何控制权:无论开关为 true 还是 false,代码提交都走 Phase 3.4、经用户确认后才提交,绝不因 `session_auto_commit: true` 而自动提交代码或跳过确认;`false` 时 archive / journal 仅落盘,不补做 `chore(task): archive ...` / `chore: record journal` 提交,只报告 `.trellis/tasks/**` / `.trellis/workspace/**` 脏文件供人工处理。
 
-Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入方式。0.6 不再保留单独的 `overrides/trellis-route.md`,routing 规则统一归入 0.6 workflow hub。
+Trellis 0.5 / old 仍沿用各自原有的 `overrides/trellis-route.md` 注入方式。0.6 不再保留单独的 `overrides/trellis-route.md`，routing 规则统一归入 0.6 workflow hub Patch。
 
-特性:required 全量预检、非目标原文保持、managed marker 幂等、首次备份集中到 `.trellis/.backup-flower/`、Claude Code + Codex 双端通用。独立安装器使用 `scripts/apply-trellis-transforms.py`，协议与 flower-trellis 的 JS consumer 保持一致。
+特性：required 全量预检、非目标原文保持、managed marker 幂等、首次备份集中到 `.trellis/.backup-flower/`、Claude Code + Codex 双端通用。独立安装器使用 `scripts/apply-trellis-patches.py`，协议与 flower-trellis 的 JS consumer 保持一致。
 
 ```bash
-# 只重灌 workflow override + workflow-state sentinel(不重装 SKILL)
+# 只重灌 workflow 与 intent routing Patch Bundle（不重装 SKILL）
 bash install.sh --repo <url> /target workflow-enhancement
 
 # 上一命令的 intent routing 别名
 bash install.sh --repo <url> /target task-intent
 bash install.sh --repo <url> /target intent-routing
 
-# 0.6 中只重灌 finish-work skill override,不刷新 workflow.md
+# 0.6 中只重灌 Finish-Work Patch Bundle，不刷新 workflow.md
 bash install.sh --repo <url> /target finish-work-enhancement
 
-# 0.6 中只重灌 Update-Spec 自主判断 override,不刷新 workflow.md
+# 0.6 中只重灌 Update-Spec Patch Bundle，不刷新 workflow.md
 bash install.sh --repo <url> /target update-spec-enhancement
 ```
 
-回滚:从 `.trellis/.backup-flower/<目标相对路径>` 恢复首次原文；不要只删 transform marker，因为 `remove` marker 也是防止旧原文回流的幂等 tombstone。
-
-## Trellis skill override 注入
-
-Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN/END` 增量块注入到目标项目已有的 skill / command,不复制、不维护整份 Trellis 原生入口。
-
-当前包含:
-
-- `overrides/skills/trellis-finish-work.md`:在 `trellis-finish-work` 归档前加入 release audit 与精确 bookkeeping 规则。
-- `overrides/skills/trellis-update-spec.md`:让 Phase 3.3 自主返回 `no-op` / `written` / `needs-review`,限制最小必要 spec 写入,并在 interactive `no-op` / `written` 后同轮进入 `trellis-push`。
-
-每个 override 都会注入目标已有的 `.agents/skills/<name>/SKILL.md`、`.claude/skills/<name>/SKILL.md` 和 `.claude/commands/trellis/<short-name>.md`;目标不存在则跳过。
-
-特性:幂等(已有同名块先替换)、最小侵入(只注入一段 override)、备份首版 `<target>.flower-skill-garden.bak`。`finish-work-enhancement` 和 `update-spec-enhancement` 分别只刷新对应 override。
-
-回滚:删除目标文件里的对应 `<!-- BEGIN skill-garden skill override <name> ... -->` 块,或从 `.flower-skill-garden.bak` 恢复。
+回滚：从 `.trellis/.backup-flower/<目标相对路径>` 恢复首次原文。不要只删 Patch marker，因为 `remove` marker 也是防止旧原文回流的幂等 tombstone。
 
 ---
 
@@ -114,7 +105,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 
 ### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
 
-按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),自动注入集中式 workflow override hub、finish-work 和 Update-Spec skill override:
+按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),并通过 Bundle 自动应用 workflow hub、Finish-Work 和 Update-Spec Patch:
 
 | 技能 | 形态 | 何时用 |
 |------|------|--------|
@@ -129,7 +120,7 @@ Trellis 0.6 还支持 `overrides/skills/<skill>.md`:安装时把其中的 `BEGIN
 | `trellis-plan-version` | Manual | 新版本启动,需求 → 任务拆分 + 工时评估 + 人员分工 |
 | `trellis-create-command` | Manual | 给项目加新 trellis 入口(command / skill),同步 agents + skill-garden 副本 |
 
-Release operations inference 由 0.6 finish-work skill override 提供,不复制、不 fork、不维护
+Release operations inference 由 0.6 Finish-Work Patch 提供,不复制、不 fork、不维护
 Trellis 原生 `trellis-finish-work` skill。用户显式运行 finish-work 前,agent 会根据任务文档、提交和
 文件名信号智能判断是否需要记录上线事项;识别到 SQL、配置、批处理 / 部署脚本 / 数据修复、
 外部系统 / 依赖平台上线等事项时,写入 `<task>/release.md`;明确无事项时不创建文件。
