@@ -15,13 +15,18 @@
       ".codex"
     ]
   },
-  "catalogHash": "sha256:f23cf7c379dd70bd820320ed1303c626dfa72c265fe0ef9a8718fd3d68b20a64",
+  "catalogHash": "sha256:f48083c601ed86c30e7f33816dcd2449ac12ddef5de753a420e0f2df32b4ab97",
   "catalogs": [
     {
       "id": "skill-garden"
     }
   ],
   "selectedBundles": [
+    {
+      "id": "trellis-auto-loop",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-auto-loop"
+    },
     {
       "id": "control-plane-integrity",
       "catalog": "skill-garden",
@@ -58,9 +63,11 @@
       "id": "task-store-write-integrity",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ]
     },
     {
@@ -351,12 +358,32 @@
       "qualifiedId": "skill-garden/task-store-write-helpers",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "declarationIndex": 0,
       "resolvedIndex": 0,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "task-store-decision-log-import",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/task-store-decision-log-import",
+      "patch": "task-store-write-integrity",
+      "qualifiedPatch": "skill-garden/task-store-write-integrity",
+      "bundle": "trellis-auto-loop",
+      "bundles": [
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
+      ],
+      "declarationIndex": 1,
+      "resolvedIndex": 1,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -367,12 +394,14 @@
       "qualifiedId": "skill-garden/task-create-duplicate-slug",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 1,
-      "resolvedIndex": 1,
+      "declarationIndex": 2,
+      "resolvedIndex": 2,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -383,12 +412,14 @@
       "qualifiedId": "skill-garden/task-create-initial-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 2,
-      "resolvedIndex": 2,
+      "declarationIndex": 3,
+      "resolvedIndex": 3,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -399,12 +430,14 @@
       "qualifiedId": "skill-garden/task-create-parent-link",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 3,
-      "resolvedIndex": 3,
+      "declarationIndex": 4,
+      "resolvedIndex": 4,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -415,12 +448,14 @@
       "qualifiedId": "skill-garden/task-create-active-warning",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 4,
-      "resolvedIndex": 4,
+      "declarationIndex": 5,
+      "resolvedIndex": 5,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -431,12 +466,14 @@
       "qualifiedId": "skill-garden/task-archive-metadata-guard",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 5,
-      "resolvedIndex": 5,
+      "declarationIndex": 6,
+      "resolvedIndex": 6,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -447,12 +484,14 @@
       "qualifiedId": "skill-garden/task-archive-status-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 6,
-      "resolvedIndex": 6,
+      "declarationIndex": 7,
+      "resolvedIndex": 7,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -463,12 +502,14 @@
       "qualifiedId": "skill-garden/task-add-subtask-pair-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 7,
-      "resolvedIndex": 7,
+      "declarationIndex": 8,
+      "resolvedIndex": 8,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -479,12 +520,14 @@
       "qualifiedId": "skill-garden/task-remove-subtask-pair-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 8,
-      "resolvedIndex": 8,
+      "declarationIndex": 9,
+      "resolvedIndex": 9,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -495,12 +538,14 @@
       "qualifiedId": "skill-garden/task-set-branch-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 9,
-      "resolvedIndex": 9,
+      "declarationIndex": 10,
+      "resolvedIndex": 10,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -511,12 +556,14 @@
       "qualifiedId": "skill-garden/task-set-base-branch-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 10,
-      "resolvedIndex": 10,
+      "declarationIndex": 11,
+      "resolvedIndex": 11,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -527,12 +574,14 @@
       "qualifiedId": "skill-garden/task-set-scope-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 11,
-      "resolvedIndex": 11,
+      "declarationIndex": 12,
+      "resolvedIndex": 12,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -547,8 +596,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 12,
-      "resolvedIndex": 12,
+      "declarationIndex": 13,
+      "resolvedIndex": 13,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -563,8 +612,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 13,
-      "resolvedIndex": 13,
+      "declarationIndex": 14,
+      "resolvedIndex": 14,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -579,8 +628,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 14,
-      "resolvedIndex": 14,
+      "declarationIndex": 15,
+      "resolvedIndex": 15,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -595,8 +644,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 15,
-      "resolvedIndex": 15,
+      "declarationIndex": 16,
+      "resolvedIndex": 16,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -611,8 +660,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 16,
-      "resolvedIndex": 16,
+      "declarationIndex": 17,
+      "resolvedIndex": 17,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -627,8 +676,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 17,
-      "resolvedIndex": 17,
+      "declarationIndex": 18,
+      "resolvedIndex": 18,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -643,8 +692,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 18,
-      "resolvedIndex": 18,
+      "declarationIndex": 19,
+      "resolvedIndex": 19,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -659,8 +708,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 19,
-      "resolvedIndex": 19,
+      "declarationIndex": 20,
+      "resolvedIndex": 20,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -675,8 +724,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 20,
-      "resolvedIndex": 20,
+      "declarationIndex": 21,
+      "resolvedIndex": 21,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -691,8 +740,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 21,
-      "resolvedIndex": 21,
+      "declarationIndex": 22,
+      "resolvedIndex": 22,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -707,8 +756,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 22,
-      "resolvedIndex": 22,
+      "declarationIndex": 23,
+      "resolvedIndex": 23,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -723,8 +772,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 23,
-      "resolvedIndex": 23,
+      "declarationIndex": 24,
+      "resolvedIndex": 24,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -739,8 +788,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 24,
-      "resolvedIndex": 24,
+      "declarationIndex": 25,
+      "resolvedIndex": 25,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -755,8 +804,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 25,
-      "resolvedIndex": 25,
+      "declarationIndex": 26,
+      "resolvedIndex": 26,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -771,8 +820,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 26,
-      "resolvedIndex": 26,
+      "declarationIndex": 27,
+      "resolvedIndex": 27,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -787,8 +836,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 27,
-      "resolvedIndex": 27,
+      "declarationIndex": 28,
+      "resolvedIndex": 28,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -803,8 +852,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 28,
-      "resolvedIndex": 28,
+      "declarationIndex": 29,
+      "resolvedIndex": 29,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -819,8 +868,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 29,
-      "resolvedIndex": 29,
+      "declarationIndex": 30,
+      "resolvedIndex": 30,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -835,8 +884,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 30,
-      "resolvedIndex": 30,
+      "declarationIndex": 31,
+      "resolvedIndex": 31,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -851,8 +900,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 31,
-      "resolvedIndex": 31,
+      "declarationIndex": 32,
+      "resolvedIndex": 32,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -867,8 +916,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 32,
-      "resolvedIndex": 32,
+      "declarationIndex": 33,
+      "resolvedIndex": 33,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -883,8 +932,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 33,
-      "resolvedIndex": 33,
+      "declarationIndex": 34,
+      "resolvedIndex": 34,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -899,8 +948,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 34,
-      "resolvedIndex": 34,
+      "declarationIndex": 35,
+      "resolvedIndex": 35,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -915,8 +964,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 35,
-      "resolvedIndex": 35,
+      "declarationIndex": 36,
+      "resolvedIndex": 36,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -931,8 +980,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 36,
-      "resolvedIndex": 36,
+      "declarationIndex": 37,
+      "resolvedIndex": 37,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -947,8 +996,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 37,
-      "resolvedIndex": 37,
+      "declarationIndex": 38,
+      "resolvedIndex": 38,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -963,8 +1012,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 38,
-      "resolvedIndex": 38,
+      "declarationIndex": 39,
+      "resolvedIndex": 39,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -979,8 +1028,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 39,
-      "resolvedIndex": 39,
+      "declarationIndex": 40,
+      "resolvedIndex": 40,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -995,8 +1044,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 40,
-      "resolvedIndex": 40,
+      "declarationIndex": 41,
+      "resolvedIndex": 41,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1011,8 +1060,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 41,
-      "resolvedIndex": 41,
+      "declarationIndex": 42,
+      "resolvedIndex": 42,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1027,8 +1076,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 42,
-      "resolvedIndex": 42,
+      "declarationIndex": 43,
+      "resolvedIndex": 43,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1043,8 +1092,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 43,
-      "resolvedIndex": 43,
+      "declarationIndex": 44,
+      "resolvedIndex": 44,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1059,8 +1108,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 44,
-      "resolvedIndex": 44,
+      "declarationIndex": 45,
+      "resolvedIndex": 45,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1075,8 +1124,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 45,
-      "resolvedIndex": 45,
+      "declarationIndex": 46,
+      "resolvedIndex": 46,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1092,8 +1141,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 46,
-      "resolvedIndex": 46,
+      "declarationIndex": 47,
+      "resolvedIndex": 47,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1108,8 +1157,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 47,
-      "resolvedIndex": 47,
+      "declarationIndex": 48,
+      "resolvedIndex": 48,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1124,8 +1173,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 48,
-      "resolvedIndex": 48,
+      "declarationIndex": 49,
+      "resolvedIndex": 49,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1140,8 +1189,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 49,
-      "resolvedIndex": 49,
+      "declarationIndex": 50,
+      "resolvedIndex": 50,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1156,8 +1205,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 50,
-      "resolvedIndex": 50,
+      "declarationIndex": 51,
+      "resolvedIndex": 51,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1172,8 +1221,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 51,
-      "resolvedIndex": 51,
+      "declarationIndex": 52,
+      "resolvedIndex": 52,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1188,8 +1237,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 52,
-      "resolvedIndex": 52,
+      "declarationIndex": 53,
+      "resolvedIndex": 53,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1204,8 +1253,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 53,
-      "resolvedIndex": 53,
+      "declarationIndex": 54,
+      "resolvedIndex": 54,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1220,8 +1269,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 54,
-      "resolvedIndex": 54,
+      "declarationIndex": 55,
+      "resolvedIndex": 55,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1236,8 +1285,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 55,
-      "resolvedIndex": 55,
+      "declarationIndex": 56,
+      "resolvedIndex": 56,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1252,8 +1301,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 56,
-      "resolvedIndex": 56,
+      "declarationIndex": 57,
+      "resolvedIndex": 57,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -1275,8 +1324,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 57,
-      "resolvedIndex": 57,
+      "declarationIndex": 58,
+      "resolvedIndex": 58,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1291,8 +1340,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 58,
-      "resolvedIndex": 58,
+      "declarationIndex": 59,
+      "resolvedIndex": 59,
       "after": [
         "skill-garden/brainstorm-planning-handoff"
       ],
@@ -1314,8 +1363,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 59,
-      "resolvedIndex": 59,
+      "declarationIndex": 60,
+      "resolvedIndex": 60,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1330,8 +1379,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 60,
-      "resolvedIndex": 60,
+      "declarationIndex": 61,
+      "resolvedIndex": 61,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1346,8 +1395,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 61,
-      "resolvedIndex": 61,
+      "declarationIndex": 62,
+      "resolvedIndex": 62,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1362,8 +1411,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 62,
-      "resolvedIndex": 62,
+      "declarationIndex": 63,
+      "resolvedIndex": 63,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1378,8 +1427,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 63,
-      "resolvedIndex": 63,
+      "declarationIndex": 64,
+      "resolvedIndex": 64,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1394,8 +1443,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 64,
-      "resolvedIndex": 64,
+      "declarationIndex": 65,
+      "resolvedIndex": 65,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1410,8 +1459,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 65,
-      "resolvedIndex": 65,
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1580,6 +1629,16 @@
       "id": "task-store-write-helpers",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/task-store-write-helpers",
+      "patch": "task-store-write-integrity",
+      "qualifiedPatch": "skill-garden/task-store-write-integrity",
+      "targets": [
+        ".trellis/scripts/common/task_store.py"
+      ]
+    },
+    {
+      "id": "task-store-decision-log-import",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/task-store-decision-log-import",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
       "targets": [
@@ -2224,7 +2283,7 @@
     {
       "target": ".trellis/scripts/common/task_store.py",
       "beforeHash": "sha256:1019cb5e262001d01960ae0d9751a9a5346aafccb1695d4be474dbc18be5de6c",
-      "afterHash": "sha256:a1a0e53823663130d37b946e38c7be3b105277390f751a2f0721cb7a5e6df20c",
+      "afterHash": "sha256:7c47368eaa007ddf0b8aa3ce1c9f006a70ee5431e5317e63f2ca2b3c1c436bec",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -2234,9 +2293,24 @@
           "qualifiedId": "skill-garden/task-store-write-helpers",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
+          ]
+        },
+        {
+          "id": "task-store-decision-log-import",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/task-store-decision-log-import",
+          "patch": "task-store-write-integrity",
+          "qualifiedPatch": "skill-garden/task-store-write-integrity",
+          "bundle": "trellis-auto-loop",
+          "bundles": [
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2245,9 +2319,11 @@
           "qualifiedId": "skill-garden/task-create-duplicate-slug",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2256,9 +2332,11 @@
           "qualifiedId": "skill-garden/task-create-initial-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2267,9 +2345,11 @@
           "qualifiedId": "skill-garden/task-create-parent-link",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2278,9 +2358,11 @@
           "qualifiedId": "skill-garden/task-create-active-warning",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2289,9 +2371,11 @@
           "qualifiedId": "skill-garden/task-archive-metadata-guard",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2300,9 +2384,11 @@
           "qualifiedId": "skill-garden/task-archive-status-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2311,9 +2397,11 @@
           "qualifiedId": "skill-garden/task-add-subtask-pair-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2322,9 +2410,11 @@
           "qualifiedId": "skill-garden/task-remove-subtask-pair-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2333,9 +2423,11 @@
           "qualifiedId": "skill-garden/task-set-branch-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2344,9 +2436,11 @@
           "qualifiedId": "skill-garden/task-set-base-branch-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         },
         {
@@ -2355,9 +2449,11 @@
           "qualifiedId": "skill-garden/task-set-scope-write",
           "patch": "task-store-write-integrity",
           "qualifiedPatch": "skill-garden/task-store-write-integrity",
-          "bundle": "control-plane-integrity",
+          "bundle": "trellis-auto-loop",
           "bundles": [
-            "skill-garden/control-plane-integrity"
+            "skill-garden/trellis-auto-loop",
+            "skill-garden/control-plane-integrity",
+            "skill-garden/trellis-finish-work"
           ]
         }
       ]
@@ -2451,7 +2547,7 @@
     {
       "target": ".agents/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:161060fbcd44f787440d3a5c297a9f5223ea7774bb3021a50e376875a9ac5b2d",
-      "afterHash": "sha256:7188a4b670ae69923d0f55accbea2b872800d776afb3ed87592451f20abb1415",
+      "afterHash": "sha256:4a1c5d6ef8faa9cce24fa9f3da9917ccf6523cc1a1eed6d2de69e4d450c7981e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -2471,7 +2567,7 @@
     {
       "target": ".claude/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:fecf1628771bc7cdc61fd3294e05452cf86689130a7d0beb7c165d197338f20e",
+      "afterHash": "sha256:15fdd2bcf6bf58b7f9cb572616c546aae5904e6c1c80161b6f72e120665bd7da",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -3203,9 +3299,27 @@
       "qualifiedId": "skill-garden/task-store-write-helpers",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
+      ],
+      "target": ".trellis/scripts/common/task_store.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "task-store-decision-log-import",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/task-store-decision-log-import",
+      "patch": "task-store-write-integrity",
+      "qualifiedPatch": "skill-garden/task-store-write-integrity",
+      "bundle": "trellis-auto-loop",
+      "bundles": [
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3217,9 +3331,11 @@
       "qualifiedId": "skill-garden/task-create-duplicate-slug",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3231,9 +3347,11 @@
       "qualifiedId": "skill-garden/task-create-initial-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3245,9 +3363,11 @@
       "qualifiedId": "skill-garden/task-create-parent-link",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3259,9 +3379,11 @@
       "qualifiedId": "skill-garden/task-create-active-warning",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3273,9 +3395,11 @@
       "qualifiedId": "skill-garden/task-archive-metadata-guard",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3287,9 +3411,11 @@
       "qualifiedId": "skill-garden/task-archive-status-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3301,9 +3427,11 @@
       "qualifiedId": "skill-garden/task-add-subtask-pair-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3315,9 +3443,11 @@
       "qualifiedId": "skill-garden/task-remove-subtask-pair-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3329,9 +3459,11 @@
       "qualifiedId": "skill-garden/task-set-branch-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3343,9 +3475,11 @@
       "qualifiedId": "skill-garden/task-set-base-branch-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",
@@ -3357,9 +3491,11 @@
       "qualifiedId": "skill-garden/task-set-scope-write",
       "patch": "task-store-write-integrity",
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
-      "bundle": "control-plane-integrity",
+      "bundle": "trellis-auto-loop",
       "bundles": [
-        "skill-garden/control-plane-integrity"
+        "skill-garden/trellis-auto-loop",
+        "skill-garden/control-plane-integrity",
+        "skill-garden/trellis-finish-work"
       ],
       "target": ".trellis/scripts/common/task_store.py",
       "status": "ready",

@@ -1,7 +1,18 @@
 diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/task_store.py
 --- a/.trellis/scripts/common/task_store.py
 +++ b/.trellis/scripts/common/task_store.py
-@@ -105,6 +105,44 @@
+@@ -53,6 +53,10 @@
+     resolve_task_dir,
+     run_task_hooks,
+ )
++# BEGIN skill-garden patch task-store-decision-log-import v0.6
++
++from decision_log import DecisionLogError, decision_review_status
++# END skill-garden patch task-store-decision-log-import v0.6
+ 
+ 
+ # =============================================================================
+@@ -105,6 +109,44 @@
          return path.relative_to(repo_root).as_posix()
      except ValueError:
          return str(path)
@@ -46,7 +57,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
  
  # =============================================================================
-@@ -251,10 +289,12 @@
+@@ -251,10 +293,12 @@
          print("Use a new slug if you intend to create a new task.", file=sys.stderr)
          return 1
  
@@ -62,7 +73,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
      today = datetime.now().strftime("%Y-%m-%d")
  
-@@ -289,9 +329,16 @@
+@@ -289,9 +333,16 @@
          "meta": {},
      }
  
@@ -80,7 +91,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
      if not prd_path.exists():
          prd_path.write_text(
              _default_prd_content(args.title, args.description),
-@@ -310,33 +357,53 @@
+@@ -310,33 +361,53 @@
                  _write_seed_jsonl(jsonl_path)
          seeded_jsonl = True
  
@@ -152,7 +163,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
      try:
          from .active_task import resolve_context_key, set_active_task
          if resolve_context_key():
-@@ -344,9 +411,17 @@
+@@ -344,9 +415,17 @@
                  rel_dir = task_dir.relative_to(repo_root).as_posix()
              except ValueError:
                  rel_dir = str(task_dir)
@@ -173,7 +184,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
      print(colored(f"Created task: {dir_name}", Colors.GREEN), file=sys.stderr)
      print("", file=sys.stderr)
-@@ -400,6 +475,12 @@
+@@ -400,6 +479,25 @@
      task_json_path = task_dir / FILE_TASK_JSON
  
      # Update status before archiving
@@ -182,11 +193,24 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
 +    if not task_json_path.is_file() or not read_json(task_json_path):
 +        print(colored(f"Error: task.json not found or invalid: {task_json_path}", Colors.RED), file=sys.stderr)
 +        return 1
++
++    try:
++        decision_status = decision_review_status(task_dir)
++    except DecisionLogError as error:
++        print(colored(f"Error: Decision log is invalid: {error}", Colors.RED), file=sys.stderr)
++        return 1
++    if not decision_status["archive_allowed"]:
++        print(colored("Error: AI decisions require review before archive.", Colors.RED), file=sys.stderr)
++        print(
++            "Hint: Run decision_log.py status --task <task> --json, then record an accepted review.",
++            file=sys.stderr,
++        )
++        return 1
 +# END skill-garden patch task-archive-metadata-guard v0.6
      today = datetime.now().strftime("%Y-%m-%d")
      # Names of child task dirs whose task.json gets modified below; passed
      # into safe_archive_paths_to_add so they're staged in this commit.
-@@ -407,9 +488,13 @@
+@@ -407,9 +505,13 @@
      if task_json_path.is_file():
          data = read_json(task_json_path)
          if data:
@@ -201,7 +225,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
              # Handle subtask relationships on archive.
              # Keep this task in its parent's children list so progress
-@@ -595,11 +680,31 @@
+@@ -595,11 +697,31 @@
      # Set parent in child's task.json
      child_data["parent"] = parent_dir.name
  
@@ -236,7 +260,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
      return 0
  
  
-@@ -642,11 +747,31 @@
+@@ -642,11 +764,31 @@
      # Clear parent in child's task.json
      child_data["parent"] = None
  
@@ -271,7 +295,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
      return 0
  
  
-@@ -674,8 +799,12 @@
+@@ -674,8 +816,12 @@
      if not data:
          return 1
  
@@ -285,7 +309,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
      print(colored(f"✓ Branch set to: {branch}", Colors.GREEN))
      return 0
-@@ -708,8 +837,12 @@
+@@ -708,8 +854,12 @@
      if not data:
          return 1
  
@@ -299,7 +323,7 @@ diff --git a/.trellis/scripts/common/task_store.py b/.trellis/scripts/common/tas
  
      print(colored(f"✓ Base branch set to: {base_branch}", Colors.GREEN))
      print(f"  PR will target: {base_branch}")
-@@ -740,8 +873,12 @@
+@@ -740,8 +890,12 @@
      if not data:
          return 1
  
