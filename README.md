@@ -89,6 +89,27 @@ bash install.sh --repo <url> /target update-spec-enhancement
 
 回滚：从 `.trellis/.backup-flower/<目标相对路径>` 恢复首次原文。不要只删 Patch marker，因为 `remove` marker 也是防止旧原文回流的幂等 tombstone。
 
+### Compiled Targets
+
+`compiled-targets/<trellis-version>/full/` 保存 Skill-Garden 全部 Bundle/Patch 应用到 Claude + Codex canonical Trellis 项目后的确定性审阅结果：
+
+- `plan.json`：catalog hash、qualified operation 顺序、目标 hash、missing/optional 与 conflict 结果。
+- `targets/`：按原相对路径保存 `.trellis`、`.agents`、`.claude`、`.codex` 下实际进入计划的最终文件。
+- changed target 在最终文件旁保存 `<target>.diff` sidecar，使用三行上下文 unified diff；未变化 target 不生成 sidecar。
+
+生成器会在写盘前拒绝最终文件与 sidecar 的同名或文件/目录前缀冲突，避免真实 `.diff` target 被审阅文件覆盖。
+
+`full` 表示选择全部 Skill-Garden Bundle/Patch，不表示初始化全部 Trellis 平台。其它平台组合由 Flower 集成矩阵临时验证，不在仓库中保存重复 files/diffs。
+
+生成器直接复用独立 Python Patch consumer：
+
+```bash
+python3 scripts/generate-compiled-targets.py --trellis-bin /path/to/trellis
+python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trellis
+```
+
+传入 JavaScript `trellis` bin 时，生成器会使用 PATH 中的 `node`；也可通过 `--node-bin` 显式指定。生成产物不是安装输入或恢复源，修改 Patch 后必须刷新并通过 check。
+
 ---
 
 ## 当前技能

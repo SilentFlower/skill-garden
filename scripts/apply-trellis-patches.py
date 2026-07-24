@@ -44,6 +44,7 @@ MARKER_STYLES = {"html", "hash", "slash", "none"}
 INSTALL_MODES = {"full-or-selected", "full-only"}
 SEVERITIES = {"error", "warning", "info"}
 ASSERTION_TYPES = {"absent-literal", "required-literal", "max-occurrences"}
+CATALOG_ID = "skill-garden"
 
 
 class PatchError(RuntimeError):
@@ -152,7 +153,10 @@ def _validate_conflicts(raw: dict[str, Any]) -> dict[str, Any]:
             f"{label}.whenOperations",
         )
         for operation_index, operation_id in enumerate(operation_ids):
-            _assert_id(operation_id, f"{label}.whenOperations[{operation_index}]")
+            _assert_operation_ref(
+                operation_id,
+                f"{label}.whenOperations[{operation_index}]",
+            )
         _validate_assertion(rule.get("assertion"), f"{label}.assertion")
         _require_string(rule.get("owner"), f"{label}.owner")
         _require_string(rule.get("reason"), f"{label}.reason")
@@ -173,6 +177,7 @@ def load_patch_policy(overrides_dir: Path) -> dict[str, Any]:
     """
     root = overrides_dir.resolve(strict=True)
     return {
+        "catalog": CATALOG_ID,
         "compatibility": _validate_compatibility(
             _read_json(root / "compatibility.json", "compatibility policy")
         ),
@@ -204,9 +209,12 @@ def _diagnostic(
     owner: str,
     reason: str,
     evidence: list[str],
+    catalog: str = CATALOG_ID,
 ) -> dict[str, Any]:
     return {
         "id": diagnostic_id,
+        "catalog": catalog,
+        "qualifiedId": _qualify_id(catalog, diagnostic_id),
         "severity": severity,
         "target": target,
         "owner": owner,
@@ -230,6 +238,7 @@ def _summarize(diagnostics: list[dict[str, Any]]) -> dict[str, int]:
 def evaluate_patch_compatibility(
     version: str,
     compatibility: dict[str, Any],
+    catalog: str = CATALOG_ID,
 ) -> dict[str, Any]:
     """按登记版本与兼容线评估目标 Trellis 版本。
 
@@ -252,6 +261,7 @@ def evaluate_patch_compatibility(
                     "patch-compatibility",
                     "0.6 Patch 需要可解析的 Trellis semver 版本。",
                     [version or "<empty>"],
+                    catalog,
                 )
             ],
         }
@@ -275,6 +285,7 @@ def evaluate_patch_compatibility(
                     "patch-compatibility",
                     "目标版本位于兼容线内但尚未登记 baseline；只有完整预检和冲突断言通过后才允许继续。",
                     [parsed["value"]],
+                    catalog,
                 )
             ],
         }
@@ -288,6 +299,7 @@ def evaluate_patch_compatibility(
                 "patch-compatibility",
                 "该 Trellis minor/major 尚无受支持 Patch baseline；请使用匹配的 Flower 版本或 --no-enhance。",
                 [parsed["value"]],
+                catalog,
             )
         ],
     }
@@ -296,6 +308,7 @@ def evaluate_patch_compatibility(
 def evaluate_patch_conflicts(
     plan: dict[str, Any],
     conflicts: dict[str, Any],
+    catalog: str = CATALOG_ID,
 ) -> dict[str, Any]:
     """对 Patch 计划中的最终内存文件执行确定性冲突断言。
 
@@ -306,33 +319,47 @@ def evaluate_patch_conflicts(
     Returns:
         只包含本次已选 operation 的结构化 diagnostics。
     """
+    def resolve_operation_id(operation_id: str) -> str:
+        return operation_id if "/" in operation_id else _qualify_id(catalog, operation_id)
+
     catalog_operations = plan.get("catalogOperations")
     if isinstance(catalog_operations, list):
         operation_targets = {
-            operation["id"]: set(operation["targets"])
+            operation.get("qualifiedId")
+            or _qualify_id(operation.get("catalog", catalog), operation["id"]): set(
+                operation["targets"]
+            )
             for operation in catalog_operations
         }
         for rule in conflicts["rules"]:
             for operation_id in rule["whenOperations"]:
-                targets = operation_targets.get(operation_id)
+                qualified_operation_id = resolve_operation_id(operation_id)
+                targets = operation_targets.get(qualified_operation_id)
                 if targets is None:
                     raise PatchError(
-                        f"conflict rule {rule['id']} 引用未知 operation:{operation_id}"
+                        f"conflict rule {_qualify_id(catalog, rule['id'])} "
+                        f"引用未知 operation:{operation_id}"
                     )
                 if rule["target"] not in targets:
                     raise PatchError(
-                        f"conflict rule {rule['id']} target 未被 operation "
-                        f"{operation_id} 修改:{rule['target']}"
+                        f"conflict rule {_qualify_id(catalog, rule['id'])} "
+                        f"target 未被 operation {qualified_operation_id} 修改:{rule['target']}"
                     )
     selected_operations = {
-        operation_id
+        entry.get("qualifiedId") or _qualify_id(catalog, entry["id"])
         for file_plan in plan["files"]
-        for operation_id in file_plan["operations"]
+        for entry in file_plan.get(
+            "operation_entries",
+            [{"id": operation_id} for operation_id in file_plan["operations"]],
+        )
     }
     files = {file_plan["target"]: file_plan["next"] for file_plan in plan["files"]}
     diagnostics: list[dict[str, Any]] = []
     for rule in conflicts["rules"]:
-        if not all(item in selected_operations for item in rule["whenOperations"]):
+        if not all(
+            resolve_operation_id(item) in selected_operations
+            for item in rule["whenOperations"]
+        ):
             continue
         value = files.get(rule["target"])
         if not isinstance(value, str):
@@ -366,6 +393,7 @@ def evaluate_patch_conflicts(
                     rule["owner"],
                     rule["reason"],
                     evidence,
+                    catalog,
                 )
             )
     for item in plan["results"]:
@@ -377,7 +405,8 @@ def evaluate_patch_conflicts(
                     item["target"],
                     item["patch"],
                     "目标平台入口未安装，按声明跳过。",
-                    [item["id"]],
+                    [item.get("qualifiedId", item["id"])],
+                    item.get("catalog", catalog),
                 )
             )
         elif item["status"] == "optional-skip":
@@ -389,6 +418,7 @@ def evaluate_patch_conflicts(
                     item["patch"],
                     "可选 Patch 未应用，需要评审其漂移原因。",
                     [item.get("reason", "unknown")],
+                    item.get("catalog", catalog),
                 )
             )
     return {"diagnostics": diagnostics}
@@ -409,14 +439,19 @@ def build_patch_conflict_report(
     Returns:
         包含 version、diagnostics 与 severity 汇总的报告。
     """
-    compatibility = evaluate_patch_compatibility(version, policy["compatibility"])
-    conflicts = evaluate_patch_conflicts(plan, policy["conflicts"])
+    catalog = policy.get("catalog", CATALOG_ID)
+    compatibility = evaluate_patch_compatibility(
+        version,
+        policy["compatibility"],
+        catalog,
+    )
+    conflicts = evaluate_patch_conflicts(plan, policy["conflicts"], catalog)
     severity_order = {"error": 0, "warning": 1, "info": 2}
     diagnostics = sorted(
         compatibility["diagnostics"] + conflicts["diagnostics"],
         key=lambda item: (
             severity_order[item["severity"]],
-            item["id"],
+            item["qualifiedId"],
             item["target"],
         ),
     )
@@ -440,7 +475,7 @@ def assert_no_patch_conflict_errors(report: dict[str, Any]) -> None:
     if not errors:
         return
     detail = "; ".join(
-        f"{item['id']}@{item['target']}:{item['reason']}"
+        f"{item.get('qualifiedId', item['id'])}@{item['target']}:{item['reason']}"
         for item in errors
     )
     error = PatchError(f"Patch 冲突检查失败:{detail}")
@@ -461,7 +496,7 @@ def format_patch_diagnostic(diagnostic: dict[str, Any]) -> str:
     evidence = " | ".join(diagnostic["evidence"]) or "<none>"
     return (
         f"Patch {labels.get(diagnostic['severity'], diagnostic['severity'])}:"
-        f"{diagnostic['id']}@{diagnostic['target']}"
+        f"{diagnostic.get('qualifiedId', diagnostic['id'])}@{diagnostic['target']}"
         f"({diagnostic['reason']};证据:{evidence})"
     )
 
@@ -482,6 +517,19 @@ def _assert_legacy_id(value: Any, label: str) -> str:
     if not isinstance(value, str) or not LEGACY_ID_RE.fullmatch(value):
         raise PatchError(f"{label} 必须是安全的历史 ID")
     return value
+
+
+def _assert_operation_ref(value: Any, label: str) -> str:
+    if not isinstance(value, str):
+        raise PatchError(f"{label} 必须是 operation ID")
+    parts = value.split("/")
+    if len(parts) not in {1, 2} or any(not ID_RE.fullmatch(part) for part in parts):
+        raise PatchError(f"{label} 必须是 local ID 或 <catalog-id>/<operation-id>")
+    return value
+
+
+def _qualify_id(catalog_id: str, local_id: str) -> str:
+    return f"{catalog_id}/{local_id}"
 
 
 def _resolve_relative(root: Path, relative: Any, label: str) -> Path:
@@ -579,7 +627,7 @@ def _active_marker(value: str, operation: dict[str, Any]) -> dict[str, Any] | No
     candidates = [
         {
             "namespace": "patch",
-            "id": operation["id"],
+            "id": operation["marker_id"],
             "style": operation["marker_style"],
             "source": "managed-marker",
         },
@@ -597,7 +645,7 @@ def _active_marker(value: str, operation: dict[str, Any]) -> dict[str, Any] | No
         candidates.append(
             {
                 "namespace": "patch",
-                "id": operation["id"],
+                "id": operation["marker_id"],
                 "style": "html",
                 "source": "legacy-marker-style",
             }
@@ -631,7 +679,7 @@ def _active_marker(value: str, operation: dict[str, Any]) -> dict[str, Any] | No
 def _managed_block(operation: dict[str, Any]) -> tuple[str, str, str, re.Pattern[str]]:
     return _marker_parts(
         "patch",
-        operation["id"],
+        operation["marker_id"],
         operation["content"],
         operation["marker_style"],
     )
@@ -998,6 +1046,39 @@ def _normalize_operation(
     if operation_id in seen_operation_ids:
         raise PatchError(f"重复 patch operation id:{operation_id}")
     seen_operation_ids.add(operation_id)
+    after = data.get("after", [])
+    depends_on = data.get("dependsOn", [])
+    if not isinstance(after, list):
+        raise PatchError(f"patch {operation_id} after 必须是字符串数组")
+    if not isinstance(depends_on, list):
+        raise PatchError(f"patch {operation_id} dependsOn 必须是字符串数组")
+    after = [
+        _assert_operation_ref(item, f"patch {operation_id} after[{index}]")
+        for index, item in enumerate(after)
+    ]
+    depends_on = [
+        _assert_operation_ref(item, f"patch {operation_id} dependsOn[{index}]")
+        for index, item in enumerate(depends_on)
+    ]
+    qualified_after = [
+        item if "/" in item else _qualify_id(CATALOG_ID, item) for item in after
+    ]
+    qualified_depends_on = [
+        item if "/" in item else _qualify_id(CATALOG_ID, item) for item in depends_on
+    ]
+    if len(set(qualified_after)) != len(qualified_after):
+        raise PatchError(f"patch {operation_id} after 不能重复")
+    if len(set(qualified_depends_on)) != len(qualified_depends_on):
+        raise PatchError(f"patch {operation_id} dependsOn 不能重复")
+    depends_on_ids = set(qualified_depends_on)
+    duplicated_relation = next(
+        (item for item, qualified in zip(after, qualified_after) if qualified in depends_on_ids),
+        None,
+    )
+    if duplicated_relation:
+        raise PatchError(
+            f"patch {operation_id} 同一依赖不能同时声明 after 和 dependsOn:{duplicated_relation}"
+        )
     operation = data.get("operation")
     if operation not in OPERATIONS:
         raise PatchError(f"patch {operation_id} operation 不支持:{operation}")
@@ -1026,7 +1107,11 @@ def _normalize_operation(
         raise PatchError(f"patch {operation_id} insert position 必须是 before 或 after")
     return {
         "id": operation_id,
+        "catalog": CATALOG_ID,
+        "qualified_id": _qualify_id(CATALOG_ID, operation_id),
+        "marker_id": operation_id,
         "patch_id": patch["id"],
+        "qualified_patch_id": patch["qualified_id"],
         "purpose": patch["purpose"],
         "operation": operation,
         "required": required,
@@ -1047,13 +1132,15 @@ def _normalize_operation(
         "baselines": _normalize_baselines(
             data.get("baselines"), leaf_dir, f"patch {operation_id} baselines"
         ),
+        "after_refs": after,
+        "depends_on_refs": depends_on,
     }
 
 
 def _load_catalog(
     overrides_dir: Path,
     skills: list[str],
-) -> tuple[list[str], list[dict[str, Any]], list[Path], list[dict[str, Any]]]:
+) -> dict[str, Any]:
     patches_dir = overrides_dir / "patches"
     bundles_dir = overrides_dir / "bundles"
     patch_by_ref: dict[str, dict[str, Any]] = {}
@@ -1080,6 +1167,8 @@ def _load_catalog(
             raise PatchError(f"patch {ref} operations 不能为空")
         patch = {
             "id": patch_id,
+            "catalog": CATALOG_ID,
+            "qualified_id": _qualify_id(CATALOG_ID, patch_id),
             "ref": ref,
             "purpose": purpose,
             "required": raw.get("required"),
@@ -1093,8 +1182,11 @@ def _load_catalog(
         catalog_files.extend(path for path in leaf_dir.rglob("*") if path.is_file())
 
     bundles: list[str] = []
+    selected_bundles: list[dict[str, Any]] = []
     patches: dict[str, dict[str, Any]] = {}
+    memberships: dict[str, list[dict[str, Any]]] = {}
     referenced: set[str] = set()
+    seen_bundle_ids: set[str] = set()
     for file in sorted(bundles_dir.rglob("*.json")):
         raw = _assert_object(json.loads(file.read_text(encoding="utf-8")), f"bundle {file.name}")
         if raw.get("schemaVersion") != BUNDLE_SCHEMA_VERSION:
@@ -1102,6 +1194,9 @@ def _load_catalog(
                 f"bundle {file.name} schemaVersion 不支持:{raw.get('schemaVersion')}"
             )
         bundle_id = _assert_id(raw.get("id"), f"bundle {file.name} id")
+        if bundle_id in seen_bundle_ids:
+            raise PatchError(f"重复 bundle id:{bundle_id}")
+        seen_bundle_ids.add(bundle_id)
         aliases = raw.get("aliases", [])
         if not isinstance(aliases, list) or not all(
             isinstance(item, str) and item for item in aliases
@@ -1116,32 +1211,200 @@ def _load_catalog(
         selected = not skills or (
             install_mode != "full-only" and _should_install(bundle_id, skills, aliases)
         )
+        selected_patches: list[dict[str, Any]] = []
         for ref in refs:
             if not isinstance(ref, str) or ref not in patch_by_ref:
                 raise PatchError(f"bundle {file.name} 引用未知 patch:{ref}")
             referenced.add(ref)
             if selected:
-                patches[patch_by_ref[ref]["id"]] = {**patch_by_ref[ref], "bundle": bundle_id}
+                selected_patches.append(patch_by_ref[ref])
         if selected:
             bundles.append(bundle_id)
+            bundle = {
+                "id": bundle_id,
+                "catalog": CATALOG_ID,
+                "qualifiedId": _qualify_id(CATALOG_ID, bundle_id),
+                "patches": selected_patches,
+            }
+            selected_bundles.append(bundle)
+            for patch in selected_patches:
+                patches.setdefault(patch["id"], patch)
+                memberships.setdefault(patch["id"], []).append(bundle)
         catalog_files.append(file)
     for ref in patch_by_ref:
         if ref not in referenced:
             raise PatchError(f"未被 bundle 引用的 patch:{ref}")
-    catalog_operations = [
-        {
-            "id": operation["id"],
-            "targets": [target["path"] for target in operation["targets"]],
-        }
-        for patch in patch_by_ref.values()
+    for policy_name in ("compatibility.json", "conflicts.json"):
+        policy_file = overrides_dir / policy_name
+        if policy_file.is_file():
+            catalog_files.append(policy_file)
+    selected_patch_list = []
+    for patch in patches.values():
+        patch_memberships = memberships.get(patch["id"], [])
+        selected_patch_list.append(
+            {
+                **patch,
+                "bundle": patch_memberships[0]["id"] if patch_memberships else None,
+                "bundle_ids": [item["id"] for item in patch_memberships],
+                "bundles": [item["qualifiedId"] for item in patch_memberships],
+            }
+        )
+    return {
+        "bundles": bundles,
+        "selected_bundles": selected_bundles,
+        "patches": selected_patch_list,
+        "all_patches": list(patch_by_ref.values()),
+        "catalog_files": sorted(set(catalog_files)),
+    }
+
+
+def _resolve_operation_ref(
+    ref: str,
+    operation: dict[str, Any],
+    operation_by_id: dict[str, dict[str, Any]],
+) -> str:
+    qualified_id = ref if "/" in ref else _qualify_id(operation["catalog"], ref)
+    if qualified_id not in operation_by_id:
+        raise PatchError(
+            f"patch operation {operation['qualified_id']} 引用未知 operation:{ref}"
+        )
+    if qualified_id == operation["qualified_id"]:
+        raise PatchError(f"patch operation {operation['qualified_id']} 不能依赖自身")
+    return qualified_id
+
+
+def _stable_topological_sort(
+    operations: list[dict[str, Any]],
+    include_edge: Any,
+) -> list[dict[str, Any]]:
+    base_index = {item["qualified_id"]: index for index, item in enumerate(operations)}
+    operation_by_id = {item["qualified_id"]: item for item in operations}
+    outgoing = {item["qualified_id"]: set() for item in operations}
+    indegree = {item["qualified_id"]: 0 for item in operations}
+    for operation in operations:
+        relations = [
+            *[(item, "after") for item in operation["after"]],
+            *[(item, "dependsOn") for item in operation["depends_on"]],
+        ]
+        for source, relation_type in relations:
+            if source not in operation_by_id or not include_edge(operation, source, relation_type):
+                continue
+            if operation["qualified_id"] in outgoing[source]:
+                continue
+            outgoing[source].add(operation["qualified_id"])
+            indegree[operation["qualified_id"]] += 1
+    ready = sorted(
+        [item for item in operations if indegree[item["qualified_id"]] == 0],
+        key=lambda item: base_index[item["qualified_id"]],
+    )
+    resolved: list[dict[str, Any]] = []
+    while ready:
+        operation = ready.pop(0)
+        resolved.append(operation)
+        for target_id in sorted(outgoing[operation["qualified_id"]], key=base_index.get):
+            indegree[target_id] -= 1
+            if indegree[target_id] == 0:
+                ready.append(operation_by_id[target_id])
+                ready.sort(key=lambda item: base_index[item["qualified_id"]])
+    if len(resolved) != len(operations):
+        cycle = [
+            item["qualified_id"]
+            for item in operations
+            if indegree[item["qualified_id"]] > 0
+        ]
+        raise PatchError(f"Patch operation 依赖循环:{' -> '.join(cycle)}")
+    return resolved
+
+
+def _resolve_operation_order(catalog: dict[str, Any]) -> dict[str, Any]:
+    all_operations = [
+        operation
+        for patch in catalog["all_patches"]
         for operation in patch["operations"]
     ]
-    return (
-        bundles,
-        list(patches.values()),
-        sorted(set(catalog_files)),
-        catalog_operations,
+    operation_by_id = {item["qualified_id"]: item for item in all_operations}
+    if len(operation_by_id) != len(all_operations):
+        raise PatchError("重复 qualified patch operation id")
+    for operation in all_operations:
+        operation["after"] = [
+            _resolve_operation_ref(item, operation, operation_by_id)
+            for item in operation["after_refs"]
+        ]
+        operation["depends_on"] = [
+            _resolve_operation_ref(item, operation, operation_by_id)
+            for item in operation["depends_on_refs"]
+        ]
+    _stable_topological_sort(all_operations, lambda _operation, _source, _type: True)
+
+    selected_operations = [
+        {
+            **operation,
+            "bundle": patch["bundle"],
+            "bundle_ids": patch["bundle_ids"],
+            "bundles": patch["bundles"],
+        }
+        for patch in catalog["patches"]
+        for operation in patch["operations"]
+    ]
+    selected_ids = {item["qualified_id"] for item in selected_operations}
+    for operation in selected_operations:
+        for dependency in operation["depends_on"]:
+            if dependency not in selected_ids:
+                raise PatchError(
+                    f"patch operation {operation['qualified_id']} dependsOn 未进入当前计划:{dependency}"
+                )
+    sorted_operations = _stable_topological_sort(
+        selected_operations,
+        lambda _operation, source, relation_type: (
+            relation_type == "dependsOn" or source in selected_ids
+        ),
     )
+    declaration_index = {
+        item["qualified_id"]: index for index, item in enumerate(selected_operations)
+    }
+    return {
+        "all_operations": all_operations,
+        "selected_operations": sorted_operations,
+        "operation_order": [
+            {
+                "id": operation["id"],
+                "catalog": operation["catalog"],
+                "qualifiedId": operation["qualified_id"],
+                "patch": operation["patch_id"],
+                "qualifiedPatch": operation["qualified_patch_id"],
+                "bundle": operation["bundle"],
+                "bundles": operation["bundles"],
+                "declarationIndex": declaration_index[operation["qualified_id"]],
+                "resolvedIndex": index,
+                "after": operation["after"],
+                "dependsOn": operation["depends_on"],
+                "incomingEdges": [
+                    *[
+                        {"from": source, "type": "after"}
+                        for source in operation["after"]
+                        if source in selected_ids
+                    ],
+                    *[
+                        {"from": source, "type": "dependsOn"}
+                        for source in operation["depends_on"]
+                    ],
+                ],
+            }
+            for index, operation in enumerate(sorted_operations)
+        ],
+    }
+
+
+def _operation_identity(operation: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": operation["id"],
+        "catalog": operation["catalog"],
+        "qualifiedId": operation["qualified_id"],
+        "patch": operation["patch_id"],
+        "qualifiedPatch": operation["qualified_patch_id"],
+        "bundle": operation["bundle"],
+        "bundles": operation["bundles"],
+    }
 
 
 def prepare_patches(
@@ -1164,155 +1427,149 @@ def prepare_patches(
     """
     overrides_dir = overrides_dir.resolve(strict=True)
     target_root = target_root.resolve(strict=True)
-    bundles, patches, catalog_files, catalog_operations = _load_catalog(
-        overrides_dir,
-        skills or [],
-    )
+    catalog = _load_catalog(overrides_dir, skills or [])
+    order = _resolve_operation_order(catalog)
+    bundles = catalog["bundles"]
+    patches = catalog["patches"]
+    catalog_files = catalog["catalog_files"]
     files: dict[str, dict[str, Any]] = {}
     results: list[dict[str, Any]] = []
     errors: list[dict[str, Any]] = []
 
-    for patch in patches:
-        for operation in patch["operations"]:
-            ready_targets = 0
-            existing_targets = 0
-            for target_spec in operation["targets"]:
-                target_path = target_spec["path"]
-                try:
-                    missing_requirement = any(
-                        not _resolve_relative(
-                            target_root,
-                            required_path,
-                            f"patch {operation['id']} target.requires",
-                        ).exists()
-                        for required_path in target_spec["requires"]
+    for operation in order["selected_operations"]:
+        ready_targets = 0
+        existing_targets = 0
+        for target_spec in operation["targets"]:
+            target_path = target_spec["path"]
+            try:
+                missing_requirement = any(
+                    not _resolve_relative(
+                        target_root,
+                        required_path,
+                        f"patch {operation['id']} target.requires",
+                    ).exists()
+                    for required_path in target_spec["requires"]
+                )
+                if missing_requirement:
+                    results.append(
+                        {
+                            **_operation_identity(operation),
+                            "target": target_path,
+                            "status": "missing-target",
+                            "required": operation["required"],
+                        }
                     )
-                    if missing_requirement:
+                    continue
+                target_file = _resolve_relative(
+                    target_root, target_path, f"patch {operation['id']} target.path"
+                )
+                exists = target_file.exists()
+                if not exists:
+                    if target_spec["missing"] == "skip":
                         results.append(
                             {
-                                "id": operation["id"],
-                                "patch": patch["id"],
-                                "bundle": patch["bundle"],
+                                **_operation_identity(operation),
                                 "target": target_path,
                                 "status": "missing-target",
                                 "required": operation["required"],
                             }
                         )
                         continue
-                    target_file = _resolve_relative(
-                        target_root, target_path, f"patch {operation['id']} target.path"
-                    )
-                    exists = target_file.exists()
-                    if not exists:
-                        if target_spec["missing"] == "skip":
-                            results.append(
-                                {
-                                    "id": operation["id"],
-                                    "patch": patch["id"],
-                                    "bundle": patch["bundle"],
-                                    "target": target_path,
-                                    "status": "missing-target",
-                                    "required": operation["required"],
-                                }
-                            )
-                            continue
-                        if target_spec["missing"] == "error":
-                            raise PatchError("目标不存在")
-                        if not target_file.parent.is_dir():
-                            results.append(
-                                {
-                                    "id": operation["id"],
-                                    "patch": patch["id"],
-                                    "bundle": patch["bundle"],
-                                    "target": target_path,
-                                    "status": "missing-target",
-                                    "required": operation["required"],
-                                }
-                            )
-                            continue
-                        _assert_existing_inside(
-                            target_root,
-                            target_file.parent,
-                            f"patch {operation['id']} target.parent",
+                    if target_spec["missing"] == "error":
+                        raise PatchError("目标不存在")
+                    if not target_file.parent.is_dir():
+                        results.append(
+                            {
+                                **_operation_identity(operation),
+                                "target": target_path,
+                                "status": "missing-target",
+                                "required": operation["required"],
+                            }
                         )
-                    else:
-                        _assert_existing_inside(
-                            target_root, target_file, f"patch {operation['id']} target"
-                        )
-                    existing_targets += 1
-                    file_plan = files.get(target_path)
-                    if file_plan is None:
-                        original = target_file.read_text(encoding="utf-8") if exists else None
-                        file_plan = {
-                            "target": target_path,
-                            "target_file": target_file,
-                            "original": original,
-                            "original_exists": exists,
-                            "next": original or "",
-                            "operations": [],
-                            "patches": [],
-                            "bundles": [],
-                        }
-                        files[target_path] = file_plan
-                    cleaned, cleanup_changed = _apply_cleanup(
-                        file_plan["next"], operation["cleanup"]
+                        continue
+                    _assert_existing_inside(
+                        target_root,
+                        target_file.parent,
+                        f"patch {operation['id']} target.parent",
                     )
-                    operation_for_target = {
-                        **operation,
-                        "marker_style": target_spec["marker_style"],
-                    }
-                    next_value, source = _apply_operation(cleaned, operation_for_target)
-                    file_plan["next"] = next_value
-                    file_plan["operations"].append(operation["id"])
-                    file_plan["patches"].append(patch["id"])
-                    file_plan["bundles"].append(patch["bundle"])
-                    ready_targets += 1
-                    results.append(
-                        {
-                            "id": operation["id"],
-                            "patch": patch["id"],
-                            "bundle": patch["bundle"],
-                            "target": target_path,
-                            "status": "ready",
-                            "required": operation["required"],
-                            "source": "legacy-cleanup"
-                            if cleanup_changed and source == "selector"
-                            else source,
-                        }
+                else:
+                    _assert_existing_inside(
+                        target_root, target_file, f"patch {operation['id']} target"
                     )
-                except PatchError as error:
-                    result = {
-                        "id": operation["id"],
-                        "patch": patch["id"],
-                        "bundle": patch["bundle"],
+                existing_targets += 1
+                file_plan = files.get(target_path)
+                if file_plan is None:
+                    original = target_file.read_text(encoding="utf-8") if exists else None
+                    file_plan = {
                         "target": target_path,
-                        "status": "error" if operation["required"] else "optional-skip",
+                        "target_file": target_file,
+                        "original": original,
+                        "original_exists": exists,
+                        "next": original or "",
+                        "operations": [],
+                        "patches": [],
+                        "bundles": [],
+                        "operation_entries": [],
+                    }
+                    files[target_path] = file_plan
+                cleaned, cleanup_changed = _apply_cleanup(
+                    file_plan["next"], operation["cleanup"]
+                )
+                operation_for_target = {
+                    **operation,
+                    "marker_style": target_spec["marker_style"],
+                }
+                next_value, source = _apply_operation(cleaned, operation_for_target)
+                file_plan["next"] = next_value
+                file_plan["operations"].append(operation["id"])
+                file_plan["patches"].append(operation["patch_id"])
+                file_plan["bundles"].append(operation["bundle"])
+                file_plan["operation_entries"].append(_operation_identity(operation))
+                ready_targets += 1
+                results.append(
+                    {
+                        **_operation_identity(operation),
+                        "target": target_path,
+                        "status": "ready",
                         "required": operation["required"],
-                        "reason": str(error),
-                    }
-                    results.append(result)
-                    if operation["required"]:
-                        errors.append(result)
-            if operation["required"] and operation["target_policy"] == "at-least-one" and not ready_targets:
-                errors.append(
-                    {
-                        "id": operation["id"],
-                        "target": "<target-group>",
-                        "reason": "at-least-one target 未命中",
+                        "source": "legacy-cleanup"
+                        if cleanup_changed and source == "selector"
+                        else source,
                     }
                 )
-            if (
-                operation["required"]
-                and operation["target_policy"] == "required-all"
-                and existing_targets != len(operation["targets"])
-            ):
-                errors.append(
-                    {
-                        "id": operation["id"],
-                        "target": "<target-group>",
-                        "reason": "required-all target 不完整",
-                    }
-                )
+            except PatchError as error:
+                result = {
+                    **_operation_identity(operation),
+                    "target": target_path,
+                    "status": "error" if operation["required"] else "optional-skip",
+                    "required": operation["required"],
+                    "reason": str(error),
+                }
+                results.append(result)
+                if operation["required"]:
+                    errors.append(result)
+        if operation["required"] and operation["target_policy"] == "at-least-one" and not ready_targets:
+            errors.append(
+                {
+                    "id": operation["id"],
+                    "qualifiedId": operation["qualified_id"],
+                    "target": "<target-group>",
+                    "reason": "at-least-one target 未命中",
+                }
+            )
+        if (
+            operation["required"]
+            and operation["target_policy"] == "required-all"
+            and existing_targets != len(operation["targets"])
+        ):
+            errors.append(
+                {
+                    "id": operation["id"],
+                    "qualifiedId": operation["qualified_id"],
+                    "target": "<target-group>",
+                    "reason": "required-all target 不完整",
+                }
+            )
     if errors:
         detail = "; ".join(
             f"{item['id']}@{item['target']}:{item['reason']}" for item in errors
@@ -1333,17 +1590,47 @@ def prepare_patches(
         file_plan["after_hash"] = _sha256(file_plan["next"])
     catalog_hash = _sha256(
         "\0".join(
-            f"{file.relative_to(overrides_dir).as_posix()}\0{file.read_text(encoding='utf-8')}"
+            f"{CATALOG_ID}\0{file.relative_to(overrides_dir).as_posix()}\0{file.read_text(encoding='utf-8')}"
             for file in catalog_files
         )
     )
     return {
         "bundles": bundles,
         "patches": [patch["id"] for patch in patches],
+        "catalogs": [{"id": CATALOG_ID}],
+        "selectedBundles": [
+            {
+                "id": item["id"],
+                "catalog": item["catalog"],
+                "qualifiedId": item["qualifiedId"],
+            }
+            for item in catalog["selected_bundles"]
+        ],
+        "selectedPatches": [
+            {
+                "id": patch["id"],
+                "catalog": patch["catalog"],
+                "qualifiedId": patch["qualified_id"],
+                "bundle": patch["bundle"],
+                "bundles": patch["bundles"],
+            }
+            for patch in patches
+        ],
+        "operationOrder": order["operation_order"],
         "files": list(files.values()),
         "results": results,
         "catalogHash": catalog_hash,
-        "catalogOperations": catalog_operations,
+        "catalogOperations": [
+            {
+                "id": operation["id"],
+                "catalog": operation["catalog"],
+                "qualifiedId": operation["qualified_id"],
+                "patch": operation["patch_id"],
+                "qualifiedPatch": operation["qualified_patch_id"],
+                "targets": [target["path"] for target in operation["targets"]],
+            }
+            for operation in order["all_operations"]
+        ],
     }
 
 
@@ -1412,19 +1699,17 @@ def apply_prepared(target_root: Path, plan: dict[str, Any]) -> dict[str, Any]:
         file_plan["target_file"].write_text(file_plan["next"], encoding="utf-8")
         changed += 1
     provenance = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "catalogHash": plan["catalogHash"],
         "applied": [
             {
-                "id": operation_id,
-                "patch": file_plan["patches"][index],
-                "bundle": file_plan["bundles"][index],
+                **entry,
                 "target": file_plan["target"],
                 "status": "applied",
                 "resultHash": file_plan["after_hash"],
             }
             for file_plan in plan["files"]
-            for index, operation_id in enumerate(file_plan["operations"])
+            for entry in file_plan["operation_entries"]
         ],
     }
     missing_targets = sum(item["status"] == "missing-target" for item in plan["results"])
