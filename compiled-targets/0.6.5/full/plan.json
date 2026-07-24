@@ -15,7 +15,7 @@
       ".codex"
     ]
   },
-  "catalogHash": "sha256:3e160200833c4345787560c68fa29dae23c9456db770dd28c8fda7f8658929da",
+  "catalogHash": "sha256:f23cf7c379dd70bd820320ed1303c626dfa72c265fe0ef9a8718fd3d68b20a64",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -2491,7 +2491,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:078bc526d7a29b1d391cc198d113d28225cf46a6868d655498832a6cc9a36acf",
-      "afterHash": "sha256:3753a34d81a15a4be9152ae87a7ca15f1997d09d918b977e805b74ac26b67a2d",
+      "afterHash": "sha256:ea724402a768b59bf845d72f55acd9ad5acfb8786731952a2ecf16dda38e6ed0",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -3158,7 +3158,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:11d908e0ccbfa60afa35e1b1e12d7ad6931adde66df41e9b4ffaab71c190bebd",
+      "afterHash": "sha256:a979d64dda343eb73399b6a3f78b36b8a89706bde5c4a1b86d2de908368573f0",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -3178,7 +3178,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:2a8ef06351c1949d339031fc7e9295f5d1848fe666a2aca882a7de54909570a4",
+      "afterHash": "sha256:bbb333515ddc3bd0dd40a6d2fd1ebad17c02df69aa96a76b0247dbe143889884",
       "changed": true,
       "originalExists": true,
       "operations": [
