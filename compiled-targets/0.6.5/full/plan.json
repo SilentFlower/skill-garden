@@ -15,7 +15,7 @@
       ".codex"
     ]
   },
-  "catalogHash": "sha256:f30afef73cb382cbf337a04b96437d5f15f4cbdaf48c6ecc2c17426a038fc4dc",
+  "catalogHash": "sha256:e1f86638a9903f3cae231b3a815ee8c2d45b5987cac132f3fe846a2514fd85db",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -79,6 +79,15 @@
       "id": "runtime-state-integrity",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/runtime-state-integrity",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ]
+    },
+    {
+      "id": "session-context-update-boundary",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-boundary",
       "bundle": "control-plane-integrity",
       "bundles": [
         "skill-garden/control-plane-integrity"
@@ -692,6 +701,70 @@
       "incomingEdges": []
     },
     {
+      "id": "session-context-update-imports",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-imports",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "declarationIndex": 17,
+      "resolvedIndex": 17,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "session-context-update-constants",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-constants",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "declarationIndex": 18,
+      "resolvedIndex": 18,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "session-context-update-helpers",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-helpers",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "declarationIndex": 19,
+      "resolvedIndex": 19,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "session-context-update-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-output",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "declarationIndex": 20,
+      "resolvedIndex": 20,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "trellis-finish-work-exact-bookkeeping",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-finish-work-exact-bookkeeping",
@@ -701,8 +774,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 17,
-      "resolvedIndex": 17,
+      "declarationIndex": 21,
+      "resolvedIndex": 21,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -717,8 +790,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 18,
-      "resolvedIndex": 18,
+      "declarationIndex": 22,
+      "resolvedIndex": 22,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -733,8 +806,8 @@
       "bundles": [
         "skill-garden/trellis-finish-work"
       ],
-      "declarationIndex": 19,
-      "resolvedIndex": 19,
+      "declarationIndex": 23,
+      "resolvedIndex": 23,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -749,8 +822,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 20,
-      "resolvedIndex": 20,
+      "declarationIndex": 24,
+      "resolvedIndex": 24,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -765,8 +838,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 21,
-      "resolvedIndex": 21,
+      "declarationIndex": 25,
+      "resolvedIndex": 25,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -781,8 +854,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 22,
-      "resolvedIndex": 22,
+      "declarationIndex": 26,
+      "resolvedIndex": 26,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -797,8 +870,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 23,
-      "resolvedIndex": 23,
+      "declarationIndex": 27,
+      "resolvedIndex": 27,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -813,8 +886,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 24,
-      "resolvedIndex": 24,
+      "declarationIndex": 28,
+      "resolvedIndex": 28,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -829,8 +902,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 25,
-      "resolvedIndex": 25,
+      "declarationIndex": 29,
+      "resolvedIndex": 29,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -845,8 +918,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 26,
-      "resolvedIndex": 26,
+      "declarationIndex": 30,
+      "resolvedIndex": 30,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -861,8 +934,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 27,
-      "resolvedIndex": 27,
+      "declarationIndex": 31,
+      "resolvedIndex": 31,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -877,8 +950,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 28,
-      "resolvedIndex": 28,
+      "declarationIndex": 32,
+      "resolvedIndex": 32,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -893,8 +966,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 29,
-      "resolvedIndex": 29,
+      "declarationIndex": 33,
+      "resolvedIndex": 33,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -909,8 +982,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 30,
-      "resolvedIndex": 30,
+      "declarationIndex": 34,
+      "resolvedIndex": 34,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -925,8 +998,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 31,
-      "resolvedIndex": 31,
+      "declarationIndex": 35,
+      "resolvedIndex": 35,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -941,8 +1014,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 32,
-      "resolvedIndex": 32,
+      "declarationIndex": 36,
+      "resolvedIndex": 36,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -957,8 +1030,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 33,
-      "resolvedIndex": 33,
+      "declarationIndex": 37,
+      "resolvedIndex": 37,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -973,8 +1046,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 34,
-      "resolvedIndex": 34,
+      "declarationIndex": 38,
+      "resolvedIndex": 38,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -989,8 +1062,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 35,
-      "resolvedIndex": 35,
+      "declarationIndex": 39,
+      "resolvedIndex": 39,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1005,8 +1078,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 36,
-      "resolvedIndex": 36,
+      "declarationIndex": 40,
+      "resolvedIndex": 40,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1021,8 +1094,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 37,
-      "resolvedIndex": 37,
+      "declarationIndex": 41,
+      "resolvedIndex": 41,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1037,8 +1110,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 38,
-      "resolvedIndex": 38,
+      "declarationIndex": 42,
+      "resolvedIndex": 42,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1053,8 +1126,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 39,
-      "resolvedIndex": 39,
+      "declarationIndex": 43,
+      "resolvedIndex": 43,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1069,8 +1142,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 40,
-      "resolvedIndex": 40,
+      "declarationIndex": 44,
+      "resolvedIndex": 44,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1085,8 +1158,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 41,
-      "resolvedIndex": 41,
+      "declarationIndex": 45,
+      "resolvedIndex": 45,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1101,8 +1174,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 42,
-      "resolvedIndex": 42,
+      "declarationIndex": 46,
+      "resolvedIndex": 46,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1117,8 +1190,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 43,
-      "resolvedIndex": 43,
+      "declarationIndex": 47,
+      "resolvedIndex": 47,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1133,8 +1206,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 44,
-      "resolvedIndex": 44,
+      "declarationIndex": 48,
+      "resolvedIndex": 48,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1149,8 +1222,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 45,
-      "resolvedIndex": 45,
+      "declarationIndex": 49,
+      "resolvedIndex": 49,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1165,8 +1238,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 46,
-      "resolvedIndex": 46,
+      "declarationIndex": 50,
+      "resolvedIndex": 50,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1182,8 +1255,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 47,
-      "resolvedIndex": 47,
+      "declarationIndex": 51,
+      "resolvedIndex": 51,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1198,8 +1271,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 48,
-      "resolvedIndex": 48,
+      "declarationIndex": 52,
+      "resolvedIndex": 52,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1214,8 +1287,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 49,
-      "resolvedIndex": 49,
+      "declarationIndex": 53,
+      "resolvedIndex": 53,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1230,8 +1303,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 50,
-      "resolvedIndex": 50,
+      "declarationIndex": 54,
+      "resolvedIndex": 54,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1246,8 +1319,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 51,
-      "resolvedIndex": 51,
+      "declarationIndex": 55,
+      "resolvedIndex": 55,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1262,8 +1335,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 52,
-      "resolvedIndex": 52,
+      "declarationIndex": 56,
+      "resolvedIndex": 56,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1278,8 +1351,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 53,
-      "resolvedIndex": 53,
+      "declarationIndex": 57,
+      "resolvedIndex": 57,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1294,8 +1367,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 54,
-      "resolvedIndex": 54,
+      "declarationIndex": 58,
+      "resolvedIndex": 58,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1310,8 +1383,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 55,
-      "resolvedIndex": 55,
+      "declarationIndex": 59,
+      "resolvedIndex": 59,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1326,8 +1399,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 56,
-      "resolvedIndex": 56,
+      "declarationIndex": 60,
+      "resolvedIndex": 60,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1342,8 +1415,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 57,
-      "resolvedIndex": 57,
+      "declarationIndex": 61,
+      "resolvedIndex": 61,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -1365,8 +1438,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 58,
-      "resolvedIndex": 58,
+      "declarationIndex": 62,
+      "resolvedIndex": 62,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1381,8 +1454,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 59,
-      "resolvedIndex": 59,
+      "declarationIndex": 63,
+      "resolvedIndex": 63,
       "after": [
         "skill-garden/brainstorm-planning-handoff"
       ],
@@ -1404,8 +1477,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 60,
-      "resolvedIndex": 60,
+      "declarationIndex": 64,
+      "resolvedIndex": 64,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1420,8 +1493,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 61,
-      "resolvedIndex": 61,
+      "declarationIndex": 65,
+      "resolvedIndex": 65,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1436,8 +1509,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 62,
-      "resolvedIndex": 62,
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1452,8 +1525,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 63,
-      "resolvedIndex": 63,
+      "declarationIndex": 67,
+      "resolvedIndex": 67,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1468,8 +1541,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 64,
-      "resolvedIndex": 64,
+      "declarationIndex": 68,
+      "resolvedIndex": 68,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1484,8 +1557,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 65,
-      "resolvedIndex": 65,
+      "declarationIndex": 69,
+      "resolvedIndex": 69,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1500,8 +1573,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 66,
-      "resolvedIndex": 66,
+      "declarationIndex": 70,
+      "resolvedIndex": 70,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1516,8 +1589,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 67,
-      "resolvedIndex": 67,
+      "declarationIndex": 71,
+      "resolvedIndex": 71,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1532,8 +1605,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 68,
-      "resolvedIndex": 68,
+      "declarationIndex": 72,
+      "resolvedIndex": 72,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1548,8 +1621,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 69,
-      "resolvedIndex": 69,
+      "declarationIndex": 73,
+      "resolvedIndex": 73,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1564,8 +1637,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 70,
-      "resolvedIndex": 70,
+      "declarationIndex": 74,
+      "resolvedIndex": 74,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1580,8 +1653,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 71,
-      "resolvedIndex": 71,
+      "declarationIndex": 75,
+      "resolvedIndex": 75,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1596,8 +1669,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 72,
-      "resolvedIndex": 72,
+      "declarationIndex": 76,
+      "resolvedIndex": 76,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1612,8 +1685,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 73,
-      "resolvedIndex": 73,
+      "declarationIndex": 77,
+      "resolvedIndex": 77,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1628,8 +1701,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 74,
-      "resolvedIndex": 74,
+      "declarationIndex": 78,
+      "resolvedIndex": 78,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1644,8 +1717,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 75,
-      "resolvedIndex": 75,
+      "declarationIndex": 79,
+      "resolvedIndex": 79,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1660,8 +1733,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 76,
-      "resolvedIndex": 76,
+      "declarationIndex": 80,
+      "resolvedIndex": 80,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1676,8 +1749,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 77,
-      "resolvedIndex": 77,
+      "declarationIndex": 81,
+      "resolvedIndex": 81,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1692,8 +1765,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 78,
-      "resolvedIndex": 78,
+      "declarationIndex": 82,
+      "resolvedIndex": 82,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1708,8 +1781,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 79,
-      "resolvedIndex": 79,
+      "declarationIndex": 83,
+      "resolvedIndex": 83,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1724,8 +1797,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 80,
-      "resolvedIndex": 80,
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1740,8 +1813,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 81,
-      "resolvedIndex": 81,
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1756,8 +1829,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 82,
-      "resolvedIndex": 82,
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1772,8 +1845,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 83,
-      "resolvedIndex": 83,
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1788,8 +1861,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1804,8 +1877,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1820,8 +1893,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1836,8 +1909,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1960,6 +2033,46 @@
       "qualifiedPatch": "skill-garden/runtime-state-integrity",
       "targets": [
         ".trellis/scripts/common/active_task.py"
+      ]
+    },
+    {
+      "id": "session-context-update-imports",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-imports",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "targets": [
+        ".trellis/scripts/common/session_context.py"
+      ]
+    },
+    {
+      "id": "session-context-update-constants",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-constants",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "targets": [
+        ".trellis/scripts/common/session_context.py"
+      ]
+    },
+    {
+      "id": "session-context-update-helpers",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-helpers",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "targets": [
+        ".trellis/scripts/common/session_context.py"
+      ]
+    },
+    {
+      "id": "session-context-update-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-output",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "targets": [
+        ".trellis/scripts/common/session_context.py"
       ]
     },
     {
@@ -3421,6 +3534,59 @@
           "bundle": "intent-routing",
           "bundles": [
             "skill-garden/intent-routing"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trellis/scripts/common/session_context.py",
+      "beforeHash": "sha256:df79c44efe3432811c32d145d57a66343a70e221ec087ed2bd28b76677bb4076",
+      "afterHash": "sha256:ca735ebec3eeda9466eef08bba5ef88e6134d82257abc2c4d508e9a28563cc2e",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "session-context-update-imports",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/session-context-update-imports",
+          "patch": "session-context-update-boundary",
+          "qualifiedPatch": "skill-garden/session-context-update-boundary",
+          "bundle": "control-plane-integrity",
+          "bundles": [
+            "skill-garden/control-plane-integrity"
+          ]
+        },
+        {
+          "id": "session-context-update-constants",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/session-context-update-constants",
+          "patch": "session-context-update-boundary",
+          "qualifiedPatch": "skill-garden/session-context-update-boundary",
+          "bundle": "control-plane-integrity",
+          "bundles": [
+            "skill-garden/control-plane-integrity"
+          ]
+        },
+        {
+          "id": "session-context-update-helpers",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/session-context-update-helpers",
+          "patch": "session-context-update-boundary",
+          "qualifiedPatch": "skill-garden/session-context-update-boundary",
+          "bundle": "control-plane-integrity",
+          "bundles": [
+            "skill-garden/control-plane-integrity"
+          ]
+        },
+        {
+          "id": "session-context-update-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/session-context-update-output",
+          "patch": "session-context-update-boundary",
+          "qualifiedPatch": "skill-garden/session-context-update-boundary",
+          "bundle": "control-plane-integrity",
+          "bundles": [
+            "skill-garden/control-plane-integrity"
           ]
         }
       ]
@@ -5059,6 +5225,62 @@
         "skill-garden/control-plane-integrity"
       ],
       "target": ".trellis/scripts/common/active_task.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "session-context-update-imports",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-imports",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "target": ".trellis/scripts/common/session_context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "session-context-update-constants",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-constants",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "target": ".trellis/scripts/common/session_context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "session-context-update-helpers",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-helpers",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "target": ".trellis/scripts/common/session_context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "session-context-update-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/session-context-update-output",
+      "patch": "session-context-update-boundary",
+      "qualifiedPatch": "skill-garden/session-context-update-boundary",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "target": ".trellis/scripts/common/session_context.py",
       "status": "ready",
       "required": true
     },

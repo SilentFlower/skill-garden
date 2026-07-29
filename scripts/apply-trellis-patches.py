@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import shutil
 import sys
@@ -45,10 +46,87 @@ INSTALL_MODES = {"full-or-selected", "full-only"}
 SEVERITIES = {"error", "warning", "info"}
 ASSERTION_TYPES = {"absent-literal", "required-literal", "max-occurrences"}
 CATALOG_ID = "skill-garden"
+TARGET_EVIDENCE_FILES = (
+    ".codex/hooks.json",
+    ".claude/settings.json",
+    ".trellis/workflow.md",
+)
+GENERATED_COMMAND_RE = re.compile(
+    r"(?:^|[\s`\"'([{])(py -3|python3|python)"
+    r"(?=\s+(?:-X\s+utf8\s+)?(?:\./)?(?:\.trellis/scripts|\.codex/hooks|\.claude/hooks)/)",
+    re.MULTILINE,
+)
 
 
 class PatchError(RuntimeError):
     """表示 Patch 声明、预检或应用阶段无法安全继续。"""
+
+
+def _normalize_python_command(value: Any, label: str) -> str:
+    """校验可用于文本物化的 Python 命令。
+
+    Args:
+        value: 待校验命令。
+        label: 错误字段说明。
+
+    Returns:
+        去除首尾空白后的命令。
+
+    Raises:
+        PatchError: 命令为空或包含换行、NUL。
+    """
+    if not isinstance(value, str) or not value.strip():
+        raise PatchError(f"{label} 必须是非空字符串")
+    command = value.strip()
+    if "\0" in command or "\r" in command or "\n" in command:
+        raise PatchError(f"{label} 不能包含换行或 NUL")
+    return command
+
+
+def _resolve_trellis_python_command(target_root: Path) -> str:
+    """从目标项目证据、环境和平台解析 Trellis Python 命令。
+
+    Args:
+        target_root: 目标 Trellis 项目根目录。
+
+    Returns:
+        目标项目实际使用的 Python 命令。
+    """
+    for relative in TARGET_EVIDENCE_FILES:
+        file = target_root / PurePosixPath(relative)
+        if not file.is_file():
+            continue
+        try:
+            value = file.read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            continue
+        match = GENERATED_COMMAND_RE.search(value)
+        if match:
+            return match.group(1)
+    if "TRELLIS_PYTHON_CMD" in os.environ:
+        return _normalize_python_command(
+            os.environ["TRELLIS_PYTHON_CMD"], "TRELLIS_PYTHON_CMD"
+        )
+    return "python" if sys.platform == "win32" else "python3"
+
+
+def _materialize_trellis_python_text(value: str, command: str) -> str:
+    """按 Trellis 模板规则物化 canonical `python3` 文本。
+
+    Args:
+        value: canonical Trellis 文本。
+        command: 目标项目 Python 命令。
+
+    Returns:
+        已物化文本。
+    """
+    normalized_command = _normalize_python_command(command, "Trellis Python 命令")
+    if normalized_command == "python3":
+        return value
+    return "\n".join(
+        line if line.startswith("#!") else line.replace("python3", normalized_command)
+        for line in value.split("\n")
+    )
 
 
 def _read_json(file: Path, label: str) -> dict[str, Any]:
@@ -163,14 +241,49 @@ def _validate_conflicts(raw: dict[str, Any]) -> dict[str, Any]:
     return raw
 
 
-def load_patch_policy(overrides_dir: Path) -> dict[str, Any]:
+def _materialize_conflict_assertions(
+    conflicts: dict[str, Any], command: str
+) -> dict[str, Any]:
+    """物化冲突策略中的命令 literal，保持其它声明不变。
+
+    Args:
+        conflicts: 已校验 conflicts policy。
+        command: 目标项目 Python 命令。
+
+    Returns:
+        assertion literal 已物化的新 conflicts policy。
+    """
+    rules = []
+    for rule in conflicts["rules"]:
+        assertion = rule["assertion"]
+        if assertion["type"] == "max-occurrences":
+            materialized_assertion = {
+                **assertion,
+                "value": _materialize_trellis_python_text(assertion["value"], command),
+            }
+        else:
+            materialized_assertion = {
+                **assertion,
+                "values": [
+                    _materialize_trellis_python_text(value, command)
+                    for value in assertion["values"]
+                ],
+            }
+        rules.append({**rule, "assertion": materialized_assertion})
+    return {**conflicts, "rules": rules}
+
+
+def load_patch_policy(
+    overrides_dir: Path, python_command: str = "python3"
+) -> dict[str, Any]:
     """读取并校验共享版本兼容与最终产物冲突声明。
 
     Args:
         overrides_dir: 包含 compatibility.json 与 conflicts.json 的目录。
+        python_command: 目标项目 Python 命令；默认保持 canonical `python3`。
 
     Returns:
-        已校验的 compatibility 与 conflicts 对象。
+        已校验且按目标命令物化的 compatibility 与 conflicts 对象。
 
     Raises:
         PatchError: policy 缺失、JSON 非法或声明不满足协议。
@@ -181,8 +294,9 @@ def load_patch_policy(overrides_dir: Path) -> dict[str, Any]:
         "compatibility": _validate_compatibility(
             _read_json(root / "compatibility.json", "compatibility policy")
         ),
-        "conflicts": _validate_conflicts(
-            _read_json(root / "conflicts.json", "conflict policy")
+        "conflicts": _materialize_conflict_assertions(
+            _validate_conflicts(_read_json(root / "conflicts.json", "conflict policy")),
+            python_command,
         ),
     }
 
@@ -1137,9 +1251,40 @@ def _normalize_operation(
     }
 
 
+def _materialize_operation_python_command(
+    operation: dict[str, Any], command: str
+) -> dict[str, Any]:
+    """物化一个已规范化 operation 的 Python 命令文本。
+
+    Args:
+        operation: 已规范化 Patch operation。
+        command: 目标项目 Python 命令。
+
+    Returns:
+        仅 selector、content 与 baselines 被物化的新 operation。
+    """
+    materialized = {**operation, "selector": {**operation["selector"]}}
+    selector_text = materialized.get("selector_text")
+    if isinstance(selector_text, str):
+        selector_text = _materialize_trellis_python_text(selector_text, command)
+        materialized["selector_text"] = selector_text
+        if isinstance(materialized["selector"].get("text"), str):
+            materialized["selector"]["text"] = selector_text
+    if isinstance(materialized.get("content"), str):
+        materialized["content"] = _materialize_trellis_python_text(
+            materialized["content"], command
+        )
+    materialized["baselines"] = [
+        _materialize_trellis_python_text(baseline, command)
+        for baseline in materialized["baselines"]
+    ]
+    return materialized
+
+
 def _load_catalog(
     overrides_dir: Path,
     skills: list[str],
+    python_command: str,
 ) -> dict[str, Any]:
     patches_dir = overrides_dir / "patches"
     bundles_dir = overrides_dir / "bundles"
@@ -1175,7 +1320,10 @@ def _load_catalog(
             "operations": [],
         }
         patch["operations"] = [
-            _normalize_operation(item, leaf_dir, patch, seen_operation_ids)
+            _materialize_operation_python_command(
+                _normalize_operation(item, leaf_dir, patch, seen_operation_ids),
+                python_command,
+            )
             for item in raw_operations
         ]
         patch_by_ref[ref] = patch
@@ -1411,6 +1559,7 @@ def prepare_patches(
     overrides_dir: Path,
     target_root: Path,
     skills: list[str] | None = None,
+    python_command: str | None = None,
 ) -> dict[str, Any]:
     """预检全部 Skill-Garden Patch，并在内存中计算目标文件结果。
 
@@ -1418,6 +1567,7 @@ def prepare_patches(
         overrides_dir: 包含 patches/ 与 bundles/ 的 0.6 overrides 目录。
         target_root: 目标 Trellis 项目根目录。
         skills: 可选精细安装过滤名。
+        python_command: 已解析的目标 Python 命令；省略时从目标项目解析。
 
     Returns:
         包含 bundles、patches、files、results、catalogHash 与 catalogOperations 的预检计划。
@@ -1427,7 +1577,8 @@ def prepare_patches(
     """
     overrides_dir = overrides_dir.resolve(strict=True)
     target_root = target_root.resolve(strict=True)
-    catalog = _load_catalog(overrides_dir, skills or [])
+    python_command = python_command or _resolve_trellis_python_command(target_root)
+    catalog = _load_catalog(overrides_dir, skills or [], python_command)
     order = _resolve_operation_order(catalog)
     bundles = catalog["bundles"]
     patches = catalog["patches"]
@@ -1746,7 +1897,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         overrides_dir = Path(args[0])
         target_root = Path(args[1])
-        policy = load_patch_policy(overrides_dir)
+        python_command = _resolve_trellis_python_command(target_root.resolve(strict=True))
+        policy = load_patch_policy(overrides_dir, python_command)
         version_file = target_root / ".trellis/.version"
         version = version_file.read_text(encoding="utf-8").strip() if version_file.is_file() else ""
         compatibility = evaluate_patch_compatibility(version, policy["compatibility"])
@@ -1757,7 +1909,7 @@ def main(argv: list[str] | None = None) -> int:
         }
         # 未支持版本必须先返回 --no-enhance 指引，不能被旧 catalog 的 selector 漂移掩盖。
         assert_no_patch_conflict_errors(compatibility_report)
-        plan = prepare_patches(overrides_dir, target_root, args[2:])
+        plan = prepare_patches(overrides_dir, target_root, args[2:], python_command)
         report = build_patch_conflict_report(version, plan, policy)
         for diagnostic in report["diagnostics"]:
             if diagnostic["severity"] == "warning":
