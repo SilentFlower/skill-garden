@@ -17,7 +17,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
      [workflow-state:planning]     → all of Phase 1 (status='planning')
      [workflow-state:planning-inline] → Codex inline variant of Phase 1
      [workflow-state:in_progress]  → Phase 2 + Phase 3.2-3.4
-@@ -137,23 +139,70 @@
+@@ -137,23 +139,71 @@
        matching phase's `[required · once]` walkthrough steps for sync
      - Run `trellis update` after editing to push the new bodies to
        downstream user projects (block-level managed replacement)
@@ -81,8 +81,9 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 -- User approval to create a task is not approval to start implementation. Planning still happens first.
 +<!-- BEGIN skill-garden patch workflow-request-triage v0.6 -->
 +- Infer `discuss`, `inspect`, `direct_edit`, `task_plan`, or `workflow_action` from the whole current request, scope, risk, side effects, active-task state, and latest explicit switch. Do not classify from one keyword alone.
++- Asking for an opinion, expressing discomfort, rejecting a proposal, or asking how something should change is `discuss` unless the current request also explicitly authorizes a concrete edit. Asking to inspect, explain, verify, or locate a cause is `inspect`; read-only findings do not expand into repair authorization.
 +- Repair authorization and permission to skip task planning are separate. If repair scope is unknown, use `inspect` first and reclassify from evidence before editing.
-+- `direct_edit` requires known, bounded, local, low-risk, reversible scope and simple validation. Permission/authentication/data-scope/security, shared contracts, cross-package/layer or multi-entry behavior, database/migration/configuration/release/external effects, historical regressions, systematic validation, or unknown scope are `task_plan` signals.
++- `direct_edit` requires known, bounded, low-risk, reversible scope, no unresolved design choice, and simple validation. Permission/authentication/data-scope/security, database/migration/release/external effects, or unknown scope remain strong `task_plan` boundaries. Shared contracts, cross-package/layer or multi-entry behavior, configuration, historical regressions, and systematic validation raise the evidence and validation bar; they are risk signals, not automatic `task_plan` outcomes. An exact rollback or mechanically synchronized known change may remain `direct_edit` or `workflow_action` when its behavior, scope, side effects, and validation are already determined.
 +- Before choosing an approach for non-trivial project work, run `python3 ./.trellis/scripts/spec_router.py "<short query describing the intended action>"` when project-local SOPs or conventions may change the correct action. Build the query from the request, intended commands, affected files or systems, package/layer, and domain terms; read high-confidence matches before acting and relevant medium-confidence matches when their path, heading, index description, or reason fits.
 +- Project Knowledge Discovery applies once per user intent, workflow phase, or decision boundary to Trellis/workflow/config/hooks, CLI behavior, release/publish/deploy/tag, Git history actions, data/migration/rollback, cross-layer design, generated artifacts, and install/sync pipelines. Skip it for pure Q&A, simple read-only inspection, opening local tools, or trivial edits unless project rules may alter the approach.
 +- When an active task exists, apply the Active Task Scope Guard before artifact ownership, task routing, or file edits. If new implementation work does not belong to the active task title/brief, stop and choose from the user's intent: create a new task, explicitly include it here and update artifacts first, or proceed untracked without reusing the current task or progress. `task_intent.py` only executes the already-decided create/discard/current-task safety boundary; it does not decide semantic ownership.
@@ -95,7 +96,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Planning Artifacts
  
-@@ -174,13 +223,26 @@
+@@ -174,13 +224,26 @@
  <!-- Per-turn breadcrumb: shown when there is no active task (before Phase 1) -->
  
  [workflow-state:no_task]
@@ -126,7 +127,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  - 1.1 Requirement exploration `[required · repeatable]` (`prd.md`; complex tasks also need `design.md` + `implement.md`)
  - 1.2 Research `[optional · repeatable]`
  - 1.3 Configure context `[required · once]` — Claude Code, Cursor, OpenCode, Codex, Kiro, Gemini, Qoder, CodeBuddy, Copilot, Droid, Pi, ZCode, Reasonix (sub-agent-dispatch platforms only; inline platforms skip)
-@@ -190,10 +252,15 @@
+@@ -190,10 +253,15 @@
  <!-- Per-turn breadcrumb: shown throughout Phase 1 (status='planning') -->
  
  [workflow-state:planning]
@@ -146,7 +147,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning]
  
  <!-- Per-turn breadcrumb: shown throughout Phase 1 when codex.dispatch_mode=inline.
-@@ -203,10 +270,15 @@
+@@ -203,10 +271,15 @@
       into a sub-agent. -->
  
  [workflow-state:planning-inline]
@@ -166,7 +167,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning-inline]
  
  ### Phase 2: Execute
-@@ -223,10 +295,15 @@
+@@ -223,10 +296,15 @@
  Sub-agent dispatch protocol applies to all platforms and all sub-agents, including class-2 Codex/Gemini/Qoder/Copilot/ZCode/Reasonix/Trae and `trellis-research`: every dispatch prompt starts with `Active task: <task path from task.py current>` before role-specific instructions.
  
  [workflow-state:in_progress]
@@ -186,7 +187,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress]
  
  <!-- Per-turn breadcrumb: shown while status='in_progress' when
-@@ -235,9 +312,15 @@
+@@ -235,9 +313,15 @@
       instead of dispatching sub-agents. -->
  
  [workflow-state:in_progress-inline]
@@ -205,7 +206,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress-inline]
  
  ### Phase 3: Finish
-@@ -268,26 +351,18 @@
+@@ -268,26 +352,18 @@
  4. Steps tagged `[once]` are skipped if the output already exists; don't re-run
  5. Artifact presence informs the next step; missing `design.md` / `implement.md` is valid for lightweight tasks and incomplete planning for complex tasks.
  
@@ -238,7 +239,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  ### Guardrails
  
  - Task creation approval is not implementation approval; implementation waits for `task.py start` after artifact review.
-@@ -307,15 +382,29 @@
+@@ -307,15 +383,29 @@
  
  ## Phase 1: Plan
  
@@ -270,7 +271,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  `--slug` is the human-readable name only. Do **not** include the `MM-DD-` date prefix; `task.py create` adds that prefix automatically.
  
-@@ -433,20 +522,21 @@
+@@ -433,20 +523,21 @@
  
  [/codex-inline, Kilo, Antigravity, Devin]
  
@@ -299,7 +300,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 1.5 Completion criteria
  
  | Condition | Required |
-@@ -470,91 +560,42 @@
+@@ -470,91 +561,42 @@
  
  Goal: turn reviewed planning artifacts into code that passes quality checks.
  
@@ -423,7 +424,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 2.3 Rollback `[on demand]`
  
  - `check` reveals a prd defect → return to Phase 1, fix `prd.md`, then redo 2.1
-@@ -576,67 +617,26 @@
+@@ -576,67 +618,26 @@
  
  The goal is to capture debugging lessons so the same class of issue doesn't recur.
  
@@ -507,7 +508,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 3.5 Wrap-up reminder
  
  After the above, remind the user they can run `/finish-work` to wrap up (archive the task, record the session).
-@@ -650,7 +650,9 @@
+@@ -650,7 +651,9 @@
  ### Changing what a step means
  
  Edit the corresponding step's walkthrough body in the Phase 1 / 2 / 3 sections above. Critical invariants:
@@ -518,7 +519,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  - Planning must distinguish lightweight PRD-only tasks from complex tasks that require `prd.md`, `design.md`, and `implement.md` before start.
  - Every required execution path must keep the Phase 3.4 commit reminder reachable before `/trellis:finish-work`.
  
-@@ -702,7 +704,9 @@
+@@ -702,7 +705,9 @@
  
  ### Full contract
  
