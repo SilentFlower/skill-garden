@@ -15,7 +15,7 @@
       ".codex"
     ]
   },
-  "catalogHash": "sha256:132387618dbfb1406f9990039a74524e51e0e2d4f141fb2d02404a5c1e0cff04",
+  "catalogHash": "sha256:5c9a29c80a5554a156a9c939b952555b9a84dee7a1a1e867bb9fbb7050ef3835",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -2587,7 +2587,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:078bc526d7a29b1d391cc198d113d28225cf46a6868d655498832a6cc9a36acf",
-      "afterHash": "sha256:8aeb8b3f2d80db1d3b98ca6ea41ad6f67ceaf30c6493edda559d284e7861de22",
+      "afterHash": "sha256:ea5454c8c3738e64ed1b5a4739eead65eb55afa3037e15f84ebc14d151721d7c",
       "changed": true,
       "originalExists": true,
       "operations": [
