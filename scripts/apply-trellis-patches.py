@@ -738,6 +738,8 @@ def _marker_parts(
 
 
 def _active_marker(value: str, operation: dict[str, Any]) -> dict[str, Any] | None:
+    if operation["marker_style"] == "none":
+        return None
     candidates = [
         {
             "namespace": "patch",
@@ -791,6 +793,9 @@ def _active_marker(value: str, operation: dict[str, Any]) -> dict[str, Any] | No
 
 
 def _managed_block(operation: dict[str, Any]) -> tuple[str, str, str, re.Pattern[str]]:
+    if operation["marker_style"] == "none":
+        block = "" if operation["operation"] == "remove" else operation["content"].rstrip()
+        return "", "", block, re.compile(r"(?!x)x")
     return _marker_parts(
         "patch",
         operation["marker_id"],
@@ -877,6 +882,13 @@ def _apply_literal(value: str, operation: dict[str, Any]) -> tuple[str, str]:
     managed = _managed_block(operation)
     if active:
         return active["marker"][3].sub(lambda _: managed[2], value), active["source"]
+    if (
+        operation["marker_style"] == "none"
+        and operation["operation"] != "remove"
+        and value.count(managed[2]) == operation["expected_matches"]
+        and value.count(operation["selector_text"]) == 0
+    ):
+        return value, "desired-content"
     selector = operation["selector_text"]
     matches = value.count(selector)
     if matches != operation["expected_matches"]:

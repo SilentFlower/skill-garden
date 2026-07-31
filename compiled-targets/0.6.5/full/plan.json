@@ -15,7 +15,7 @@
       ".codex"
     ]
   },
-  "catalogHash": "sha256:e1f86638a9903f3cae231b3a815ee8c2d45b5987cac132f3fe846a2514fd85db",
+  "catalogHash": "sha256:88da3ca2d1c0c71a166a9633b60c4faacf05f53c60b532645288d93cdc9f3103",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -56,6 +56,11 @@
       "id": "trellis-meta",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-meta"
+    },
+    {
+      "id": "untracked-execution",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/untracked-execution"
     },
     {
       "id": "trellis-update-spec",
@@ -142,6 +147,15 @@
       "id": "workflow-state-missing-task",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-missing-task",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ]
+    },
+    {
+      "id": "workflow-state-untracked",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-untracked",
       "bundle": "intent-routing",
       "bundles": [
         "skill-garden/intent-routing"
@@ -290,6 +304,16 @@
       "bundle": "intent-routing",
       "bundles": [
         "skill-garden/intent-routing"
+      ]
+    },
+    {
+      "id": "agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
       ]
     },
     {
@@ -1037,6 +1061,22 @@
       "incomingEdges": []
     },
     {
+      "id": "workflow-state-untracked",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-untracked",
+      "patch": "workflow-state-untracked",
+      "qualifiedPatch": "skill-garden/workflow-state-untracked",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 38,
+      "resolvedIndex": 38,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "workflow-state-contract-comment",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-contract-comment",
@@ -1046,8 +1086,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 38,
-      "resolvedIndex": 38,
+      "declarationIndex": 39,
+      "resolvedIndex": 39,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1062,8 +1102,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 39,
-      "resolvedIndex": 39,
+      "declarationIndex": 40,
+      "resolvedIndex": 40,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1078,8 +1118,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 40,
-      "resolvedIndex": 40,
+      "declarationIndex": 41,
+      "resolvedIndex": 41,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1094,8 +1134,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 41,
-      "resolvedIndex": 41,
+      "declarationIndex": 42,
+      "resolvedIndex": 42,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1110,8 +1150,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 42,
-      "resolvedIndex": 42,
+      "declarationIndex": 43,
+      "resolvedIndex": 43,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1126,8 +1166,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 43,
-      "resolvedIndex": 43,
+      "declarationIndex": 44,
+      "resolvedIndex": 44,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1142,8 +1182,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 44,
-      "resolvedIndex": 44,
+      "declarationIndex": 45,
+      "resolvedIndex": 45,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1158,8 +1198,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 45,
-      "resolvedIndex": 45,
+      "declarationIndex": 46,
+      "resolvedIndex": 46,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1174,8 +1214,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 46,
-      "resolvedIndex": 46,
+      "declarationIndex": 47,
+      "resolvedIndex": 47,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1190,8 +1230,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 47,
-      "resolvedIndex": 47,
+      "declarationIndex": 48,
+      "resolvedIndex": 48,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1206,8 +1246,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 48,
-      "resolvedIndex": 48,
+      "declarationIndex": 49,
+      "resolvedIndex": 49,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1222,8 +1262,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 49,
-      "resolvedIndex": 49,
+      "declarationIndex": 50,
+      "resolvedIndex": 50,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1238,8 +1278,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 50,
-      "resolvedIndex": 50,
+      "declarationIndex": 51,
+      "resolvedIndex": 51,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1255,8 +1295,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 51,
-      "resolvedIndex": 51,
+      "declarationIndex": 52,
+      "resolvedIndex": 52,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1271,8 +1311,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 52,
-      "resolvedIndex": 52,
+      "declarationIndex": 53,
+      "resolvedIndex": 53,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1287,8 +1327,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 53,
-      "resolvedIndex": 53,
+      "declarationIndex": 54,
+      "resolvedIndex": 54,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1303,8 +1343,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 54,
-      "resolvedIndex": 54,
+      "declarationIndex": 55,
+      "resolvedIndex": 55,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1319,8 +1359,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 55,
-      "resolvedIndex": 55,
+      "declarationIndex": 56,
+      "resolvedIndex": 56,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1335,8 +1375,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 56,
-      "resolvedIndex": 56,
+      "declarationIndex": 57,
+      "resolvedIndex": 57,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1351,8 +1391,93 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 57,
-      "resolvedIndex": 57,
+      "declarationIndex": 58,
+      "resolvedIndex": 58,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 59,
+      "resolvedIndex": 59,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 60,
+      "resolvedIndex": 60,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 61,
+      "resolvedIndex": 61,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "codex-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 62,
+      "resolvedIndex": 62,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "kiro-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 63,
+      "resolvedIndex": 63,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1367,8 +1492,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 58,
-      "resolvedIndex": 58,
+      "declarationIndex": 64,
+      "resolvedIndex": 64,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1383,8 +1508,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 59,
-      "resolvedIndex": 59,
+      "declarationIndex": 65,
+      "resolvedIndex": 65,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1399,8 +1524,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 60,
-      "resolvedIndex": 60,
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1415,8 +1540,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 61,
-      "resolvedIndex": 61,
+      "declarationIndex": 67,
+      "resolvedIndex": 67,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -1438,8 +1563,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 62,
-      "resolvedIndex": 62,
+      "declarationIndex": 68,
+      "resolvedIndex": 68,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1454,8 +1579,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 63,
-      "resolvedIndex": 63,
+      "declarationIndex": 69,
+      "resolvedIndex": 69,
       "after": [
         "skill-garden/brainstorm-planning-handoff"
       ],
@@ -1477,8 +1602,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 64,
-      "resolvedIndex": 64,
+      "declarationIndex": 70,
+      "resolvedIndex": 70,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1493,8 +1618,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 65,
-      "resolvedIndex": 65,
+      "declarationIndex": 71,
+      "resolvedIndex": 71,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1509,8 +1634,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 66,
-      "resolvedIndex": 66,
+      "declarationIndex": 72,
+      "resolvedIndex": 72,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1525,8 +1650,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 67,
-      "resolvedIndex": 67,
+      "declarationIndex": 73,
+      "resolvedIndex": 73,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1541,8 +1666,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 68,
-      "resolvedIndex": 68,
+      "declarationIndex": 74,
+      "resolvedIndex": 74,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1557,8 +1682,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 69,
-      "resolvedIndex": 69,
+      "declarationIndex": 75,
+      "resolvedIndex": 75,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1573,8 +1698,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 70,
-      "resolvedIndex": 70,
+      "declarationIndex": 76,
+      "resolvedIndex": 76,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1589,8 +1714,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 71,
-      "resolvedIndex": 71,
+      "declarationIndex": 77,
+      "resolvedIndex": 77,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1605,8 +1730,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 72,
-      "resolvedIndex": 72,
+      "declarationIndex": 78,
+      "resolvedIndex": 78,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1621,8 +1746,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 73,
-      "resolvedIndex": 73,
+      "declarationIndex": 79,
+      "resolvedIndex": 79,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1637,8 +1762,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 74,
-      "resolvedIndex": 74,
+      "declarationIndex": 80,
+      "resolvedIndex": 80,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1653,8 +1778,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 75,
-      "resolvedIndex": 75,
+      "declarationIndex": 81,
+      "resolvedIndex": 81,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1669,8 +1794,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 76,
-      "resolvedIndex": 76,
+      "declarationIndex": 82,
+      "resolvedIndex": 82,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1685,8 +1810,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 77,
-      "resolvedIndex": 77,
+      "declarationIndex": 83,
+      "resolvedIndex": 83,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1701,8 +1826,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 78,
-      "resolvedIndex": 78,
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1717,8 +1842,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 79,
-      "resolvedIndex": 79,
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1733,8 +1858,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 80,
-      "resolvedIndex": 80,
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1749,8 +1874,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 81,
-      "resolvedIndex": 81,
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1765,8 +1890,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 82,
-      "resolvedIndex": 82,
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1781,8 +1906,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 83,
-      "resolvedIndex": 83,
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1797,8 +1922,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1813,8 +1938,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1829,8 +1954,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 92,
+      "resolvedIndex": 92,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1845,8 +1970,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 93,
+      "resolvedIndex": 93,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1861,8 +1986,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 88,
-      "resolvedIndex": 88,
+      "declarationIndex": 94,
+      "resolvedIndex": 94,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1877,8 +2002,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 89,
-      "resolvedIndex": 89,
+      "declarationIndex": 95,
+      "resolvedIndex": 95,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1893,8 +2018,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 90,
-      "resolvedIndex": 90,
+      "declarationIndex": 96,
+      "resolvedIndex": 96,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1909,14 +2034,85 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 91,
-      "resolvedIndex": 91,
+      "declarationIndex": 97,
+      "resolvedIndex": 97,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
     }
   ],
   "catalogOperations": [
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".claude/agents/trellis-implement.md",
+        ".claude/agents/trellis-check.md",
+        ".cursor/agents/trellis-implement.md",
+        ".cursor/agents/trellis-check.md",
+        ".codebuddy/agents/trellis-implement.md",
+        ".codebuddy/agents/trellis-check.md",
+        ".opencode/agents/trellis-implement.md",
+        ".opencode/agents/trellis-check.md",
+        ".factory/droids/trellis-implement.md",
+        ".factory/droids/trellis-check.md"
+      ]
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".gemini/agents/trellis-implement.md",
+        ".qoder/agents/trellis-implement.md",
+        ".pi/agents/trellis-implement.md",
+        ".reasonix/agents/trellis-implement.md",
+        ".trae/agents/trellis-implement.md",
+        ".zcode/agents/trellis-implement.md"
+      ]
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".gemini/agents/trellis-check.md",
+        ".qoder/agents/trellis-check.md",
+        ".pi/agents/trellis-check.md",
+        ".reasonix/agents/trellis-check.md",
+        ".trae/agents/trellis-check.md",
+        ".zcode/agents/trellis-check.md"
+      ]
+    },
+    {
+      "id": "codex-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".codex/agents/trellis-implement.toml",
+        ".codex/agents/trellis-check.toml"
+      ]
+    },
+    {
+      "id": "kiro-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".kiro/agents/trellis-implement.json",
+        ".kiro/agents/trellis-check.json"
+      ]
+    },
     {
       "id": "claude-session-start-missing-task",
       "catalog": "skill-garden",
@@ -3223,6 +3419,16 @@
       ]
     },
     {
+      "id": "workflow-state-untracked",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-untracked",
+      "patch": "workflow-state-untracked",
+      "qualifiedPatch": "skill-garden/workflow-state-untracked",
+      "targets": [
+        ".trellis/workflow.md"
+      ]
+    },
+    {
       "id": "workflow-state-in-progress",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-in-progress",
@@ -3634,7 +3840,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:078bc526d7a29b1d391cc198d113d28225cf46a6868d655498832a6cc9a36acf",
-      "afterHash": "sha256:f493ff935633bf769d4e103d0ab65f691070c3f5fc236803bcefdeddace1dc6d",
+      "afterHash": "sha256:d3f611fb4a9c3db735fff4ea317b24cc6f74253c1c9cbfedf3f31b46e3197cc1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -3732,6 +3938,17 @@
           "qualifiedId": "skill-garden/workflow-state-missing-task",
           "patch": "workflow-state-missing-task",
           "qualifiedPatch": "skill-garden/workflow-state-missing-task",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "workflow-state-untracked",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-untracked",
+          "patch": "workflow-state-untracked",
+          "qualifiedPatch": "skill-garden/workflow-state-untracked",
           "bundle": "intent-routing",
           "bundles": [
             "skill-garden/intent-routing"
@@ -3969,7 +4186,7 @@
     {
       "target": ".codex/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:552d4ee4ca059337856c587fde1aaf79364444d0465689faa88c43797969b7de",
-      "afterHash": "sha256:2ae5a38af71f1e07bfa443515129a664750d3dd9f1fe27e3c901f715ec859e48",
+      "afterHash": "sha256:a633723f9ca898f985bed4e5884b51d4ad934ed40cb33a4a7f9b55a5b33c53ff",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -3990,7 +4207,7 @@
     {
       "target": ".claude/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:552d4ee4ca059337856c587fde1aaf79364444d0465689faa88c43797969b7de",
-      "afterHash": "sha256:2ae5a38af71f1e07bfa443515129a664750d3dd9f1fe27e3c901f715ec859e48",
+      "afterHash": "sha256:a633723f9ca898f985bed4e5884b51d4ad934ed40cb33a4a7f9b55a5b33c53ff",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4011,7 +4228,7 @@
     {
       "target": ".codex/hooks/session-start.py",
       "beforeHash": "sha256:1c951ff35f490c5fbf576b4764ec190895df7c2a48e279fb20625209f51c321a",
-      "afterHash": "sha256:f52b3537050892503c161ce9350a618e24d961a39bd17769f877a5e0413ceded",
+      "afterHash": "sha256:3e24fd82d104e0fd5c2c91b2b9ee4e88debf7b28be92534c20a518a8cdeba737",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4053,7 +4270,7 @@
     {
       "target": ".claude/hooks/session-start.py",
       "beforeHash": "sha256:688e9d5c2273575b2c1cc8db17fa39da7b1798542a67f65286d97cdbdc347995",
-      "afterHash": "sha256:d4afae8b76c6d17734d55ab6e7da38a02832410d6ad5a9c18f805d920c218fa8",
+      "afterHash": "sha256:be79042e73a50a0b0760b339609c7b1e51e48a68af89c8cbff8b65a82cabf2a8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4093,9 +4310,93 @@
       ]
     },
     {
+      "target": ".claude/agents/trellis-implement.md",
+      "beforeHash": "sha256:73b56b3047c0e852382c4630aa181fb847d1e5ea1f63459dac4bf728f43fd097",
+      "afterHash": "sha256:6ebb76c2e0fe73b4e0584dd11086e965eaa86cdbf5fc4f2cf57de498fe5c853f",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "markdown-agents-untracked-context",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/agents/trellis-check.md",
+      "beforeHash": "sha256:9e48342243f311d55386f8fb42933945e87aba73d5ade547133aa98345a06128",
+      "afterHash": "sha256:dcb1bf829584329a60c9e6278b598c0334ab671368fe8387d5bf4c0f27e63c67",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "markdown-agents-untracked-context",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codex/agents/trellis-implement.toml",
+      "beforeHash": "sha256:87dc719802b355c61607c85ae0ab3e42b2a374a578a9fde349c3ae412638f8b4",
+      "afterHash": "sha256:10d6e77101e9fa518578be9ce31e261159dbb067a55c0aa95dc53b0a2767998c",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "codex-agents-untracked-context",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/codex-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codex/agents/trellis-check.toml",
+      "beforeHash": "sha256:372dbd32a68f156727fd9f5d755a184543db96013abfeaffb09974c78fd5b873",
+      "afterHash": "sha256:95b8175e50683b0daeccadac8ef4984f3d2998a50ef65954ba19fc423afa8700",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "codex-agents-untracked-context",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/codex-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        }
+      ]
+    },
+    {
       "target": ".agents/skills/trellis-start/SKILL.md",
       "beforeHash": "sha256:79a5ba7a2aff3c72e06d7f4cd6942dc4f4f4092dd40f9c8e94f1838024a81e4d",
-      "afterHash": "sha256:30b07f9cf5ee63debca270c8e7c37a55a0fc819da44360e1a9e34bc03502f598",
+      "afterHash": "sha256:0c8d7a028d72cd5ebc82898a4cad6e233f3d6ef5238d43bd6f1f383b77e938d4",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4819,7 +5120,7 @@
     {
       "target": ".agents/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:68b37df522b1fd86f1596989402cc6c7b6da3b0cf8b7886e8a0ad95438573c55",
+      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4872,7 +5173,7 @@
     {
       "target": ".claude/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:68b37df522b1fd86f1596989402cc6c7b6da3b0cf8b7886e8a0ad95438573c55",
+      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4925,7 +5226,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:a979d64dda343eb73399b6a3f78b36b8a89706bde5c4a1b86d2de908368573f0",
+      "afterHash": "sha256:a59b76dc22421c6d76f8c3d1bd8b0a6bfd5906557536b79bbfa2d5750295719b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4945,7 +5246,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:bbb333515ddc3bd0dd40a6d2fd1ebad17c02df69aa96a76b0247dbe143889884",
+      "afterHash": "sha256:87b461d561d7d381607f64c3b9278d7a224488dd1950c7447156d5cc5ed542f6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5733,6 +6034,20 @@
       "required": true
     },
     {
+      "id": "workflow-state-untracked",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-untracked",
+      "patch": "workflow-state-untracked",
+      "qualifiedPatch": "skill-garden/workflow-state-untracked",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".trellis/workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
       "id": "workflow-state-contract-comment",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-contract-comment",
@@ -6131,6 +6446,396 @@
       ],
       "target": ".claude/hooks/session-start.py",
       "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".claude/agents/trellis-implement.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".claude/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".cursor/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".cursor/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codebuddy/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codebuddy/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".opencode/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".opencode/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".factory/droids/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".factory/droids/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".gemini/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".qoder/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".pi/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".reasonix/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".trae/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-implement-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-implement-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".zcode/agents/trellis-implement.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".gemini/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".qoder/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".pi/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".reasonix/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".trae/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "markdown-check-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".zcode/agents/trellis-check.md",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "codex-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codex/agents/trellis-implement.toml",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "codex-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codex/agents/trellis-check.toml",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "kiro-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".kiro/agents/trellis-implement.json",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "kiro-agents-untracked-context",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".kiro/agents/trellis-check.json",
+      "status": "missing-target",
       "required": true
     },
     {
@@ -12386,7 +13091,7 @@
     "summary": {
       "errors": 0,
       "warnings": 0,
-      "info": 408
+      "info": 430
     },
     "diagnostics": [
       {
@@ -13323,6 +14028,270 @@
         "reason": "目标平台入口未安装，按声明跳过。",
         "evidence": [
           "skill-garden/inject-workflow-state-shared-runtime"
+        ]
+      },
+      {
+        "id": "missing-target:kiro-agents-untracked-context:.kiro/agents/trellis-check.json",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:kiro-agents-untracked-context:.kiro/agents/trellis-check.json",
+        "severity": "info",
+        "target": ".kiro/agents/trellis-check.json",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/kiro-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:kiro-agents-untracked-context:.kiro/agents/trellis-implement.json",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:kiro-agents-untracked-context:.kiro/agents/trellis-implement.json",
+        "severity": "info",
+        "target": ".kiro/agents/trellis-implement.json",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/kiro-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.codebuddy/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.codebuddy/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".codebuddy/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.codebuddy/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.codebuddy/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".codebuddy/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.cursor/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.cursor/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".cursor/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.cursor/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.cursor/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".cursor/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.factory/droids/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.factory/droids/trellis-check.md",
+        "severity": "info",
+        "target": ".factory/droids/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.factory/droids/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.factory/droids/trellis-implement.md",
+        "severity": "info",
+        "target": ".factory/droids/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.opencode/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.opencode/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".opencode/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-agents-untracked-context:.opencode/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-agents-untracked-context:.opencode/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".opencode/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.gemini/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.gemini/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".gemini/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.pi/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.pi/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".pi/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.qoder/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.qoder/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".qoder/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.reasonix/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.reasonix/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".reasonix/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.trae/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.trae/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".trae/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-check-agents-untracked-context:.zcode/agents/trellis-check.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-check-agents-untracked-context:.zcode/agents/trellis-check.md",
+        "severity": "info",
+        "target": ".zcode/agents/trellis-check.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-check-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.gemini/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.gemini/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".gemini/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.pi/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.pi/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".pi/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.qoder/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.qoder/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".qoder/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.reasonix/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.reasonix/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".reasonix/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.trae/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.trae/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".trae/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
+        ]
+      },
+      {
+        "id": "missing-target:markdown-implement-agents-untracked-context:.zcode/agents/trellis-implement.md",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:markdown-implement-agents-untracked-context:.zcode/agents/trellis-implement.md",
+        "severity": "info",
+        "target": ".zcode/agents/trellis-implement.md",
+        "owner": "agents-untracked-context",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/markdown-implement-agents-untracked-context"
         ]
       },
       {
