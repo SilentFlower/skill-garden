@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:13aefc0b01b5f0ae791e75b637ebcef4f422346c61e3df5614fc869272eb0815",
+  "catalogHash": "sha256:e488f6240621e6bb5c0e19608974747b614a8e33bdcdf5eea3d0bca9bba0fbe7",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -1131,6 +1131,22 @@
       "incomingEdges": []
     },
     {
+      "id": "workflow-managed-customization-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-managed-customization-guidance",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 40,
+      "resolvedIndex": 40,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "workflow-runtime-contract-reference",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-runtime-contract-reference",
@@ -1140,8 +1156,24 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 40,
-      "resolvedIndex": 40,
+      "declarationIndex": 41,
+      "resolvedIndex": 41,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "workflow-state-completed",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-completed",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 42,
+      "resolvedIndex": 42,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1156,8 +1188,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 41,
-      "resolvedIndex": 41,
+      "declarationIndex": 43,
+      "resolvedIndex": 43,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1172,8 +1204,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 42,
-      "resolvedIndex": 42,
+      "declarationIndex": 44,
+      "resolvedIndex": 44,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1188,8 +1220,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 43,
-      "resolvedIndex": 43,
+      "declarationIndex": 45,
+      "resolvedIndex": 45,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1204,8 +1236,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 44,
-      "resolvedIndex": 44,
+      "declarationIndex": 46,
+      "resolvedIndex": 46,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1220,8 +1252,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 45,
-      "resolvedIndex": 45,
+      "declarationIndex": 47,
+      "resolvedIndex": 47,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1236,8 +1268,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 46,
-      "resolvedIndex": 46,
+      "declarationIndex": 48,
+      "resolvedIndex": 48,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1252,8 +1284,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 47,
-      "resolvedIndex": 47,
+      "declarationIndex": 49,
+      "resolvedIndex": 49,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1268,8 +1300,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 48,
-      "resolvedIndex": 48,
+      "declarationIndex": 50,
+      "resolvedIndex": 50,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1284,8 +1316,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 49,
-      "resolvedIndex": 49,
+      "declarationIndex": 51,
+      "resolvedIndex": 51,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1300,8 +1332,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 50,
-      "resolvedIndex": 50,
+      "declarationIndex": 52,
+      "resolvedIndex": 52,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1316,8 +1348,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 51,
-      "resolvedIndex": 51,
+      "declarationIndex": 53,
+      "resolvedIndex": 53,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1333,8 +1365,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 52,
-      "resolvedIndex": 52,
+      "declarationIndex": 54,
+      "resolvedIndex": 54,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1350,8 +1382,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 53,
-      "resolvedIndex": 53,
+      "declarationIndex": 55,
+      "resolvedIndex": 55,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1367,8 +1399,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 54,
-      "resolvedIndex": 54,
+      "declarationIndex": 56,
+      "resolvedIndex": 56,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1384,8 +1416,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 55,
-      "resolvedIndex": 55,
+      "declarationIndex": 57,
+      "resolvedIndex": 57,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1401,8 +1433,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 56,
-      "resolvedIndex": 56,
+      "declarationIndex": 58,
+      "resolvedIndex": 58,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1417,8 +1449,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 57,
-      "resolvedIndex": 57,
+      "declarationIndex": 59,
+      "resolvedIndex": 59,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1433,8 +1465,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 58,
-      "resolvedIndex": 58,
+      "declarationIndex": 60,
+      "resolvedIndex": 60,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1449,8 +1481,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 59,
-      "resolvedIndex": 59,
+      "declarationIndex": 61,
+      "resolvedIndex": 61,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1465,8 +1497,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 60,
-      "resolvedIndex": 60,
+      "declarationIndex": 62,
+      "resolvedIndex": 62,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1481,8 +1513,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 61,
-      "resolvedIndex": 61,
+      "declarationIndex": 63,
+      "resolvedIndex": 63,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1497,8 +1529,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 62,
-      "resolvedIndex": 62,
+      "declarationIndex": 64,
+      "resolvedIndex": 64,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1514,8 +1546,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 63,
-      "resolvedIndex": 63,
+      "declarationIndex": 65,
+      "resolvedIndex": 65,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1531,8 +1563,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 64,
-      "resolvedIndex": 64,
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1548,8 +1580,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 65,
-      "resolvedIndex": 65,
+      "declarationIndex": 67,
+      "resolvedIndex": 67,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1565,8 +1597,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 66,
-      "resolvedIndex": 66,
+      "declarationIndex": 68,
+      "resolvedIndex": 68,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1582,8 +1614,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 67,
-      "resolvedIndex": 67,
+      "declarationIndex": 69,
+      "resolvedIndex": 69,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1599,8 +1631,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 68,
-      "resolvedIndex": 68,
+      "declarationIndex": 70,
+      "resolvedIndex": 70,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1616,8 +1648,76 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 69,
-      "resolvedIndex": 69,
+      "declarationIndex": 71,
+      "resolvedIndex": 71,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 72,
+      "resolvedIndex": 72,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "codex-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 73,
+      "resolvedIndex": 73,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "kiro-check-agent-boundaries",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-check-agent-boundaries",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 74,
+      "resolvedIndex": 74,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "channel-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/channel-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "declarationIndex": 75,
+      "resolvedIndex": 75,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1632,8 +1732,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 70,
-      "resolvedIndex": 70,
+      "declarationIndex": 76,
+      "resolvedIndex": 76,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1648,8 +1748,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 71,
-      "resolvedIndex": 71,
+      "declarationIndex": 77,
+      "resolvedIndex": 77,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1664,8 +1764,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 72,
-      "resolvedIndex": 72,
+      "declarationIndex": 78,
+      "resolvedIndex": 78,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1680,8 +1780,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 73,
-      "resolvedIndex": 73,
+      "declarationIndex": 79,
+      "resolvedIndex": 79,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -1703,8 +1803,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 74,
-      "resolvedIndex": 74,
+      "declarationIndex": 80,
+      "resolvedIndex": 80,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1719,8 +1819,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 75,
-      "resolvedIndex": 75,
+      "declarationIndex": 81,
+      "resolvedIndex": 81,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1735,8 +1835,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 76,
-      "resolvedIndex": 76,
+      "declarationIndex": 82,
+      "resolvedIndex": 82,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1751,8 +1851,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 77,
-      "resolvedIndex": 77,
+      "declarationIndex": 83,
+      "resolvedIndex": 83,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1767,8 +1867,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 78,
-      "resolvedIndex": 78,
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1783,8 +1883,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 79,
-      "resolvedIndex": 79,
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1799,8 +1899,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 80,
-      "resolvedIndex": 80,
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1815,8 +1915,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 81,
-      "resolvedIndex": 81,
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1831,8 +1931,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 82,
-      "resolvedIndex": 82,
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1847,8 +1947,24 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 83,
-      "resolvedIndex": 83,
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1863,8 +1979,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1879,8 +1995,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 92,
+      "resolvedIndex": 92,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1895,8 +2011,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 93,
+      "resolvedIndex": 93,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1911,8 +2027,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 94,
+      "resolvedIndex": 94,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1927,8 +2043,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 88,
-      "resolvedIndex": 88,
+      "declarationIndex": 95,
+      "resolvedIndex": 95,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1943,8 +2059,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 89,
-      "resolvedIndex": 89,
+      "declarationIndex": 96,
+      "resolvedIndex": 96,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1959,8 +2075,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 90,
-      "resolvedIndex": 90,
+      "declarationIndex": 97,
+      "resolvedIndex": 97,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1975,8 +2091,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 91,
-      "resolvedIndex": 91,
+      "declarationIndex": 98,
+      "resolvedIndex": 98,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1991,8 +2107,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 92,
-      "resolvedIndex": 92,
+      "declarationIndex": 99,
+      "resolvedIndex": 99,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2007,8 +2123,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 93,
-      "resolvedIndex": 93,
+      "declarationIndex": 100,
+      "resolvedIndex": 100,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2023,8 +2139,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 94,
-      "resolvedIndex": 94,
+      "declarationIndex": 101,
+      "resolvedIndex": 101,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2039,8 +2155,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 95,
-      "resolvedIndex": 95,
+      "declarationIndex": 102,
+      "resolvedIndex": 102,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2055,8 +2171,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 96,
-      "resolvedIndex": 96,
+      "declarationIndex": 103,
+      "resolvedIndex": 103,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2071,8 +2187,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 97,
-      "resolvedIndex": 97,
+      "declarationIndex": 104,
+      "resolvedIndex": 104,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2087,8 +2203,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 98,
-      "resolvedIndex": 98,
+      "declarationIndex": 105,
+      "resolvedIndex": 105,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2103,8 +2219,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 99,
-      "resolvedIndex": 99,
+      "declarationIndex": 106,
+      "resolvedIndex": 106,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2119,8 +2235,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 100,
-      "resolvedIndex": 100,
+      "declarationIndex": 107,
+      "resolvedIndex": 107,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2135,8 +2251,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 101,
-      "resolvedIndex": 101,
+      "declarationIndex": 108,
+      "resolvedIndex": 108,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2151,8 +2267,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 102,
-      "resolvedIndex": 102,
+      "declarationIndex": 109,
+      "resolvedIndex": 109,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2167,8 +2283,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 103,
-      "resolvedIndex": 103,
+      "declarationIndex": 110,
+      "resolvedIndex": 110,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2183,8 +2299,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 104,
-      "resolvedIndex": 104,
+      "declarationIndex": 111,
+      "resolvedIndex": 111,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2199,8 +2315,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 105,
-      "resolvedIndex": 105,
+      "declarationIndex": 112,
+      "resolvedIndex": 112,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2215,8 +2331,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 106,
-      "resolvedIndex": 106,
+      "declarationIndex": 113,
+      "resolvedIndex": 113,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2231,8 +2347,56 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 107,
-      "resolvedIndex": 107,
+      "declarationIndex": 114,
+      "resolvedIndex": 114,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 115,
+      "resolvedIndex": 115,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2247,8 +2411,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 108,
-      "resolvedIndex": 108,
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2263,8 +2427,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 109,
-      "resolvedIndex": 109,
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2364,8 +2528,61 @@
       "patch": "agents-untracked-context",
       "qualifiedPatch": "skill-garden/agents-untracked-context",
       "targets": [
-        ".kiro/agents/trellis-implement.json",
+        ".kiro/agents/trellis-implement.json"
+      ]
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".claude/agents/trellis-check.md",
+        ".cursor/agents/trellis-check.md",
+        ".codebuddy/agents/trellis-check.md",
+        ".opencode/agents/trellis-check.md",
+        ".factory/droids/trellis-check.md",
+        ".gemini/agents/trellis-check.md",
+        ".grok/agents/trellis-check.md",
+        ".kimi-code/skills/trellis-check/SKILL.md",
+        ".qoder/agents/trellis-check.md",
+        ".pi/agents/trellis-check.md",
+        ".reasonix/skills/trellis-check/SKILL.md",
+        ".snow/agents/trellis-check.md",
+        ".trae/agents/trellis-check.md",
+        ".zcode/agents/trellis-check.md",
+        ".omp/agents/trellis-check.md"
+      ]
+    },
+    {
+      "id": "codex-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".codex/agents/trellis-check.toml"
+      ]
+    },
+    {
+      "id": "kiro-check-agent-boundaries",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-check-agent-boundaries",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
         ".kiro/agents/trellis-check.json"
+      ]
+    },
+    {
+      "id": "channel-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/channel-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "targets": [
+        ".trellis/agents/check.md"
       ]
     },
     {
@@ -2993,6 +3210,36 @@
       "id": "trellis-continue-task-progress-recovery",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "targets": [
+        ".agent/workflows/continue.md",
+        ".agents/skills/trellis-continue/SKILL.md",
+        ".claude/commands/trellis/continue.md",
+        ".codebuddy/commands/trellis/continue.md",
+        ".cursor/commands/trellis-continue.md",
+        ".devin/workflows/trellis-continue.md",
+        ".factory/commands/trellis/continue.md",
+        ".gemini/commands/trellis/continue.toml",
+        ".github/prompts/continue.prompt.md",
+        ".grok/commands/trellis-continue.md",
+        ".kilocode/workflows/continue.md",
+        ".kimi-code/skills/trellis-continue/SKILL.md",
+        ".kiro/skills/trellis-continue/SKILL.md",
+        ".omp/commands/trellis-continue.md",
+        ".opencode/commands/trellis/continue.md",
+        ".pi/prompts/trellis-continue.md",
+        ".qoder/commands/trellis-continue.md",
+        ".reasonix/skills/trellis-continue/SKILL.md",
+        ".snow/skills/trellis-continue/SKILL.md",
+        ".trae/commands/trellis-continue.md",
+        ".zcode/commands/trellis/continue.md"
+      ]
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
       "patch": "trellis-continue-task-progress-recovery",
       "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
       "targets": [
@@ -3716,6 +3963,87 @@
       ]
     },
     {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".trae/skills/trellis-meta/references/customize-local/change-workflow.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
+        ".trae/skills/trellis-meta/references/customize-local/change-workflow.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".agents/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".claude/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".codebuddy/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".cursor/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".devin/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".factory/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".github/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".kilocode/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".kiro/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".opencode/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".grok/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".omp/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".snow/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".zcode/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".qoder/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".reasonix/skills/trellis-meta/references/customize-local/change-agents.md",
+        ".trae/skills/trellis-meta/references/customize-local/change-agents.md"
+      ]
+    },
+    {
       "id": "start-no-task-routing",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/start-no-task-routing",
@@ -3910,9 +4238,29 @@
       ]
     },
     {
+      "id": "workflow-managed-customization-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-managed-customization-guidance",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "targets": [
+        ".trellis/workflow.md"
+      ]
+    },
+    {
       "id": "workflow-runtime-contract-reference",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-runtime-contract-reference",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "targets": [
+        ".trellis/workflow.md"
+      ]
+    },
+    {
+      "id": "workflow-state-completed",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-completed",
       "patch": "workflow-runtime-contract-reference",
       "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
       "targets": [
@@ -4054,7 +4402,7 @@
     {
       "target": ".trellis/scripts/common/task_store.py",
       "beforeHash": "sha256:e3c2fbf8b79b591e39fc3c9f4e2f3ee0c840c8201c94a16709ec743fa45037f6",
-      "afterHash": "sha256:b91299921f5a1b02e00b68c10ab15b9bb8ad6178a058b3d4ac79632cea7477fa",
+      "afterHash": "sha256:0ae28aaca7036073a05a6c49356a2e63c5f77cdecc72259feba03d6758f3d606",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4371,7 +4719,7 @@
     {
       "target": ".agents/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:161060fbcd44f787440d3a5c297a9f5223ea7774bb3021a50e376875a9ac5b2d",
-      "afterHash": "sha256:4a1c5d6ef8faa9cce24fa9f3da9917ccf6523cc1a1eed6d2de69e4d450c7981e",
+      "afterHash": "sha256:f6c793717cbbfacad27a765125b8312e121908213c3462142a474d694faaa000",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4391,7 +4739,7 @@
     {
       "target": ".claude/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:15fdd2bcf6bf58b7f9cb572616c546aae5904e6c1c80161b6f72e120665bd7da",
+      "afterHash": "sha256:ea439cee5773f50b21c3f8bc17cb732840be42e6fcabf2895f804019595f0e65",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4411,7 +4759,7 @@
     {
       "target": ".agent/workflows/finish-work.md",
       "beforeHash": "sha256:d23e96116cd24ea156ab582255792fe5e37338c9702df15ce46f07b584fee14d",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4431,7 +4779,7 @@
     {
       "target": ".codebuddy/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4451,7 +4799,7 @@
     {
       "target": ".cursor/commands/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4471,7 +4819,7 @@
     {
       "target": ".devin/workflows/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4491,7 +4839,7 @@
     {
       "target": ".factory/commands/trellis/finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4511,7 +4859,7 @@
     {
       "target": ".github/prompts/finish-work.prompt.md",
       "beforeHash": "sha256:d23e96116cd24ea156ab582255792fe5e37338c9702df15ce46f07b584fee14d",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4531,7 +4879,7 @@
     {
       "target": ".grok/commands/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4551,7 +4899,7 @@
     {
       "target": ".kilocode/workflows/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4571,7 +4919,7 @@
     {
       "target": ".kimi-code/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:24d18a5792ecd72a58131b1ca06dcd5948f01ba61cb310fac6e1c135e3efc8c7",
-      "afterHash": "sha256:1c77ebc4b3d34b203f4a99a56746080d0b511631b7f0c125b97888d595b966f2",
+      "afterHash": "sha256:9c34bd7b7ec3e7acc3cc24ea1ffa0b04cb235412138afa80a014e0d2dbea2737",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4591,7 +4939,7 @@
     {
       "target": ".kiro/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:486d56ad2d8f05e232a017e739e5f11ab6b5fc8f2d70b305ecb9aa402fe83087",
-      "afterHash": "sha256:1c77ebc4b3d34b203f4a99a56746080d0b511631b7f0c125b97888d595b966f2",
+      "afterHash": "sha256:9c34bd7b7ec3e7acc3cc24ea1ffa0b04cb235412138afa80a014e0d2dbea2737",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4611,7 +4959,7 @@
     {
       "target": ".omp/commands/trellis-finish-work.md",
       "beforeHash": "sha256:e81fc5df4a63aa44305fd040d588b5cd66e3b5fe26c6f7202bc7035685394da4",
-      "afterHash": "sha256:2674e4be1cdbefd53d2127f690d5c0b94bdde69e02599f9b587a200c6a09a164",
+      "afterHash": "sha256:7baad967113a8a83da56e66e95ccc28cdcf287e9a1cb76840f57f10899feb07c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4631,7 +4979,7 @@
     {
       "target": ".opencode/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4651,7 +4999,7 @@
     {
       "target": ".pi/prompts/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4671,7 +5019,7 @@
     {
       "target": ".qoder/commands/trellis-finish-work.md",
       "beforeHash": "sha256:1b83f5d1a1a5042a20c9394eeae1728f470ca583ba2012421252d55c3dd4ac6b",
-      "afterHash": "sha256:d69266986b7d31d754f75f682b6b629496211cca2018ae75240e502189155444",
+      "afterHash": "sha256:25c4231f4e8781dfca60b66d0bdf5963c608a6c3470df9c2a0633bbd0d1c3527",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4691,7 +5039,7 @@
     {
       "target": ".reasonix/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:a949107cb0222f85d67cea7978ca6710621c8fcfd253430f8a16eba0cb55d423",
-      "afterHash": "sha256:1c77ebc4b3d34b203f4a99a56746080d0b511631b7f0c125b97888d595b966f2",
+      "afterHash": "sha256:9c34bd7b7ec3e7acc3cc24ea1ffa0b04cb235412138afa80a014e0d2dbea2737",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4711,7 +5059,7 @@
     {
       "target": ".snow/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:2929ad749ef7ed8a9d33667d5fe59c89544017171dcc2b69d37bc769ddec13cc",
-      "afterHash": "sha256:1c77ebc4b3d34b203f4a99a56746080d0b511631b7f0c125b97888d595b966f2",
+      "afterHash": "sha256:9c34bd7b7ec3e7acc3cc24ea1ffa0b04cb235412138afa80a014e0d2dbea2737",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4731,7 +5079,7 @@
     {
       "target": ".trae/commands/trellis-finish-work.md",
       "beforeHash": "sha256:34732ad26bfcc2dde0cdf50b3ffddccfd1a5a354a95114b382ea37ea9eb16ca2",
-      "afterHash": "sha256:d69266986b7d31d754f75f682b6b629496211cca2018ae75240e502189155444",
+      "afterHash": "sha256:25c4231f4e8781dfca60b66d0bdf5963c608a6c3470df9c2a0633bbd0d1c3527",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4751,7 +5099,7 @@
     {
       "target": ".zcode/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:2ab23dc60ba0af359fd2faf23a95585342b7f496aeca5f057c4bda939bf22965",
+      "afterHash": "sha256:a086489fab56273d05f5cac2e20adde1eeb5d06948cf43d4ff3b7e8fae9b753f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4791,7 +5139,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:b91e4e6a40b2b6d50a809b89ffff790fc665dba4c3eafcf1b9919796b5a45cb7",
+      "afterHash": "sha256:3163f6d20e07be9415a689ba08191b0b0412fcc0ad8056c40ed746cad1e5e255",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -4917,9 +5265,31 @@
           ]
         },
         {
+          "id": "workflow-managed-customization-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-managed-customization-guidance",
+          "patch": "workflow-runtime-contract-reference",
+          "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
           "id": "workflow-runtime-contract-reference",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-runtime-contract-reference",
+          "patch": "workflow-runtime-contract-reference",
+          "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "workflow-state-completed",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-completed",
           "patch": "workflow-runtime-contract-reference",
           "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
           "bundle": "intent-routing",
@@ -5932,7 +6302,7 @@
     {
       "target": ".claude/agents/trellis-check.md",
       "beforeHash": "sha256:9e48342243f311d55386f8fb42933945e87aba73d5ade547133aa98345a06128",
-      "afterHash": "sha256:dcb1bf829584329a60c9e6278b598c0334ab671368fe8387d5bf4c0f27e63c67",
+      "afterHash": "sha256:cf077a2439b6357023b2f2aaa52202aa36289ff65925a23d2f5200efe219b5fc",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5940,6 +6310,18 @@
           "id": "markdown-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -5974,7 +6356,7 @@
     {
       "target": ".cursor/agents/trellis-check.md",
       "beforeHash": "sha256:e54d3de996bab4abd7653eef4d64c171638fbc2859e9b1fe4aae2483df72de99",
-      "afterHash": "sha256:b23fa56ff7bb3dfca8552fa5db04d532a66edd81c8e06d410806c56b78f74ba8",
+      "afterHash": "sha256:6d49e5922ef90b71a1696670afc0a047aa6cafd3661b0f6bab54952ea1a70c54",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5982,6 +6364,18 @@
           "id": "markdown-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6016,7 +6410,7 @@
     {
       "target": ".codebuddy/agents/trellis-check.md",
       "beforeHash": "sha256:9e48342243f311d55386f8fb42933945e87aba73d5ade547133aa98345a06128",
-      "afterHash": "sha256:dcb1bf829584329a60c9e6278b598c0334ab671368fe8387d5bf4c0f27e63c67",
+      "afterHash": "sha256:cf077a2439b6357023b2f2aaa52202aa36289ff65925a23d2f5200efe219b5fc",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6024,6 +6418,18 @@
           "id": "markdown-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6058,7 +6464,7 @@
     {
       "target": ".opencode/agents/trellis-check.md",
       "beforeHash": "sha256:ab0dd630f34c1ace0ce15180ffb0f6de919a75262e21bbece93ccbac9d9bc709",
-      "afterHash": "sha256:34d884c443db69e10e9bbbb3ce1cc3676c4e6ffbdb0a496de98c2bd166a9d9e4",
+      "afterHash": "sha256:84da319b02ed23e3fcf1adaead6a85b03d8fb4b6fb40d7c859fe2db7a237e10e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6066,6 +6472,18 @@
           "id": "markdown-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6100,7 +6518,7 @@
     {
       "target": ".factory/droids/trellis-check.md",
       "beforeHash": "sha256:fc0d204db20baabbc31c689ebc40269bc513ea14ade30342cfd5c2d7b6706830",
-      "afterHash": "sha256:295805c34c80f79f4db4b2d28dc00612e043dc3ce5a1f42986518ca3f8be2082",
+      "afterHash": "sha256:1376ecd6c15b9e617e7606df979ccccbae6efe472697690d4f0d1319cf411ada",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6108,6 +6526,18 @@
           "id": "markdown-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6310,7 +6740,7 @@
     {
       "target": ".gemini/agents/trellis-check.md",
       "beforeHash": "sha256:c534d57720a318c531936c8577bc37433d146e1ed14d4cb53013cc0b0f0b2530",
-      "afterHash": "sha256:0830a332c4d0e3133eaa6781634792d3f792339a7b6656eb5f76f5b046503d9f",
+      "afterHash": "sha256:550de3863002b6a77f6897dcecaa7418922abe0b0776bd0c1a2f8a5d9743b578",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6318,6 +6748,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6331,7 +6773,7 @@
     {
       "target": ".grok/agents/trellis-check.md",
       "beforeHash": "sha256:11a1820117e13dd0652f315156d39dc3e53f6f59450057308d51b0632dc71609",
-      "afterHash": "sha256:02f5b35008367653f28578fbdbdeaeb247d1cdb969144644ae006c3c7b384661",
+      "afterHash": "sha256:333d84c4706ca1f8f4b0de36eb7ad6521e80d3ab9e25ef6760e4b075f38b8ec8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6339,6 +6781,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6352,7 +6806,7 @@
     {
       "target": ".kimi-code/skills/trellis-check/SKILL.md",
       "beforeHash": "sha256:500332cf3e9ca5a5adb168d8d2dc5f2cdee719f90e26c90e4560907e60192df6",
-      "afterHash": "sha256:11c85d910da3187c5ec7de14a7a31890165d3b0ed068385641ba9390cd91e7a7",
+      "afterHash": "sha256:30725dbe6a0cc18a33c915c55c71442529e9f02f4587752be90bada72f2505b2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6360,6 +6814,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6373,7 +6839,7 @@
     {
       "target": ".qoder/agents/trellis-check.md",
       "beforeHash": "sha256:86ed37a6cdb5ae39fe20692d84a0529f4cf74fc83a69fb83ee0e1a24ea5a94f1",
-      "afterHash": "sha256:282dfc5a645945dd08598e73b83fef67486fd77489f1df7c0db8e96acf6afe3c",
+      "afterHash": "sha256:5e9bcf13368f99f81f069ff9d5591a112071ce52d70ba7f10da1ea409fe94a7b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6381,6 +6847,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6394,7 +6872,7 @@
     {
       "target": ".pi/agents/trellis-check.md",
       "beforeHash": "sha256:1dbfedd3403f201fbfdbae8d810afba0a1f812b97f0f8e308908db7eaceea496",
-      "afterHash": "sha256:3db16db3eb8803266fd6fd19786ce9b75bf7190a26d0186431f4c8c4d3350943",
+      "afterHash": "sha256:2b329428cb5d87e2f5cd1e99b10918b8452e3dc7c910e4ce9307c2376b8abfd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6402,6 +6880,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6415,7 +6905,7 @@
     {
       "target": ".reasonix/skills/trellis-check/SKILL.md",
       "beforeHash": "sha256:8db22352a4e9984f95743281105989274b45d115a1df2542981b4205bdfe5abc",
-      "afterHash": "sha256:9d0b5074e773d41e98a4cb0092f3c07d835c0feab4e7862dce0bab62118e9fc6",
+      "afterHash": "sha256:4a624c3d85ae258f67585fefce451951ed92c26d138ce5d42563c2dd5b103cb2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6423,6 +6913,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6436,7 +6938,7 @@
     {
       "target": ".snow/agents/trellis-check.md",
       "beforeHash": "sha256:3b5aea458033a83684154c12e35ff1578db09e925a2987b8c1004c951b09d85b",
-      "afterHash": "sha256:78d1022c40daa00456995f0573870adb30bb6e5897bdee31fc703b1b63024979",
+      "afterHash": "sha256:7d364bc7220054856e3b37245bda06f106aeeaede07c8026e69671d59ae21b43",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6444,6 +6946,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6457,7 +6971,7 @@
     {
       "target": ".trae/agents/trellis-check.md",
       "beforeHash": "sha256:86ed37a6cdb5ae39fe20692d84a0529f4cf74fc83a69fb83ee0e1a24ea5a94f1",
-      "afterHash": "sha256:282dfc5a645945dd08598e73b83fef67486fd77489f1df7c0db8e96acf6afe3c",
+      "afterHash": "sha256:5e9bcf13368f99f81f069ff9d5591a112071ce52d70ba7f10da1ea409fe94a7b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6472,13 +6986,25 @@
             "skill-garden/intent-routing",
             "skill-garden/untracked-execution"
           ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
         }
       ]
     },
     {
       "target": ".zcode/agents/trellis-check.md",
       "beforeHash": "sha256:9d48b731d4e2cb034c0c85ff291b732c330d34deca88767c470e9c49884c9445",
-      "afterHash": "sha256:bfbb1bbb15ec5f96f0458317c92564d52b1ce378c0a46ffb1d8f612cdd04ac84",
+      "afterHash": "sha256:33c4accfe213971748ed2d659f379ff821ea2a116deb50ecc948817711bc7961",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6486,6 +7012,18 @@
           "id": "markdown-check-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/markdown-check-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6520,7 +7058,7 @@
     {
       "target": ".omp/agents/trellis-check.md",
       "beforeHash": "sha256:6b9f25cea043374813692d99a216d3793c57a456bc32508c05c17d708c35dbb0",
-      "afterHash": "sha256:0b0bb8d1e1b30f7a6234cd746f746793982e973c5eae1ddb413a3b1cd8707ead",
+      "afterHash": "sha256:3f954165da5c2ee20fcc3831d878de19ad65002cf30e24a0327ed8509cb1345a",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6528,6 +7066,18 @@
           "id": "omp-check-agent-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/omp-check-agent-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "markdown-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6562,7 +7112,7 @@
     {
       "target": ".codex/agents/trellis-check.toml",
       "beforeHash": "sha256:79070c63fa404fc53061cca5194bf66db839132b67a57b9c8d6a295037ba7308",
-      "afterHash": "sha256:7f28c989bb99b43d9c4536d24991dd8cb708351d95e9b75520fc50b215efdbb8",
+      "afterHash": "sha256:cd306e15546014fea68ecd8da201c85ff437f821eb590b67e615b00c495e8ce5",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6570,6 +7120,18 @@
           "id": "codex-agents-untracked-context",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/codex-agents-untracked-context",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        },
+        {
+          "id": "codex-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/codex-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -6604,14 +7166,35 @@
     {
       "target": ".kiro/agents/trellis-check.json",
       "beforeHash": "sha256:00a8a83fa8bc96001dcb143f0b3fc4ad636909d236916650dd045bdfe5e13bd1",
-      "afterHash": "sha256:ae38c7142d9467a5ce21d5c61c9de48d47f6411b3df3f8fc3dbc0d4aa04170eb",
+      "afterHash": "sha256:2d937dd3a061c24f5ea8ec0d992378abf3313aa8084916479ce561c568c4cc67",
       "changed": true,
       "originalExists": true,
       "operations": [
         {
-          "id": "kiro-agents-untracked-context",
+          "id": "kiro-check-agent-boundaries",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+          "qualifiedId": "skill-garden/kiro-check-agent-boundaries",
+          "patch": "agents-untracked-context",
+          "qualifiedPatch": "skill-garden/agents-untracked-context",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/untracked-execution"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trellis/agents/check.md",
+      "beforeHash": "sha256:edb4f57361407249a53bf5998ebf91c40d2b969e826a2c5e1b4e813a08bcb175",
+      "afterHash": "sha256:8dbd3783efe380e1c956555010929a4f3e94c61cdbd031da24f04084297304d1",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "channel-check-all-intent-guard",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/channel-check-all-intent-guard",
           "patch": "agents-untracked-context",
           "qualifiedPatch": "skill-garden/agents-untracked-context",
           "bundle": "intent-routing",
@@ -8713,7 +9296,7 @@
     {
       "target": ".agent/workflows/continue.md",
       "beforeHash": "sha256:1ef09f7d6d9d07c92a3808e2f0bcb322c15d106a9bfeba03f27a36ef5d093f8d",
-      "afterHash": "sha256:791856c77b6451394406f13deb464fe4e6b6b7f344affc3a67b3f3d030c10bfe",
+      "afterHash": "sha256:557424255a1de9e9baa98d959427ad4af02e95dfddc0f9773d29c2ffb2c1cbfc",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8721,6 +9304,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8733,7 +9327,7 @@
     {
       "target": ".agents/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:7723ccf49fbf19d8f086cacc7a080bd8be8db6fc70a32908b80f68efa318d7bf",
-      "afterHash": "sha256:4fb59e14cdc458ca5eacfd3e8b882d507b7c2deae2620a023d45d750bdbfae15",
+      "afterHash": "sha256:e5781b4c0071269ece2f379aa0bad54d30e6aaeb83dcb27528e2642121ca7f2d",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8741,6 +9335,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8753,7 +9358,7 @@
     {
       "target": ".claude/commands/trellis/continue.md",
       "beforeHash": "sha256:6c34c41824f8eff4b2df792e032e0c36787b59f8a8879b0338347073f76ad52c",
-      "afterHash": "sha256:ff07399ed9ecc103167432fa4b853518111e1a76831878a7060f4b2846934f07",
+      "afterHash": "sha256:d5de39235f743315ef1babba6edb443be88ae537b1192e5b07fb630ccd489e6c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8761,6 +9366,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8773,7 +9389,7 @@
     {
       "target": ".codebuddy/commands/trellis/continue.md",
       "beforeHash": "sha256:666f4988d21aef07feae3f660a520ed0677001b5c70756670ae7d901f8f0465f",
-      "afterHash": "sha256:73c3f3e2c95aff461b026be39da466299641e3b6539d4170bd2f1551a93792b7",
+      "afterHash": "sha256:10f60265f6d4e26f91a0ac7bcfb699cc4a7880971463ae2c50ebd32f20b722aa",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8781,6 +9397,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8793,7 +9420,7 @@
     {
       "target": ".cursor/commands/trellis-continue.md",
       "beforeHash": "sha256:338f80aab71e576de25c736e3aa7ea73fc2d5b433ff03f90e78d8958870945bc",
-      "afterHash": "sha256:9d39aa8de044fe421b9472451f04cc887883b120df07042d2f40522b4440b171",
+      "afterHash": "sha256:06fd40e5a21163ee5168387362183a72fb732fd431199b4cd9a266b5b0486ef1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8801,6 +9428,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8813,7 +9451,7 @@
     {
       "target": ".devin/workflows/trellis-continue.md",
       "beforeHash": "sha256:fd5abd504103162cbe5ed6a7654d735e7ecd284b37132a49f18008fb7a63c1f4",
-      "afterHash": "sha256:daf0c795016741762841b4baa53f4feefc7830676fea11ef5fa148322c62ffa3",
+      "afterHash": "sha256:b6f0197af393ac841483ab32cea95b3d038d087219959218982f7fccf41c12be",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8821,6 +9459,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8833,7 +9482,7 @@
     {
       "target": ".factory/commands/trellis/continue.md",
       "beforeHash": "sha256:46bfa60398d375751b6aec0347f8fe96d293edee3182151518619ac24210db2d",
-      "afterHash": "sha256:5c7932237eb7678e219b1fb8bc11e4e1f1928b35a6a66e24b51d7be3116b0da1",
+      "afterHash": "sha256:04ec1fdf59dcd86934abcbd1eaa2f39d0dbbefa504dda33c45620c255cbb7953",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8841,6 +9490,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8853,7 +9513,7 @@
     {
       "target": ".gemini/commands/trellis/continue.toml",
       "beforeHash": "sha256:f3650392880c3b81137712f48958e2b73a71b82669e84c577df29f3dffc7192f",
-      "afterHash": "sha256:be7cec03e786ee33b367cf66d47f969a26dde61aa00aefb7c2fe80b224a9fc73",
+      "afterHash": "sha256:19d67b2d485867d386c75636f5c7bde1f87f2d1ee9092dc8fa2adf8a3c0497db",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8861,6 +9521,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8873,7 +9544,7 @@
     {
       "target": ".github/prompts/continue.prompt.md",
       "beforeHash": "sha256:0a61286df4c14c92d9431c1859b8d2f9d521979b597dab8b9d3b3f9882422c71",
-      "afterHash": "sha256:513636ef057a95f0a0e1dde37a13916cbd0fffb38b184ee882a82c6cdd45e69c",
+      "afterHash": "sha256:545b3f02a4fb900ccf11bb6d9ac09d6fae174436175f91a941c118e04ff38b90",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8881,6 +9552,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8893,7 +9575,7 @@
     {
       "target": ".grok/commands/trellis-continue.md",
       "beforeHash": "sha256:b454c192a5ac109f162c6d7f8ca1713f9cb00a1726cde3e4b5070e05d1e625b5",
-      "afterHash": "sha256:02f41520cb9f1e02aef38248bb0dcfd2436a7ffccd9e857921284b4bea3662f5",
+      "afterHash": "sha256:010b84439ea6c2370c21296fce5176d0566d1065bdaa05e81c2e372179223441",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8901,6 +9583,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8913,7 +9606,7 @@
     {
       "target": ".kilocode/workflows/continue.md",
       "beforeHash": "sha256:d5373736d78f5f7fb19d00af5fa7bde2fde86aa4c4fedfe869c172bb60a06e70",
-      "afterHash": "sha256:33cd712575ffa7c1eab388100bf182448af55669371aae722b3c450b97655e0d",
+      "afterHash": "sha256:7a329a8c0a422d1b9fdb27ff939cc73a6d6f6a2bd82d81356355dfb6da1e4026",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8921,6 +9614,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8933,7 +9637,7 @@
     {
       "target": ".kimi-code/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:acf4d42f93ac037141e06eb3526d840beb24e14b66c2d3c6e7a11a01b0598b16",
-      "afterHash": "sha256:9df5f0cf5cef3bd6d53dbb22fbc1bce55fdb3ec47f5edc50cb782daa64dfa024",
+      "afterHash": "sha256:b3219bcf7ef735822c008017bc3265ec874fb904cacc9748a8baec120fa0ab29",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8941,6 +9645,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8953,7 +9668,7 @@
     {
       "target": ".kiro/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:cbe9a5e5c7b1f1c7aab1599a2aeff223308505f5875dabd04055e3971df26c32",
-      "afterHash": "sha256:4bdbcd9019b77214c4f85a9e62ac457fae95fb4e94a9a4654527e7f75bc06983",
+      "afterHash": "sha256:1f2074af90edfa4b55f5022ed2385655cad1e12e8ec83089a6a869571274b7d2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8961,6 +9676,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8973,7 +9699,7 @@
     {
       "target": ".omp/commands/trellis-continue.md",
       "beforeHash": "sha256:6075e18c5661445475ecb20c4e1dd216b3c3790244311b4fc933ef365bd3ae0c",
-      "afterHash": "sha256:2e4a3b61099f15fd4b14eb6080758fcb5d3570ea1c92162b142e4b99f418927d",
+      "afterHash": "sha256:aa1f6397127bf68f258af09a6f5247e6af7437c208f074e3951496327072ba29",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8981,6 +9707,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -8993,7 +9730,7 @@
     {
       "target": ".opencode/commands/trellis/continue.md",
       "beforeHash": "sha256:85c439d4f7dda208ecf9ec72a2ff14e6fc6c6c5e06b3552b8bcb2707caa392a0",
-      "afterHash": "sha256:84d48ec321bb0be99da3a6b797d0132b768e107daff8138cd36c25310508b776",
+      "afterHash": "sha256:083ad6da5606b4b86accaa818992c1e27a3be58c4cff0f4f494933a737aca7ed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9001,6 +9738,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -9013,7 +9761,7 @@
     {
       "target": ".pi/prompts/trellis-continue.md",
       "beforeHash": "sha256:12c2f0288ff67af3368c0b577a50027a11a25fec1d32ed34282a4dc84be08f1c",
-      "afterHash": "sha256:bfd6a3fd692a6d07f5648467d271f7f28bd1fb2c3499ae08e1cbf87a6c0120ea",
+      "afterHash": "sha256:12f0a661f60a7e6715cc181e09caf696dcba7a60ff4a638848964bc7febe7705",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9021,6 +9769,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -9033,7 +9792,7 @@
     {
       "target": ".qoder/commands/trellis-continue.md",
       "beforeHash": "sha256:d808a8e59eb8f6d1fa91833fe767a7c2ce669653b6c60df4646bba55324a3e68",
-      "afterHash": "sha256:8746315a628c6ae0613d0a8bf784e930c67ff4b2878bc5a60a16ce6cc8030f43",
+      "afterHash": "sha256:87702ea6a8ebc81302d464d4f55feaebba8fc4b37839df722b066607c8bf55e7",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9041,6 +9800,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -9053,7 +9823,7 @@
     {
       "target": ".reasonix/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:a54ce6dffe86561164cc63a7e25d48182b9c0d5b4b0855d348a38788e3f31bd3",
-      "afterHash": "sha256:0599fe7405cb87aedb20d7fe337a6a57d69ae5c603197ac4647396a98371faaa",
+      "afterHash": "sha256:e377491f28a01fc9321b8888f66ba05efc73dab6336b420b2744db115e1ee9d3",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9061,6 +9831,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -9073,7 +9854,7 @@
     {
       "target": ".snow/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:0757df10e36d59c8b3fc00356705dfc94c590ea1000304b99f4522bdd8b40997",
-      "afterHash": "sha256:0b0e65e14d7629fe3ef9509cc5893eefc13cc7cdbfa85e0cc5fd64a7d93f5a6b",
+      "afterHash": "sha256:54b9122861dcade20a612584b5a31d6fc80001ed6ed7345c3ad8b4cd5a56530b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9081,6 +9862,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -9093,7 +9885,7 @@
     {
       "target": ".trae/commands/trellis-continue.md",
       "beforeHash": "sha256:65aad74faaf2ce30e8afdf87c60ea5bfd3a49a6457694fe3b2e0be693fbe8b1b",
-      "afterHash": "sha256:983a2b59c9191704854fd8bea24bed6b3137125884d66694c1c93b6438e804cb",
+      "afterHash": "sha256:482e06f05007cc20985e9cb1811d53802d52a08003711d15c2a2270f9390b435",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9107,13 +9899,24 @@
           "bundles": [
             "skill-garden/trellis-continue"
           ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
         }
       ]
     },
     {
       "target": ".zcode/commands/trellis/continue.md",
       "beforeHash": "sha256:632b4933ac979c2ee8334b117adea4e4a9bf8b69d931fa0c83b8142b09bc80ff",
-      "afterHash": "sha256:f8f9314a91650c15ddf173a9e364c0f152b7e6b0239b2c5f2c1efbae48884c1a",
+      "afterHash": "sha256:8b557859ea2d16facebdd780de8de253afe55f6b155462c3fdb3552285b9df82",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9121,6 +9924,17 @@
           "id": "trellis-continue-task-progress-recovery",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
+          "patch": "trellis-continue-task-progress-recovery",
+          "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+          "bundle": "trellis-continue",
+          "bundles": [
+            "skill-garden/trellis-continue"
+          ]
+        },
+        {
+          "id": "trellis-continue-completed-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-continue-completed-route",
           "patch": "trellis-continue-task-progress-recovery",
           "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
           "bundle": "trellis-continue",
@@ -12517,7 +13331,7 @@
     {
       "target": ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12538,6 +13352,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12548,7 +13384,7 @@
     {
       "target": ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12569,6 +13405,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12579,7 +13437,7 @@
     {
       "target": ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12600,6 +13458,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12610,7 +13490,7 @@
     {
       "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12631,6 +13511,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12641,7 +13543,7 @@
     {
       "target": ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12662,6 +13564,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12672,7 +13596,7 @@
     {
       "target": ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12693,6 +13617,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12703,7 +13649,7 @@
     {
       "target": ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12724,6 +13670,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12734,7 +13702,7 @@
     {
       "target": ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12755,6 +13723,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12765,7 +13755,7 @@
     {
       "target": ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12786,6 +13776,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12796,7 +13808,7 @@
     {
       "target": ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12817,6 +13829,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12827,7 +13861,7 @@
     {
       "target": ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12848,6 +13882,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12858,7 +13914,7 @@
     {
       "target": ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12879,6 +13935,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12889,7 +13967,7 @@
     {
       "target": ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12910,6 +13988,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12920,7 +14020,7 @@
     {
       "target": ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12941,6 +14041,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12951,7 +14073,7 @@
     {
       "target": ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12972,6 +14094,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -12982,7 +14126,7 @@
     {
       "target": ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13003,6 +14147,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -13013,7 +14179,7 @@
     {
       "target": ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13034,6 +14200,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -13044,7 +14232,7 @@
     {
       "target": ".trae/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:26f83b887347f7a2a5dbefe8b714dba0569bd06ecaf4797bf8568aa93bf8e54b",
+      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13065,6 +14253,28 @@
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-edit-route",
           "patch": "trellis-meta-managed-customization-routing",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-customization-routing",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-continue-check-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-workflow-notes",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
           "bundles": [
             "skill-garden/trellis-meta"
@@ -15341,6 +16551,366 @@
       ]
     },
     {
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".github/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-agents.md",
+      "beforeHash": "sha256:4216ac3cc570038fd8ce3319a85932bb537fea9e0a7f4d11fa315cfa645c9c85",
+      "afterHash": "sha256:ca5995dbe41d041d34c402ca0ac6e989199b03af3e8b9f8e6815bbc32b47d188",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-check-all-agent-route",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
       "afterHash": "sha256:a59b76dc22421c6d76f8c3d1bd8b0a6bfd5906557536b79bbfa2d5750295719b",
@@ -16541,9 +18111,37 @@
       "required": true
     },
     {
+      "id": "workflow-managed-customization-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-managed-customization-guidance",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".trellis/workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
       "id": "workflow-runtime-contract-reference",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-runtime-contract-reference",
+      "patch": "workflow-runtime-contract-reference",
+      "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".trellis/workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-completed",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-completed",
       "patch": "workflow-runtime-contract-reference",
       "qualifiedPatch": "skill-garden/workflow-runtime-contract-reference",
       "bundle": "intent-routing",
@@ -18038,9 +19636,249 @@
       "required": true
     },
     {
-      "id": "kiro-agents-untracked-context",
+      "id": "markdown-check-all-intent-guard",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/kiro-agents-untracked-context",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".claude/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".cursor/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codebuddy/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".opencode/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".factory/droids/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".gemini/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".grok/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".kimi-code/skills/trellis-check/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".qoder/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".pi/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".reasonix/skills/trellis-check/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".snow/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".trae/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".zcode/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "markdown-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/markdown-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".omp/agents/trellis-check.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "codex-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/codex-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".codex/agents/trellis-check.toml",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "kiro-check-agent-boundaries",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/kiro-check-agent-boundaries",
       "patch": "agents-untracked-context",
       "qualifiedPatch": "skill-garden/agents-untracked-context",
       "bundle": "intent-routing",
@@ -18049,6 +19887,21 @@
         "skill-garden/untracked-execution"
       ],
       "target": ".kiro/agents/trellis-check.json",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "channel-check-all-intent-guard",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/channel-check-all-intent-guard",
+      "patch": "agents-untracked-context",
+      "qualifiedPatch": "skill-garden/agents-untracked-context",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/untracked-execution"
+      ],
+      "target": ".trellis/agents/check.md",
       "status": "ready",
       "required": true
     },
@@ -20545,6 +22398,300 @@
       "required": true
     },
     {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".agent/workflows/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".agents/skills/trellis-continue/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".claude/commands/trellis/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".codebuddy/commands/trellis/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".cursor/commands/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".devin/workflows/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".factory/commands/trellis/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".gemini/commands/trellis/continue.toml",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".github/prompts/continue.prompt.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".grok/commands/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".kilocode/workflows/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".kimi-code/skills/trellis-continue/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".kiro/skills/trellis-continue/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".omp/commands/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".opencode/commands/trellis/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".pi/prompts/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".qoder/commands/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".reasonix/skills/trellis-continue/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".snow/skills/trellis-continue/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".trae/commands/trellis-continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-continue-completed-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-continue-completed-route",
+      "patch": "trellis-continue-task-progress-recovery",
+      "qualifiedPatch": "skill-garden/trellis-continue-task-progress-recovery",
+      "bundle": "trellis-continue",
+      "bundles": [
+        "skill-garden/trellis-continue"
+      ],
+      "target": ".zcode/commands/trellis/continue.md",
+      "status": "ready",
+      "required": true
+    },
+    {
       "id": "trellis-meta-trigger-description",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-meta-trigger-description",
@@ -26589,6 +28736,762 @@
         "skill-garden/trellis-meta"
       ],
       "target": ".trae/skills/trellis-meta/references/local-architecture/workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-check-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-workflow-notes",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-workflow-notes",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-workflow.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-agents.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-check-all-agent-route",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-check-all-agent-route",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-agents.md",
       "status": "ready",
       "required": true
     },

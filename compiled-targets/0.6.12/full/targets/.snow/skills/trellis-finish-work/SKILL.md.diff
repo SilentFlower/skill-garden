@@ -1,7 +1,7 @@
 diff --git a/.snow/skills/trellis-finish-work/SKILL.md b/.snow/skills/trellis-finish-work/SKILL.md
 --- a/.snow/skills/trellis-finish-work/SKILL.md
 +++ b/.snow/skills/trellis-finish-work/SKILL.md
-@@ -3,69 +3,108 @@
+@@ -3,69 +3,122 @@
  description: "Wrap up the current session: verify quality gate passed, remind user to commit, archive completed tasks, and record session progress to the developer journal. Use when done coding and ready to end the session."
  ---
  
@@ -34,61 +34,68 @@ diff --git a/.snow/skills/trellis-finish-work/SKILL.md b/.snow/skills/trellis-fi
 +Follow the steps below in order.
  
 -## Step 2: Sanity check — classify dirty paths
-+### 1. Decision Audit
++### 1. Completion State Gate
  
  Run:
  
  ```bash
 -git status --porcelain
-+python3 ./.trellis/scripts/decision_log.py status --task <task-name> --json
++python3 ./.trellis/scripts/task_progress.py status --task <task-name> --json
  ```
  
 -Filter out paths under `.trellis/workspace/` and `.trellis/tasks/` — those are managed by `add_session.py` and `task.py archive` auto-commits and will appear dirty as part of this skill's own work.
++Read the current task's `task.json` as the authoritative lifecycle record. Continue only when `taskStatus=completed` and `completedAt` is present. Progress text is recovery evidence and never substitutes for the task status.
+ 
+-For each remaining dirty path, decide whether it belongs to **the current task** or to **other parallel work** (e.g., another terminal window editing the same repo). Heuristics:
++- `in_progress`: stop and return to Phase 3.4 `trellis-push`; finish-work must not manufacture completion.
++- `completed`: keep the active task pointer until archive succeeds, then continue below.
++- Missing, corrupt, or any other status: fail closed and report the exact blocker.
+ 
+-- Paths referenced in the current task's `prd.md` / `implement.jsonl` / `check.jsonl` → current task
+-- Paths in code areas matching the task's stated scope, or that you remember editing this session → current task
+-- Paths in unrelated areas you have no recollection of touching this session → other parallel work
++### 2. Decision Audit
+ 
+-Then route:
+-
+-- **Any remaining path looks like current-task work** — bail out with:
+-  > "Working tree has uncommitted code changes from this task: `<list>`. Return to workflow Phase 3.4 to commit them before running `/trellis-finish-work`."
+-
+-  Do NOT run `git commit` here. Do NOT prompt the user to commit. The user goes back to Phase 3.4 and the AI drives the batched commit there.
+-- **All remaining paths look unrelated** (other parallel-window work) — report them once and continue to Step 3:
+-  > "FYI, dirty files outside this task's scope — leaving them for the other window: `<list>`."
+-- **Genuinely unsure** — ask the user once: "Are `<list>` this task's work I forgot to commit, or another window's? (commit / ignore)" — then route per their answer.
+-
+-## Step 3: Archive task(s)
++Run:
+ 
+ ```bash
+-python3 ./.trellis/scripts/task.py archive <task-name>
++python3 ./.trellis/scripts/decision_log.py status --task <task-name> --json
+ ```
+ 
+-At minimum: the current active task (if any). Plus any extra tasks the user confirmed in Step 1. Each archive produces a `chore(task): archive ...` commit via the script's auto-commit.
 +- No decisions, or the current digest is already `accepted`: continue without another confirmation.
 +- Unreviewed decisions: show ID, topic, choice, rationale summary, risk, and verification, then wait for one explicit review.
 +- Accept all: run `decision_log.py review --task <task-name> --verdict accepted` and continue.
 +- Request changes: run `decision_log.py review --task <task-name> --verdict changes-requested --decision-id <id> [...] --notes <text>`, stop before release audit, and return the task for rework.
 +- A corrupt decision log fails closed. Do not edit or discard it to bypass review.
  
--For each remaining dirty path, decide whether it belongs to **the current task** or to **other parallel work** (e.g., another terminal window editing the same repo). Heuristics:
-+`task.py archive` repeats this guard before any status write, session cleanup, or directory move.
+-If there is no active task and the user did not confirm any cleanup archives, skip this step.
++`task.py archive` repeats the completion-state and decision guards before any session cleanup or directory move. It preserves the existing `completedAt` and performs no lifecycle status write.
  
--- Paths referenced in the current task's `prd.md` / `implement.jsonl` / `check.jsonl` → current task
--- Paths in code areas matching the task's stated scope, or that you remember editing this session → current task
--- Paths in unrelated areas you have no recollection of touching this session → other parallel work
-+### 2. Current Task Release Audit
- 
--Then route:
+-## Step 4: Record session journal
++### 3. Current Task Release Audit
++
 +Run `trellis-release audit-current`. It reads task artifacts and Git evidence and returns `no-op`, `written`, or `needs-review`.
- 
--- **Any remaining path looks like current-task work** — bail out with:
--  > "Working tree has uncommitted code changes from this task: `<list>`. Return to workflow Phase 3.4 to commit them before running `/trellis-finish-work`."
++
 +- Do not add another confirmation.
 +- Do not duplicate SQL, configuration, batch, external-system, or documentation-drift analysis inside finish-work.
 +- A written `<task>/release.md` moves with the task archive.
 +- `needs-review` or `Needs human review` does not block archival, but remains visible in the final result.
- 
--  Do NOT run `git commit` here. Do NOT prompt the user to commit. The user goes back to Phase 3.4 and the AI drives the batched commit there.
--- **All remaining paths look unrelated** (other parallel-window work) — report them once and continue to Step 3:
--  > "FYI, dirty files outside this task's scope — leaving them for the other window: `<list>`."
--- **Genuinely unsure** — ask the user once: "Are `<list>` this task's work I forgot to commit, or another window's? (commit / ignore)" — then route per their answer.
-+### 3. Archive to Disk
- 
--## Step 3: Archive task(s)
-+Always run:
- 
- ```bash
--python3 ./.trellis/scripts/task.py archive <task-name>
-+python3 ./.trellis/scripts/task.py archive <task-name> --no-commit
- ```
- 
--At minimum: the current active task (if any). Plus any extra tasks the user confirmed in Step 1. Each archive produces a `chore(task): archive ...` commit via the script's auto-commit.
-+Use the command result and scoped diff to identify the original task source, actual archive destination, and child `task.json` files changed by parent archival. Never stage the `.trellis/tasks` or `.trellis/tasks/archive` root directory.
- 
--If there is no active task and the user did not confirm any cleanup archives, skip this step.
-+### 4. Record the Journal
- 
--## Step 4: Record session journal
++
++### 4. Archive to Disk
++
 +Always run:
  
  ```bash
@@ -96,17 +103,27 @@ diff --git a/.snow/skills/trellis-finish-work/SKILL.md b/.snow/skills/trellis-fi
 -  --title "Session Title" \
 -  --commit "hash1,hash2" \
 -  --summary "Brief summary"
++python3 ./.trellis/scripts/task.py archive <task-name> --no-commit
+ ```
+ 
+-Use the work-commit hashes produced in Phase 3.4 (visible in Step 1's `Recent commits` list, or via `git log --oneline`) for `--commit`. Do not include the archive commit hashes from Step 3. This produces a `chore: record journal` commit.
++Use the command result and scoped diff to identify the original task source, actual archive destination, and child `task.json` files changed by parent archival. Never stage the `.trellis/tasks` or `.trellis/tasks/archive` root directory.
+ 
+-Final git log order: `<work commits from 3.4>` → `chore(task): archive ...` (one or more) → `chore: record journal`.
++### 5. Record the Journal
++
++Always run:
++
++```bash
 +python3 ./.trellis/scripts/add_session.py --no-commit \
 +  --title "<session title>" \
 +  --commit "<business commit hashes>" \
 +  --summary "<brief summary>"
- ```
- 
--Use the work-commit hashes produced in Phase 3.4 (visible in Step 1's `Recent commits` list, or via `git log --oneline`) for `--commit`. Do not include the archive commit hashes from Step 3. This produces a `chore: record journal` commit.
++```
++
 +Use the command result and scoped diff to determine the exact journal/index paths changed by this invocation.
- 
--Final git log order: `<work commits from 3.4>` → `chore(task): archive ...` (one or more) → `chore: record journal`.
-+### 5. Exact Commits
++
++### 6. Exact Commits
 +
 +When `session_auto_commit: false`, keep the archive and journal changes on disk without committing or pushing. Report the exact dirty paths.
 +
@@ -124,7 +141,7 @@ diff --git a/.snow/skills/trellis-finish-work/SKILL.md b/.snow/skills/trellis-fi
 +
 +Skip the second commit when the journal did not change. After each commit, use `git show --name-status -M --format=` to verify exact paths and renames, and confirm unrelated staged paths remain staged. The whole worktree does not need to be clean.
 +
-+### 6. Eligible Automatic Push
++### 7. Eligible Automatic Push
 +
 +Use only the Git baseline captured at the start:
 +
@@ -134,7 +151,7 @@ diff --git a/.snow/skills/trellis-finish-work/SKILL.md b/.snow/skills/trellis-fi
 +
 +Never force push. Push eligibility is independent of task progress fields and overall worktree cleanliness.
 +
-+### 7. Final Result
++### 8. Final Result
 +
 +Report separately:
 +
