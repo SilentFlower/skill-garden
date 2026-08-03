@@ -51,7 +51,7 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
  
      task_json = task_dir / "task.json"
      if not task_json.is_file():
-@@ -170,6 +204,34 @@
+@@ -170,6 +204,33 @@
      if not isinstance(status, str) or not status:
          return None
      return task_id, status, active.source
@@ -70,7 +70,6 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
 +            root,
 +            input_data,
 +            platform=_detect_platform(input_data),
-+            validate_workspace=False,
 +        )
 +    except Exception:
 +        return None
@@ -86,7 +85,7 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
  
  
  # ---------------------------------------------------------------------------
-@@ -333,12 +395,15 @@
+@@ -333,12 +394,15 @@
      return status
  
  
@@ -102,7 +101,7 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
  ) -> str:
      """Build the <workflow-state>...</workflow-state> block.
  
-@@ -353,8 +418,14 @@
+@@ -353,8 +417,14 @@
          body = templates.get(status)
      if body is None:
          body = "Refer to workflow.md for current step."
@@ -118,7 +117,7 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
  
  
  # ---------------------------------------------------------------------------
-@@ -394,6 +465,7 @@
+@@ -394,6 +464,7 @@
      return data if isinstance(data, dict) else {}
  
  
@@ -126,7 +125,7 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
  def main() -> int:
      if os.environ.get("TRELLIS_HOOKS") == "0" or os.environ.get("TRELLIS_DISABLE_HOOKS") == "1":
          return 0
-@@ -415,12 +487,25 @@
+@@ -415,12 +486,26 @@
      platform = _detect_platform(data)
      task = get_active_task(root, data)
      if task is None:
@@ -146,10 +145,11 @@ diff --git a/.github/copilot/hooks/inject-workflow-state.py b/.github/copilot/ho
 +            )
 +        else:
 +            work_id, stage, summary = untracked
-+            untracked_key = resolve_breadcrumb_key("untracked", platform, config)
++            untracked_status = "untracked" if stage == "implement" else f"untracked_{stage}"
++            untracked_key = resolve_breadcrumb_key(untracked_status, platform, config)
 +            breadcrumb = build_breadcrumb(
 +                None,
-+                "untracked",
++                untracked_status,
 +                templates,
 +                breadcrumb_key=untracked_key,
 +                subject_label=f"Untracked work: {work_id} ({stage})",

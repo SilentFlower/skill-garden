@@ -7,7 +7,7 @@ diff --git a/.reasonix/skills/trellis-start/SKILL.md b/.reasonix/skills/trellis-
    ```
 -- **No active task** → classify first. For simple conversation / small task, ask only whether this turn should create a Trellis task. For complex work, ask whether you may create a Trellis task and enter planning. If the user says no, skip Trellis for this session.
 +<!-- BEGIN skill-garden patch start-no-task-routing v0.6 -->
-+- **No active task** -> first run `python3 ./.trellis/scripts/untracked_flow.py status`. On `hit`, resume the reported stage through `[workflow-state:untracked]`; on `miss`, follow the workflow `Request Triage` contract before acting. Use `task_intent.py create` for inferred complex planning, `task.py create` for explicit task planning, and ask only for material ambiguity or an independent safety boundary.
++- **No active task** -> first run `python3 ./.trellis/scripts/untracked_flow.py status`. On `hit`, resume the reported stage through the matching `[workflow-state:untracked*]` breadcrumb; on `miss`, follow the workflow `Request Triage` contract before acting. Use `task_intent.py create` for inferred complex planning, `task.py create` for explicit task planning, and ask only for material ambiguity or an independent safety boundary.
 +<!-- END skill-garden patch start-no-task-routing v0.6 -->
  
  ---
