@@ -56,7 +56,7 @@ diff --git a/.grok/skills/trellis-brainstorm/SKILL.md b/.grok/skills/trellis-bra
 -8. Present the final planning summary and stop. Do not run `task.py start` or edit product code in the same turn.
 -9. Only a subsequent user message that explicitly approves the latest planning summary authorizes `task.py start` and implementation. If the artifacts change materially after approval, repeat the final review.
 +<!-- BEGIN skill-garden patch brainstorm-planning-readiness v0.6 -->
-+8. Load `trellis-task-brief`, refresh `brief.md` from the converged artifacts, display the full Brief with dynamic Artifact Status, and stop. Do not run `task.py start` or edit product code in the same turn.
++8. Load `trellis-task-brief`, refresh `brief.md` from the converged artifacts, display the full Brief, and stop. Do not run `task.py start` or edit product code in the same turn.
 +9. Only a subsequent user message that explicitly approves the latest full Brief authorizes `task.py start` and implementation. If the artifacts change materially after approval, refresh and repeat the Brief review.
 +<!-- END skill-garden patch brainstorm-planning-readiness v0.6 -->
  
@@ -83,7 +83,7 @@ diff --git a/.grok/skills/trellis-brainstorm/SKILL.md b/.grok/skills/trellis-bra
  
 -The final planning summary must show Goal, In Scope, Out of Scope, Acceptance Criteria, Key Decisions, relevant Risks or Deferred Items, and artifact status.
 +<!-- BEGIN skill-garden patch brainstorm-planning-summary-shape v0.6 -->
-+The final Brief must cover Goal, Scope, Non-Goals, Key Decisions, Key Context, Acceptance, one-hop Next Step, and relevant Risks / Deferred items. Artifact Status is computed at display time and is not persisted in `brief.md`.
++The final Brief must cover Goal, Scope, Non-Goals, Key Decisions, Key Context, Acceptance, one-hop Next Step, and relevant Risks / Deferred items.
 +<!-- END skill-garden patch brainstorm-planning-summary-shape v0.6 -->
  
  ## Artifact Rules
@@ -103,14 +103,14 @@ diff --git a/.grok/skills/trellis-brainstorm/SKILL.md b/.grok/skills/trellis-bra
 -- The latest final planning summary has been presented to the user.
 -- In a subsequent message, the user explicitly approved that summary for implementation.
 +- Planning artifacts are ready for the final Brief handoff.
-+- The latest full Brief has been presented to the user with dynamic Artifact Status.
++- The latest full Brief has been presented to the user.
 +- In a subsequent message, the user explicitly approved that Brief for implementation.
  
  Do not start implementation merely because the user originally asked for implementation.
 +
 +## Planning Handoff
 +
-+Once the Quality Bar is satisfied, load `trellis-task-brief`, refresh `brief.md` from the final planning artifacts, display the full Brief and dynamic Artifact Status in chat, and end the current turn. Wait for the user's planning review confirmation before running `task.py start` or beginning implementation.
++Once the Quality Bar is satisfied, load `trellis-task-brief`, refresh `brief.md` from the final planning artifacts, display the full Brief in chat, and end the current turn. Wait for the user's planning review confirmation before running `task.py start` or beginning implementation.
 +
 +Implementation intent expressed before the final artifacts and full Brief are shown authorizes planning only; it cannot be reused as the final review confirmation.
 +

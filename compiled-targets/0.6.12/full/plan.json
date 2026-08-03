@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:e488f6240621e6bb5c0e19608974747b614a8e33bdcdf5eea3d0bca9bba0fbe7",
+  "catalogHash": "sha256:03e2e4a36c7ef70910f2a68d57786c7c8cc553b14aff5c60bed679a574826948",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -2354,9 +2354,9 @@
       "incomingEdges": []
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-task-artifacts",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -2365,6 +2365,86 @@
       ],
       "declarationIndex": 115,
       "resolvedIndex": 115,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-meta-managed-continue-recovery",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "declarationIndex": 120,
+      "resolvedIndex": 120,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2379,8 +2459,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 116,
-      "resolvedIndex": 116,
+      "declarationIndex": 121,
+      "resolvedIndex": 121,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2395,8 +2475,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 117,
-      "resolvedIndex": 117,
+      "declarationIndex": 122,
+      "resolvedIndex": 122,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2411,8 +2491,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 118,
-      "resolvedIndex": 118,
+      "declarationIndex": 123,
+      "resolvedIndex": 123,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2427,8 +2507,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 119,
-      "resolvedIndex": 119,
+      "declarationIndex": 124,
+      "resolvedIndex": 124,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3963,9 +4043,144 @@
       ]
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-task-artifacts",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".trae/skills/trellis-meta/references/local-architecture/task-system.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".trae/skills/trellis-meta/references/local-architecture/task-system.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+        ".trae/skills/trellis-meta/references/local-architecture/task-system.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".agents/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".claude/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".codebuddy/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".cursor/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".devin/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".factory/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".github/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".kilocode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".kiro/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".opencode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".grok/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".omp/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".snow/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".zcode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".qoder/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".reasonix/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".trae/skills/trellis-meta/references/customize-local/change-task-lifecycle.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "targets": [
+        ".agent/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".agents/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".claude/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".codebuddy/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".cursor/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".devin/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".factory/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".github/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".kilocode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".kiro/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".opencode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".grok/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".omp/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".snow/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".zcode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".qoder/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".reasonix/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+        ".trae/skills/trellis-meta/references/customize-local/change-task-lifecycle.md"
+      ]
+    },
+    {
+      "id": "trellis-meta-managed-continue-recovery",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "targets": [
@@ -5139,7 +5354,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:3163f6d20e07be9415a689ba08191b0b0412fcc0ad8056c40ed746cad1e5e255",
+      "afterHash": "sha256:53b59af7cb83e1b6a48450cfd50f16bccefd32ed993d9b99af283748b8a42162",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7748,7 +7963,7 @@
     {
       "target": ".agent/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7834,7 +8049,7 @@
     {
       "target": ".agents/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7920,7 +8135,7 @@
     {
       "target": ".claude/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8006,7 +8221,7 @@
     {
       "target": ".codebuddy/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8092,7 +8307,7 @@
     {
       "target": ".cursor/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8178,7 +8393,7 @@
     {
       "target": ".devin/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8264,7 +8479,7 @@
     {
       "target": ".factory/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8350,7 +8565,7 @@
     {
       "target": ".github/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8436,7 +8651,7 @@
     {
       "target": ".grok/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8522,7 +8737,7 @@
     {
       "target": ".kilocode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8608,7 +8823,7 @@
     {
       "target": ".kiro/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8694,7 +8909,7 @@
     {
       "target": ".omp/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8780,7 +8995,7 @@
     {
       "target": ".opencode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8866,7 +9081,7 @@
     {
       "target": ".qoder/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8952,7 +9167,7 @@
     {
       "target": ".reasonix/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9038,7 +9253,7 @@
     {
       "target": ".snow/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9124,7 +9339,7 @@
     {
       "target": ".trae/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -9210,7 +9425,7 @@
     {
       "target": ".zcode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:1921a04511cd205b258810b5e13b34c52a7cdbf5a11faa69ec5899b3a960cca8",
+      "afterHash": "sha256:ca2ba19d0313cde48900a32d48668c5fb4e7d07f891cbdb82837296e2253324f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13331,7 +13546,7 @@
     {
       "target": ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13358,9 +13573,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13384,7 +13599,7 @@
     {
       "target": ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13411,9 +13626,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13437,7 +13652,7 @@
     {
       "target": ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13464,9 +13679,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13490,7 +13705,7 @@
     {
       "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13517,9 +13732,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13543,7 +13758,7 @@
     {
       "target": ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13570,9 +13785,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13596,7 +13811,7 @@
     {
       "target": ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13623,9 +13838,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13649,7 +13864,7 @@
     {
       "target": ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13676,9 +13891,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13702,7 +13917,7 @@
     {
       "target": ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13729,9 +13944,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13755,7 +13970,7 @@
     {
       "target": ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13782,9 +13997,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13808,7 +14023,7 @@
     {
       "target": ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13835,9 +14050,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13861,7 +14076,7 @@
     {
       "target": ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13888,9 +14103,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13914,7 +14129,7 @@
     {
       "target": ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13941,9 +14156,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -13967,7 +14182,7 @@
     {
       "target": ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13994,9 +14209,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -14020,7 +14235,7 @@
     {
       "target": ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14047,9 +14262,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -14073,7 +14288,7 @@
     {
       "target": ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14100,9 +14315,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -14126,7 +14341,7 @@
     {
       "target": ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14153,9 +14368,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -14179,7 +14394,7 @@
     {
       "target": ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14206,9 +14421,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -14232,7 +14447,7 @@
     {
       "target": ".trae/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:33f0071f9f2a7ed14b99dc96ad5509a2756d692752d670007872521df0587bd6",
+      "afterHash": "sha256:6cb7da7484c4729e7b3dabea7c358b4002d923ada7761445507e88c6f9a44cfd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14259,9 +14474,9 @@
           ]
         },
         {
-          "id": "trellis-meta-managed-continue-check-route",
+          "id": "trellis-meta-managed-continue-recovery",
           "catalog": "skill-garden",
-          "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+          "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -15599,7 +15814,7 @@
     {
       "target": ".agent/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15652,7 +15867,7 @@
     {
       "target": ".agents/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15705,7 +15920,7 @@
     {
       "target": ".claude/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15758,7 +15973,7 @@
     {
       "target": ".codebuddy/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15811,7 +16026,7 @@
     {
       "target": ".cursor/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15864,7 +16079,7 @@
     {
       "target": ".devin/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15917,7 +16132,7 @@
     {
       "target": ".factory/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -15970,7 +16185,7 @@
     {
       "target": ".github/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16023,7 +16238,7 @@
     {
       "target": ".kilocode/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16076,7 +16291,7 @@
     {
       "target": ".kiro/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16129,7 +16344,7 @@
     {
       "target": ".opencode/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16182,7 +16397,7 @@
     {
       "target": ".grok/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16235,7 +16450,7 @@
     {
       "target": ".omp/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16288,7 +16503,7 @@
     {
       "target": ".snow/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16341,7 +16556,7 @@
     {
       "target": ".zcode/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16394,7 +16609,7 @@
     {
       "target": ".qoder/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16447,7 +16662,7 @@
     {
       "target": ".reasonix/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16500,7 +16715,7 @@
     {
       "target": ".trae/skills/trellis-meta/references/local-architecture/workflow.md",
       "beforeHash": "sha256:cfcdc6e4468a5d9c816e929fcca01640cd41cfdaaa4824118b40a8e460c927b6",
-      "afterHash": "sha256:247ed49876069fc4e68651919959991e167b985fb3a9842c07a390d661b89d41",
+      "afterHash": "sha256:12a647981905a3d9e247dd9dfc6e099b0a27cd7f1f6c43430b2b60a66d13bda8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -16541,6 +16756,1320 @@
           "id": "trellis-meta-managed-workflow-change-map",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-meta-managed-workflow-change-map",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trae/skills/trellis-meta/references/local-architecture/task-system.md",
+      "beforeHash": "sha256:2b561d49c390f7d0db5391912946133be4bf73189231e2b8cc9afa1c5ac6165a",
+      "afterHash": "sha256:f387fc3f72ba8f9436197635a310f0a33a0a6e22d4c0e2f8776fb102e48c0e0b",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-task-artifacts",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-task-readiness",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-active-task-lifecycle",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".github/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "beforeHash": "sha256:60ff9efb93604b87a461a4af30322d76750402a51e40f31531a7ff88d309996d",
+      "afterHash": "sha256:6ba7961914ac28f385db03162db189deeb23313d6c4dcce7f5d3d9ab858388fb",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-meta-managed-lifecycle-entry-points",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+          "patch": "trellis-meta-managed-workflow-owners",
+          "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+          "bundle": "trellis-meta",
+          "bundles": [
+            "skill-garden/trellis-meta"
+          ]
+        },
+        {
+          "id": "trellis-meta-managed-lifecycle-modification-steps",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
           "patch": "trellis-meta-managed-workflow-owners",
           "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
           "bundle": "trellis-meta",
@@ -28740,9 +30269,1269 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-task-artifacts",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-artifacts",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-artifacts",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-task-readiness",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-task-readiness",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-active-task-lifecycle",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-active-task-lifecycle",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/local-architecture/task-system.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-entry-points",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-entry-points",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agent/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".agents/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".claude/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".cursor/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".devin/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".factory/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".github/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kilocode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".kiro/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".opencode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".grok/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".omp/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".snow/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".zcode/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".qoder/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".reasonix/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-lifecycle-modification-steps",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-lifecycle-modification-steps",
+      "patch": "trellis-meta-managed-workflow-owners",
+      "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
+      "bundle": "trellis-meta",
+      "bundles": [
+        "skill-garden/trellis-meta"
+      ],
+      "target": ".trae/skills/trellis-meta/references/customize-local/change-task-lifecycle.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-meta-managed-continue-recovery",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28754,9 +31543,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28768,9 +31557,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28782,9 +31571,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28796,9 +31585,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28810,9 +31599,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28824,9 +31613,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28838,9 +31627,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28852,9 +31641,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28866,9 +31655,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28880,9 +31669,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28894,9 +31683,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28908,9 +31697,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28922,9 +31711,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28936,9 +31725,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28950,9 +31739,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28964,9 +31753,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
@@ -28978,9 +31767,9 @@
       "required": true
     },
     {
-      "id": "trellis-meta-managed-continue-check-route",
+      "id": "trellis-meta-managed-continue-recovery",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/trellis-meta-managed-continue-check-route",
+      "qualifiedId": "skill-garden/trellis-meta-managed-continue-recovery",
       "patch": "trellis-meta-managed-workflow-owners",
       "qualifiedPatch": "skill-garden/trellis-meta-managed-workflow-owners",
       "bundle": "trellis-meta",
