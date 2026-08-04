@@ -122,7 +122,7 @@ python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trel
 | `aliyun-sls-query` | codex / claude | 使用 AK/SK 直连阿里云 SLS 查询日志与指标，包含零依赖签名脚本与排障经验 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 | `craft-slides` | codex / claude | 基于 Slidev 端到端做演示:大纲 → slides.md → 预览 → 导出 PDF/PPTX/PNG,自带 slidev.sh + 语法速查 + 模板 |
-| `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,压缩空话、套话和机械句式 |
+| `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,按场景和强度压缩空话、套话、机械结构 |
 | `torrent-analyze` | codex / claude | 自包含磁链验车工具，直接查询 whatslink API、解析 hash、缓存结果，并可选生成截图拼图、模糊和字体渲染 |
 
 ### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
