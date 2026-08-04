@@ -125,7 +125,7 @@ python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trel
 | `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,按场景和强度压缩空话、套话、机械结构 |
 | `torrent-analyze` | codex / claude | 自包含磁链验车工具，直接查询 whatslink API、解析 hash、缓存结果，并可选生成截图拼图、模糊和字体渲染 |
 
-### Trellis 0.6+ (`--scope=trellis|all`,10 个核心 skill)
+### Trellis 0.6+ (`--scope=trellis|all`,核心 skill)
 
 按 `.trellis/.version ≥ 0.6.0` 安装,全部 skill 化(skill 双副本:`.agents/` + `.claude/skills/trellis-<name>/`),并通过 Bundle 自动应用 workflow hub、Finish-Work 和 Update-Spec Patch:
 
@@ -137,10 +137,15 @@ python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trel
 | `trellis-run-full-chain` | Auto | PR 前 UAT 回归,跨层全链路(UI + API + DB) |
 | `trellis-visualize` | Auto | 把架构、流程、业务规则和状态流转生成离线 HTML/SVG 图解,兼容旧 UML / 活动图诉求 |
 | `trellis-route` | Auto | Phase 2.1/2.2 由 workflow override 自动触发,询问 inline / subagent |
+| `trellis-auto-loop` | Auto | 启动、恢复和推进 Trellis 自动任务循环 |
+| `trellis-diff-brief` | Auto | 按需读取当前任务和 git diff,生成简短改动说明 |
+| `trellis-task-brief` | Auto | 从任务三件套生成、刷新或校验交接摘要 |
 | `trellis-push` | Manual | 一键 commit + push + 可选 merge,含 `last_push_snapshot` 任务进度快照 |
 | `trellis-release` | Manual | 正式上线前核对任务文档、`release.md` 和 git 证据,生成版本 / 批次上线操作单 |
 | `trellis-plan-version` | Manual | 新版本启动,需求 → 任务拆分 + 工时评估 + 人员分工 |
 | `trellis-create-command` | Manual | 给项目加新 trellis 入口(command / skill),同步 agents + skill-garden 副本 |
+| `trellis-worktree` | Manual | 准备 linked worktree 的 Trellis 入口 |
+| `trellis-flower-update` | Manual | 用户主动要求时追平已安装 Flower/Trellis 强化包；不用于发版、tag 或 publish |
 
 Release operations inference 由 0.6 Finish-Work Patch 提供,不复制、不 fork、不维护
 Trellis 原生 `trellis-finish-work` skill。用户显式运行 finish-work 前,agent 会根据任务文档、提交和
