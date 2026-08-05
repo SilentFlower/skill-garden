@@ -6,7 +6,8 @@
 skill-garden/
 ├── .common/                                  # 通用技能(按平台)
 │   ├── .codex/skills/<name>/                 #   → <target>/.codex/skills/
-│   └── .claude/skills/<name>/                #   → <target>/.claude/skills/
+│   ├── .claude/skills/<name>/                #   → <target>/.claude/skills/
+│   └── skill-migrations.json                 #   旧名称到新 Skill 的受控迁移
 ├── .trellis/                                 # Trellis 强化补充包(按版本)
 │   ├── old/                                  #   < 0.5 (fallback)
 │   ├── 0.5/                                  #   0.5.x:完整版 13 个 skill
@@ -51,6 +52,8 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 - 目标有 `.trellis/` → 按 `.trellis/.version` 读 0.6 / 0.5 / old,装对应 variant 的 `.agents/` + `.claude/skills/`(+`commands/`,old 才有)+ 注入 `overrides/*`
 
 **install.sh 自更新**:本地缓存的旧脚本启动时 `cmp` 自身与远程,不一致则 `exec` 远程版本继续。AI agent 从本地路径调用也不会踩到老逻辑。
+
+**common Skill 迁移**:`.common/skill-migrations.json` 是旧名称迁移的唯一来源。全量安装或显式命中新旧名称时，安装器先写入新 Skill 并确认 `SKILL.md` 存在，再精确删除同平台旧目录。安装其它指定 Skill 时不会顺带迁移。该流程只处理项目内 Skill 目录，不会创建、合并、改写或删除 `~/.config` 下的 ENV 文件。
 
 ---
 
@@ -119,8 +122,7 @@ python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trel
 | 技能 | 平台 | 说明 |
 |------|------|------|
 | `open-idea` | codex / claude | 跨平台唤起 IntelliJ IDEA 打开项目目录，支持 WSL 调 Windows IDEA |
-| `aliyun-dms-query` | codex / claude | 使用 AK/SK 通过阿里云 DMS 查询纳管数据库，写操作以数据变更工单进入审批流 |
-| `aliyun-sls-query` | codex / claude | 使用 AK/SK 直连阿里云 SLS 查询日志与指标，包含零依赖签名脚本与排障经验 |
+| `aliyun-ops` | codex / claude | 统一查询阿里云 DMS、SLS 与 MSE/Nacos 运维数据，旧 DMS/SLS 名称自动迁移 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 | `craft-slides` | codex / claude | 基于 Slidev 端到端做演示:大纲 → slides.md → 预览 → 导出 PDF/PPTX/PNG,自带 slidev.sh + 语法速查 + 模板 |
 | `humanize-writing` | codex / claude | 中文文本润色与去 AI 腔改写,按场景和强度压缩空话、套话、机械结构 |

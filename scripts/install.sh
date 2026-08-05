@@ -25,6 +25,7 @@ set -euo pipefail
 REPO_URL="${SKILL_GARDEN_REPO:-}"
 TARGET_DIR=""
 SKILL_NAMES=()
+SKILL_MIGRATIONS=()
 SCOPE="trellis"   # 默认:向后兼容(trellis 是主线场景)
 
 usage() {
@@ -106,6 +107,45 @@ should_install() {
     [[ "$f" == "$name" || "$f" == "$stripped" ]] && return 0
   done
   return 1
+}
+
+# common skill 额外接受迁移清单中的旧名称作为安装别名。
+should_install_common() {
+  local name="$1" mapping from to
+  should_install "$name" && return 0
+  for mapping in "${SKILL_MIGRATIONS[@]}"; do
+    IFS=$'\t' read -r from to <<< "$mapping"
+    [[ "$to" == "$name" ]] || continue
+    should_install "$from" && return 0
+  done
+  return 1
+}
+
+# 只有全量安装或显式命中新旧名称时才执行对应迁移。
+should_migrate_common() {
+  local to="$1" mapping from mapped_to
+  [[ ${#SKILL_NAMES[@]} -eq 0 ]] && return 0
+  should_install "$to" && return 0
+  for mapping in "${SKILL_MIGRATIONS[@]}"; do
+    IFS=$'\t' read -r from mapped_to <<< "$mapping"
+    [[ "$mapped_to" == "$to" ]] || continue
+    should_install "$from" && return 0
+  done
+  return 1
+}
+
+# 新 skill 已成功写入后，才精确删除同平台旧目录。
+migrate_common_skills() {
+  local target_root="$1" mapping from to old_path new_skill
+  for mapping in "${SKILL_MIGRATIONS[@]}"; do
+    IFS=$'\t' read -r from to <<< "$mapping"
+    should_migrate_common "$to" || continue
+    old_path="$target_root/$from"
+    new_skill="$target_root/$to/SKILL.md"
+    [[ -d "$old_path" && -f "$new_skill" ]] || continue
+    rm -rf "$old_path"
+    echo "  ✓ 迁移 $from → $to"
+  done
 }
 
 # intent routing 的声明、helper 与 workflow hub 共享同一组安装别名。
@@ -250,6 +290,51 @@ fi
 if [[ "$INSTALL_COMMON" == true ]]; then
   COMMON_CODEX="$GARDEN/.common/.codex/skills"
   COMMON_CLAUDE="$GARDEN/.common/.claude/skills"
+  COMMON_MIGRATIONS="$GARDEN/.common/skill-migrations.json"
+
+  if [[ -f "$COMMON_MIGRATIONS" ]]; then
+    MIGRATION_OUTPUT="$(python3 - "$COMMON_MIGRATIONS" "$COMMON_CODEX" "$COMMON_CLAUDE" <<'PYEOF'
+import json
+import re
+import sys
+from pathlib import Path
+
+manifest_path = Path(sys.argv[1])
+skill_roots = [Path(value) for value in sys.argv[2:] if Path(value).is_dir()]
+data = json.loads(manifest_path.read_text(encoding="utf-8"))
+if data.get("version") != 1 or not isinstance(data.get("skills"), list):
+    raise SystemExit("skill-migrations.json 格式或版本不受支持")
+
+safe_name = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+mapping = {}
+for item in data["skills"]:
+    source = item.get("from") if isinstance(item, dict) else None
+    target = item.get("to") if isinstance(item, dict) else None
+    if not safe_name.fullmatch(source or "") or not safe_name.fullmatch(target or ""):
+        raise SystemExit("skill-migrations.json 包含不安全的 skill 名称")
+    if source == target or source in mapping:
+        raise SystemExit("skill-migrations.json 包含自映射或重复来源")
+    if any(not (root / target / "SKILL.md").is_file() for root in skill_roots):
+        raise SystemExit(f"skill-migrations.json 目标 skill 不完整: {target}")
+    mapping[source] = target
+
+for source in mapping:
+    seen = set()
+    current = source
+    while current in mapping:
+        if current in seen:
+            raise SystemExit("skill-migrations.json 包含环形迁移")
+        seen.add(current)
+        current = mapping[current]
+
+for source, target in mapping.items():
+    print(f"{source}\t{target}")
+PYEOF
+    )"
+    if [[ -n "$MIGRATION_OUTPUT" ]]; then
+      mapfile -t SKILL_MIGRATIONS <<< "$MIGRATION_OUTPUT"
+    fi
+  fi
 
   # 检测目标项目支持哪些平台
   HAS_CODEX=false
@@ -266,10 +351,11 @@ if [[ "$INSTALL_COMMON" == true ]]; then
     for skill_dir in "$COMMON_CODEX"/*/; do
       [[ ! -d "$skill_dir" ]] && continue
       name="$(basename "$skill_dir")"
-      should_install "$name" || continue
+      should_install_common "$name" || continue
       echo "[$name] common/codex → .codex/skills/$name/"
       install_one "$skill_dir" "$TARGET_DIR/.codex/skills/$name"
     done
+    migrate_common_skills "$TARGET_DIR/.codex/skills"
   elif [[ -d "$COMMON_CODEX" ]]; then
     echo "跳过 common/codex 技能(目标项目无 .codex/ 目录)"
   fi
@@ -278,10 +364,11 @@ if [[ "$INSTALL_COMMON" == true ]]; then
     for skill_dir in "$COMMON_CLAUDE"/*/; do
       [[ ! -d "$skill_dir" ]] && continue
       name="$(basename "$skill_dir")"
-      should_install "$name" || continue
+      should_install_common "$name" || continue
       echo "[$name] common/claude → .claude/skills/$name/"
       install_one "$skill_dir" "$TARGET_DIR/.claude/skills/$name"
     done
+    migrate_common_skills "$TARGET_DIR/.claude/skills"
   elif [[ -d "$COMMON_CLAUDE" ]]; then
     echo "跳过 common/claude 技能(目标项目无 .claude/ 目录)"
   fi
