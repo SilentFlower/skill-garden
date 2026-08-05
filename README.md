@@ -119,6 +119,7 @@ python3 scripts/generate-compiled-targets.py --check --trellis-bin /path/to/trel
 | 技能 | 平台 | 说明 |
 |------|------|------|
 | `open-idea` | codex / claude | 跨平台唤起 IntelliJ IDEA 打开项目目录，支持 WSL 调 Windows IDEA |
+| `aliyun-dms-query` | codex / claude | 使用 AK/SK 通过阿里云 DMS 查询纳管数据库，写操作以数据变更工单进入审批流 |
 | `aliyun-sls-query` | codex / claude | 使用 AK/SK 直连阿里云 SLS 查询日志与指标，包含零依赖签名脚本与排障经验 |
 | `craft-rpa` | codex / claude | 浏览器交互录制 + AI 友好流程参考生成(RPA 改造素材),自带 Playwright recorder + run.sh + jsonl-to-trace |
 | `craft-slides` | codex / claude | 基于 Slidev 端到端做演示:大纲 → slides.md → 预览 → 导出 PDF/PPTX/PNG,自带 slidev.sh + 语法速查 + 模板 |
