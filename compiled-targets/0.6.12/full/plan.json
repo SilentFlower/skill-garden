@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:4d9af6d63ffca3654507ca79a3de98b1ee20dd757fd53374817f63e8f2ed33da",
+  "catalogHash": "sha256:4d841e2642a8af41fbd37021e92d2d8be905da0497b64068f156495b8d822bdf",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -5758,7 +5758,7 @@
     {
       "target": ".codex/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5839,7 +5839,7 @@
     {
       "target": ".claude/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5920,7 +5920,7 @@
     {
       "target": ".gemini/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6001,7 +6001,7 @@
     {
       "target": ".qoder/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6082,7 +6082,7 @@
     {
       "target": ".github/copilot/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6163,7 +6163,7 @@
     {
       "target": ".codebuddy/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6244,7 +6244,7 @@
     {
       "target": ".factory/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6325,7 +6325,7 @@
     {
       "target": ".kiro/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6406,7 +6406,7 @@
     {
       "target": ".trae/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6487,7 +6487,7 @@
     {
       "target": ".zcode/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:9ce43910ac39cbb0e4d1783fbde931761eb04536c7f82661a96d95ea72c14bde",
-      "afterHash": "sha256:9c83d892aefbe3ebdb04cbfff6c16b5dcf5300314377ccd2e45f67b306f467ac",
+      "afterHash": "sha256:7bc1b969dcf597f131b3322065f048d8f7333be730ad48790d3dc2b7309f9284",
       "changed": true,
       "originalExists": true,
       "operations": [
