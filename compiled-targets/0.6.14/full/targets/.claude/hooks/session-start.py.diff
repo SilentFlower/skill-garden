@@ -1,0 +1,148 @@
+diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
+--- a/.claude/hooks/session-start.py
++++ b/.claude/hooks/session-start.py
+@@ -82,24 +82,11 @@
+ FIRST_REPLY_NOTICE = f"{_FIRST_REPLY_NOTICE_HEAD}\n{_FIRST_REPLY_NOTICE_TAIL}"
+ 
+ 
+-def _build_first_reply_notice(update_hint: str | None) -> str:
+-    """First-reply notice, carrying the Trellis update reminder when there is one.
+-
+-    The reminder has to reach the *user*, not just the model's context — a line
+-    buried in SessionStart context is exactly how the update step kept getting
+-    skipped. This block is already the payload's one "say it out loud" channel,
+-    so the hint rides along instead of growing a second mechanism.
+-
+-    With no hint the notice is byte-identical to the plain constant: no empty
+-    block, no placeholder line.
+-    """
+-    if not update_hint:
+-        return FIRST_REPLY_NOTICE
+-    return (
+-        f"{_FIRST_REPLY_NOTICE_HEAD}\n"
+-        f"Also relay this Trellis maintenance notice on its own line in that same reply: {update_hint}\n"
+-        f"{_FIRST_REPLY_NOTICE_TAIL}"
+-    )
++# BEGIN skill-garden patch session-start-update-notice-builder v0.6
++def _build_first_reply_notice() -> str:
++    """Return the first-reply notice without adding a second update channel."""
++    return FIRST_REPLY_NOTICE
++# END skill-garden patch session-start-update-notice-builder v0.6
+ 
+ 
+ # Force UTF-8 on stdin/stdout/stderr on Windows. Default codepage there is
+@@ -326,27 +313,8 @@
+     return last_export
+ 
+ 
+-def _resolve_update_hint(trellis_dir: Path, context_key: str | None) -> str | None:
+-    """Ask common.session_context whether a Trellis update is available.
+-
+-    Throttling lives there: the first SessionStart of a session writes a marker
+-    under `.trellis/.runtime/`, and later ones (clear, compact) return without
+-    spawning `trellis --version`. The resolved `context_key` is passed through so
+-    the marker is scoped to the same session identity the rest of the hook uses,
+-    rather than session_context's environment-only fallback.
+-
+-    Best-effort: a missing scripts dir, an import error, or anything raised while
+-    probing versions leaves the rest of the payload untouched.
+-    """
+-    scripts_dir = trellis_dir / "scripts"
+-    if str(scripts_dir) not in sys.path:
+-        sys.path.insert(0, str(scripts_dir))
+-    try:
+-        from common.session_context import get_update_hint  # type: ignore[import-not-found]
+-
+-        return get_update_hint(trellis_dir.parent, context_key)
+-    except Exception:
+-        return None  # Optional reminder; keep session-start non-fatal.
++# BEGIN skill-garden patch session-start-update-hint-resolver v0.6
++# END skill-garden patch session-start-update-hint-resolver v0.6
+ 
+ 
+ def _resolve_active_task(trellis_dir: Path, input_data: dict):
+@@ -426,21 +394,26 @@
+     active = _resolve_active_task(trellis_dir, input_data)
+ 
+     if not active.task_path:
++# BEGIN skill-garden patch claude-session-start-no-task v0.6
+         return (
+             "Status: NO ACTIVE TASK\n"
+-            "Next-Action: Classify the current turn before creating any Trellis task. "
+-            "Simple conversation / small task asks only whether this turn should create a Trellis task. "
+-            "Complex task asks whether task creation and planning are allowed."
+-        )
++            "Next-Action: Infer discuss, inspect, direct_edit, task_plan, or workflow_action. "
++            "Proceed with high-confidence reversible routing; ask only for material ambiguity "
++            "or independent safety gates."
++        )
++# END skill-garden patch claude-session-start-no-task v0.6
+ 
+     task_ref = active.task_path
+     task_dir = _resolve_task_dir(trellis_dir, task_ref)
+     if active.stale or not task_dir.is_dir():
++# BEGIN skill-garden patch claude-session-start-missing-task v0.6
+         return (
+-            f"Status: STALE POINTER\nTask: {task_ref}\n"
+-            f"Next-Action: Run `python3 ./.trellis/scripts/task.py finish` to clear the stale pointer, "
+-            "then ask the user what to work on next."
+-        )
++            f"Status: MISSING TASK POINTER\nTask: {task_ref}\n"
++            "Next-Action: Run `python3 ./.trellis/scripts/task.py finish`. If cleanup fails, report it "
++            "and stop. If cleanup succeeds, treat the current request as NO ACTIVE TASK in the same "
++            "turn and follow no_task Request Intent Routing before any edit, task creation, or task start."
++        )
++# END skill-garden patch claude-session-start-missing-task v0.6
+ 
+     task_json_path = task_dir / "task.json"
+     task_data = {}
+@@ -728,9 +701,38 @@
+                     status = str(data.get("status") or "unknown")
+             except (json.JSONDecodeError, OSError):
+                 pass  # Optional task metadata; fall back to generic status.
++# BEGIN skill-garden patch claude-session-start-pre-check-hold v0.6
+         lines.append(f"Current task: {_repo_relative(repo_root, task_dir)}; status={status}.")
+     else:
+         lines.append("Current task: none.")
++
++    try:
++        from untracked_flow import session_start_hint as untracked_start_hint  # type: ignore[import-not-found]
++
++        untracked_hint = untracked_start_hint(
++            repo_root,
++            input_data,
++            platform=_detect_platform(input_data),
++        )
++    except Exception:
++        untracked_hint = None
++    if untracked_hint:
++        lines.append(untracked_hint)
++
++    try:
++        from pre_check_state import session_start_hint  # type: ignore[import-not-found]
++
++        pre_check_hint = session_start_hint(
++            repo_root,
++            input_data,
++            platform=_detect_platform(input_data),
++            active=active,
++        )
++    except Exception:
++        pre_check_hint = None
++    if pre_check_hint:
++        lines.append(pre_check_hint)
++# END skill-garden patch claude-session-start-pre-check-hold v0.6
+ 
+     if get_tasks_dir and iter_active_tasks:
+         try:
+@@ -872,7 +874,9 @@
+ </session-context>
+ 
+ """)
+-    output.write(_build_first_reply_notice(_resolve_update_hint(trellis_dir, context_key)))
++# BEGIN skill-garden patch session-start-update-notice-output v0.6
++    output.write(_build_first_reply_notice())
++# END skill-garden patch session-start-update-notice-output v0.6
+     output.write("\n\n")
+ 
+     # Legacy migration warning
