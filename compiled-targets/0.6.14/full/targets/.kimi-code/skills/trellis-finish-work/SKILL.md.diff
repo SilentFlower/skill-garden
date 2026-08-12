@@ -1,7 +1,7 @@
 diff --git a/.kimi-code/skills/trellis-finish-work/SKILL.md b/.kimi-code/skills/trellis-finish-work/SKILL.md
 --- a/.kimi-code/skills/trellis-finish-work/SKILL.md
 +++ b/.kimi-code/skills/trellis-finish-work/SKILL.md
-@@ -3,69 +3,122 @@
+@@ -3,69 +3,132 @@
  description: "Wrap up the current session: verify quality gate passed, remind user to commit, archive completed tasks, and record session progress to the developer journal. Use when done coding and ready to end the session."
  ---
  
@@ -23,12 +23,14 @@ diff --git a/.kimi-code/skills/trellis-finish-work/SKILL.md b/.kimi-code/skills/
 +- The active task source path, task name, and `task.json.children`.
 +- Current branch, upstream, `HEAD`, upstream HEAD, and `@{u}..HEAD`.
 +- `baseline_synced=true` only when an upstream exists and the initial `HEAD` equals upstream HEAD.
++- File-level `git status --short --untracked-files=all -- <current-task-dir>` and commits in `@{u}..HEAD` that modify the current task when an upstream exists.
++- `python3 ./.trellis/scripts/auto_loop.py status --verbose` output needed to identify a healthy terminal `pending_archive.tasks_awaiting_archive` handoff for this exact task.
 +- Existing staged paths outside this task so they can be verified after scoped commits.
  
 -- **My active tasks** — review whether any besides the current one are actually done (code merged, AC met) and should be archived this round.
 -- **Git status** — quick visual on what's dirty.
 -- **Recent commits** — you'll need their hashes in Step 4 for `--commit`.
-+Unrelated planning tasks, old archives, and files from other windows remain untouched. They do not require classification and do not block finish-work. Stop and return to Phase 3.4 only when the current task still has uncommitted business files, or when Git is unsafe because of detached HEAD, conflicts, rebase, or another blocking state.
++Unrelated planning tasks, old archives, and files from other windows remain untouched. They do not require classification and do not block finish-work. Stop when publication or the validated auto-loop handoff cannot be proven, when the current task has uncommitted files outside the exception below, or when Git is unsafe because of detached HEAD, conflicts, rebase, or another blocking state.
  
 -If `--mode record` surfaces other completed tasks not tied to the current session, surface them to the user with a one-shot confirmation: "These N tasks look done — archive them too in this round? [y/N]". Default is no; the current active task is always archived in Step 3 regardless.
 +Follow the steps below in order.
@@ -48,24 +50,29 @@ diff --git a/.kimi-code/skills/trellis-finish-work/SKILL.md b/.kimi-code/skills/
  
 -For each remaining dirty path, decide whether it belongs to **the current task** or to **other parallel work** (e.g., another terminal window editing the same repo). Heuristics:
 +- `in_progress`: stop and return to Phase 3.4 `trellis-push`; finish-work must not manufacture completion.
-+- `completed`: keep the active task pointer until archive succeeds, then continue below.
++- `completed`: keep the active task pointer until archive succeeds, then apply the archive eligibility gate below before continuing.
 +- Missing, corrupt, or any other status: fail closed and report the exact blocker.
  
 -- Paths referenced in the current task's `prd.md` / `implement.jsonl` / `check.jsonl` → current task
 -- Paths in code areas matching the task's stated scope, or that you remember editing this session → current task
 -- Paths in unrelated areas you have no recollection of touching this session → other parallel work
-+### 2. Decision Audit
++This skill decides only whether archive is allowed; it does not classify the normal task record into commit recovery versus push recovery. Progress text is diagnostic only.
  
 -Then route:
--
++- **Validated auto-loop exception**: a healthy terminal or recent run has `pending_archive.tasks_awaiting_archive` containing the exact current task, its recorded local commits still validate, and current-task dirty is only `<task-dir>/task.json` with the runner-owned progress/lifecycle change after that commit. This branch may continue without a task-record remote push. Extra task dirty, missing commit evidence, task mismatch, or contradictory runtime evidence blocks archive.
++- **Normal synchronized completion**: continue only when the current-task directory is clean, an upstream exists, and no commit in `@{u}..HEAD` modifies the current task.
++- **Any other normal or ambiguous state**: stop before release audit and enter `trellis-push` completed-task preflight. That owner decides whether task-record commit/push recovery is possible or evidence remains blocked; finish-work must not reproduce its recovery matrix.
+ 
 -- **Any remaining path looks like current-task work** — bail out with:
 -  > "Working tree has uncommitted code changes from this task: `<list>`. Return to workflow Phase 3.4 to commit them before running `/skill:trellis-finish-work`."
--
++`trellis-finish-work` must not recommit or push the normal task record itself. The auto-loop exception authorizes only archival of the validated runner bookkeeping diff; it does not authorize unrelated dirty files or an automatic push of auto-loop commits.
+ 
 -  Do NOT run `git commit` here. Do NOT prompt the user to commit. The user goes back to Phase 3.4 and the AI drives the batched commit there.
 -- **All remaining paths look unrelated** (other parallel-window work) — report them once and continue to Step 3:
 -  > "FYI, dirty files outside this task's scope — leaving them for the other window: `<list>`."
 -- **Genuinely unsure** — ask the user once: "Are `<list>` this task's work I forgot to commit, or another window's? (commit / ignore)" — then route per their answer.
--
++### 2. Decision Audit
+ 
 -## Step 3: Archive task(s)
 +Run:
  
