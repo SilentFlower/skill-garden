@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:790270f2d5dd99eebbc32f836cf8ad3d05dde8bc040cef8e10d714a1c11d22b2",
+  "catalogHash": "sha256:59fc5fcb5d64b31c5445be1e110954058eab8f8fdd3f509a344782eede3a479f",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -79,6 +79,11 @@
       "id": "intent-routing",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/intent-routing"
+    },
+    {
+      "id": "maven-verification",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/maven-verification"
     },
     {
       "id": "shared-hook-runtime",
@@ -174,7 +179,8 @@
       "qualifiedId": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ]
     },
     {
@@ -985,7 +991,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "declarationIndex": 29,
       "resolvedIndex": 29,
@@ -1001,7 +1008,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "declarationIndex": 30,
       "resolvedIndex": 30,
@@ -1017,7 +1025,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "declarationIndex": 31,
       "resolvedIndex": 31,
@@ -1033,7 +1042,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "declarationIndex": 32,
       "resolvedIndex": 32,
@@ -1049,7 +1059,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "declarationIndex": 33,
       "resolvedIndex": 33,
@@ -6092,7 +6103,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:17162ab655089c39d81221c1033eb46b6eb92e360832cd37ff339becad8276df",
+      "afterHash": "sha256:014a48f8015c9e98e18436382e56b88df02c1f3fabef31e1258b0fbfead78ca3",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6115,7 +6126,8 @@
           "qualifiedPatch": "skill-garden/workflow-phase-ownership",
           "bundle": "intent-routing",
           "bundles": [
-            "skill-garden/intent-routing"
+            "skill-garden/intent-routing",
+            "skill-garden/maven-verification"
           ]
         },
         {
@@ -6126,7 +6138,8 @@
           "qualifiedPatch": "skill-garden/workflow-phase-ownership",
           "bundle": "intent-routing",
           "bundles": [
-            "skill-garden/intent-routing"
+            "skill-garden/intent-routing",
+            "skill-garden/maven-verification"
           ]
         },
         {
@@ -6137,7 +6150,8 @@
           "qualifiedPatch": "skill-garden/workflow-phase-ownership",
           "bundle": "intent-routing",
           "bundles": [
-            "skill-garden/intent-routing"
+            "skill-garden/intent-routing",
+            "skill-garden/maven-verification"
           ]
         },
         {
@@ -6148,7 +6162,8 @@
           "qualifiedPatch": "skill-garden/workflow-phase-ownership",
           "bundle": "intent-routing",
           "bundles": [
-            "skill-garden/intent-routing"
+            "skill-garden/intent-routing",
+            "skill-garden/maven-verification"
           ]
         },
         {
@@ -6159,7 +6174,8 @@
           "qualifiedPatch": "skill-garden/workflow-phase-ownership",
           "bundle": "intent-routing",
           "bundles": [
-            "skill-garden/intent-routing"
+            "skill-garden/intent-routing",
+            "skill-garden/maven-verification"
           ]
         },
         {
@@ -10327,7 +10343,7 @@
     {
       "target": ".agent/workflows/continue.md",
       "beforeHash": "sha256:1ef09f7d6d9d07c92a3808e2f0bcb322c15d106a9bfeba03f27a36ef5d093f8d",
-      "afterHash": "sha256:25f60927e021406aea6a32bb7e105e247dcdcd11eb8ac0f298a92ec97d656cb4",
+      "afterHash": "sha256:d487395da208cac6ab5884c74dff525f9d44fca128fabda6b43a025821063d78",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10358,7 +10374,7 @@
     {
       "target": ".agents/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:7723ccf49fbf19d8f086cacc7a080bd8be8db6fc70a32908b80f68efa318d7bf",
-      "afterHash": "sha256:c8cc24254d2e4f403cdfaf552445f37cf2b2c81abf1180fb4face65c862d56ab",
+      "afterHash": "sha256:2101af5ace30cc1a96ba11ad70af3e3175ef2c40ca1995fa1ae37248474f600c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10389,7 +10405,7 @@
     {
       "target": ".claude/commands/trellis/continue.md",
       "beforeHash": "sha256:6c34c41824f8eff4b2df792e032e0c36787b59f8a8879b0338347073f76ad52c",
-      "afterHash": "sha256:cdc1565d172a87e404f41b5af34a6bf893f812a0d51803e0a18dd9cdc3765472",
+      "afterHash": "sha256:05817d0444d73f5fcd3fd1f60f349e14ddc8a51eb156b46acbcd152e01193d82",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10420,7 +10436,7 @@
     {
       "target": ".codebuddy/commands/trellis/continue.md",
       "beforeHash": "sha256:666f4988d21aef07feae3f660a520ed0677001b5c70756670ae7d901f8f0465f",
-      "afterHash": "sha256:e2bc21dba7d038ae0fedabacc1290349cd574f26b041c524723d15cac19c2ac0",
+      "afterHash": "sha256:c55e950927bc21a7b3feff1431dfdb1135804b3faf29eaa76dd2aabf499420d1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10451,7 +10467,7 @@
     {
       "target": ".cursor/commands/trellis-continue.md",
       "beforeHash": "sha256:338f80aab71e576de25c736e3aa7ea73fc2d5b433ff03f90e78d8958870945bc",
-      "afterHash": "sha256:38c0f4bbd18deb35d63ea442885b914e9a7eb9d38377fa2a4514a3da10eb40fa",
+      "afterHash": "sha256:7594591714cdef25fd586dc20f1bfbe6cd55162bb22b7567b5a253071ef6528e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10482,7 +10498,7 @@
     {
       "target": ".devin/workflows/trellis-continue.md",
       "beforeHash": "sha256:fd5abd504103162cbe5ed6a7654d735e7ecd284b37132a49f18008fb7a63c1f4",
-      "afterHash": "sha256:588f14f145afff3df2d0915aef3a747605fa83188ace70de97e5e6643f320ec3",
+      "afterHash": "sha256:d9111dfc8c3d0afe4f75f6baf0625b01f131ebf69a4deee82d33c01ea2b07d01",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10513,7 +10529,7 @@
     {
       "target": ".factory/commands/trellis/continue.md",
       "beforeHash": "sha256:46bfa60398d375751b6aec0347f8fe96d293edee3182151518619ac24210db2d",
-      "afterHash": "sha256:6f96dfff2d2caa4f04a0501d61f6d82cca924d0fe6b889a91f093986d08dee31",
+      "afterHash": "sha256:d44b5a6f4146120f2428a1f785193b745a6ecb05b8369d1333a2a514d31498e1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10544,7 +10560,7 @@
     {
       "target": ".gemini/commands/trellis/continue.toml",
       "beforeHash": "sha256:f3650392880c3b81137712f48958e2b73a71b82669e84c577df29f3dffc7192f",
-      "afterHash": "sha256:babce9abc240be9e59a81a94454d23644ee94e9fe22de44d1146b7225e7a20bb",
+      "afterHash": "sha256:4fe600ed615ced63c1fd30cbf8516077241a969e919dfae2d59e69987865b9a8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10575,7 +10591,7 @@
     {
       "target": ".github/prompts/continue.prompt.md",
       "beforeHash": "sha256:0a61286df4c14c92d9431c1859b8d2f9d521979b597dab8b9d3b3f9882422c71",
-      "afterHash": "sha256:9500471a332275c9da98b39dbe84fa7c30ca685ae1fb64eb171d9bfd6c94c240",
+      "afterHash": "sha256:bec052abeaf630812495ac655ac1ed9db2ee473f488b1de202fe4a89f8fb6f04",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10606,7 +10622,7 @@
     {
       "target": ".grok/commands/trellis-continue.md",
       "beforeHash": "sha256:b454c192a5ac109f162c6d7f8ca1713f9cb00a1726cde3e4b5070e05d1e625b5",
-      "afterHash": "sha256:05a5288c7e6709eede83792c498e2520a6f6f934935bf53d2218f5342227ab0d",
+      "afterHash": "sha256:fcbff2fa04af40bdba653e780ab809c566cd5243b4de9689def9494ea9817146",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10637,7 +10653,7 @@
     {
       "target": ".kilocode/workflows/continue.md",
       "beforeHash": "sha256:d5373736d78f5f7fb19d00af5fa7bde2fde86aa4c4fedfe869c172bb60a06e70",
-      "afterHash": "sha256:d66a6803e0f389c1205c3c9506eb8ca8929021c664c16a198293b21690c6705c",
+      "afterHash": "sha256:c254ab6ed9d1f214d32a7d411ff37b5cde0db0baec85d34e8d679df5a4e976d3",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10668,7 +10684,7 @@
     {
       "target": ".kimi-code/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:acf4d42f93ac037141e06eb3526d840beb24e14b66c2d3c6e7a11a01b0598b16",
-      "afterHash": "sha256:eacbc8a318a96866e20b9cab674eb99685b1b9d0975f006fc93108eadc157028",
+      "afterHash": "sha256:69c4615d18051d96a4b58a23c1ddbe54ef9d4d9ac6b7345aa7b6af1def43ef8c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10699,7 +10715,7 @@
     {
       "target": ".kiro/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:cbe9a5e5c7b1f1c7aab1599a2aeff223308505f5875dabd04055e3971df26c32",
-      "afterHash": "sha256:843763f85e5b057d79e0933fe25e052496781dc4c5d54bc7ddee72038416bc49",
+      "afterHash": "sha256:661ece99fa11e10ef497ae26b5efbc17970d0ead6f057f4a266e6576c2fad13f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10730,7 +10746,7 @@
     {
       "target": ".omp/commands/trellis-continue.md",
       "beforeHash": "sha256:6075e18c5661445475ecb20c4e1dd216b3c3790244311b4fc933ef365bd3ae0c",
-      "afterHash": "sha256:9d5e8b758383359b8d1e2cdaca67918ab20ecb67cfac21f540d6a2f3c0b6f660",
+      "afterHash": "sha256:d129c8a39c1e58ce8c1b3cd07a18b974cec7102dfcfddec5210ea6c0f93cb808",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10761,7 +10777,7 @@
     {
       "target": ".opencode/commands/trellis/continue.md",
       "beforeHash": "sha256:85c439d4f7dda208ecf9ec72a2ff14e6fc6c6c5e06b3552b8bcb2707caa392a0",
-      "afterHash": "sha256:2a10dbedfc6783c81c2e6e17c3cfd99ce2a6467e61399ef9bf12635193305652",
+      "afterHash": "sha256:2c195d0330970745e8849363cdda49c1dad8f563a5b9be608ab4b24596e9651d",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10792,7 +10808,7 @@
     {
       "target": ".pi/prompts/trellis-continue.md",
       "beforeHash": "sha256:12c2f0288ff67af3368c0b577a50027a11a25fec1d32ed34282a4dc84be08f1c",
-      "afterHash": "sha256:9745c64f393722a2e37b3cf2ac24cbf07b2f81df8eb27aebe9835c86059306c5",
+      "afterHash": "sha256:dfbe4d5fa2af9cb35f35b77775e826806ae28f1507adfd8927d6fbd53f815b48",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10823,7 +10839,7 @@
     {
       "target": ".qoder/commands/trellis-continue.md",
       "beforeHash": "sha256:d808a8e59eb8f6d1fa91833fe767a7c2ce669653b6c60df4646bba55324a3e68",
-      "afterHash": "sha256:4a21e84cd230374bbf9d7a2f910dd6f005c1324704a7ee583b5fb7c1d28b44db",
+      "afterHash": "sha256:846b838ddc52528f73895b3e43e58735ca7ad394effc52189941594c399210ae",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10854,7 +10870,7 @@
     {
       "target": ".reasonix/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:a54ce6dffe86561164cc63a7e25d48182b9c0d5b4b0855d348a38788e3f31bd3",
-      "afterHash": "sha256:b8d274adced637f71b9925e43c368bfac40915616c8d3bbdc1df904e2b46ba7e",
+      "afterHash": "sha256:98ae4e3e89a6c6032f74ec92a9b845bcf20e9195cad8b3253e25c4a2cf2cd48b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10885,7 +10901,7 @@
     {
       "target": ".snow/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:0757df10e36d59c8b3fc00356705dfc94c590ea1000304b99f4522bdd8b40997",
-      "afterHash": "sha256:757af466c3e7b4f357d80255ca11b16f9635fa5efde4992adcb44c6cd50fa067",
+      "afterHash": "sha256:a193f3b161091064aa0aad3cf13df7075b7b502ffa83a589bcb21ec959f85527",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10916,7 +10932,7 @@
     {
       "target": ".trae/commands/trellis-continue.md",
       "beforeHash": "sha256:65aad74faaf2ce30e8afdf87c60ea5bfd3a49a6457694fe3b2e0be693fbe8b1b",
-      "afterHash": "sha256:c6c2426c37a1e806fde63bace5edeca566c9d9ef76d99dbc9da3b651fdbbba9f",
+      "afterHash": "sha256:3bd4459381d9ed114d24bc66a1371d5e25b5a6a3ee80d41bdf62fe48312598bc",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10947,7 +10963,7 @@
     {
       "target": ".zcode/commands/trellis/continue.md",
       "beforeHash": "sha256:632b4933ac979c2ee8334b117adea4e4a9bf8b69d931fa0c83b8142b09bc80ff",
-      "afterHash": "sha256:c863035272a1bca31c71855bb1a202d3d347505ea2041bdcc653681680646e2f",
+      "afterHash": "sha256:0a7ade902330b3392ae7d243f915afe684a5e8f5bc2c71450231605ef658f296",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21563,7 +21579,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "target": ".trellis/workflow.md",
       "status": "ready",
@@ -21577,7 +21594,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "target": ".trellis/workflow.md",
       "status": "ready",
@@ -21591,7 +21609,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "target": ".trellis/workflow.md",
       "status": "ready",
@@ -21605,7 +21624,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "target": ".trellis/workflow.md",
       "status": "ready",
@@ -21619,7 +21639,8 @@
       "qualifiedPatch": "skill-garden/workflow-phase-ownership",
       "bundle": "intent-routing",
       "bundles": [
-        "skill-garden/intent-routing"
+        "skill-garden/intent-routing",
+        "skill-garden/maven-verification"
       ],
       "target": ".trellis/workflow.md",
       "status": "ready",
