@@ -45,7 +45,7 @@ diff --git a/.kilocode/workflows/finish-work.md b/.kilocode/workflows/finish-wor
  ```
  
 -Filter out paths under `.trellis/workspace/` and `.trellis/tasks/` — those are managed by `add_session.py` and `task.py archive` auto-commits and will appear dirty as part of this skill's own work.
-+Read the current task's `task.json` as the authoritative lifecycle record. Continue only when `taskStatus=completed` and `completedAt` is present. Progress text is recovery evidence and never substitutes for the task status.
++Read the current task's `task.json` as the authoritative lifecycle record. Continue only when `taskStatus=completed`. A missing `completedAt` is recoverable archive metadata: `task.py archive` backfills it after the decision audit succeeds. Progress text is recovery evidence and never substitutes for the task status.
  
 -For each remaining dirty path, decide whether it belongs to **the current task** or to **other parallel work** (e.g., another terminal window editing the same repo). Heuristics:
 +- `in_progress`: stop and return to Phase 3.4 `trellis-push`; finish-work must not manufacture completion.
@@ -88,7 +88,7 @@ diff --git a/.kilocode/workflows/finish-work.md b/.kilocode/workflows/finish-wor
 +- A corrupt decision log fails closed. Do not edit or discard it to bypass review.
  
 -If there is no active task and the user did not confirm any cleanup archives, skip this step.
-+`task.py archive` repeats the completion-state and decision guards before any session cleanup or directory move. It preserves the existing `completedAt` and performs no lifecycle status write.
++`task.py archive` repeats the completion-state and decision guards before any session cleanup or directory move. It preserves an existing `completedAt`, backfills a missing value after those guards pass, and performs no lifecycle status transition.
  
 -## Step 4: Record session journal
 +### 3. Current Task Release Audit
