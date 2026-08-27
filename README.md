@@ -190,3 +190,22 @@ description: "<简要描述,Auto-routing 需精确到自然语触发>"
 ```
 
 新建 trellis 入口推荐用 `/trellis-create-command` skill,会自动同步 4 份副本 + skill-garden 包。
+
+---
+
+## 许可证
+
+本仓库的原创内容采用 **[MIT](./LICENSE)** 授权,允许复制、修改、公司内部使用、商业使用和再分发,唯一要求是保留版权声明与许可声明,**不要求**衍生作品以相同许可证发布。
+
+需要注意的是仓库内有两类内容,许可证不同:
+
+| 内容 | 许可证 | 范围 |
+|------|--------|------|
+| **原创内容** | MIT | `.common/**` 全部通用 Skill、`.trellis/<variant>` 下的 Skill / Command 正文与新增脚本、Patch 声明与 `*-content.*`、`scripts/**`、`README.md` |
+| **上游 Trellis 衍生内容** | 受上游 AGPL-3.0-only 约束 | `compiled-targets/**`(上游模板打完 Patch 的成品文件与 diff)、Patch 的 `*selector*` 与 `*baseline*`(上游源文件逐字摘录) |
+
+第二类之所以入库,是为了给 Patch 提供可预检基线和确定性审阅 diff;它们不是安装输入也不是恢复源。上游为 [Trellis](https://docs.trytrellis.app/)(npm 包 `@mindfoldhq/trellis`,Mindfold LLC,AGPL-3.0-only)。
+
+**只复用 `.common` 下的通用 Skill(如 `humanize-writing`)时,完全按 MIT 处理,不受第二类影响。**
+
+完整的路径归类、逐项边界说明和合规提示见 [NOTICE.md](./NOTICE.md)。
