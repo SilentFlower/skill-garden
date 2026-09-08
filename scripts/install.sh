@@ -136,12 +136,12 @@ should_migrate_common() {
 
 # 新 skill 已成功写入后，才精确删除同平台旧目录。
 migrate_common_skills() {
-  local target_root="$1" mapping from to old_path new_skill
+  local target_root="$1" replacement_root="${2:-$1}" mapping from to old_path new_skill
   for mapping in "${SKILL_MIGRATIONS[@]}"; do
     IFS=$'\t' read -r from to <<< "$mapping"
     should_migrate_common "$to" || continue
     old_path="$target_root/$from"
-    new_skill="$target_root/$to/SKILL.md"
+    new_skill="$replacement_root/$to/SKILL.md"
     [[ -d "$old_path" && -f "$new_skill" ]] || continue
     rm -rf "$old_path"
     echo "  ✓ 迁移 $from → $to"
@@ -339,30 +339,36 @@ PYEOF
   # 检测目标项目支持哪些平台
   HAS_CODEX=false
   HAS_CLAUDE=false
-  [[ -d "$TARGET_DIR/.codex" ]] && HAS_CODEX=true
+  [[ -d "$TARGET_DIR/.codex" || -d "$TARGET_DIR/.agents" ]] && HAS_CODEX=true
   [[ -d "$TARGET_DIR/.claude" ]] && HAS_CLAUDE=true
 
-  # 如果两个都没有,默认按 claude 处理(大多数项目)
+  # 无平台证据时一次性选定双平台，避免安装中创建目录影响后续技能。
   if [[ "$HAS_CODEX" == false && "$HAS_CLAUDE" == false ]]; then
+    HAS_CODEX=true
     HAS_CLAUDE=true
   fi
 
   if [[ "$HAS_CODEX" == true && -d "$COMMON_CODEX" ]]; then
     for skill_dir in "$COMMON_CODEX"/*/; do
-      [[ ! -d "$skill_dir" ]] && continue
+      [[ ! -f "$skill_dir/SKILL.md" ]] && continue
       name="$(basename "$skill_dir")"
       should_install_common "$name" || continue
-      echo "[$name] common/codex → .codex/skills/$name/"
-      install_one "$skill_dir" "$TARGET_DIR/.codex/skills/$name"
+      echo "[$name] common/codex → .agents/skills/$name/"
+      install_one "$skill_dir" "$TARGET_DIR/.agents/skills/$name"
+      # 只有新副本写入成功后，才清理同名的旧 Codex 目录。
+      if [[ -f "$TARGET_DIR/.agents/skills/$name/SKILL.md" ]]; then
+        rm -rf "$TARGET_DIR/.codex/skills/$name"
+      fi
     done
-    migrate_common_skills "$TARGET_DIR/.codex/skills"
+    migrate_common_skills "$TARGET_DIR/.agents/skills"
+    migrate_common_skills "$TARGET_DIR/.codex/skills" "$TARGET_DIR/.agents/skills"
   elif [[ -d "$COMMON_CODEX" ]]; then
-    echo "跳过 common/codex 技能(目标项目无 .codex/ 目录)"
+    echo "跳过 common/codex 技能(目标项目无 .codex/ 或 .agents/ 目录)"
   fi
 
   if [[ "$HAS_CLAUDE" == true && -d "$COMMON_CLAUDE" ]]; then
     for skill_dir in "$COMMON_CLAUDE"/*/; do
-      [[ ! -d "$skill_dir" ]] && continue
+      [[ ! -f "$skill_dir/SKILL.md" ]] && continue
       name="$(basename "$skill_dir")"
       should_install_common "$name" || continue
       echo "[$name] common/claude → .claude/skills/$name/"

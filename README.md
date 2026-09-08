@@ -5,7 +5,7 @@
 ```
 skill-garden/
 ├── .common/                                  # 通用技能(按平台)
-│   ├── .codex/skills/<name>/                 #   → <target>/.codex/skills/
+│   ├── .codex/skills/<name>/                 #   → <target>/.agents/skills/
 │   ├── .claude/skills/<name>/                #   → <target>/.claude/skills/
 │   └── skill-migrations.json                 #   旧名称到新 Skill 的受控迁移
 ├── .trellis/                                 # Trellis 强化补充包(按版本)
@@ -47,13 +47,17 @@ bash install.sh --repo /path/to/skill-garden-checkout /target
 **`--scope` 决定装哪类**:`trellis`(默认)/ `common` / `all`。`bash install.sh --help` 看完整。
 
 **安装目标自动适配**:
-- 目标有 `.codex/` → 装 `.common/.codex/`
-- 目标有 `.claude/` → 装 `.common/.claude/`
+
+- 目标有 `.codex/` 或 `.agents/` → 从 `.common/.codex/skills` 安装到 `.agents/skills/`
+- 目标有 `.claude/` → 从 `.common/.claude/skills` 安装到 `.claude/skills/`
+- 上述三个目录都没有 → 通用技能默认同时安装到 `.agents/skills/` 和 `.claude/skills/`
 - 目标有 `.trellis/` → 按 `.trellis/.version` 读 0.6 / 0.5 / old,装对应 variant 的 `.agents/` + `.claude/skills/`(+`commands/`,old 才有)+ 注入 `overrides/*`
 
 **install.sh 自更新**:本地缓存的旧脚本启动时 `cmp` 自身与远程,不一致则 `exec` 远程版本继续。AI agent 从本地路径调用也不会踩到老逻辑。
 
 **common Skill 迁移**:`.common/skill-migrations.json` 是旧名称迁移的唯一来源。全量安装或显式命中新旧名称时，安装器先写入新 Skill 并确认 `SKILL.md` 存在，再精确删除同平台旧目录。安装其它指定 Skill 时不会顺带迁移。该流程只处理项目内 Skill 目录，不会创建、合并、改写或删除 `~/.config` 下的 ENV 文件。
+
+旧 `.codex/skills/<name>` 会在安装对应技能时迁移到 `.agents/skills/<name>`，同时兼容旧名称映射。新旧副本并存时以当前源快照替换新目录，成功后清理旧副本，不合并自定义内容。
 
 ---
 
