@@ -1,14 +1,16 @@
 diff --git a/.reasonix/skills/trellis-continue/SKILL.md b/.reasonix/skills/trellis-continue/SKILL.md
 --- a/.reasonix/skills/trellis-continue/SKILL.md
 +++ b/.reasonix/skills/trellis-continue/SKILL.md
-@@ -16,6 +16,38 @@
+@@ -16,6 +16,40 @@
  ```
  
  Confirms: current task, git state, recent commits.
 +<!-- BEGIN skill-garden patch trellis-continue-task-progress-recovery v0.6 -->
 +## Step 1.5: Recover Saved Task Progress
 +
-+Before loading the Phase Index or deciding a workflow step, run:
++For Steps 1 and 2, reuse task context and the Phase Index already loaded in the current turn when still valid; otherwise load them normally. Saved-progress recovery and all workflow review/confirmation gates remain required.
++
++Before deciding a workflow step, run:
 +
 +```bash
 +python3 ./.trellis/scripts/task_progress.py status --json
@@ -40,7 +42,7 @@ diff --git a/.reasonix/skills/trellis-continue/SKILL.md b/.reasonix/skills/trell
  
  ## Step 2: Load the Phase Index
  
-@@ -36,7 +68,9 @@
+@@ -36,7 +70,9 @@
  - `status=in_progress` + implementation not started → **2.1**
  - `status=in_progress` + implementation done, not yet checked → **2.2**
  - `status=in_progress` + check passed → **3.3** (spec update) → **3.4** (commit)

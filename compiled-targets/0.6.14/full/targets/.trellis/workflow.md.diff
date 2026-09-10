@@ -219,7 +219,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 -Main-session default: dispatch implement/check sub-agents. Sub-agent self-exemption: if already running as `trellis-implement`, do NOT spawn another `trellis-implement` or `trellis-check`; if already running as `trellis-check`, do NOT spawn another `trellis-check` or `trellis-implement`. Dispatch is main session only.
 -Dispatch prompt starts with `Active task: <task path from task.py current>`. Read context: jsonl entries -> `prd.md` -> `design.md if present` -> `implement.md if present`.
 +<!-- BEGIN skill-garden patch workflow-state-in-progress v0.6 -->
-+Before the first implement route, restate `<task>/brief.md`; if it is missing, read the task artifacts and suggest backfilling it instead of relying on memory.
++Before the first implement route, read `<task>/brief.md` and task artifacts without routine redisplay, including after context recovery; if the Brief is missing, follow `trellis-task-brief` backfill guidance.
 +Before routing or editing, apply the `Request Triage` Active Task Scope Guard. New implementation work outside the active task title/brief stops here until the user chooses a new task, updates this task's artifacts first, or explicitly proceeds untracked without reusing its progress.
 +Enter Phase 2.1/2.2 through the target-matched `trellis-route`; a user route override wins over remembered evidence. Do NOT call the harness built-in plan mode (`EnterPlanMode` / `ExitPlanMode`) to plan sub-changes; keep planning in Trellis artifacts.
 +After implementation and focused validation, return to the Phase 2.1 completion contract and resolve its Pre-Check action before ending the turn; the full hold/default policy remains owned by Phase 2.1.
@@ -238,7 +238,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 -Do not dispatch implement/check sub-agents in inline mode.
 -Read context: `prd.md` -> `design.md if present` -> `implement.md if present`, plus relevant spec/research loaded by skills.
 +<!-- BEGIN skill-garden patch workflow-state-in-progress-inline v0.6 -->
-+Before the first implement route, restate `<task>/brief.md`; if it is missing, read the task artifacts and suggest backfilling it instead of relying on memory.
++Before the first implement route, read `<task>/brief.md` and task artifacts without routine redisplay, including after context recovery; if the Brief is missing, follow `trellis-task-brief` backfill guidance.
 +Before routing or editing, apply the `Request Triage` Active Task Scope Guard. New implementation work outside the active task title/brief stops here until the user chooses a new task, updates this task's artifacts first, or explicitly proceeds untracked without reusing its progress.
 +Enter Phase 2.1/2.2 through the target-matched `trellis-route`; a user route override wins over remembered evidence. Do NOT call the harness built-in plan mode (`EnterPlanMode` / `ExitPlanMode`) to plan sub-changes; keep planning in Trellis artifacts.
 +After implementation and focused validation, return to the Phase 2.1 completion contract and resolve its Pre-Check action before ending the turn; the full hold/default policy remains owned by Phase 2.1.

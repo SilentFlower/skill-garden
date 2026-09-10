@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:0f2d85af2c7f4e6e23e0fbc5324a4519136cc778c9fa8f7575354ef2059f9c27",
+  "catalogHash": "sha256:20cc479e041af04e64eb720b6f48d350ac4bddafc898d1fe6a4eea19c793a778",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -511,6 +511,15 @@
       "id": "trellis-update-spec-autonomous-evaluation",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ]
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
       "bundle": "trellis-update-spec",
       "bundles": [
         "skill-garden/trellis-update-spec"
@@ -1913,6 +1922,166 @@
       "incomingEdges": []
     },
     {
+      "id": "start-active-task-recovery-codex",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-codex",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-antigravity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-antigravity",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-devin",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-devin",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-grok",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-grok",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-kilo",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kilo",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-kimi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kimi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-opencode",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-opencode",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-pi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-pi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-active-task-recovery-reasonix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-reasonix",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 92,
+      "resolvedIndex": 92,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "declarationIndex": 93,
+      "resolvedIndex": 93,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "before-dev-project-knowledge-discovery",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/before-dev-project-knowledge-discovery",
@@ -1922,8 +2091,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 94,
+      "resolvedIndex": 94,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1938,8 +2107,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 95,
+      "resolvedIndex": 95,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1954,8 +2123,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 96,
+      "resolvedIndex": 96,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -1977,8 +2146,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 97,
+      "resolvedIndex": 97,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1993,8 +2162,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 88,
-      "resolvedIndex": 88,
+      "declarationIndex": 98,
+      "resolvedIndex": 98,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2009,8 +2178,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 89,
-      "resolvedIndex": 89,
+      "declarationIndex": 99,
+      "resolvedIndex": 99,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2025,8 +2194,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 90,
-      "resolvedIndex": 90,
+      "declarationIndex": 100,
+      "resolvedIndex": 100,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2041,8 +2210,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 91,
-      "resolvedIndex": 91,
+      "declarationIndex": 101,
+      "resolvedIndex": 101,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2057,8 +2226,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 92,
-      "resolvedIndex": 92,
+      "declarationIndex": 102,
+      "resolvedIndex": 102,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2073,8 +2242,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 93,
-      "resolvedIndex": 93,
+      "declarationIndex": 103,
+      "resolvedIndex": 103,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2089,8 +2258,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 94,
-      "resolvedIndex": 94,
+      "declarationIndex": 104,
+      "resolvedIndex": 104,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2105,8 +2274,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 95,
-      "resolvedIndex": 95,
+      "declarationIndex": 105,
+      "resolvedIndex": 105,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2121,8 +2290,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 96,
-      "resolvedIndex": 96,
+      "declarationIndex": 106,
+      "resolvedIndex": 106,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2137,8 +2306,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 97,
-      "resolvedIndex": 97,
+      "declarationIndex": 107,
+      "resolvedIndex": 107,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2153,8 +2322,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 98,
-      "resolvedIndex": 98,
+      "declarationIndex": 108,
+      "resolvedIndex": 108,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2169,8 +2338,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 99,
-      "resolvedIndex": 99,
+      "declarationIndex": 109,
+      "resolvedIndex": 109,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2185,8 +2354,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 100,
-      "resolvedIndex": 100,
+      "declarationIndex": 110,
+      "resolvedIndex": 110,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2201,8 +2370,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 101,
-      "resolvedIndex": 101,
+      "declarationIndex": 111,
+      "resolvedIndex": 111,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2217,8 +2386,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 102,
-      "resolvedIndex": 102,
+      "declarationIndex": 112,
+      "resolvedIndex": 112,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2233,8 +2402,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 103,
-      "resolvedIndex": 103,
+      "declarationIndex": 113,
+      "resolvedIndex": 113,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2249,8 +2418,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 104,
-      "resolvedIndex": 104,
+      "declarationIndex": 114,
+      "resolvedIndex": 114,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2265,8 +2434,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 105,
-      "resolvedIndex": 105,
+      "declarationIndex": 115,
+      "resolvedIndex": 115,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2281,8 +2450,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 106,
-      "resolvedIndex": 106,
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2297,8 +2466,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 107,
-      "resolvedIndex": 107,
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2313,8 +2482,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 108,
-      "resolvedIndex": 108,
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2329,8 +2498,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 109,
-      "resolvedIndex": 109,
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2345,8 +2514,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 110,
-      "resolvedIndex": 110,
+      "declarationIndex": 120,
+      "resolvedIndex": 120,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2361,8 +2530,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 111,
-      "resolvedIndex": 111,
+      "declarationIndex": 121,
+      "resolvedIndex": 121,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2377,8 +2546,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 112,
-      "resolvedIndex": 112,
+      "declarationIndex": 122,
+      "resolvedIndex": 122,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2393,8 +2562,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 113,
-      "resolvedIndex": 113,
+      "declarationIndex": 123,
+      "resolvedIndex": 123,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2409,8 +2578,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 114,
-      "resolvedIndex": 114,
+      "declarationIndex": 124,
+      "resolvedIndex": 124,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2425,8 +2594,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 115,
-      "resolvedIndex": 115,
+      "declarationIndex": 125,
+      "resolvedIndex": 125,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2441,8 +2610,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 116,
-      "resolvedIndex": 116,
+      "declarationIndex": 126,
+      "resolvedIndex": 126,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2457,8 +2626,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 117,
-      "resolvedIndex": 117,
+      "declarationIndex": 127,
+      "resolvedIndex": 127,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2473,8 +2642,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 118,
-      "resolvedIndex": 118,
+      "declarationIndex": 128,
+      "resolvedIndex": 128,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2489,8 +2658,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 119,
-      "resolvedIndex": 119,
+      "declarationIndex": 129,
+      "resolvedIndex": 129,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2505,8 +2674,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 120,
-      "resolvedIndex": 120,
+      "declarationIndex": 130,
+      "resolvedIndex": 130,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2521,8 +2690,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 121,
-      "resolvedIndex": 121,
+      "declarationIndex": 131,
+      "resolvedIndex": 131,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2537,8 +2706,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 122,
-      "resolvedIndex": 122,
+      "declarationIndex": 132,
+      "resolvedIndex": 132,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2553,8 +2722,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 123,
-      "resolvedIndex": 123,
+      "declarationIndex": 133,
+      "resolvedIndex": 133,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2569,8 +2738,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 124,
-      "resolvedIndex": 124,
+      "declarationIndex": 134,
+      "resolvedIndex": 134,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2585,8 +2754,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 125,
-      "resolvedIndex": 125,
+      "declarationIndex": 135,
+      "resolvedIndex": 135,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2601,8 +2770,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 126,
-      "resolvedIndex": 126,
+      "declarationIndex": 136,
+      "resolvedIndex": 136,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2617,8 +2786,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 127,
-      "resolvedIndex": 127,
+      "declarationIndex": 137,
+      "resolvedIndex": 137,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2633,8 +2802,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 128,
-      "resolvedIndex": 128,
+      "declarationIndex": 138,
+      "resolvedIndex": 138,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2649,8 +2818,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 129,
-      "resolvedIndex": 129,
+      "declarationIndex": 139,
+      "resolvedIndex": 139,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2665,8 +2834,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 130,
-      "resolvedIndex": 130,
+      "declarationIndex": 140,
+      "resolvedIndex": 140,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2681,8 +2850,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 131,
-      "resolvedIndex": 131,
+      "declarationIndex": 141,
+      "resolvedIndex": 141,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2697,8 +2866,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 132,
-      "resolvedIndex": 132,
+      "declarationIndex": 142,
+      "resolvedIndex": 142,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2713,8 +2882,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 133,
-      "resolvedIndex": 133,
+      "declarationIndex": 143,
+      "resolvedIndex": 143,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2729,8 +2898,72 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 134,
-      "resolvedIndex": 134,
+      "declarationIndex": 144,
+      "resolvedIndex": 144,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 145,
+      "resolvedIndex": 145,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 146,
+      "resolvedIndex": 146,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 147,
+      "resolvedIndex": 147,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 148,
+      "resolvedIndex": 148,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3609,6 +3842,33 @@
         ".snow/skills/trellis-brainstorm/SKILL.md",
         ".trae/skills/trellis-brainstorm/SKILL.md",
         ".zcode/skills/trellis-brainstorm/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "targets": [
+        ".agent/skills/trellis-break-loop/SKILL.md",
+        ".agents/skills/trellis-break-loop/SKILL.md",
+        ".claude/skills/trellis-break-loop/SKILL.md",
+        ".codebuddy/skills/trellis-break-loop/SKILL.md",
+        ".cursor/skills/trellis-break-loop/SKILL.md",
+        ".devin/skills/trellis-break-loop/SKILL.md",
+        ".factory/skills/trellis-break-loop/SKILL.md",
+        ".github/skills/trellis-break-loop/SKILL.md",
+        ".grok/skills/trellis-break-loop/SKILL.md",
+        ".kilocode/skills/trellis-break-loop/SKILL.md",
+        ".kiro/skills/trellis-break-loop/SKILL.md",
+        ".omp/skills/trellis-break-loop/SKILL.md",
+        ".opencode/skills/trellis-break-loop/SKILL.md",
+        ".qoder/skills/trellis-break-loop/SKILL.md",
+        ".reasonix/skills/trellis-break-loop/SKILL.md",
+        ".snow/skills/trellis-break-loop/SKILL.md",
+        ".trae/skills/trellis-break-loop/SKILL.md",
+        ".zcode/skills/trellis-break-loop/SKILL.md"
       ]
     },
     {
@@ -4683,6 +4943,114 @@
       ]
     },
     {
+      "id": "start-active-task-recovery-codex",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-codex",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".agents/skills/trellis-start/SKILL.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-antigravity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-antigravity",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".agent/workflows/start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-devin",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-devin",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".devin/workflows/trellis-start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-grok",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-grok",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".grok/commands/trellis-start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-kilo",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kilo",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".kilocode/workflows/start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-kimi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kimi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".kimi-code/skills/trellis-start/SKILL.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-opencode",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-opencode",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".opencode/commands/trellis/start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-pi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-pi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".pi/prompts/trellis-start.md"
+      ]
+    },
+    {
+      "id": "start-active-task-recovery-reasonix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-reasonix",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".reasonix/skills/trellis-start/SKILL.md"
+      ]
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "targets": [
+        ".agents/skills/trellis-start/SKILL.md",
+        ".agent/workflows/start.md",
+        ".devin/workflows/trellis-start.md",
+        ".grok/commands/trellis-start.md",
+        ".kilocode/workflows/start.md",
+        ".kimi-code/skills/trellis-start/SKILL.md",
+        ".opencode/commands/trellis/start.md",
+        ".pi/prompts/trellis-start.md",
+        ".reasonix/skills/trellis-start/SKILL.md"
+      ]
+    },
+    {
       "id": "trellis-update-spec-autonomous-evaluation",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-update-spec-autonomous-evaluation",
@@ -4700,6 +5068,87 @@
       "patch": "trellis-update-spec-autonomous-evaluation",
       "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
       "targets": [
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
         ".agent/skills/trellis-update-spec/SKILL.md",
         ".codebuddy/skills/trellis-update-spec/SKILL.md",
         ".cursor/skills/trellis-update-spec/SKILL.md",
@@ -5859,7 +6308,7 @@
     {
       "target": ".agents/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:161060fbcd44f787440d3a5c297a9f5223ea7774bb3021a50e376875a9ac5b2d",
-      "afterHash": "sha256:d443a7b1fded85c68cd42ca1a29b7bc633e66bc22b93434937f7f9295d2ac8fa",
+      "afterHash": "sha256:31be952e1ea0764d966decbaa514b41a8ba0f9e2c90e0efaae5d6f5368ed6ecb",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5879,7 +6328,7 @@
     {
       "target": ".claude/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:21fd5637a091aa685eb74eec350f224d2f59323149d206cd2acb50e8d3b9503a",
+      "afterHash": "sha256:df03b53adec3f160e62df6127699003c87c7b7046fe01206e3b1ffdff422c3cf",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5899,7 +6348,7 @@
     {
       "target": ".agent/workflows/finish-work.md",
       "beforeHash": "sha256:d23e96116cd24ea156ab582255792fe5e37338c9702df15ce46f07b584fee14d",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5919,7 +6368,7 @@
     {
       "target": ".codebuddy/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5939,7 +6388,7 @@
     {
       "target": ".cursor/commands/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5959,7 +6408,7 @@
     {
       "target": ".devin/workflows/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5979,7 +6428,7 @@
     {
       "target": ".factory/commands/trellis/finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -5999,7 +6448,7 @@
     {
       "target": ".github/prompts/finish-work.prompt.md",
       "beforeHash": "sha256:d23e96116cd24ea156ab582255792fe5e37338c9702df15ce46f07b584fee14d",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6019,7 +6468,7 @@
     {
       "target": ".grok/commands/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6039,7 +6488,7 @@
     {
       "target": ".kilocode/workflows/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6059,7 +6508,7 @@
     {
       "target": ".kimi-code/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:24d18a5792ecd72a58131b1ca06dcd5948f01ba61cb310fac6e1c135e3efc8c7",
-      "afterHash": "sha256:6e5d8cf751dc9eb1a3539a4de3bc7581d69ee686053c6d9f354fb1aeefa4b6f3",
+      "afterHash": "sha256:bfee61b8fa4836726a32d352317e0efa67ca30eeda17de09b19be62cfde1a18e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6079,7 +6528,7 @@
     {
       "target": ".kiro/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:486d56ad2d8f05e232a017e739e5f11ab6b5fc8f2d70b305ecb9aa402fe83087",
-      "afterHash": "sha256:6e5d8cf751dc9eb1a3539a4de3bc7581d69ee686053c6d9f354fb1aeefa4b6f3",
+      "afterHash": "sha256:bfee61b8fa4836726a32d352317e0efa67ca30eeda17de09b19be62cfde1a18e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6099,7 +6548,7 @@
     {
       "target": ".omp/commands/trellis-finish-work.md",
       "beforeHash": "sha256:e81fc5df4a63aa44305fd040d588b5cd66e3b5fe26c6f7202bc7035685394da4",
-      "afterHash": "sha256:fab840daf22dd2254f4aac31f019faff4fe080b01a53712ef838a39747afd0f5",
+      "afterHash": "sha256:fef11925ce4dce02172c4805d7e8d14bb308c9c66a9bd137f90f491659e2f190",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6119,7 +6568,7 @@
     {
       "target": ".opencode/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6139,7 +6588,7 @@
     {
       "target": ".pi/prompts/trellis-finish-work.md",
       "beforeHash": "sha256:5a8a72fd87d009c15068bae75165af97f1b03e975b24f5dc3b901b01c6914160",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6159,7 +6608,7 @@
     {
       "target": ".qoder/commands/trellis-finish-work.md",
       "beforeHash": "sha256:1b83f5d1a1a5042a20c9394eeae1728f470ca583ba2012421252d55c3dd4ac6b",
-      "afterHash": "sha256:8a760a395aac548c8039ff998dedc6c77c975202689fc9a7a00dce097fbb1f68",
+      "afterHash": "sha256:7379695e91c723c06c7c057f5df14e04f4ca303b81384495ebbdf75b602a7ef5",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6179,7 +6628,7 @@
     {
       "target": ".reasonix/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:a949107cb0222f85d67cea7978ca6710621c8fcfd253430f8a16eba0cb55d423",
-      "afterHash": "sha256:6e5d8cf751dc9eb1a3539a4de3bc7581d69ee686053c6d9f354fb1aeefa4b6f3",
+      "afterHash": "sha256:bfee61b8fa4836726a32d352317e0efa67ca30eeda17de09b19be62cfde1a18e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6199,7 +6648,7 @@
     {
       "target": ".snow/skills/trellis-finish-work/SKILL.md",
       "beforeHash": "sha256:2929ad749ef7ed8a9d33667d5fe59c89544017171dcc2b69d37bc769ddec13cc",
-      "afterHash": "sha256:6e5d8cf751dc9eb1a3539a4de3bc7581d69ee686053c6d9f354fb1aeefa4b6f3",
+      "afterHash": "sha256:bfee61b8fa4836726a32d352317e0efa67ca30eeda17de09b19be62cfde1a18e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6219,7 +6668,7 @@
     {
       "target": ".trae/commands/trellis-finish-work.md",
       "beforeHash": "sha256:34732ad26bfcc2dde0cdf50b3ffddccfd1a5a354a95114b382ea37ea9eb16ca2",
-      "afterHash": "sha256:8a760a395aac548c8039ff998dedc6c77c975202689fc9a7a00dce097fbb1f68",
+      "afterHash": "sha256:7379695e91c723c06c7c057f5df14e04f4ca303b81384495ebbdf75b602a7ef5",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6239,7 +6688,7 @@
     {
       "target": ".zcode/commands/trellis/finish-work.md",
       "beforeHash": "sha256:d6aa570ab684f57e4845de2d84a1ff6d9f0908e04c5a56e14fd70ae739c369fc",
-      "afterHash": "sha256:28e77f5dda1a1581a155649d5fa9effadf6b29d52b1e00ee28c045f02ef9137b",
+      "afterHash": "sha256:f98613d40f90ec3b77b4216de2691d5967a1194cdaf98298889a6c703fe63f44",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -6279,7 +6728,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:e3996f6face220b0208f4bea8eb4f64709fc8a4014dbd1f2f4cc47002843ddd3",
+      "afterHash": "sha256:ed28b78b7e8214e79449660c8d850cc03b06e40f501fa8195ccbf500dd2c2d2a",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8367,7 +8816,7 @@
     {
       "target": ".agents/skills/trellis-start/SKILL.md",
       "beforeHash": "sha256:79a5ba7a2aff3c72e06d7f4cd6942dc4f4f4092dd40f9c8e94f1838024a81e4d",
-      "afterHash": "sha256:aaaa96b2440faddb74f9b8a04b2d11bca1cb96bfde6cc2a705387ef44b70d6cb",
+      "afterHash": "sha256:ff0a55d3205dfcc8abe214c120489c16edf7c3aa50c418bcc36c3b2006814ced",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8375,6 +8824,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-codex",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-codex",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8387,7 +8858,7 @@
     {
       "target": ".agent/workflows/start.md",
       "beforeHash": "sha256:ff3653188c5bc76be68272ec504fe9b1b5a908d34b8cdb878c692f5f1aee160d",
-      "afterHash": "sha256:00bc1c6ba7345cae4b96a266815341c5b2c65d8ac0a99efbdd91e195daed0483",
+      "afterHash": "sha256:9d51d6764910f9b4a6027a51d8020193cb17c86c1315620a1379307cd42764a1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8395,6 +8866,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-antigravity",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-antigravity",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8407,7 +8900,7 @@
     {
       "target": ".devin/workflows/trellis-start.md",
       "beforeHash": "sha256:add6ca31cec964b8a9c99e08ab504926b3d3f38ee763af1e9d7c8c32d874b1db",
-      "afterHash": "sha256:32557265ee152fb1aef4652f8bfae08e94bde0309d1c3c28c4400788dc400be8",
+      "afterHash": "sha256:b01a41ed92e6604baefe13b7db8b15613e72f3c7fbd377579a9e63c28cd7b534",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8415,6 +8908,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-devin",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-devin",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8427,7 +8942,7 @@
     {
       "target": ".grok/commands/trellis-start.md",
       "beforeHash": "sha256:9826aaafd8cbf236e45f7de1ea4b3d362cff4ef61837782bd382557d59fd1436",
-      "afterHash": "sha256:db37d340669b457845c5a4010484777be75e69cfddbfdbc8cbaf9dbe89f103ce",
+      "afterHash": "sha256:74efff5f5ee56a3a0640ace0aebe1d5f63993a27396bb753ccf68b4efbd41016",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8435,6 +8950,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-grok",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-grok",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8447,7 +8984,7 @@
     {
       "target": ".kilocode/workflows/start.md",
       "beforeHash": "sha256:f2c8236e0d3fd785742b3a272a8601894d4b38d95ea4a8f5fc3a23ee48a3c5d3",
-      "afterHash": "sha256:581006ed8367cc68f36f506cda0f1ceaf38a9e06ed4e44307bf9a00d49636bc8",
+      "afterHash": "sha256:8aa7d33f8d4239ad7276f578ac1a2015831d0d6c752b7cd9d1bc9d3f5fe12b25",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8455,6 +8992,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-kilo",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-kilo",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8467,7 +9026,7 @@
     {
       "target": ".kimi-code/skills/trellis-start/SKILL.md",
       "beforeHash": "sha256:e7737804afa1172428799277659a8088e7079dedbdeb89c4f6006e5201ba1a46",
-      "afterHash": "sha256:1d8cc4b10186a91632c698503d21ef9fe59c9837f5c8e3a806c099e80b986c14",
+      "afterHash": "sha256:d1d02c12796722913324b74b29c0b40b7e3cf3536d7bf04c8c9abc8acfdc754b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8475,6 +9034,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-kimi",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-kimi",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8487,7 +9068,7 @@
     {
       "target": ".opencode/commands/trellis/start.md",
       "beforeHash": "sha256:2327765aaa7d5147e8eaad7b529c7bd18b874aac2e292c761393933088a70d6b",
-      "afterHash": "sha256:7efad91900d96ebac1846a236f5cca77d895c2511adaa3d985df165dd4c2bdc2",
+      "afterHash": "sha256:c53c1abb229eb851f62ed4ecbb0dec40b1f079a091ae65abb7e7859ddb00d6bd",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8495,6 +9076,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-opencode",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-opencode",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -8507,7 +9110,7 @@
     {
       "target": ".pi/prompts/trellis-start.md",
       "beforeHash": "sha256:28af1eb6645d8b517cf705277d8405370b712926e6b01667d6698564002c6a9d",
-      "afterHash": "sha256:f99ce6551b9be5880bd199fbbf590f9976971cebf1f0532622509477553243ef",
+      "afterHash": "sha256:203328e6bd175a2b709424941ce92368489bde0a30faaba8f3b1ee35528fa9d5",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8521,13 +9124,35 @@
           "bundles": [
             "skill-garden/intent-routing"
           ]
+        },
+        {
+          "id": "start-active-task-recovery-pi",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-pi",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
         }
       ]
     },
     {
       "target": ".reasonix/skills/trellis-start/SKILL.md",
       "beforeHash": "sha256:2b784643ce67e666f628c7e0d21098c728184237c3f5fdbd356841c09ba3c497",
-      "afterHash": "sha256:ab0e8e40ff0279c7dab36619a3bb8f3419b833c0031edf4804f871be6754f7fe",
+      "afterHash": "sha256:be6cedeb61791838f662aa0277c27595c3d91c6ff6adc2c29052709108208efb",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -8535,6 +9160,28 @@
           "id": "start-no-task-routing",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/start-no-task-routing",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-active-task-recovery-reasonix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-active-task-recovery-reasonix",
+          "patch": "start-no-task-routing",
+          "qualifiedPatch": "skill-garden/start-no-task-routing",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing"
+          ]
+        },
+        {
+          "id": "start-quality-check-routing",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/start-quality-check-routing",
           "patch": "start-no-task-routing",
           "qualifiedPatch": "skill-garden/start-no-task-routing",
           "bundle": "intent-routing",
@@ -10455,7 +11102,7 @@
     {
       "target": ".agent/workflows/continue.md",
       "beforeHash": "sha256:1ef09f7d6d9d07c92a3808e2f0bcb322c15d106a9bfeba03f27a36ef5d093f8d",
-      "afterHash": "sha256:d487395da208cac6ab5884c74dff525f9d44fca128fabda6b43a025821063d78",
+      "afterHash": "sha256:0647931d69c3abb14976536217d9cb55a81c5202ad21eaef4b1994c9cebd8d8f",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10486,7 +11133,7 @@
     {
       "target": ".agents/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:7723ccf49fbf19d8f086cacc7a080bd8be8db6fc70a32908b80f68efa318d7bf",
-      "afterHash": "sha256:2101af5ace30cc1a96ba11ad70af3e3175ef2c40ca1995fa1ae37248474f600c",
+      "afterHash": "sha256:f6a27d9262b0af0b0508fbcac54b8ebdbf5d03030eb49a302e0f84e927b2641d",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10517,7 +11164,7 @@
     {
       "target": ".claude/commands/trellis/continue.md",
       "beforeHash": "sha256:6c34c41824f8eff4b2df792e032e0c36787b59f8a8879b0338347073f76ad52c",
-      "afterHash": "sha256:05817d0444d73f5fcd3fd1f60f349e14ddc8a51eb156b46acbcd152e01193d82",
+      "afterHash": "sha256:ce0942f47776fa0ddfe54ec5ef41f1d1311dd9ceabb9504ae9d9a489de27aa2d",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10548,7 +11195,7 @@
     {
       "target": ".codebuddy/commands/trellis/continue.md",
       "beforeHash": "sha256:666f4988d21aef07feae3f660a520ed0677001b5c70756670ae7d901f8f0465f",
-      "afterHash": "sha256:c55e950927bc21a7b3feff1431dfdb1135804b3faf29eaa76dd2aabf499420d1",
+      "afterHash": "sha256:c77802cdfda10b3748be5594d0ddf67a8cc290966b982cc51cb7a1091d011a6e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10579,7 +11226,7 @@
     {
       "target": ".cursor/commands/trellis-continue.md",
       "beforeHash": "sha256:338f80aab71e576de25c736e3aa7ea73fc2d5b433ff03f90e78d8958870945bc",
-      "afterHash": "sha256:7594591714cdef25fd586dc20f1bfbe6cd55162bb22b7567b5a253071ef6528e",
+      "afterHash": "sha256:b8361ac5242703a80aba529e4087d6c0e720dff4eb4a6c6153b0e2c373d2ca38",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10610,7 +11257,7 @@
     {
       "target": ".devin/workflows/trellis-continue.md",
       "beforeHash": "sha256:fd5abd504103162cbe5ed6a7654d735e7ecd284b37132a49f18008fb7a63c1f4",
-      "afterHash": "sha256:d9111dfc8c3d0afe4f75f6baf0625b01f131ebf69a4deee82d33c01ea2b07d01",
+      "afterHash": "sha256:440d3ee329d822639b4678a5ce639687aac9d1615cb83c3334d3eceeb8260a5a",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10641,7 +11288,7 @@
     {
       "target": ".factory/commands/trellis/continue.md",
       "beforeHash": "sha256:46bfa60398d375751b6aec0347f8fe96d293edee3182151518619ac24210db2d",
-      "afterHash": "sha256:d44b5a6f4146120f2428a1f785193b745a6ecb05b8369d1333a2a514d31498e1",
+      "afterHash": "sha256:ef0a06cda9e1fc33abf5ab974f9456365538d6bf50a35184b25b948fad1f2050",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10672,7 +11319,7 @@
     {
       "target": ".gemini/commands/trellis/continue.toml",
       "beforeHash": "sha256:f3650392880c3b81137712f48958e2b73a71b82669e84c577df29f3dffc7192f",
-      "afterHash": "sha256:4fe600ed615ced63c1fd30cbf8516077241a969e919dfae2d59e69987865b9a8",
+      "afterHash": "sha256:1e3331692896dbe7c5332e50f25838513366f51cf34f996e81b87f9b2f1b6211",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10703,7 +11350,7 @@
     {
       "target": ".github/prompts/continue.prompt.md",
       "beforeHash": "sha256:0a61286df4c14c92d9431c1859b8d2f9d521979b597dab8b9d3b3f9882422c71",
-      "afterHash": "sha256:bec052abeaf630812495ac655ac1ed9db2ee473f488b1de202fe4a89f8fb6f04",
+      "afterHash": "sha256:ba0987ede479e2f98e4978d3373647605ab602fd71123194ab93a70a9e8ed7fa",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10734,7 +11381,7 @@
     {
       "target": ".grok/commands/trellis-continue.md",
       "beforeHash": "sha256:b454c192a5ac109f162c6d7f8ca1713f9cb00a1726cde3e4b5070e05d1e625b5",
-      "afterHash": "sha256:fcbff2fa04af40bdba653e780ab809c566cd5243b4de9689def9494ea9817146",
+      "afterHash": "sha256:5421d45887ed5a4b6be18be13eb970482d9c280aa579d57b18932d99dd31f4b8",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10765,7 +11412,7 @@
     {
       "target": ".kilocode/workflows/continue.md",
       "beforeHash": "sha256:d5373736d78f5f7fb19d00af5fa7bde2fde86aa4c4fedfe869c172bb60a06e70",
-      "afterHash": "sha256:c254ab6ed9d1f214d32a7d411ff37b5cde0db0baec85d34e8d679df5a4e976d3",
+      "afterHash": "sha256:97606a1e8675172542ace66f1935550d027373f53be51ee4dbfa54b1f19f22a6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10796,7 +11443,7 @@
     {
       "target": ".kimi-code/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:acf4d42f93ac037141e06eb3526d840beb24e14b66c2d3c6e7a11a01b0598b16",
-      "afterHash": "sha256:69c4615d18051d96a4b58a23c1ddbe54ef9d4d9ac6b7345aa7b6af1def43ef8c",
+      "afterHash": "sha256:8d83b1a34011b6d2f0e9ec237feedfde49ed60a666218ec8733e788cfe367945",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10827,7 +11474,7 @@
     {
       "target": ".kiro/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:cbe9a5e5c7b1f1c7aab1599a2aeff223308505f5875dabd04055e3971df26c32",
-      "afterHash": "sha256:661ece99fa11e10ef497ae26b5efbc17970d0ead6f057f4a266e6576c2fad13f",
+      "afterHash": "sha256:6c1706dd2d812d309eba1ec8c80fb4237e690ee51e1ab2a35beaace6e238efc2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10858,7 +11505,7 @@
     {
       "target": ".omp/commands/trellis-continue.md",
       "beforeHash": "sha256:6075e18c5661445475ecb20c4e1dd216b3c3790244311b4fc933ef365bd3ae0c",
-      "afterHash": "sha256:d129c8a39c1e58ce8c1b3cd07a18b974cec7102dfcfddec5210ea6c0f93cb808",
+      "afterHash": "sha256:e6cd2e00beaacc1288daf32b3079f0564e4387e679224cc2a352e270aac7ec45",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10889,7 +11536,7 @@
     {
       "target": ".opencode/commands/trellis/continue.md",
       "beforeHash": "sha256:85c439d4f7dda208ecf9ec72a2ff14e6fc6c6c5e06b3552b8bcb2707caa392a0",
-      "afterHash": "sha256:2c195d0330970745e8849363cdda49c1dad8f563a5b9be608ab4b24596e9651d",
+      "afterHash": "sha256:c6ac230b11a357855df4578ec349156391bb1981b835cf6768be7741944625b2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10920,7 +11567,7 @@
     {
       "target": ".pi/prompts/trellis-continue.md",
       "beforeHash": "sha256:12c2f0288ff67af3368c0b577a50027a11a25fec1d32ed34282a4dc84be08f1c",
-      "afterHash": "sha256:dfbe4d5fa2af9cb35f35b77775e826806ae28f1507adfd8927d6fbd53f815b48",
+      "afterHash": "sha256:ce448774936f7859b7edf4695afb45bb1d1a3885223bbb76e52f34a9a61e1a82",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10951,7 +11598,7 @@
     {
       "target": ".qoder/commands/trellis-continue.md",
       "beforeHash": "sha256:d808a8e59eb8f6d1fa91833fe767a7c2ce669653b6c60df4646bba55324a3e68",
-      "afterHash": "sha256:846b838ddc52528f73895b3e43e58735ca7ad394effc52189941594c399210ae",
+      "afterHash": "sha256:e6edbb777aac1431666c4775c15591766233d5fd9f0ea56ebac933cff42d334e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10982,7 +11629,7 @@
     {
       "target": ".reasonix/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:a54ce6dffe86561164cc63a7e25d48182b9c0d5b4b0855d348a38788e3f31bd3",
-      "afterHash": "sha256:98ae4e3e89a6c6032f74ec92a9b845bcf20e9195cad8b3253e25c4a2cf2cd48b",
+      "afterHash": "sha256:5e5bbf36f632a35370e13680920ef98cc8fde13a1a26de214133de9a7e0e0aa4",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -11013,7 +11660,7 @@
     {
       "target": ".snow/skills/trellis-continue/SKILL.md",
       "beforeHash": "sha256:0757df10e36d59c8b3fc00356705dfc94c590ea1000304b99f4522bdd8b40997",
-      "afterHash": "sha256:a193f3b161091064aa0aad3cf13df7075b7b502ffa83a589bcb21ec959f85527",
+      "afterHash": "sha256:13179919d615b409824ff8dadb34ac29d0c8a7ae72e72a6639d547e7518505c7",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -11044,7 +11691,7 @@
     {
       "target": ".trae/commands/trellis-continue.md",
       "beforeHash": "sha256:65aad74faaf2ce30e8afdf87c60ea5bfd3a49a6457694fe3b2e0be693fbe8b1b",
-      "afterHash": "sha256:3bd4459381d9ed114d24bc66a1371d5e25b5a6a3ee80d41bdf62fe48312598bc",
+      "afterHash": "sha256:36976795cdd59b1f7dfd81a61c01d2de14232342b0231e38869486da35910b4b",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -11075,7 +11722,7 @@
     {
       "target": ".zcode/commands/trellis/continue.md",
       "beforeHash": "sha256:632b4933ac979c2ee8334b117adea4e4a9bf8b69d931fa0c83b8142b09bc80ff",
-      "afterHash": "sha256:0a7ade902330b3392ae7d243f915afe684a5e8f5bc2c71450231605ef658f296",
+      "afterHash": "sha256:cced41708c908a1b0abb5042e419d2d54e10b9a081471cfcf7b4b6d21202b1ac",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20304,7 +20951,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:3ff861f6863fdea08ec4db005eb057641077fd2c251a77884d4be408eb6f1137",
+      "afterHash": "sha256:ed03b70a8bb342d36479c4d948214fb56f150626febb9a40d4280fe1cb796d80",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20312,6 +20959,39 @@
           "id": "trellis-update-spec-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20324,7 +21004,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:f3e27a0a7940045eaaf02862824bc54f6e7b162e58ceba373a1b20590f9d5dc0",
+      "afterHash": "sha256:b7d2080396ee7d0ec0d758b81155efd89a46ca2b751c4907da37b4baa87fb943",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20338,13 +21018,46 @@
           "bundles": [
             "skill-garden/trellis-update-spec"
           ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
         }
       ]
     },
     {
       "target": ".agent/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:e2260633e0dea574df7adb757496fe977c62828435e542091ff72a3f3fe84d50",
+      "afterHash": "sha256:94bbc3eedf2dc6b76e1828ff68e0e10551d00944c87f4ab2976d015a5f5ba744",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20352,6 +21065,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20364,7 +21110,7 @@
     {
       "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:64cc648509234367fbdedb72307ee897440b6d9468be8d2e4c48a5c7869e417e",
+      "afterHash": "sha256:f87930376b4212dd7eecd86d15b9688cef7b8c656f1a6999f87b4644b74c8817",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20372,6 +21118,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20384,7 +21163,7 @@
     {
       "target": ".cursor/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20392,6 +21171,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20404,7 +21216,7 @@
     {
       "target": ".devin/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20412,6 +21224,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20424,7 +21269,7 @@
     {
       "target": ".factory/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20432,6 +21277,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20444,7 +21322,7 @@
     {
       "target": ".github/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:e2260633e0dea574df7adb757496fe977c62828435e542091ff72a3f3fe84d50",
+      "afterHash": "sha256:94bbc3eedf2dc6b76e1828ff68e0e10551d00944c87f4ab2976d015a5f5ba744",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20452,6 +21330,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20464,7 +21375,7 @@
     {
       "target": ".grok/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20472,6 +21383,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20484,7 +21428,7 @@
     {
       "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:64cc648509234367fbdedb72307ee897440b6d9468be8d2e4c48a5c7869e417e",
+      "afterHash": "sha256:f87930376b4212dd7eecd86d15b9688cef7b8c656f1a6999f87b4644b74c8817",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20492,6 +21436,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20504,7 +21481,7 @@
     {
       "target": ".kiro/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:79296812a865dc62b1425f3eeed3c79e62b89817a224f23f05143c8e102e1f67",
+      "afterHash": "sha256:9d87e95db90681b0985d1ea9348b7e2979ad7ea5c44e8591b79ba9bc095a2990",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20512,6 +21489,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20524,7 +21534,7 @@
     {
       "target": ".omp/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:64cc648509234367fbdedb72307ee897440b6d9468be8d2e4c48a5c7869e417e",
+      "afterHash": "sha256:f87930376b4212dd7eecd86d15b9688cef7b8c656f1a6999f87b4644b74c8817",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20532,6 +21542,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20544,7 +21587,7 @@
     {
       "target": ".opencode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:64cc648509234367fbdedb72307ee897440b6d9468be8d2e4c48a5c7869e417e",
+      "afterHash": "sha256:f87930376b4212dd7eecd86d15b9688cef7b8c656f1a6999f87b4644b74c8817",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20552,6 +21595,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20564,7 +21640,7 @@
     {
       "target": ".qoder/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:79296812a865dc62b1425f3eeed3c79e62b89817a224f23f05143c8e102e1f67",
+      "afterHash": "sha256:9d87e95db90681b0985d1ea9348b7e2979ad7ea5c44e8591b79ba9bc095a2990",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20572,6 +21648,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20584,7 +21693,7 @@
     {
       "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:2adfec65a851e63414ff8c4bd9dfdde9cae2bf5d5b3320391be39d53115c034b",
-      "afterHash": "sha256:04997e4f4f910661fdf73195e7f722331811a451004500072085f6d9cfb0392d",
+      "afterHash": "sha256:923f6dfd46a30f85673be8df0bf45577d7bc65a4a0732ce47fcb2d02ff27fd42",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20592,6 +21701,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20604,7 +21746,7 @@
     {
       "target": ".snow/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20612,6 +21754,39 @@
           "id": "trellis-update-spec-native-autonomous-evaluation",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -20624,7 +21799,7 @@
     {
       "target": ".trae/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:2e11a67b7f182d1ad4169803224bba80bc5b5be4af079a6b73f5caf9f2814dc5",
+      "afterHash": "sha256:6c137f2b6ee84e545e334ed4ac29df9ce578bb7c7f4ad43f2d5ca14b3e4bbaed",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20638,13 +21813,46 @@
           "bundles": [
             "skill-garden/trellis-update-spec"
           ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
         }
       ]
     },
     {
       "target": ".zcode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:64cc648509234367fbdedb72307ee897440b6d9468be8d2e4c48a5c7869e417e",
+      "afterHash": "sha256:f87930376b4212dd7eecd86d15b9688cef7b8c656f1a6999f87b4644b74c8817",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -20654,6 +21862,399 @@
           "qualifiedId": "skill-garden/trellis-update-spec-native-autonomous-evaluation",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-output",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-template",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-examples-checklist",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agent/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".agents/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codebuddy/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".cursor/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".devin/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".factory/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".github/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".grok/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kilocode/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kiro/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".omp/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".opencode/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".qoder/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".reasonix/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".snow/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trae/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".zcode/skills/trellis-break-loop/SKILL.md",
+      "beforeHash": "sha256:f5a93699832f29dee443b53c135a7459519b371f689af191d15c29e8ee5c7bde",
+      "afterHash": "sha256:a9cbb886db6368ef7916c67c5e6988cc3a739bdc2d31b315fb010eef798dd16a",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "trellis-break-loop-spec-evaluation",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+          "patch": "trellis-break-loop-spec-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
           "bundle": "trellis-update-spec",
           "bundles": [
             "skill-garden/trellis-update-spec"
@@ -23989,6 +25590,258 @@
       "id": "start-no-task-routing",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/start-no-task-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".reasonix/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-codex",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-codex",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".agents/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-antigravity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-antigravity",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".agent/workflows/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-devin",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-devin",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".devin/workflows/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-grok",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-grok",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".grok/commands/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-kilo",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kilo",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".kilocode/workflows/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-kimi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-kimi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".kimi-code/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-opencode",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-opencode",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".opencode/commands/trellis/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-pi",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-pi",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".pi/prompts/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-active-task-recovery-reasonix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-active-task-recovery-reasonix",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".reasonix/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".agents/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".agent/workflows/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".devin/workflows/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".grok/commands/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".kilocode/workflows/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".kimi-code/skills/trellis-start/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".opencode/commands/trellis/start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
+      "patch": "start-no-task-routing",
+      "qualifiedPatch": "skill-garden/start-no-task-routing",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing"
+      ],
+      "target": ".pi/prompts/trellis-start.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "start-quality-check-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/start-quality-check-routing",
       "patch": "start-no-task-routing",
       "qualifiedPatch": "skill-garden/start-no-task-routing",
       "bundle": "intent-routing",
@@ -35728,6 +37581,1014 @@
         "skill-garden/trellis-update-spec"
       ],
       "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-output",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-output",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-template",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-template",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-examples-checklist",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-examples-checklist",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-break-loop/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-break-loop-spec-evaluation",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
+      "patch": "trellis-break-loop-spec-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-break-loop-spec-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-break-loop/SKILL.md",
       "status": "ready",
       "required": true
     }
