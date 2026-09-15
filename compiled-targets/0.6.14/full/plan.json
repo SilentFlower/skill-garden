@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:8b0882d860bb8d913dbd05832473eb8a9029ef0fa6cb6fe836dcfb3585a177d4",
+  "catalogHash": "sha256:56306a9c17df607dc8948263485f25170440fa12b4a5862abf6c9bd329178dcd",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -20951,7 +20951,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:3663dfa753134834bbcbfcd745f4a2f052b486febd2b13ffb160cb4119ef3d9e",
+      "afterHash": "sha256:b749ffd244616e550457b168f7f67b6e967fa025f998e809dc1f238b79a40495",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21004,7 +21004,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:14c2135548b969fcc0f1473a1fe43a028f4c3712252be3e17f0a25e9fe9c93d7",
+      "afterHash": "sha256:19c694aa80904293aed6c6d5fdcb9ea172835788dc811febbdbc76726542706c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21057,7 +21057,7 @@
     {
       "target": ".agent/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:d5beae3b0f44b863326e94e3455cd2a7446b0a39e2fe30d89cdf8efeaac01262",
+      "afterHash": "sha256:77d2396df8c3fdc8e3b9962e8c7ddfa9b053415ff0c02ecbe59aeddbd2c32ae4",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21110,7 +21110,7 @@
     {
       "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:d2058c926a89c4a34b61e6cec2216c420e9879833ba921bb6bd0f91f210070fd",
+      "afterHash": "sha256:7d797d6a2da99232438b1a573c13184ae1381e2a4fa9c3a5603d9da082d95346",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21163,7 +21163,7 @@
     {
       "target": ".cursor/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21216,7 +21216,7 @@
     {
       "target": ".devin/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21269,7 +21269,7 @@
     {
       "target": ".factory/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21322,7 +21322,7 @@
     {
       "target": ".github/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:d5beae3b0f44b863326e94e3455cd2a7446b0a39e2fe30d89cdf8efeaac01262",
+      "afterHash": "sha256:77d2396df8c3fdc8e3b9962e8c7ddfa9b053415ff0c02ecbe59aeddbd2c32ae4",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21375,7 +21375,7 @@
     {
       "target": ".grok/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21428,7 +21428,7 @@
     {
       "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:d2058c926a89c4a34b61e6cec2216c420e9879833ba921bb6bd0f91f210070fd",
+      "afterHash": "sha256:7d797d6a2da99232438b1a573c13184ae1381e2a4fa9c3a5603d9da082d95346",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21481,7 +21481,7 @@
     {
       "target": ".kiro/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:bb8257b144e08f952c93110f13faedeee291a50590f0c837d5d247f1957a9ace",
+      "afterHash": "sha256:7f39823b477a74355685245e2c5cf293457b718ae7549430a24672d3e54aca77",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21534,7 +21534,7 @@
     {
       "target": ".omp/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:d2058c926a89c4a34b61e6cec2216c420e9879833ba921bb6bd0f91f210070fd",
+      "afterHash": "sha256:7d797d6a2da99232438b1a573c13184ae1381e2a4fa9c3a5603d9da082d95346",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21587,7 +21587,7 @@
     {
       "target": ".opencode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:d2058c926a89c4a34b61e6cec2216c420e9879833ba921bb6bd0f91f210070fd",
+      "afterHash": "sha256:7d797d6a2da99232438b1a573c13184ae1381e2a4fa9c3a5603d9da082d95346",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21640,7 +21640,7 @@
     {
       "target": ".qoder/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:bb8257b144e08f952c93110f13faedeee291a50590f0c837d5d247f1957a9ace",
+      "afterHash": "sha256:7f39823b477a74355685245e2c5cf293457b718ae7549430a24672d3e54aca77",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21693,7 +21693,7 @@
     {
       "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:2adfec65a851e63414ff8c4bd9dfdde9cae2bf5d5b3320391be39d53115c034b",
-      "afterHash": "sha256:bd298f51c402b44d1e6b400f69edacc3030239140a273b524edec8ef737ed09e",
+      "afterHash": "sha256:1ffc5c4c9f904f91dedb92a19d682030275adf00f97f1ada6d3f8c2ee288a16e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21746,7 +21746,7 @@
     {
       "target": ".snow/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21799,7 +21799,7 @@
     {
       "target": ".trae/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:09a8e8ddb9a4bd3b0883ce0fd0f4a8ac80db93e8dbfa6baeadb66e61e6f9375d",
+      "afterHash": "sha256:f3eef1ba066c9954319b8f8a3a9a4bef70866a9818e1b41261b950cb5a71a452",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -21852,7 +21852,7 @@
     {
       "target": ".zcode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:d2058c926a89c4a34b61e6cec2216c420e9879833ba921bb6bd0f91f210070fd",
+      "afterHash": "sha256:7d797d6a2da99232438b1a573c13184ae1381e2a4fa9c3a5603d9da082d95346",
       "changed": true,
       "originalExists": true,
       "operations": [
