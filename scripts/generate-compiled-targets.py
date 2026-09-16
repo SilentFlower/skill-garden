@@ -142,8 +142,10 @@ def _create_canonical_fixture(command: list[str], target: Path) -> None:
     result = subprocess.run(
         [*command, *CANONICAL_INIT_ARGS],
         cwd=target,
-        env={**os.environ, "NO_COLOR": "1"},
+        # compiled targets 固定为 canonical 文本；宿主解释器只负责运行生成器。
+        env={**os.environ, "NO_COLOR": "1", "TRELLIS_PYTHON_CMD": "python3"},
         text=True,
+        encoding="utf-8",
         capture_output=True,
         check=False,
     )
@@ -292,7 +294,9 @@ def _write_text(root: Path, relative: str, value: str) -> None:
     """
     target = root.joinpath(*relative.split("/"))
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(value, encoding="utf-8")
+    # Windows 默认写入 CRLF 会让逐字节校验产生与行为无关的漂移。
+    with target.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(value)
 
 
 def _assert_target_output_paths(plan: dict[str, Any]) -> None:

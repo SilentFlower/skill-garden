@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:c532ff37bfaf357bdaffee8b030952df32f9cb8ecd60b60def2333309b113c3c",
+  "catalogHash": "sha256:25ee9cd84c5b1352d1bf393439b8c4ae8e749185027f83e4325156bce80bc787",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -451,6 +451,15 @@
       "bundle": "intent-routing",
       "bundles": [
         "skill-garden/intent-routing"
+      ]
+    },
+    {
+      "id": "windows-streams",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
       ]
     },
     {
@@ -2281,6 +2290,54 @@
       "incomingEdges": []
     },
     {
+      "id": "common-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/common-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "declarationIndex": 106,
+      "resolvedIndex": 106,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "declarationIndex": 107,
+      "resolvedIndex": 107,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "declarationIndex": 108,
+      "resolvedIndex": 108,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "trellis-continue-task-progress-recovery",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
@@ -2290,8 +2347,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 106,
-      "resolvedIndex": 106,
+      "declarationIndex": 109,
+      "resolvedIndex": 109,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2306,8 +2363,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 107,
-      "resolvedIndex": 107,
+      "declarationIndex": 110,
+      "resolvedIndex": 110,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2322,8 +2379,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 108,
-      "resolvedIndex": 108,
+      "declarationIndex": 111,
+      "resolvedIndex": 111,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2338,8 +2395,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 109,
-      "resolvedIndex": 109,
+      "declarationIndex": 112,
+      "resolvedIndex": 112,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2354,8 +2411,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 110,
-      "resolvedIndex": 110,
+      "declarationIndex": 113,
+      "resolvedIndex": 113,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2370,8 +2427,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 111,
-      "resolvedIndex": 111,
+      "declarationIndex": 114,
+      "resolvedIndex": 114,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2386,8 +2443,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 112,
-      "resolvedIndex": 112,
+      "declarationIndex": 115,
+      "resolvedIndex": 115,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2402,8 +2459,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 113,
-      "resolvedIndex": 113,
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2418,8 +2475,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 114,
-      "resolvedIndex": 114,
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2434,8 +2491,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 115,
-      "resolvedIndex": 115,
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2450,8 +2507,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 116,
-      "resolvedIndex": 116,
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2466,8 +2523,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 117,
-      "resolvedIndex": 117,
+      "declarationIndex": 120,
+      "resolvedIndex": 120,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2482,8 +2539,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 118,
-      "resolvedIndex": 118,
+      "declarationIndex": 121,
+      "resolvedIndex": 121,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2498,8 +2555,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 119,
-      "resolvedIndex": 119,
+      "declarationIndex": 122,
+      "resolvedIndex": 122,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2514,8 +2571,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 120,
-      "resolvedIndex": 120,
+      "declarationIndex": 123,
+      "resolvedIndex": 123,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2530,8 +2587,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 121,
-      "resolvedIndex": 121,
+      "declarationIndex": 124,
+      "resolvedIndex": 124,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2546,8 +2603,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 122,
-      "resolvedIndex": 122,
+      "declarationIndex": 125,
+      "resolvedIndex": 125,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2562,8 +2619,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 123,
-      "resolvedIndex": 123,
+      "declarationIndex": 126,
+      "resolvedIndex": 126,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2578,8 +2635,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 124,
-      "resolvedIndex": 124,
+      "declarationIndex": 127,
+      "resolvedIndex": 127,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2594,8 +2651,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 125,
-      "resolvedIndex": 125,
+      "declarationIndex": 128,
+      "resolvedIndex": 128,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2610,8 +2667,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 126,
-      "resolvedIndex": 126,
+      "declarationIndex": 129,
+      "resolvedIndex": 129,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2626,8 +2683,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 127,
-      "resolvedIndex": 127,
+      "declarationIndex": 130,
+      "resolvedIndex": 130,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2642,8 +2699,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 128,
-      "resolvedIndex": 128,
+      "declarationIndex": 131,
+      "resolvedIndex": 131,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2658,8 +2715,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 129,
-      "resolvedIndex": 129,
+      "declarationIndex": 132,
+      "resolvedIndex": 132,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2674,8 +2731,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 130,
-      "resolvedIndex": 130,
+      "declarationIndex": 133,
+      "resolvedIndex": 133,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2690,8 +2747,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 131,
-      "resolvedIndex": 131,
+      "declarationIndex": 134,
+      "resolvedIndex": 134,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2706,8 +2763,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 132,
-      "resolvedIndex": 132,
+      "declarationIndex": 135,
+      "resolvedIndex": 135,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2722,8 +2779,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 133,
-      "resolvedIndex": 133,
+      "declarationIndex": 136,
+      "resolvedIndex": 136,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2738,8 +2795,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 134,
-      "resolvedIndex": 134,
+      "declarationIndex": 137,
+      "resolvedIndex": 137,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2754,8 +2811,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 135,
-      "resolvedIndex": 135,
+      "declarationIndex": 138,
+      "resolvedIndex": 138,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2770,8 +2827,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 136,
-      "resolvedIndex": 136,
+      "declarationIndex": 139,
+      "resolvedIndex": 139,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2786,8 +2843,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 137,
-      "resolvedIndex": 137,
+      "declarationIndex": 140,
+      "resolvedIndex": 140,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2802,8 +2859,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 138,
-      "resolvedIndex": 138,
+      "declarationIndex": 141,
+      "resolvedIndex": 141,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2818,8 +2875,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 139,
-      "resolvedIndex": 139,
+      "declarationIndex": 142,
+      "resolvedIndex": 142,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2834,8 +2891,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 140,
-      "resolvedIndex": 140,
+      "declarationIndex": 143,
+      "resolvedIndex": 143,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2850,8 +2907,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 141,
-      "resolvedIndex": 141,
+      "declarationIndex": 144,
+      "resolvedIndex": 144,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2866,8 +2923,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 142,
-      "resolvedIndex": 142,
+      "declarationIndex": 145,
+      "resolvedIndex": 145,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2882,8 +2939,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 143,
-      "resolvedIndex": 143,
+      "declarationIndex": 146,
+      "resolvedIndex": 146,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2898,8 +2955,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 144,
-      "resolvedIndex": 144,
+      "declarationIndex": 147,
+      "resolvedIndex": 147,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2914,8 +2971,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 145,
-      "resolvedIndex": 145,
+      "declarationIndex": 148,
+      "resolvedIndex": 148,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2930,8 +2987,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 146,
-      "resolvedIndex": 146,
+      "declarationIndex": 149,
+      "resolvedIndex": 149,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2946,8 +3003,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 147,
-      "resolvedIndex": 147,
+      "declarationIndex": 150,
+      "resolvedIndex": 150,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2962,8 +3019,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 148,
-      "resolvedIndex": 148,
+      "declarationIndex": 151,
+      "resolvedIndex": 151,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3626,6 +3683,56 @@
       "qualifiedPatch": "skill-garden/task-store-write-integrity",
       "targets": [
         ".trellis/scripts/common/task_store.py"
+      ]
+    },
+    {
+      "id": "common-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/common-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "targets": [
+        ".trellis/scripts/common/__init__.py"
+      ]
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "targets": [
+        ".claude/hooks/inject-subagent-context.py",
+        ".codex/hooks/inject-subagent-context.py",
+        ".cursor/hooks/inject-subagent-context.py",
+        ".gemini/hooks/inject-subagent-context.py",
+        ".qoder/hooks/inject-subagent-context.py",
+        ".github/copilot/hooks/inject-subagent-context.py",
+        ".codebuddy/hooks/inject-subagent-context.py",
+        ".factory/hooks/inject-subagent-context.py",
+        ".kiro/hooks/inject-subagent-context.py",
+        ".trae/hooks/inject-subagent-context.py",
+        ".zcode/hooks/inject-subagent-context.py"
+      ]
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "targets": [
+        ".claude/hooks/inject-subagent-context.py",
+        ".codex/hooks/inject-subagent-context.py",
+        ".cursor/hooks/inject-subagent-context.py",
+        ".gemini/hooks/inject-subagent-context.py",
+        ".qoder/hooks/inject-subagent-context.py",
+        ".github/copilot/hooks/inject-subagent-context.py",
+        ".codebuddy/hooks/inject-subagent-context.py",
+        ".factory/hooks/inject-subagent-context.py",
+        ".kiro/hooks/inject-subagent-context.py",
+        ".trae/hooks/inject-subagent-context.py",
+        ".zcode/hooks/inject-subagent-context.py"
       ]
     },
     {
@@ -11095,6 +11202,243 @@
           "bundle": "intent-routing",
           "bundles": [
             "skill-garden/intent-routing"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trellis/scripts/common/__init__.py",
+      "beforeHash": "sha256:3d5e9347141f0296319a5beb29d69ae714c5a474b9078caeb3edd7c5f6562e22",
+      "afterHash": "sha256:17b36f87667246c6abbe0e70e30228dc3be21c378434504522790e093da94866",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "common-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/common-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".claude/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codex/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".cursor/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".codebuddy/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".factory/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".kiro/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".zcode/hooks/inject-subagent-context.py",
+      "beforeHash": "sha256:c2dff614dc1ca5cb9e225752d1c49291e277ef109e3640a065b835b61016bec6",
+      "afterHash": "sha256:9af5b6d14e36bba31fc87a02f74e1ba80752c288d375615f37dd3d4d874fbd82",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "subagent-stream-ownership",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-stream-ownership",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "subagent-python38-prefix",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/subagent-python38-prefix",
+          "patch": "windows-streams",
+          "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
           ]
         }
       ]
@@ -27925,6 +28269,328 @@
       "required": true
     },
     {
+      "id": "common-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/common-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".trellis/scripts/common/__init__.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".claude/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codex/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".cursor/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".gemini/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".qoder/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".github/copilot/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codebuddy/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".factory/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".kiro/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".trae/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-stream-ownership",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-stream-ownership",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".zcode/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".claude/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codex/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".cursor/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".gemini/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".qoder/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".github/copilot/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codebuddy/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".factory/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".kiro/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".trae/hooks/inject-subagent-context.py",
+      "status": "missing-target",
+      "required": true
+    },
+    {
+      "id": "subagent-python38-prefix",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/subagent-python38-prefix",
+      "patch": "windows-streams",
+      "qualifiedPatch": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".zcode/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
       "id": "trellis-continue-task-progress-recovery",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
@@ -38601,8 +39267,105 @@
     "summary": {
       "errors": 0,
       "warnings": 0,
-      "info": 0
+      "info": 8
     },
-    "diagnostics": []
+    "diagnostics": [
+      {
+        "id": "missing-target:subagent-python38-prefix:.gemini/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-python38-prefix:.gemini/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".gemini/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-python38-prefix"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-python38-prefix:.github/copilot/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-python38-prefix:.github/copilot/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".github/copilot/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-python38-prefix"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-python38-prefix:.qoder/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-python38-prefix:.qoder/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".qoder/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-python38-prefix"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-python38-prefix:.trae/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-python38-prefix:.trae/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".trae/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-python38-prefix"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-stream-ownership:.gemini/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-stream-ownership:.gemini/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".gemini/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-stream-ownership"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-stream-ownership:.github/copilot/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-stream-ownership:.github/copilot/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".github/copilot/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-stream-ownership"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-stream-ownership:.qoder/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-stream-ownership:.qoder/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".qoder/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-stream-ownership"
+        ]
+      },
+      {
+        "id": "missing-target:subagent-stream-ownership:.trae/hooks/inject-subagent-context.py",
+        "catalog": "skill-garden",
+        "qualifiedId": "skill-garden/missing-target:subagent-stream-ownership:.trae/hooks/inject-subagent-context.py",
+        "severity": "info",
+        "target": ".trae/hooks/inject-subagent-context.py",
+        "owner": "windows-streams",
+        "reason": "目标平台入口未安装，按声明跳过。",
+        "evidence": [
+          "skill-garden/subagent-stream-ownership"
+        ]
+      }
+    ]
   }
 }

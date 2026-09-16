@@ -711,7 +711,7 @@ def _sha256(value: str) -> str:
 def _should_install(name: str, skills: list[str], aliases: list[str]) -> bool:
     if not skills:
         return True
-    stripped = name.removeprefix("trellis-")
+    stripped = name[len("trellis-"):] if name.startswith("trellis-") else name
     return any(item in {name, stripped} or item in aliases for item in skills)
 
 
