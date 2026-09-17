@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:25ee9cd84c5b1352d1bf393439b8c4ae8e749185027f83e4325156bce80bc787",
+  "catalogHash": "sha256:54e5604a33e49f50491fd250e13e73a18382989ce6564a2450099a93e1b9b76f",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -1615,9 +1615,9 @@
       "incomingEdges": []
     },
     {
-      "id": "workflow-state-main-subject-routing",
+      "id": "workflow-state-conditional-heartbeat",
       "catalog": "skill-garden",
-      "qualifiedId": "skill-garden/workflow-state-main-subject-routing",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
       "patch": "inject-workflow-state-shared-runtime",
       "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
       "bundle": "intent-routing",
@@ -1632,6 +1632,23 @@
       "incomingEdges": []
     },
     {
+      "id": "workflow-state-main-subject-routing",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-main-subject-routing",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "codex-session-start-no-task",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/codex-session-start-no-task",
@@ -1641,8 +1658,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 66,
-      "resolvedIndex": 66,
+      "declarationIndex": 67,
+      "resolvedIndex": 67,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1657,8 +1674,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 67,
-      "resolvedIndex": 67,
+      "declarationIndex": 68,
+      "resolvedIndex": 68,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1673,8 +1690,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 68,
-      "resolvedIndex": 68,
+      "declarationIndex": 69,
+      "resolvedIndex": 69,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1689,8 +1706,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 69,
-      "resolvedIndex": 69,
+      "declarationIndex": 70,
+      "resolvedIndex": 70,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1705,8 +1722,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 70,
-      "resolvedIndex": 70,
+      "declarationIndex": 71,
+      "resolvedIndex": 71,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1721,8 +1738,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 71,
-      "resolvedIndex": 71,
+      "declarationIndex": 72,
+      "resolvedIndex": 72,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1738,8 +1755,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 72,
-      "resolvedIndex": 72,
+      "declarationIndex": 73,
+      "resolvedIndex": 73,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1755,8 +1772,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 73,
-      "resolvedIndex": 73,
+      "declarationIndex": 74,
+      "resolvedIndex": 74,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1772,8 +1789,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 74,
-      "resolvedIndex": 74,
+      "declarationIndex": 75,
+      "resolvedIndex": 75,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1789,8 +1806,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 75,
-      "resolvedIndex": 75,
+      "declarationIndex": 76,
+      "resolvedIndex": 76,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1806,8 +1823,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 76,
-      "resolvedIndex": 76,
+      "declarationIndex": 77,
+      "resolvedIndex": 77,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1823,8 +1840,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 77,
-      "resolvedIndex": 77,
+      "declarationIndex": 78,
+      "resolvedIndex": 78,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1840,8 +1857,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 78,
-      "resolvedIndex": 78,
+      "declarationIndex": 79,
+      "resolvedIndex": 79,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1857,8 +1874,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 79,
-      "resolvedIndex": 79,
+      "declarationIndex": 80,
+      "resolvedIndex": 80,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1874,8 +1891,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 80,
-      "resolvedIndex": 80,
+      "declarationIndex": 81,
+      "resolvedIndex": 81,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1891,8 +1908,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 81,
-      "resolvedIndex": 81,
+      "declarationIndex": 82,
+      "resolvedIndex": 82,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1908,8 +1925,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 82,
-      "resolvedIndex": 82,
+      "declarationIndex": 83,
+      "resolvedIndex": 83,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1924,8 +1941,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 83,
-      "resolvedIndex": 83,
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1940,8 +1957,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1956,8 +1973,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1972,8 +1989,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1988,8 +2005,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2004,8 +2021,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 88,
-      "resolvedIndex": 88,
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2020,8 +2037,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 89,
-      "resolvedIndex": 89,
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2036,8 +2053,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 90,
-      "resolvedIndex": 90,
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2052,8 +2069,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 91,
-      "resolvedIndex": 91,
+      "declarationIndex": 92,
+      "resolvedIndex": 92,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2068,8 +2085,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 92,
-      "resolvedIndex": 92,
+      "declarationIndex": 93,
+      "resolvedIndex": 93,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2084,8 +2101,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 93,
-      "resolvedIndex": 93,
+      "declarationIndex": 94,
+      "resolvedIndex": 94,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2100,8 +2117,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 94,
-      "resolvedIndex": 94,
+      "declarationIndex": 95,
+      "resolvedIndex": 95,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2116,8 +2133,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 95,
-      "resolvedIndex": 95,
+      "declarationIndex": 96,
+      "resolvedIndex": 96,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2132,8 +2149,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 96,
-      "resolvedIndex": 96,
+      "declarationIndex": 97,
+      "resolvedIndex": 97,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -2155,8 +2172,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 97,
-      "resolvedIndex": 97,
+      "declarationIndex": 98,
+      "resolvedIndex": 98,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2171,8 +2188,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 98,
-      "resolvedIndex": 98,
+      "declarationIndex": 99,
+      "resolvedIndex": 99,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2187,8 +2204,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 99,
-      "resolvedIndex": 99,
+      "declarationIndex": 100,
+      "resolvedIndex": 100,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2203,8 +2220,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 100,
-      "resolvedIndex": 100,
+      "declarationIndex": 101,
+      "resolvedIndex": 101,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2219,8 +2236,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 101,
-      "resolvedIndex": 101,
+      "declarationIndex": 102,
+      "resolvedIndex": 102,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2235,8 +2252,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 102,
-      "resolvedIndex": 102,
+      "declarationIndex": 103,
+      "resolvedIndex": 103,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2251,8 +2268,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 103,
-      "resolvedIndex": 103,
+      "declarationIndex": 104,
+      "resolvedIndex": 104,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2267,8 +2284,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 104,
-      "resolvedIndex": 104,
+      "declarationIndex": 105,
+      "resolvedIndex": 105,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2283,8 +2300,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 105,
-      "resolvedIndex": 105,
+      "declarationIndex": 106,
+      "resolvedIndex": 106,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2299,8 +2316,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 106,
-      "resolvedIndex": 106,
+      "declarationIndex": 107,
+      "resolvedIndex": 107,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2315,8 +2332,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 107,
-      "resolvedIndex": 107,
+      "declarationIndex": 108,
+      "resolvedIndex": 108,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2331,8 +2348,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 108,
-      "resolvedIndex": 108,
+      "declarationIndex": 109,
+      "resolvedIndex": 109,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2347,8 +2364,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 109,
-      "resolvedIndex": 109,
+      "declarationIndex": 110,
+      "resolvedIndex": 110,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2363,8 +2380,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 110,
-      "resolvedIndex": 110,
+      "declarationIndex": 111,
+      "resolvedIndex": 111,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2379,8 +2396,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 111,
-      "resolvedIndex": 111,
+      "declarationIndex": 112,
+      "resolvedIndex": 112,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2395,8 +2412,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 112,
-      "resolvedIndex": 112,
+      "declarationIndex": 113,
+      "resolvedIndex": 113,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2411,8 +2428,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 113,
-      "resolvedIndex": 113,
+      "declarationIndex": 114,
+      "resolvedIndex": 114,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2427,8 +2444,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 114,
-      "resolvedIndex": 114,
+      "declarationIndex": 115,
+      "resolvedIndex": 115,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2443,8 +2460,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 115,
-      "resolvedIndex": 115,
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2459,8 +2476,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 116,
-      "resolvedIndex": 116,
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2475,8 +2492,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 117,
-      "resolvedIndex": 117,
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2491,8 +2508,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 118,
-      "resolvedIndex": 118,
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2507,8 +2524,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 119,
-      "resolvedIndex": 119,
+      "declarationIndex": 120,
+      "resolvedIndex": 120,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2523,8 +2540,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 120,
-      "resolvedIndex": 120,
+      "declarationIndex": 121,
+      "resolvedIndex": 121,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2539,8 +2556,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 121,
-      "resolvedIndex": 121,
+      "declarationIndex": 122,
+      "resolvedIndex": 122,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2555,8 +2572,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 122,
-      "resolvedIndex": 122,
+      "declarationIndex": 123,
+      "resolvedIndex": 123,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2571,8 +2588,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 123,
-      "resolvedIndex": 123,
+      "declarationIndex": 124,
+      "resolvedIndex": 124,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2587,8 +2604,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 124,
-      "resolvedIndex": 124,
+      "declarationIndex": 125,
+      "resolvedIndex": 125,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2603,8 +2620,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 125,
-      "resolvedIndex": 125,
+      "declarationIndex": 126,
+      "resolvedIndex": 126,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2619,8 +2636,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 126,
-      "resolvedIndex": 126,
+      "declarationIndex": 127,
+      "resolvedIndex": 127,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2635,8 +2652,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 127,
-      "resolvedIndex": 127,
+      "declarationIndex": 128,
+      "resolvedIndex": 128,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2651,8 +2668,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 128,
-      "resolvedIndex": 128,
+      "declarationIndex": 129,
+      "resolvedIndex": 129,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2667,8 +2684,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 129,
-      "resolvedIndex": 129,
+      "declarationIndex": 130,
+      "resolvedIndex": 130,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2683,8 +2700,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 130,
-      "resolvedIndex": 130,
+      "declarationIndex": 131,
+      "resolvedIndex": 131,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2699,8 +2716,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 131,
-      "resolvedIndex": 131,
+      "declarationIndex": 132,
+      "resolvedIndex": 132,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2715,8 +2732,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 132,
-      "resolvedIndex": 132,
+      "declarationIndex": 133,
+      "resolvedIndex": 133,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2731,8 +2748,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 133,
-      "resolvedIndex": 133,
+      "declarationIndex": 134,
+      "resolvedIndex": 134,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2747,8 +2764,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 134,
-      "resolvedIndex": 134,
+      "declarationIndex": 135,
+      "resolvedIndex": 135,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2763,8 +2780,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 135,
-      "resolvedIndex": 135,
+      "declarationIndex": 136,
+      "resolvedIndex": 136,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2779,8 +2796,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 136,
-      "resolvedIndex": 136,
+      "declarationIndex": 137,
+      "resolvedIndex": 137,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2795,8 +2812,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 137,
-      "resolvedIndex": 137,
+      "declarationIndex": 138,
+      "resolvedIndex": 138,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2811,8 +2828,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 138,
-      "resolvedIndex": 138,
+      "declarationIndex": 139,
+      "resolvedIndex": 139,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2827,8 +2844,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 139,
-      "resolvedIndex": 139,
+      "declarationIndex": 140,
+      "resolvedIndex": 140,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2843,8 +2860,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 140,
-      "resolvedIndex": 140,
+      "declarationIndex": 141,
+      "resolvedIndex": 141,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2859,8 +2876,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 141,
-      "resolvedIndex": 141,
+      "declarationIndex": 142,
+      "resolvedIndex": 142,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2875,8 +2892,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 142,
-      "resolvedIndex": 142,
+      "declarationIndex": 143,
+      "resolvedIndex": 143,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2891,8 +2908,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 143,
-      "resolvedIndex": 143,
+      "declarationIndex": 144,
+      "resolvedIndex": 144,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2907,8 +2924,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 144,
-      "resolvedIndex": 144,
+      "declarationIndex": 145,
+      "resolvedIndex": 145,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2923,8 +2940,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 145,
-      "resolvedIndex": 145,
+      "declarationIndex": 146,
+      "resolvedIndex": 146,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2939,8 +2956,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 146,
-      "resolvedIndex": 146,
+      "declarationIndex": 147,
+      "resolvedIndex": 147,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2955,8 +2972,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 147,
-      "resolvedIndex": 147,
+      "declarationIndex": 148,
+      "resolvedIndex": 148,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2971,8 +2988,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 148,
-      "resolvedIndex": 148,
+      "declarationIndex": 149,
+      "resolvedIndex": 149,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2987,8 +3004,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 149,
-      "resolvedIndex": 149,
+      "declarationIndex": 150,
+      "resolvedIndex": 150,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3003,8 +3020,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 150,
-      "resolvedIndex": 150,
+      "declarationIndex": 151,
+      "resolvedIndex": 151,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3019,8 +3036,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 151,
-      "resolvedIndex": 151,
+      "declarationIndex": 152,
+      "resolvedIndex": 152,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3297,6 +3314,25 @@
       "id": "workflow-state-breadcrumb-subject",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "targets": [
+        ".codex/hooks/inject-workflow-state.py",
+        ".claude/hooks/inject-workflow-state.py",
+        ".gemini/hooks/inject-workflow-state.py",
+        ".qoder/hooks/inject-workflow-state.py",
+        ".github/copilot/hooks/inject-workflow-state.py",
+        ".codebuddy/hooks/inject-workflow-state.py",
+        ".factory/hooks/inject-workflow-state.py",
+        ".kiro/hooks/inject-workflow-state.py",
+        ".trae/hooks/inject-workflow-state.py",
+        ".zcode/hooks/inject-workflow-state.py"
+      ]
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
       "patch": "inject-workflow-state-shared-runtime",
       "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
       "targets": [
@@ -7144,7 +7180,7 @@
     {
       "target": ".codex/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7200,6 +7236,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7225,7 +7273,7 @@
     {
       "target": ".claude/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7281,6 +7329,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7306,7 +7366,7 @@
     {
       "target": ".gemini/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7362,6 +7422,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7387,7 +7459,7 @@
     {
       "target": ".qoder/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7443,6 +7515,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7468,7 +7552,7 @@
     {
       "target": ".github/copilot/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7524,6 +7608,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7549,7 +7645,7 @@
     {
       "target": ".codebuddy/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7605,6 +7701,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7630,7 +7738,7 @@
     {
       "target": ".factory/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7686,6 +7794,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7711,7 +7831,7 @@
     {
       "target": ".kiro/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7767,6 +7887,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7792,7 +7924,7 @@
     {
       "target": ".trae/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7848,6 +7980,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -7873,7 +8017,7 @@
     {
       "target": ".zcode/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:6aa7d331724950d6acdee8ab1c0cf1fe417c5cb4e4e544b4873c8a24992485cc",
+      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -7929,6 +8073,18 @@
           "id": "workflow-state-breadcrumb-subject",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+          "patch": "inject-workflow-state-shared-runtime",
+          "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+          "bundle": "intent-routing",
+          "bundles": [
+            "skill-garden/intent-routing",
+            "skill-garden/shared-hook-runtime"
+          ]
+        },
+        {
+          "id": "workflow-state-conditional-heartbeat",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
           "patch": "inject-workflow-state-shared-runtime",
           "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
           "bundle": "intent-routing",
@@ -24808,6 +24964,156 @@
       "id": "workflow-state-breadcrumb-subject",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-state-breadcrumb-subject",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".zcode/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codex/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".claude/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".gemini/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".qoder/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".github/copilot/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".codebuddy/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".factory/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".kiro/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
+      "patch": "inject-workflow-state-shared-runtime",
+      "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
+      "bundle": "intent-routing",
+      "bundles": [
+        "skill-garden/intent-routing",
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".trae/hooks/inject-workflow-state.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-state-conditional-heartbeat",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-state-conditional-heartbeat",
       "patch": "inject-workflow-state-shared-runtime",
       "qualifiedPatch": "skill-garden/inject-workflow-state-shared-runtime",
       "bundle": "intent-routing",
