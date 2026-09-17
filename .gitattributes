@@ -1,1 +1,3 @@
+# 作者源与编译产物必须在所有平台保留相同换行，避免 Patch 原文匹配漂移。
+* text=auto eol=lf
 compiled-targets/**/targets/**/*.diff -whitespace
