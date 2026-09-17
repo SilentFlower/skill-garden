@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:54e5604a33e49f50491fd250e13e73a18382989ce6564a2450099a93e1b9b76f",
+  "catalogHash": "sha256:6537aed94265794ed5d5062dbe3b3b581c9f09a229c71cd98f29690cf70061e9",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -5890,7 +5890,7 @@
     {
       "target": ".trellis/scripts/common/active_task.py",
       "beforeHash": "sha256:28a81f8828538fb70a15c88edd90eda9d685adbde8862f67f630bce5b27d9832",
-      "afterHash": "sha256:fcd164a3264f49bec6065402f81db8497018a0bf931b690214aa5f44828d7abb",
+      "afterHash": "sha256:fe64239d5a4082b3cc3cffa415120fcca05277ac7eb2c8545e80564683a013d7",
       "changed": true,
       "originalExists": true,
       "operations": [
