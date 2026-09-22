@@ -52,7 +52,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
  
  def normalize_task_ref(task_ref: str) -> str:
-@@ -509,24 +553,32 @@
+@@ -509,32 +553,47 @@
      return None
  
  
@@ -94,7 +94,49 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
  
  def _canonical_task_ref(task_path: str, repo_root: Path) -> str | None:
-@@ -559,6 +611,7 @@
++    """Resolve only a top-level task that still belongs to the active view."""
+     normalized = normalize_task_ref(task_path)
+     if not normalized:
+         return None
+     full_path = resolve_task_ref(normalized, repo_root)
+     if full_path is None or not full_path.is_dir():
++        return None
++    from .tasks import is_closed_task, load_task
++
++    task = load_task(full_path)
++    tasks_dir = repo_root / DIR_WORKFLOW / DIR_TASKS
++    if task is None or is_closed_task(task, tasks_dir):
+         return None
+     try:
+         return full_path.relative_to(repo_root).as_posix()
+@@ -548,17 +607,30 @@
+     source_type: str,
+     context_key: str | None = None,
+ ) -> ActiveTask | None:
++    """Resolve a stored pointer, preserving missing identity while hiding closed tasks."""
+     if not task_ref:
+         return None
+     resolved = resolve_task_ref(task_ref, repo_root)
+-    stale = resolved is None or not resolved.is_dir()
+-    return ActiveTask(task_ref, source_type, context_key, stale)
+-
+-
++    if resolved is None or not resolved.is_dir():
++        return ActiveTask(normalize_task_ref(task_ref), source_type, context_key, True)
++    from .tasks import is_closed_task, load_task
++
++    task = load_task(resolved)
++    tasks_dir = repo_root / DIR_WORKFLOW / DIR_TASKS
++    try:
++        canonical = resolved.relative_to(repo_root).as_posix()
++    except ValueError:
++        canonical = str(resolved)
++    if task is None:
++        return ActiveTask(canonical, source_type, context_key, True)
++    if is_closed_task(task, tasks_dir):
++        return ActiveTask(None, source_type, context_key, True)
++    return ActiveTask(canonical, source_type, context_key, False)
+ def _context_path(repo_root: Path, context_key: str) -> Path:
      return _runtime_sessions_dir(repo_root) / f"{context_key}.json"
  
  
@@ -102,7 +144,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  def resolve_active_task(
      repo_root: Path,
      platform_input: dict[str, Any] | None = None,
-@@ -567,26 +620,22 @@
+@@ -567,26 +639,22 @@
      allow_single_session_fallback: bool = True,
      allow_environment_context: bool = True,
  ) -> ActiveTask:
@@ -135,7 +177,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
      if allow_single_session_fallback:
          fallback = _resolve_single_session_fallback(repo_root)
-@@ -594,15 +643,12 @@
+@@ -594,15 +662,12 @@
              return fallback
  
      return ActiveTask(None, "none", context_key)
@@ -156,7 +198,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
      sessions_dir = _runtime_sessions_dir(repo_root)
      if not sessions_dir.is_dir():
          return None
-@@ -612,13 +658,16 @@
+@@ -612,13 +677,16 @@
          return None
  
      session_file = session_files[0]
@@ -176,7 +218,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
  
  def _utc_now() -> str:
-@@ -647,17 +696,14 @@
+@@ -647,17 +715,14 @@
      return metadata
  
  
@@ -196,7 +238,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
      canonical = _canonical_task_ref(task_path, repo_root)
      if canonical is None:
          return None
-@@ -667,33 +713,57 @@
+@@ -667,33 +732,57 @@
          return None
  
      context_path = _context_path(repo_root, context_key)

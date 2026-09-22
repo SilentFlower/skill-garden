@@ -96,7 +96,25 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
      task_json_path = task_dir / "task.json"
      task_data = {}
-@@ -728,9 +701,38 @@
+@@ -458,12 +431,15 @@
+         present.append("research/")
+     present_line = ", ".join(present) if present else "(none)"
+ 
++# BEGIN skill-garden patch claude-session-start-completed-closeout v0.6
+     if task_status == "completed":
+         return (
+             f"Status: COMPLETED\nTask: {task_title}\n"
+             f"Present: {present_line}\n"
+-            "Next-Action: Run `/trellis:finish-work`. If the working tree is dirty, return to Phase 3.4 first."
+-        )
++            "Next-Action: Load trellis-continue. It routes incomplete publication through trellis-push "
++            "and retries deterministic Close only after structured blockers are resolved."
++        )
++# END skill-garden patch claude-session-start-completed-closeout v0.6
+ 
+     has_prd = (task_dir / "prd.md").is_file()
+     has_design = (task_dir / "design.md").is_file()
+@@ -728,9 +704,38 @@
                      status = str(data.get("status") or "unknown")
              except (json.JSONDecodeError, OSError):
                  pass  # Optional task metadata; fall back to generic status.
@@ -135,7 +153,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
      if get_tasks_dir and iter_active_tasks:
          try:
-@@ -872,7 +874,9 @@
+@@ -872,7 +877,9 @@
  </session-context>
  
  """)

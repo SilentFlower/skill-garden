@@ -36,6 +36,8 @@ SELECTORS = {
     "workflow-hub",
     "markdown-section",
     "markdown-document",
+    "python-functions",
+    "python-section",
     "whole-file",
 }
 MISSING_POLICIES = {"skip", "create", "error"}
@@ -891,6 +893,8 @@ def _apply_literal(value: str, operation: dict[str, Any]) -> tuple[str, str]:
         return value, "desired-content"
     selector = operation["selector_text"]
     matches = value.count(selector)
+    if operation["operation"] == "remove" and operation["selector"].get("allowAbsent") and matches == 0:
+        return value, "desired-content"
     if matches != operation["expected_matches"]:
         raise PatchError(
             f"selector 匹配 {matches} 次,预期 {operation['expected_matches']} 次"
@@ -947,20 +951,34 @@ def _apply_workflow_state(value: str, operation: dict[str, Any]) -> tuple[str, s
 
 def _find_heading_section(value: str, heading: str) -> tuple[str, str, str] | None:
     lines = value.split("\n")
-    try:
-        start = lines.index(heading)
-    except ValueError:
-        return None
     level_match = re.match(r"^(#+)", heading)
     if not level_match:
         return None
     level = len(level_match.group(1))
+    fence: tuple[str, int] | None = None
+    start = -1
     end = len(lines)
-    for index in range(start + 1, len(lines)):
+    for index, line in enumerate(lines):
+        fence_match = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
+        if fence:
+            character, length = fence
+            if re.fullmatch(rf" {{0,3}}{re.escape(character)}{{{length},}}\s*", line):
+                fence = None
+            continue
+        if fence_match:
+            marker = fence_match.group(1)
+            fence = (marker[0], len(marker))
+            continue
+        if start == -1:
+            if line == heading:
+                start = index
+            continue
         match = re.match(r"^(#+)\s", lines[index])
         if match and len(match.group(1)) <= level:
             end = index
             break
+    if start == -1:
+        return None
     return "\n".join(lines[:start]), "\n".join(lines[start:end]), "\n".join(lines[end:])
 
 
@@ -1040,6 +1058,91 @@ def _apply_whole_file(value: str, operation: dict[str, Any]) -> tuple[str, str]:
     return desired, "baseline"
 
 
+def _apply_python_functions(value: str, operation: dict[str, Any]) -> tuple[str, str]:
+    """按顶层函数名删除或替换历史实现，允许函数体含旧 Patch 标记。"""
+    if operation["operation"] not in {"remove", "replace"}:
+        raise PatchError("python-functions 只支持 remove/replace")
+    lines = value.split("\n")
+    ranges: list[tuple[int, int]] = []
+    for name in operation["selector"]["names"]:
+        pattern = re.compile(r"^def " + re.escape(name) + r"\(")
+        matches = [index for index, line in enumerate(lines) if pattern.search(line)]
+        if len(matches) > 1:
+            raise PatchError(f"Python 函数定义重复:{name}")
+        if not matches:
+            if operation["selector"].get("allowAbsent"):
+                continue
+            raise PatchError(f"Python 函数不存在:{name}")
+        bracket_depth = 0
+        signature_complete = False
+        end = matches[0]
+        while end < len(lines) and not signature_complete:
+            for character in lines[end]:
+                if character in "([{":
+                    bracket_depth += 1
+                elif character in ")]}":
+                    bracket_depth -= 1
+                elif character == ":" and bracket_depth == 0:
+                    signature_complete = True
+                    break
+            end += 1
+        if not signature_complete or bracket_depth != 0:
+            raise PatchError(f"Python 函数签名无法解析:{name}")
+        while end < len(lines) and (
+            not lines[end] or lines[end][0].isspace() or lines[end].startswith("#")
+        ):
+            end += 1
+        ranges.append((matches[0], end))
+    if operation["operation"] == "replace":
+        start = min(item[0] for item in ranges)
+        end = max(item[1] for item in ranges)
+        covered = {
+            index
+            for range_start, range_end in ranges
+            for index in range(range_start, range_end)
+        }
+        # 多函数替换会合并为一个声明块；中间只允许注释或空行，避免误删其它顶层 owner。
+        if any(
+            index not in covered and lines[index].strip() and not lines[index].startswith("#")
+            for index in range(start, end)
+        ):
+            raise PatchError("Python 函数组不连续")
+        lines[start:end] = operation["content"].split("\n")
+        return "\n".join(lines), "selector"
+    for start, end in sorted(ranges, reverse=True):
+        del lines[start:end]
+    result = "\n".join(lines)
+    return result, "selector" if ranges else "desired-content"
+
+
+def _apply_python_section(value: str, operation: dict[str, Any]) -> tuple[str, str]:
+    """按相邻顶层章节标题删除一段 Python 源码。"""
+    if operation["operation"] != "remove":
+        raise PatchError("python-section 只支持 remove")
+    lines = value.split("\n")
+    heading = operation["selector"]["heading"]
+    heading_matches = [index for index, line in enumerate(lines) if line == heading]
+    if not heading_matches and operation["selector"].get("allowAbsent"):
+        return value, "desired-content"
+    if len(heading_matches) != operation["expected_matches"]:
+        raise PatchError(
+            f"Python section heading 匹配 {len(heading_matches)} 次,"
+            f"预期 {operation['expected_matches']} 次"
+        )
+    next_heading = operation["selector"]["nextHeading"]
+    next_matches = [index for index, line in enumerate(lines) if line == next_heading]
+    if len(next_matches) != 1 or next_matches[0] <= heading_matches[0]:
+        raise PatchError(f"Python section nextHeading 匹配异常:{next_heading}")
+    start = heading_matches[0]
+    if start > 0 and re.fullmatch(r"# ={3,}", lines[start - 1]):
+        start -= 1
+    end = next_matches[0]
+    if end > start and re.fullmatch(r"# ={3,}", lines[end - 1]):
+        end -= 1
+    del lines[start:end]
+    return "\n".join(lines), "selector"
+
+
 def _apply_operation(value: str, operation: dict[str, Any]) -> tuple[str, str]:
     selector_type = operation["selector"]["type"]
     if selector_type == "literal":
@@ -1052,6 +1155,10 @@ def _apply_operation(value: str, operation: dict[str, Any]) -> tuple[str, str]:
         return _apply_markdown_section(value, operation)
     if selector_type == "markdown-document":
         return _apply_markdown_document(value, operation)
+    if selector_type == "python-functions":
+        return _apply_python_functions(value, operation)
+    if selector_type == "python-section":
+        return _apply_python_section(value, operation)
     if selector_type == "whole-file":
         return _apply_whole_file(value, operation)
     raise PatchError(f"不支持的 Core selector:{selector_type}")
@@ -1147,6 +1254,8 @@ def _normalize_selector(raw: Any, leaf_dir: Path, operation_id: str) -> dict[str
         raise PatchError(f"patch {operation_id} expectedMatches 必须是正整数")
     selector = {**data, "expectedMatches": expected_matches}
     if selector_type == "literal":
+        if "allowAbsent" in data and not isinstance(data["allowAbsent"], bool):
+            raise PatchError(f"patch {operation_id} literal allowAbsent 必须是布尔值")
         selector["text"] = re.sub(
             r"\s+$",
             "",
@@ -1158,6 +1267,30 @@ def _normalize_selector(raw: Any, leaf_dir: Path, operation_id: str) -> dict[str
         raise PatchError(f"patch {operation_id} workflow-hub heading 必须是字符串")
     if selector_type == "markdown-section" and not isinstance(data.get("heading"), str):
         raise PatchError(f"patch {operation_id} markdown-section heading 必须是字符串")
+    if selector_type == "python-functions":
+        names = data.get("names")
+        if (
+            not isinstance(names, list)
+            or not names
+            or any(not isinstance(name, str) or not re.fullmatch(r"_?[A-Za-z][A-Za-z0-9_]*", name) for name in names)
+            or len(set(names)) != len(names)
+        ):
+            raise PatchError(f"patch {operation_id} python-functions names 非法")
+        if "allowAbsent" in data and not isinstance(data["allowAbsent"], bool):
+            raise PatchError(f"patch {operation_id} python-functions allowAbsent 必须是布尔值")
+    if selector_type == "python-section":
+        heading = data.get("heading")
+        next_heading = data.get("nextHeading")
+        if (
+            not isinstance(heading, str)
+            or not heading.startswith("# ")
+            or not isinstance(next_heading, str)
+            or not next_heading.startswith("# ")
+            or heading == next_heading
+        ):
+            raise PatchError(f"patch {operation_id} python-section heading 非法")
+        if "allowAbsent" in data and not isinstance(data["allowAbsent"], bool):
+            raise PatchError(f"patch {operation_id} python-section allowAbsent 必须是布尔值")
     return selector
 
 
@@ -1212,6 +1345,14 @@ def _normalize_operation(
     if not isinstance(targets, list) or not targets:
         raise PatchError(f"patch {operation_id} targets 不能为空")
     selector = _normalize_selector(data.get("selector"), leaf_dir, operation_id)
+    if (
+        "allowAbsent" in selector
+        and (
+            operation != "remove"
+            or selector["type"] not in {"literal", "python-functions", "python-section"}
+        )
+    ):
+        raise PatchError(f"patch {operation_id} allowAbsent 只允许可选 remove selector")
     required = data.get("required")
     if required is None:
         required = patch.get("required")
@@ -1305,7 +1446,7 @@ def _load_catalog(
     seen_patch_ids: set[str] = set()
     seen_operation_ids: set[str] = set()
     for file in sorted(patches_dir.rglob("patch.json")):
-        if file.is_symlink():
+        if file.is_symlink() or "__pycache__" in file.relative_to(patches_dir).parts:
             continue
         leaf_dir = file.parent
         ref = leaf_dir.relative_to(patches_dir).as_posix()
@@ -1339,7 +1480,13 @@ def _load_catalog(
             for item in raw_operations
         ]
         patch_by_ref[ref] = patch
-        catalog_files.extend(path for path in leaf_dir.rglob("*") if path.is_file())
+        catalog_files.extend(
+            path
+            for path in leaf_dir.rglob("*")
+            if path.is_file()
+            and "__pycache__" not in path.relative_to(leaf_dir).parts
+            and path.suffix != ".pyc"
+        )
 
     bundles: list[str] = []
     selected_bundles: list[dict[str, Any]] = []
@@ -1890,6 +2037,76 @@ def apply_prepared(target_root: Path, plan: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def load_declared_removals(overrides_dir: Path) -> list[str]:
+    """读取需要从目标项目硬删除的旧入口清单。
+
+    Args:
+        overrides_dir: Skill-Garden overrides 根目录。
+
+    Returns:
+        已校验且保持声明顺序的 POSIX 相对路径。
+    """
+    manifest = overrides_dir / "removals.json"
+    if not manifest.is_file():
+        return []
+    data = _read_json(manifest, "removals manifest")
+    if data.get("schemaVersion") != 1:
+        raise PatchError("removals schemaVersion 必须为 1")
+    paths = _require_string_array(data.get("paths"), "removals.paths")
+    if len(set(paths)) != len(paths):
+        raise PatchError("removals.paths 不能重复")
+    for index, relative in enumerate(paths):
+        _resolve_relative(overrides_dir, relative, f"removals.paths[{index}]")
+    return paths
+
+
+def apply_declared_removals(
+    target_root: Path,
+    relative_paths: list[str],
+) -> dict[str, Any]:
+    """备份后删除旧入口，并清理因此变空的专用目录。
+
+    Args:
+        target_root: 目标 Trellis 项目根目录。
+        relative_paths: 已校验的项目内相对文件路径。
+
+    Returns:
+        removed、missing 与 backupNotes 汇总。
+    """
+    target_root = target_root.resolve(strict=True)
+    targets = [
+        (relative, _resolve_relative(target_root, relative, f"removal target {relative}"))
+        for relative in relative_paths
+    ]
+    for relative, target in targets:
+        if not target.exists() and not target.is_symlink():
+            continue
+        if target.is_symlink() or not target.is_file():
+            raise PatchError(f"removal target 不是普通文件:{relative}")
+        _assert_existing_inside(target_root, target, f"removal target {relative}")
+    removed = []
+    missing = []
+    backup_notes = []
+    for relative, target in targets:
+        if not target.exists():
+            missing.append(relative)
+            continue
+        backup, created = _preserve_first_backup(target_root, target)
+        note = f"{'已创建' if created else '保留已有'} {backup.relative_to(target_root).as_posix()}"
+        if note not in backup_notes:
+            backup_notes.append(note)
+        target.unlink()
+        removed.append(relative)
+        parent = target.parent
+        while parent != target_root:
+            try:
+                parent.rmdir()
+            except OSError:
+                break
+            parent = parent.parent
+    return {"removed": removed, "missing": missing, "backupNotes": backup_notes}
+
+
 def main(argv: list[str] | None = None) -> int:
     """解析独立安装参数并执行 Skill-Garden Patch。
 
@@ -1928,6 +2145,10 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  · {format_patch_diagnostic(diagnostic)}")
         assert_no_patch_conflict_errors(report)
         result = apply_prepared(target_root, plan)
+        removal_result = apply_declared_removals(
+            target_root,
+            load_declared_removals(overrides_dir),
+        )
     except (OSError, UnicodeError, json.JSONDecodeError, PatchError) as error:
         print(f"❌ {error}", file=sys.stderr)
         return 1
@@ -1937,6 +2158,8 @@ def main(argv: list[str] | None = None) -> int:
         f"missing-target={result['missingTargets']} "
         f"optional-skip={result['optionalSkipped']}"
     )
+    if removal_result["removed"]:
+        print(f"  ✓ 已移除旧入口 {len(removal_result['removed'])} 个")
     if report["summary"]["info"]:
         print(f"  · Patch 信息:{report['summary']['info']} 个目标入口未安装")
     for item in result["results"]:

@@ -1,0 +1,14 @@
+diff --git a/.trellis/config.yaml b/.trellis/config.yaml
+--- a/.trellis/config.yaml
++++ b/.trellis/config.yaml
+@@ -47,8 +47,8 @@
+ #     - "echo 'Task started'"
+ #   after_finish:
+ #     - "echo 'Task finished'"
+-#   after_archive:
+-#     - "echo 'Task archived'"
++#   after_close:
++#     - "echo 'Task closed'"
+ 
+ #-------------------------------------------------------------------------------
+ # Monorepo / Packages

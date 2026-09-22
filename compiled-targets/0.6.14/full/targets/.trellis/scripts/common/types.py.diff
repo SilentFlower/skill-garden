@@ -1,0 +1,11 @@
+diff --git a/.trellis/scripts/common/types.py b/.trellis/scripts/common/types.py
+--- a/.trellis/scripts/common/types.py
++++ b/.trellis/scripts/common/types.py
+@@ -38,6 +38,7 @@
+     assignee: str
+     createdAt: str
+     completedAt: str | None
++    closeout: dict
+     branch: str | None
+     base_branch: str | None
+     worktree_path: str | None

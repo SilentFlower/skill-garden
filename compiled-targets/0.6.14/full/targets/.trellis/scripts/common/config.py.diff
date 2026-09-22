@@ -1,0 +1,12 @@
+diff --git a/.trellis/scripts/common/config.py b/.trellis/scripts/common/config.py
+--- a/.trellis/scripts/common/config.py
++++ b/.trellis/scripts/common/config.py
+@@ -371,7 +371,7 @@
+     """Get hook commands for a lifecycle event.
+ 
+     Args:
+-        event: Event name (e.g. "after_create", "after_archive").
++        event: Event name (e.g. "after_create", "after_close").
+         repo_root: Repository root path.
+ 
+     Returns:
