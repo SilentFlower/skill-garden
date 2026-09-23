@@ -67,7 +67,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  <!--
    WORKFLOW-STATE BREADCRUMB CONTRACT (read this before editing the tag blocks below)
  
-@@ -119,41 +106,90 @@
+@@ -119,41 +106,88 @@
  
    TAG ↔ PHASE scoping:
      [workflow-state:no_task]      → no active task; before Phase 1
@@ -139,11 +139,9 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 +
 +Cross-stage ordering:
 +
-+1. A blocking `<flower-update>` confirmation is handled before ordinary request routing; a completed update returns through `trellis-push`.
-+2. Request intent, active-task scope, and any current untracked work are resolved before task creation, task routing, or file edits.
-+3. A validated auto-loop result returns through matching `record` + `next` before the interactive post-check stop applies.
-+4. Interactive completion proceeds Check-All -> `trellis-update-spec` -> `trellis-push`; successful delivery writes completion and deterministic Close in one lifecycle update.
-+5. SessionStart performs best-effort legacy reconciliation and physical GC for tasks closed at least three days ago; resume/clear/compact do not expand that boundary.
++1. Request intent, active-task scope, and any current untracked work are resolved before task creation, task routing, or file edits.
++2. A validated auto-loop result returns through matching `record` + `next` before the interactive post-check stop applies.
++3. Interactive completion proceeds Check-All -> `trellis-update-spec` -> `trellis-push`; successful delivery writes completion and deterministic Close in one lifecycle update.
 +
 +Mechanical rule: follow the owner named above. The Hub must not duplicate owner procedures, helper schemas, interaction templates, error matrices, or Git path rules.
 +<!-- END skill-garden patch workflow-hub v0.6 -->
@@ -174,7 +172,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Planning Artifacts
  
-@@ -174,13 +210,50 @@
+@@ -174,26 +208,68 @@
  <!-- Per-turn breadcrumb: shown when there is no active task (before Phase 1) -->
  
  [workflow-state:no_task]
@@ -228,8 +226,11 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 +<!-- END skill-garden patch workflow-phase-index-create-task v0.6 -->
  - 1.1 Requirement exploration `[required · repeatable]` (`prd.md`; complex tasks also need `design.md` + `implement.md`)
  - 1.2 Research `[optional · repeatable]`
- - 1.3 Configure context `[required · once]` — Claude Code, Cursor, OpenCode, Codex, Kiro, Gemini, Qoder, CodeBuddy, Copilot, Droid, Pi, Oh My Pi, ZCode, Snow, Reasonix, Grok, Kimi Code (sub-agent-dispatch platforms only; inline platforms skip)
-@@ -190,10 +263,15 @@
+-- 1.3 Configure context `[required · once]` — Claude Code, Cursor, OpenCode, Codex, Kiro, Gemini, Qoder, CodeBuddy, Copilot, Droid, Pi, Oh My Pi, ZCode, Snow, Reasonix, Grok, Kimi Code (sub-agent-dispatch platforms only; inline platforms skip)
++- 1.3 Configure context `[required · once]` — configure task context before sub-agent dispatch; inline execution skips.
+ - 1.4 Activate task `[required · once]` (review gate, then `task.py start`; status → in_progress)
+ - 1.5 Completion criteria
+ 
  <!-- Per-turn breadcrumb: shown throughout Phase 1 (status='planning') -->
  
  [workflow-state:planning]
@@ -249,7 +250,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning]
  
  <!-- Per-turn breadcrumb: shown throughout Phase 1 when codex.dispatch_mode=inline.
-@@ -203,10 +281,15 @@
+@@ -203,10 +279,15 @@
       into a sub-agent. -->
  
  [workflow-state:planning-inline]
@@ -269,7 +270,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning-inline]
  
  ### Phase 2: Execute
-@@ -214,19 +297,25 @@
+@@ -214,19 +295,25 @@
  - 2.2 Quality check `[required · repeatable]`
  - 2.3 Rollback `[on demand]`
  
@@ -303,7 +304,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress]
  
  <!-- Per-turn breadcrumb: shown while status='in_progress' when
-@@ -235,9 +324,15 @@
+@@ -235,9 +322,15 @@
       instead of dispatching sub-agents. -->
  
  [workflow-state:in_progress-inline]
@@ -322,10 +323,12 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress-inline]
  
  ### Phase 3: Finish
-@@ -248,17 +343,15 @@
+@@ -246,19 +339,17 @@
+ - 3.4 Commit changes `[required · once]`
+ - 3.5 Wrap-up reminder
  
- > Note: step 3.1 was folded into 2.2 (last-iteration full-scope check) and 3.4 (commit preamble). Numbering kept stable to avoid breaking external references.
- 
+-> Note: step 3.1 was folded into 2.2 (last-iteration full-scope check) and 3.4 (commit preamble). Numbering kept stable to avoid breaking external references.
+-
 -<!-- Per-turn breadcrumb: shown while status='completed'.
 -     Currently DEAD in normal flow: cmd_archive writes status='completed' in
 -     the same call that moves the task dir to archive/, so the active-task
@@ -333,6 +336,8 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 -     Block preserved for a future status-transition redesign (e.g. an
 -     explicit in_progress→completed command). Edit through the same spec
 -     channel as the live blocks. -->
++
++
 +<!-- BEGIN skill-garden patch workflow-state-completed v0.6 -->
 +<!-- Per-turn breadcrumb: shown while status='completed' and Close is not closed. -->
  
@@ -346,7 +351,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Rules
  
-@@ -268,26 +361,18 @@
+@@ -268,30 +359,22 @@
  4. Steps tagged `[once]` are skipped if the output already exists; don't re-run
  5. Artifact presence informs the next step; missing `design.md` / `implement.md` is valid for lightweight tasks and incomplete planning for complex tasks.
  
@@ -379,7 +384,12 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  ### Guardrails
  
  - Task creation approval is not implementation approval; implementation waits for `task.py start` after artifact review.
-@@ -307,15 +392,29 @@
+-- PRD-only is valid for lightweight tasks; complex tasks need `design.md` + `implement.md`.
++
+ - Planning must be persisted to task artifacts; checks must run before reporting completion.
+ 
+ ### Loading Step Detail
+@@ -307,15 +390,29 @@
  
  ## Phase 1: Plan
  
@@ -411,7 +421,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  `--slug` is the human-readable name only. Do **not** include the `MM-DD-` date prefix; `task.py create` adds that prefix automatically.
  
-@@ -433,20 +532,21 @@
+@@ -433,20 +530,21 @@
  
  [/codex-inline, Kilo, Antigravity, Devin]
  
@@ -440,7 +450,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 1.5 Completion criteria
  
  | Condition | Required |
-@@ -470,92 +570,50 @@
+@@ -470,92 +568,50 @@
  
  Goal: turn reviewed planning artifacts into code that passes quality checks.
  
@@ -573,7 +583,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 2.3 Rollback `[on demand]`
  
  - `check` reveals a prd defect → return to Phase 1, fix `prd.md`, then redo 2.1
-@@ -577,83 +635,51 @@
+@@ -577,83 +633,51 @@
  
  The goal is to capture debugging lessons so the same class of issue doesn't recur.
  
@@ -688,7 +698,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  All tag blocks live in the `## Phase Index` section above, immediately after each phase summary:
  
-@@ -664,11 +690,11 @@
+@@ -664,11 +688,11 @@
  | Codex inline Phase 1 | `[workflow-state:planning-inline]` |
  | Phase 2 + Phase 3.2–3.4 (implementation + check + wrap-up) | `[workflow-state:in_progress]` (after Phase 2 summary) |
  | Codex inline Phase 2 + Phase 3.2–3.4 | `[workflow-state:in_progress-inline]` |
@@ -702,7 +712,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Adding a custom status
  
-@@ -683,7 +709,7 @@
+@@ -683,7 +707,7 @@
  Constraints:
  - STATUS charset: `[A-Za-z0-9_-]+` (underscores and hyphens allowed, e.g. `in-review`, `blocked-by-team`)
  - A lifecycle hook must write `task.json.status` to your custom value, otherwise the tag is never read
@@ -711,7 +721,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Adding a lifecycle hook
  
-@@ -692,18 +718,21 @@
+@@ -692,18 +716,21 @@
  ```json
  {
    "hooks": {
