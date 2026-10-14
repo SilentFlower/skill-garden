@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:1b797e2ddbee101aa9bd6e279136a6ee020c73cfe2bc66f09d66ee85ac8d20c9",
+  "catalogHash": "sha256:64f412c8b6da0773c0797de9f74bf7476530e7e090f4d0499b663c84799df61e",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -9117,7 +9117,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:dd62eee052508d86518029aa29a8dfaec893883b4e8378df3b9b78cb188debf7",
+      "afterHash": "sha256:097547cb8835cafb8aa98c21d6e1ef85d5a4a46e00cdc9e8c3924c1d77804035",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12196,7 +12196,7 @@
     {
       "target": ".agent/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12282,7 +12282,7 @@
     {
       "target": ".agents/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12368,7 +12368,7 @@
     {
       "target": ".claude/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12454,7 +12454,7 @@
     {
       "target": ".codebuddy/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12540,7 +12540,7 @@
     {
       "target": ".cursor/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12626,7 +12626,7 @@
     {
       "target": ".devin/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12712,7 +12712,7 @@
     {
       "target": ".factory/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12798,7 +12798,7 @@
     {
       "target": ".github/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12884,7 +12884,7 @@
     {
       "target": ".grok/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -12970,7 +12970,7 @@
     {
       "target": ".kilocode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13056,7 +13056,7 @@
     {
       "target": ".kiro/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13142,7 +13142,7 @@
     {
       "target": ".omp/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13228,7 +13228,7 @@
     {
       "target": ".opencode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13314,7 +13314,7 @@
     {
       "target": ".qoder/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13400,7 +13400,7 @@
     {
       "target": ".reasonix/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13486,7 +13486,7 @@
     {
       "target": ".snow/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13572,7 +13572,7 @@
     {
       "target": ".trae/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -13658,7 +13658,7 @@
     {
       "target": ".zcode/skills/trellis-brainstorm/SKILL.md",
       "beforeHash": "sha256:a0f226ddcb8a3e846acd2a35d121996e9ca55165ce76202095d0b65e2b48a5e8",
-      "afterHash": "sha256:a5a206bb3dedac47adcde63b8da1e87477f98a330a4e9b85255f82e56b281891",
+      "afterHash": "sha256:d2f2d8aae734e2907445ce60cadacca42c018edfae785c6cf500a45ee61c4b0e",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18211,7 +18211,7 @@
     {
       "target": ".agent/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18264,7 +18264,7 @@
     {
       "target": ".agents/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18317,7 +18317,7 @@
     {
       "target": ".claude/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18370,7 +18370,7 @@
     {
       "target": ".codebuddy/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18423,7 +18423,7 @@
     {
       "target": ".cursor/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18476,7 +18476,7 @@
     {
       "target": ".devin/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18529,7 +18529,7 @@
     {
       "target": ".factory/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18582,7 +18582,7 @@
     {
       "target": ".github/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18635,7 +18635,7 @@
     {
       "target": ".kilocode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18688,7 +18688,7 @@
     {
       "target": ".kiro/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18741,7 +18741,7 @@
     {
       "target": ".opencode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18794,7 +18794,7 @@
     {
       "target": ".grok/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18847,7 +18847,7 @@
     {
       "target": ".omp/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18900,7 +18900,7 @@
     {
       "target": ".snow/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -18953,7 +18953,7 @@
     {
       "target": ".zcode/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -19006,7 +19006,7 @@
     {
       "target": ".qoder/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -19059,7 +19059,7 @@
     {
       "target": ".reasonix/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -19112,7 +19112,7 @@
     {
       "target": ".trae/skills/trellis-meta/references/customize-local/change-workflow.md",
       "beforeHash": "sha256:43fa780a2ca580de121b10893d49b99f978873deebbf45008c466e5ac6651519",
-      "afterHash": "sha256:6c93c83f968635ba6f6eb4474abf9824e240a65fe571f05331f8bdef140afc10",
+      "afterHash": "sha256:82fe5c39e1fd452e7aa6e578208d8992b94dc669d1b9e97b36987f3ae009bee2",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26725,7 +26725,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:ef8cee826ac394a11c8ffe90c8c3fb38eb5d729f1b77ddad30aa6aa9394859db",
+      "afterHash": "sha256:00c1da04afd6d35e24b6b5b3805bc2be188d54fe3658bbb89f8feda02849e0b6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26789,7 +26789,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:ef8cee826ac394a11c8ffe90c8c3fb38eb5d729f1b77ddad30aa6aa9394859db",
+      "afterHash": "sha256:00c1da04afd6d35e24b6b5b3805bc2be188d54fe3658bbb89f8feda02849e0b6",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26853,7 +26853,7 @@
     {
       "target": ".agent/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26917,7 +26917,7 @@
     {
       "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26981,7 +26981,7 @@
     {
       "target": ".cursor/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27045,7 +27045,7 @@
     {
       "target": ".devin/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27109,7 +27109,7 @@
     {
       "target": ".factory/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27173,7 +27173,7 @@
     {
       "target": ".github/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27237,7 +27237,7 @@
     {
       "target": ".grok/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27301,7 +27301,7 @@
     {
       "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27365,7 +27365,7 @@
     {
       "target": ".kiro/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27429,7 +27429,7 @@
     {
       "target": ".omp/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27493,7 +27493,7 @@
     {
       "target": ".opencode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27557,7 +27557,7 @@
     {
       "target": ".qoder/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27621,7 +27621,7 @@
     {
       "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:2adfec65a851e63414ff8c4bd9dfdde9cae2bf5d5b3320391be39d53115c034b",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27685,7 +27685,7 @@
     {
       "target": ".snow/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27749,7 +27749,7 @@
     {
       "target": ".trae/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27813,7 +27813,7 @@
     {
       "target": ".zcode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:99ab81e0e3fb932f2df20e6534fc4fff4e3f106450116c1c1c2b3c4ca7e649cb",
+      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
       "changed": true,
       "originalExists": true,
       "operations": [
