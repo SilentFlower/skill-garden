@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:97be5ff2a4de0c56bf6fc43e6576c415e46c8566ad38afa1dff383cd33a072bc",
+  "catalogHash": "sha256:d1ceed2885e8c072672c147a09d8bad989f87b3b3d017d92c1b8302fe8baf3d4",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -4053,6 +4053,54 @@
       "incomingEdges": []
     },
     {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 215,
+      "resolvedIndex": 215,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 216,
+      "resolvedIndex": 216,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "declarationIndex": 217,
+      "resolvedIndex": 217,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "trellis-break-loop-spec-evaluation",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-break-loop-spec-evaluation",
@@ -4062,8 +4110,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 215,
-      "resolvedIndex": 215,
+      "declarationIndex": 218,
+      "resolvedIndex": 218,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -7152,6 +7200,87 @@
       ]
     },
     {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "targets": [
+        ".agents/skills/trellis-update-spec/SKILL.md",
+        ".claude/skills/trellis-update-spec/SKILL.md",
+        ".agent/skills/trellis-update-spec/SKILL.md",
+        ".codebuddy/skills/trellis-update-spec/SKILL.md",
+        ".cursor/skills/trellis-update-spec/SKILL.md",
+        ".devin/skills/trellis-update-spec/SKILL.md",
+        ".factory/skills/trellis-update-spec/SKILL.md",
+        ".github/skills/trellis-update-spec/SKILL.md",
+        ".grok/skills/trellis-update-spec/SKILL.md",
+        ".kilocode/skills/trellis-update-spec/SKILL.md",
+        ".kiro/skills/trellis-update-spec/SKILL.md",
+        ".omp/skills/trellis-update-spec/SKILL.md",
+        ".opencode/skills/trellis-update-spec/SKILL.md",
+        ".qoder/skills/trellis-update-spec/SKILL.md",
+        ".reasonix/skills/trellis-update-spec/SKILL.md",
+        ".snow/skills/trellis-update-spec/SKILL.md",
+        ".trae/skills/trellis-update-spec/SKILL.md",
+        ".zcode/skills/trellis-update-spec/SKILL.md"
+      ]
+    },
+    {
       "id": "workflow-hub",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/workflow-hub",
@@ -9117,7 +9246,7 @@
     {
       "target": ".trellis/workflow.md",
       "beforeHash": "sha256:e2c5ab7004ff83a5a804b50df81746aa1d558dd4480463287622605f86a82a76",
-      "afterHash": "sha256:04e474f773fbab8160a32ea35509c176e7bf7cd61fd7d34bf337a58bd8d6a752",
+      "afterHash": "sha256:eaa29445e4410c1743d7bda68687f8395a1b0ac732a12e90c8c9fef972496c98",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26725,7 +26854,7 @@
     {
       "target": ".agents/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:003ce08a3404aeb50998029392c4d4e57b626edf526d3ebd585032bb92dcbb96",
-      "afterHash": "sha256:00c1da04afd6d35e24b6b5b3805bc2be188d54fe3658bbb89f8feda02849e0b6",
+      "afterHash": "sha256:063cdf20d98d06c42fc43ac46b9bb46dda9a4bb07c25d3fd23ce030955e8d912",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26777,6 +26906,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -26789,7 +26951,7 @@
     {
       "target": ".claude/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:00c1da04afd6d35e24b6b5b3805bc2be188d54fe3658bbb89f8feda02849e0b6",
+      "afterHash": "sha256:063cdf20d98d06c42fc43ac46b9bb46dda9a4bb07c25d3fd23ce030955e8d912",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26847,13 +27009,46 @@
           "bundles": [
             "skill-garden/trellis-update-spec"
           ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
         }
       ]
     },
     {
       "target": ".agent/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26905,6 +27100,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -26917,7 +27145,7 @@
     {
       "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -26969,6 +27197,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -26981,7 +27242,7 @@
     {
       "target": ".cursor/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27033,6 +27294,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27045,7 +27339,7 @@
     {
       "target": ".devin/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27097,6 +27391,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27109,7 +27436,7 @@
     {
       "target": ".factory/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27161,6 +27488,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27173,7 +27533,7 @@
     {
       "target": ".github/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:e37452dee79e85511da5389f6e6a58ec08b947d6882312211e009c4a5a8e8d4e",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27225,6 +27585,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27237,7 +27630,7 @@
     {
       "target": ".grok/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27289,6 +27682,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27301,7 +27727,7 @@
     {
       "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27353,6 +27779,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27365,7 +27824,7 @@
     {
       "target": ".kiro/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27417,6 +27876,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27429,7 +27921,7 @@
     {
       "target": ".omp/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27481,6 +27973,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27493,7 +28018,7 @@
     {
       "target": ".opencode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27545,6 +28070,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27557,7 +28115,7 @@
     {
       "target": ".qoder/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:1001a178f92d606d850c5ba2891e0c417da50d3a6646f915fd51201abed8fcc6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27609,6 +28167,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27621,7 +28212,7 @@
     {
       "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:2adfec65a851e63414ff8c4bd9dfdde9cae2bf5d5b3320391be39d53115c034b",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27673,6 +28264,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27685,7 +28309,7 @@
     {
       "target": ".snow/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27737,6 +28361,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27749,7 +28406,7 @@
     {
       "target": ".trae/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:cef32aec88db973a0a0272cf18b91d4585fe6ed6625e3de06851a5d3402f65d6",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27801,6 +28458,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -27813,7 +28503,7 @@
     {
       "target": ".zcode/skills/trellis-update-spec/SKILL.md",
       "beforeHash": "sha256:d975db7af166578488958751ae2c56edb827a68bddb569aa27acc3453f64e610",
-      "afterHash": "sha256:35ba287bcedbda86f06bfba1bd8f81da3e67981ab4287b745509eec7e35d472c",
+      "afterHash": "sha256:4e0e0b2d761e261080f501ea09459c733913390e79299746594a6d5007a7a395",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -27865,6 +28555,39 @@
           "id": "trellis-update-spec-command-relationship",
           "catalog": "skill-garden",
           "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-learning-guidance",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-writing-examples",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+          "patch": "trellis-update-spec-autonomous-evaluation",
+          "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+          "bundle": "trellis-update-spec",
+          "bundles": [
+            "skill-garden/trellis-update-spec"
+          ]
+        },
+        {
+          "id": "trellis-update-spec-prune-philosophy",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
           "patch": "trellis-update-spec-autonomous-evaluation",
           "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
           "bundle": "trellis-update-spec",
@@ -49071,6 +49794,762 @@
       "id": "trellis-update-spec-command-relationship",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-update-spec-command-relationship",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-learning-guidance",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-learning-guidance",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-writing-examples",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-writing-examples",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".zcode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agents/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".claude/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".agent/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".codebuddy/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".cursor/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".devin/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".factory/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".github/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".grok/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kilocode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".kiro/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".omp/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".opencode/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".qoder/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".reasonix/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".snow/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
+      "patch": "trellis-update-spec-autonomous-evaluation",
+      "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
+      "bundle": "trellis-update-spec",
+      "bundles": [
+        "skill-garden/trellis-update-spec"
+      ],
+      "target": ".trae/skills/trellis-update-spec/SKILL.md",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "trellis-update-spec-prune-philosophy",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/trellis-update-spec-prune-philosophy",
       "patch": "trellis-update-spec-autonomous-evaluation",
       "qualifiedPatch": "skill-garden/trellis-update-spec-autonomous-evaluation",
       "bundle": "trellis-update-spec",
