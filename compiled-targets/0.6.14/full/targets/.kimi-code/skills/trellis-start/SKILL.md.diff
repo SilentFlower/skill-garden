@@ -13,10 +13,10 @@ diff --git a/.kimi-code/skills/trellis-start/SKILL.md b/.kimi-code/skills/trelli
 -  ```
 -- **No active task** → classify first. For simple conversation / small task, ask only whether this turn should create a Trellis task. For complex work, ask whether you may create a Trellis task and enter planning. If the user says no, skip Trellis for this session.
 +<!-- BEGIN skill-garden patch start-active-task-recovery-kimi v0.6 -->
-+- **Active task exists** -> load `trellis-continue` and follow its recovery rules to decide the next step.
++- **Active task exists** -> first resolve any selected Check-All repair through workflow `Request Triage`; otherwise load `trellis-continue` and follow its recovery rules to decide the next step.
 +<!-- END skill-garden patch start-active-task-recovery-kimi v0.6 -->
 +<!-- BEGIN skill-garden patch start-no-task-routing v0.6 -->
-+- **No active task** -> first run `python3 ./.trellis/scripts/untracked_flow.py status`. On `hit`, resume the reported stage through the matching `[workflow-state:untracked*]` breadcrumb; on `miss`, follow the workflow `Request Triage` contract before acting. Use `task_intent.py create` for inferred complex planning, `task.py create` for explicit task planning, and ask only for material ambiguity or an independent safety boundary.
++- **No active task** -> first resolve any selected Check-All repair through workflow `Request Triage`; recover the inspected work item instead of creating a task. Otherwise run `python3 ./.trellis/scripts/untracked_flow.py status`. On `hit`, resume the reported stage through the matching `[workflow-state:untracked*]` breadcrumb; on `miss`, follow the workflow `Request Triage` contract before acting. Use `task_intent.py create` for inferred complex planning, `task.py create` for explicit task planning, and ask only for material ambiguity or an independent safety boundary.
 +<!-- END skill-garden patch start-no-task-routing v0.6 -->
  
  ---
