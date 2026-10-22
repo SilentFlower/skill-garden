@@ -12,7 +12,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  
  While any user-owned product, scope, UX, compatibility, risk, or acceptance decision remains unresolved, end the turn with exactly one highest-value question. Do not edit product code, dispatch implementation, or run `task.py start`.
  
-@@ -29,17 +31,29 @@
+@@ -29,17 +31,31 @@
  
  ## Preconditions
  
@@ -23,6 +23,8 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
 +Use this skill after the user explicitly requests task planning, or after clear complex implementation intent authorizes creating a planning workspace. This authorization covers planning only; it never authorizes `task.py start` or implementation.
 +
 +Before choosing an approach for non-trivial project work, follow the workflow `Request Triage` Project Knowledge Discovery contract and return here with the matched project-local SOPs and specs.
++
++Before creating or changing a parent/child task tree, load Phase 1.1 via `python3 ./.trellis/scripts/get_context.py --mode phase --step 1.1` and follow its task-tree guidance.
 +<!-- END skill-garden patch brainstorm-planning-authorization v0.6 -->
 +
 +<!-- BEGIN skill-garden patch brainstorm-auto-task-create v0.6 -->
@@ -49,7 +51,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  
  ## Planning Flow
  
-@@ -57,8 +71,10 @@
+@@ -57,8 +73,10 @@
  5. After each user answer, update `prd.md`, recompute the decision inventory, and repeat from step 2.
  6. When no user-owned decision remains, create or update `design.md` and `implement.md` for complex tasks.
  7. Run the requirement convergence gate, then the PRD convergence pass.
@@ -62,7 +64,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  
  Do not invent a project-specific product/spec hierarchy. If the repository already has product, domain, or spec docs, use them. If it does not, proceed with the evidence that exists.
  
-@@ -77,9 +93,11 @@
+@@ -77,9 +95,11 @@
  
  Recommendations are not default selections. Never choose a recommended product decision on the user's behalf merely because the user asked for implementation.
  
@@ -77,7 +79,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  
  ## Thinking Framework: First Principles Analysis
  
-@@ -137,7 +155,9 @@
+@@ -137,7 +157,9 @@
  
  Lightweight tasks may omit `design.md` and `implement.md`; they may not skip evidence inspection, requirement convergence, final review, or fresh implementation approval.
  
@@ -88,7 +90,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  
  ## Artifact Rules
  
-@@ -184,6 +204,7 @@
+@@ -184,6 +206,7 @@
  
  After the pass, read `prd.md` top to bottom and verify that no fact is repeated across sections unless the repetition adds new information.
  
@@ -96,7 +98,7 @@ diff --git a/.trae/skills/trellis-brainstorm/SKILL.md b/.trae/skills/trellis-bra
  ## Quality Bar
  
  Before declaring planning ready:
-@@ -194,7 +215,17 @@
+@@ -194,7 +217,17 @@
  - Blocking open questions are empty.
  - Complex tasks have `design.md` and `implement.md`.
  - Sub-agent-dispatch tasks have real curated entries in both `implement.jsonl` and `check.jsonl`; seed-only manifests are not ready.

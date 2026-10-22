@@ -1,7 +1,25 @@
 diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
 --- a/.claude/hooks/session-start.py
 +++ b/.claude/hooks/session-start.py
-@@ -82,24 +82,11 @@
+@@ -68,38 +68,20 @@
+ 
+ 
+ _FIRST_REPLY_NOTICE_HEAD = """<first-reply-notice>
+-On the first visible assistant reply in this session, briefly acknowledge that Trellis SessionStart context loaded."""
+-
+-_FIRST_REPLY_NOTICE_TAIL = """Choose the acknowledgment language in this order:
+-1. Use the language of the user's current request (the user message that triggered this reply).
+-2. If that request has no clear natural language, use an explicitly established project communication language.
+-3. If neither provides a language, output the language-neutral fallback exactly: `Trellis SessionStart ✓`.
+-Continue directly with the user's request after the acknowledgment.
+-The acknowledgment must not alter the language used for the remainder of the response.
+-This notice is one-shot: do not repeat it after the first visible assistant reply in this session.
++On your first visible reply in this session, briefly acknowledge that Trellis SessionStart context loaded, then answer the user."""
++
++_FIRST_REPLY_NOTICE_TAIL = """Use the request's language, else the established project language; if neither is clear, say `Trellis SessionStart ✓`.
++Do not repeat the acknowledgment or change the answer's language.
+ </first-reply-notice>"""
+ 
  FIRST_REPLY_NOTICE = f"{_FIRST_REPLY_NOTICE_HEAD}\n{_FIRST_REPLY_NOTICE_TAIL}"
  
  
@@ -31,7 +49,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
  
  # Force UTF-8 on stdin/stdout/stderr on Windows. Default codepage there is
-@@ -326,27 +313,8 @@
+@@ -326,27 +308,8 @@
      return last_export
  
  
@@ -61,7 +79,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
  
  def _resolve_active_task(trellis_dir: Path, input_data: dict):
-@@ -426,21 +394,26 @@
+@@ -426,21 +389,26 @@
      active = _resolve_active_task(trellis_dir, input_data)
  
      if not active.task_path:
@@ -96,7 +114,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
      task_json_path = task_dir / "task.json"
      task_data = {}
-@@ -458,12 +431,15 @@
+@@ -458,12 +426,15 @@
          present.append("research/")
      present_line = ", ".join(present) if present else "(none)"
  
@@ -114,7 +132,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
      has_prd = (task_dir / "prd.md").is_file()
      has_design = (task_dir / "design.md").is_file()
-@@ -728,9 +704,38 @@
+@@ -728,9 +699,38 @@
                      status = str(data.get("status") or "unknown")
              except (json.JSONDecodeError, OSError):
                  pass  # Optional task metadata; fall back to generic status.
@@ -153,7 +171,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
  
      if get_tasks_dir and iter_active_tasks:
          try:
-@@ -800,7 +805,33 @@
+@@ -800,7 +800,33 @@
      return re.sub(r"\n{3,}", "\n\n", stripped).strip()
  
  
@@ -188,7 +206,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
      """Inject only the compact Phase Index summary for SessionStart."""
      content = read_file(workflow_path)
      if not content:
-@@ -814,6 +845,7 @@
+@@ -814,6 +840,7 @@
  
      phases = _extract_range(content, "Phase Index", "Phase 1: Plan")
      if phases:
@@ -196,7 +214,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
          out_lines.append(_strip_breadcrumb_tag_blocks(phases).rstrip())
  
      return "\n".join(out_lines).rstrip()
-@@ -872,7 +904,9 @@
+@@ -872,7 +899,9 @@
  </session-context>
  
  """)
@@ -207,7 +225,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
      output.write("\n\n")
  
      # Legacy migration warning
-@@ -885,7 +919,7 @@
+@@ -885,7 +914,7 @@
      output.write("\n</current-state>\n\n")
  
      output.write("<trellis-workflow>\n")
@@ -216,7 +234,7 @@ diff --git a/.claude/hooks/session-start.py b/.claude/hooks/session-start.py
      output.write("\n</trellis-workflow>\n\n")
  
      output.write("<guidelines>\n")
-@@ -911,9 +945,7 @@
+@@ -911,9 +940,7 @@
      task_status = _get_task_status(trellis_dir, hook_input)
      output.write(f"<task-status>\n{task_status}\n</task-status>\n\n")
  
