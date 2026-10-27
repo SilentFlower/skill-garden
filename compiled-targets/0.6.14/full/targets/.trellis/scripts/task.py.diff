@@ -574,7 +574,7 @@ diff --git a/.trellis/scripts/task.py b/.trellis/scripts/task.py
    python3 task.py add-subtask parent-task child-task  # Link existing tasks
    python3 task.py remove-subtask parent-task child-task
    python3 task.py list                               # List all active tasks
-@@ -541,15 +635,37 @@
+@@ -541,15 +635,43 @@
      p_setmeta.add_argument("key", help="Metadata key")
      p_setmeta.add_argument("value", help="Metadata value")
  
@@ -605,6 +605,12 @@ diff --git a/.trellis/scripts/task.py b/.trellis/scripts/task.py
 +    p_restore.add_argument("task", help="Archived task directory or name")
 +    p_restore.add_argument("--dry-run", action="store_true", help="Calculate without moving or committing")
 +    p_restore.add_argument("--json", action="store_true", help="Output machine-readable JSON")
++# BEGIN skill-garden patch task-lifecycle-retirement-option v0.6
++    p_close.add_argument(
++        "--retire-reason",
++        help="Explicit user termination reason; preserve rejected decisions without claiming acceptance",
++    )
++# END skill-garden patch task-lifecycle-retirement-option v0.6
  
      # list
      p_list = subparsers.add_parser("list", help="List tasks")
@@ -617,7 +623,7 @@ diff --git a/.trellis/scripts/task.py b/.trellis/scripts/task.py
      p_list.add_argument("--json", action="store_true", help="Output machine-readable JSON")
  
      # add-subtask
-@@ -562,9 +678,8 @@
+@@ -562,9 +684,8 @@
      p_rmsub.add_argument("parent_dir", help="Parent task directory")
      p_rmsub.add_argument("child_dir", help="Child task directory")
  
@@ -629,7 +635,7 @@ diff --git a/.trellis/scripts/task.py b/.trellis/scripts/task.py
  
      args = parser.parse_args()
  
-@@ -584,11 +699,12 @@
+@@ -584,11 +705,12 @@
          "set-base-branch": cmd_set_base_branch,
          "set-scope": cmd_set_scope,
          "set-meta": cmd_set_meta,
