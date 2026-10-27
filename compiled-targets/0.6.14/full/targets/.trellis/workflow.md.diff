@@ -140,7 +140,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 +
 +1. Request intent, active-task scope, and any current untracked work are resolved before task creation, task routing, or file edits.
 +2. A validated auto-loop result returns through matching `record` + `next` before the interactive post-check stop applies.
-+3. Interactive completion proceeds Check-All -> `trellis-update-spec` -> `trellis-push`; successful delivery writes completion and deterministic Close in one lifecycle update.
++3. Interactive completion proceeds Check-All -> `trellis-update-spec` -> `trellis-push` for task/tracked work. Eligible quick direct edits use successful focused validation -> `trellis-update-spec` -> `trellis-push` in the same turn through `workflow-state:no_task`; explicit user stops remain effective. Successful task delivery writes completion and deterministic Close in one lifecycle update.
 +<!-- END skill-garden patch workflow-hub v0.6 -->
 +
 +```
@@ -163,7 +163,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 +- Infer `discuss`, `inspect`, `direct_edit`, `task_plan`, or `workflow_action` for new work from the whole current request, scope, risk, side effects, active-task state, and latest explicit switch. Do not classify from one keyword alone.
 +- For new work, treat requests for an opinion, expressions of discomfort, rejected proposals, or questions about how something should change as `discuss`; treat requests to inspect, explain, verify, or locate a cause as `inspect`. Both are read-only unless the current request explicitly authorizes a concrete edit. Selecting a repair does not authorize editing while scope is unknown or permission to skip task planning; inspect first and reclassify from evidence.
 +- `direct_edit` requires known, bounded, low-risk, reversible scope, no unresolved design choice, and simple validation. Permission/authentication/data-scope/security, database/migration/release/external effects, or unknown scope remain strong `task_plan` boundaries. Shared contracts, cross-package/layer or multi-entry behavior, configuration, historical regressions, and systematic validation raise the evidence and validation bar, but do not automatically require `task_plan`. An exact rollback or mechanically synchronized known change may remain `direct_edit` or `workflow_action` when its behavior, scope, side effects, and validation are already determined.
-+- `direct_edit` has two execution shapes. Use quick direct edit for one-turn small fixes, wording/config tweaks, focused release-note corrections, or other changes that can be edited, validated, and reported without remembering a later phase; do not create `untracked_flow` for those. Use tracked direct edit only when the user explicitly wants no task but still wants later turns to remember the current phase, or when the work is likely to continue across turns with `下一步` / `继续` / check / push handoff.
++- `direct_edit` has two execution shapes. Use quick direct edit for one-turn small fixes, wording/config tweaks, focused release-note corrections, or other bounded changes with simple focused validation; do not create a task or `untracked_flow` for those. Its successful completion continues through Spec evaluation and the Push plan in the same turn, as defined by `workflow-state:no_task`. Use tracked direct edit only when the user explicitly wants no task but still wants later turns to remember the current phase, or when the work is likely to continue across turns with `下一步` / `继续` / check / push handoff.
 +- When project-local SOPs or conventions may change the correct action for non-trivial work, build a short query from the request, intended commands, affected files or systems, package/layer, and domain terms; run `python3 ./.trellis/scripts/spec_router.py "<short query describing the intended action>"` once per user intent, workflow phase, or decision boundary and follow its returned `load_strategy` and `action`. Skip discovery for pure Q&A, simple read-only inspection, opening local tools, or trivial edits unless project rules may alter the approach.
 +- For new work when an active task exists, apply the Active Task Scope Guard before artifact ownership, task routing, or file edits. New implementation outside the active task title/brief requires a new task, an artifact update before continuing, or an explicit untracked path that does not reuse current progress. `task_intent.py` executes the already-decided safety boundary; it does not decide semantic ownership.
 +- Within an initially approved task, follow `trellis-task-brief` for incremental plan changes and update affected artifacts before implementation. Artifact refresh is not a new whole-Brief approval gate; unresolved scope or product decisions still pause affected work.
@@ -173,7 +173,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Planning Artifacts
  
-@@ -163,37 +197,77 @@
+@@ -163,37 +197,78 @@
  - `implement.jsonl` / `check.jsonl` — spec and research manifests for sub-agent context. They do not replace `implement.md`.
  - Lightweight tasks may be PRD-only. Complex tasks must have `prd.md`, `design.md`, and `implement.md` before `task.py start`.
  
@@ -198,7 +198,8 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
 +No active task. First resolve any Check-All repair continuation through `Request Triage`; otherwise infer the current request intent before acting.
 +For new work, repair intent alone is not a no-task switch. Only an explicit current-request workflow instruction such as `直接做` / `不要任务` may override automatic `task_plan`.
 +Load a Trellis capability directly only when the user explicitly names it or the request exactly matches that capability; route project-specific workflow actions through the matched SOP instead of keyword-mapping a general release/publish request to `trellis-release`.
-+For quick direct edit, make the bounded edit, run focused validation, and report without creating `untracked_flow`; small wording/config tweaks, release dry-runs, version checks, local SOP steps, and other one-turn fixes stay in this path unless the current request explicitly asks future `下一步` / `继续` / check / push handoff to remember this no-task work. For tracked direct edit, state once that work will use the session-scoped untracked flow, then run `python3 ./.trellis/scripts/untracked_flow.py begin --summary "<bounded work summary>" --source <inferred|user-explicit> --mode tracked-direct-edit`.
++For quick direct edit, make the bounded edit and run required focused validation without creating a task or `untracked_flow`. With deliverable repository changes, still-eligible scope, and current successful validation evidence, briefly report progress, then load `trellis-update-spec` in the same turn; its `no-op` / `written` result continues to the Push plan. Do not end the turn at the progress report or wait for another continuation request. Missing, failed, or stale validation must be resolved within the authorized scope before this handoff; if scope outgrows quick direct edit, return to `Request Triage` rather than claiming a pass. On an explicit user stop or deferral, report the outcome and end with one guide: say continue when ready for Spec evaluation -> Push plan. Do not start that handoff yet. Read-only inspection, release dry-runs, version checks, and SOP steps without deliverable changes finish without a Git plan.
++For tracked direct edit, state once that work will use the session-scoped untracked flow, then run `python3 ./.trellis/scripts/untracked_flow.py begin --summary "<bounded work summary>" --source <inferred|user-explicit> --mode tracked-direct-edit`.
 +Never create `untracked_flow` for `workflow_action` itself, including release/publish, commit, push, task operations, snapshot sync, auto-loop control, or read-only inspection. If a workflow action reveals a separate code/config fix, pause that workflow action, explain the separate fix, and only create tracked direct edit when the user wants later turns to remember that fix's check/spec/push handoff; otherwise keep it as quick direct edit.
 +A same-item hit resumes the existing state; `active-work-conflict` blocks unrelated code writes until the current item is completed, explicitly abandoned, or adopted into a task. Unrelated read-only requests may continue without mutating the state. A successful `begin` starts at `stage=implement`; the helper is a workflow cursor and does not gate edits on file scope, Git state, or owner evidence.
 +For high-confidence complex implementation, create an auto-routed planning task through `task_intent.py create`, show one non-blocking switch hint, and enter `trellis-brainstorm`. Do NOT call the harness built-in plan mode (`EnterPlanMode` / `ExitPlanMode`) as a substitute; Trellis planning owns this routing.
@@ -265,7 +266,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning]
  
  <!-- Per-turn breadcrumb: shown throughout Phase 1 when codex.dispatch_mode=inline.
-@@ -203,10 +277,15 @@
+@@ -203,10 +278,15 @@
       into a sub-agent. -->
  
  [workflow-state:planning-inline]
@@ -285,7 +286,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:planning-inline]
  
  ### Phase 2: Execute
-@@ -214,19 +293,25 @@
+@@ -214,19 +294,25 @@
  - 2.2 Quality check `[required · repeatable]`
  - 2.3 Rollback `[on demand]`
  
@@ -319,7 +320,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress]
  
  <!-- Per-turn breadcrumb: shown while status='in_progress' when
-@@ -235,9 +320,15 @@
+@@ -235,9 +321,15 @@
       instead of dispatching sub-agents. -->
  
  [workflow-state:in_progress-inline]
@@ -338,7 +339,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  [/workflow-state:in_progress-inline]
  
  ### Phase 3: Finish
-@@ -246,19 +337,17 @@
+@@ -246,19 +338,17 @@
  - 3.4 Commit changes `[required · once]`
  - 3.5 Wrap-up reminder
  
@@ -366,7 +367,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Rules
  
-@@ -268,30 +357,24 @@
+@@ -268,30 +358,24 @@
  4. Steps tagged `[once]` are skipped if the output already exists; don't re-run
  5. Artifact presence informs the next step; missing `design.md` / `implement.md` is valid for lightweight tasks and incomplete planning for complex tasks.
  
@@ -407,7 +408,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  - Planning must be persisted to task artifacts; checks must run before reporting completion.
  
  ### Loading Step Detail
-@@ -307,15 +390,29 @@
+@@ -307,15 +391,29 @@
  
  ## Phase 1: Plan
  
@@ -439,7 +440,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  `--slug` is the human-readable name only. Do **not** include the `MM-DD-` date prefix; `task.py create` adds that prefix automatically.
  
-@@ -340,7 +437,11 @@
+@@ -340,7 +438,11 @@
  - Keep `prd.md` focused on requirements and acceptance criteria
  - For complex tasks, produce `design.md` and `implement.md` before implementation starts
  
@@ -451,7 +452,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  - Use a parent task when one request contains several independently verifiable deliverables.
  - Parent tasks own source requirements, child-task mapping, cross-child acceptance criteria, and final integration review.
  - Child tasks own actual deliverables that can be planned, implemented, checked, and archived independently.
-@@ -433,20 +534,23 @@
+@@ -433,20 +535,23 @@
  
  [/codex-inline, Kilo, Antigravity, Devin]
  
@@ -482,7 +483,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 1.5 Completion criteria
  
  | Condition | Required |
-@@ -470,92 +574,50 @@
+@@ -470,92 +575,50 @@
  
  Goal: turn reviewed planning artifacts into code that passes quality checks.
  
@@ -615,7 +616,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  #### 2.3 Rollback `[on demand]`
  
  - `check` reveals a prd defect → return to Phase 1, fix `prd.md`, then redo 2.1
-@@ -577,83 +639,51 @@
+@@ -577,83 +640,51 @@
  
  The goal is to capture debugging lessons so the same class of issue doesn't recur.
  
@@ -730,7 +731,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  All tag blocks live in the `## Phase Index` section above, immediately after each phase summary:
  
-@@ -664,11 +694,11 @@
+@@ -664,11 +695,11 @@
  | Codex inline Phase 1 | `[workflow-state:planning-inline]` |
  | Phase 2 + Phase 3.2–3.4 (implementation + check + wrap-up) | `[workflow-state:in_progress]` (after Phase 2 summary) |
  | Codex inline Phase 2 + Phase 3.2–3.4 | `[workflow-state:in_progress-inline]` |
@@ -744,7 +745,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Adding a custom status
  
-@@ -683,7 +713,7 @@
+@@ -683,7 +714,7 @@
  Constraints:
  - STATUS charset: `[A-Za-z0-9_-]+` (underscores and hyphens allowed, e.g. `in-review`, `blocked-by-team`)
  - A lifecycle hook must write `task.json.status` to your custom value, otherwise the tag is never read
@@ -753,7 +754,7 @@ diff --git a/.trellis/workflow.md b/.trellis/workflow.md
  
  ### Adding a lifecycle hook
  
-@@ -692,18 +722,21 @@
+@@ -692,18 +723,21 @@
  ```json
  {
    "hooks": {
