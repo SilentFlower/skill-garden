@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:330e406c291609bf8b9ef24ddf14b119fb294721f49193ab225266f570b44430",
+  "catalogHash": "sha256:2b38633dec43f6d5a914c19eded90619b62c6879e963c6d045a5c80de66ea39f",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -460,6 +460,15 @@
       "id": "windows-streams",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/windows-streams",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ]
+    },
+    {
+      "id": "context-output-cleanup",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/context-output-cleanup",
       "bundle": "shared-hook-runtime",
       "bundles": [
         "skill-garden/shared-hook-runtime"
@@ -2608,6 +2617,22 @@
       "incomingEdges": []
     },
     {
+      "id": "workflow-phase-index-output-cleanup",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-phase-index-output-cleanup",
+      "patch": "context-output-cleanup",
+      "qualifiedPatch": "skill-garden/context-output-cleanup",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "declarationIndex": 126,
+      "resolvedIndex": 126,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "trellis-continue-task-progress-recovery",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/trellis-continue-task-progress-recovery",
@@ -2617,8 +2642,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 126,
-      "resolvedIndex": 126,
+      "declarationIndex": 127,
+      "resolvedIndex": 127,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2633,8 +2658,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 127,
-      "resolvedIndex": 127,
+      "declarationIndex": 128,
+      "resolvedIndex": 128,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2649,8 +2674,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 128,
-      "resolvedIndex": 128,
+      "declarationIndex": 129,
+      "resolvedIndex": 129,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2665,8 +2690,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 129,
-      "resolvedIndex": 129,
+      "declarationIndex": 130,
+      "resolvedIndex": 130,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2681,8 +2706,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 130,
-      "resolvedIndex": 130,
+      "declarationIndex": 131,
+      "resolvedIndex": 131,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2697,8 +2722,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 131,
-      "resolvedIndex": 131,
+      "declarationIndex": 132,
+      "resolvedIndex": 132,
       "after": [
         "skill-garden/task-lifecycle-active-reference-import"
       ],
@@ -2720,8 +2745,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 132,
-      "resolvedIndex": 132,
+      "declarationIndex": 133,
+      "resolvedIndex": 133,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2736,8 +2761,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 133,
-      "resolvedIndex": 133,
+      "declarationIndex": 134,
+      "resolvedIndex": 134,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2752,8 +2777,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 134,
-      "resolvedIndex": 134,
+      "declarationIndex": 135,
+      "resolvedIndex": 135,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2768,8 +2793,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 135,
-      "resolvedIndex": 135,
+      "declarationIndex": 136,
+      "resolvedIndex": 136,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2784,8 +2809,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 136,
-      "resolvedIndex": 136,
+      "declarationIndex": 137,
+      "resolvedIndex": 137,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2800,8 +2825,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 137,
-      "resolvedIndex": 137,
+      "declarationIndex": 138,
+      "resolvedIndex": 138,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2816,8 +2841,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 138,
-      "resolvedIndex": 138,
+      "declarationIndex": 139,
+      "resolvedIndex": 139,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2832,8 +2857,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 139,
-      "resolvedIndex": 139,
+      "declarationIndex": 140,
+      "resolvedIndex": 140,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2848,8 +2873,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 140,
-      "resolvedIndex": 140,
+      "declarationIndex": 141,
+      "resolvedIndex": 141,
       "after": [],
       "dependsOn": [
         "skill-garden/task-lifecycle-parser-commands"
@@ -2871,8 +2896,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 141,
-      "resolvedIndex": 141,
+      "declarationIndex": 142,
+      "resolvedIndex": 142,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2887,8 +2912,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 142,
-      "resolvedIndex": 142,
+      "declarationIndex": 143,
+      "resolvedIndex": 143,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2903,8 +2928,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 143,
-      "resolvedIndex": 143,
+      "declarationIndex": 144,
+      "resolvedIndex": 144,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2919,8 +2944,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 144,
-      "resolvedIndex": 144,
+      "declarationIndex": 145,
+      "resolvedIndex": 145,
       "after": [
         "skill-garden/task-create-initial-write"
       ],
@@ -2942,8 +2967,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 145,
-      "resolvedIndex": 145,
+      "declarationIndex": 146,
+      "resolvedIndex": 146,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2958,8 +2983,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 146,
-      "resolvedIndex": 146,
+      "declarationIndex": 147,
+      "resolvedIndex": 147,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2974,8 +2999,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 147,
-      "resolvedIndex": 147,
+      "declarationIndex": 148,
+      "resolvedIndex": 148,
       "after": [
         "skill-garden/task-lifecycle-active-pointer"
       ],
@@ -2997,8 +3022,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 148,
-      "resolvedIndex": 148,
+      "declarationIndex": 149,
+      "resolvedIndex": 149,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3013,8 +3038,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 149,
-      "resolvedIndex": 149,
+      "declarationIndex": 150,
+      "resolvedIndex": 150,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3029,8 +3054,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 150,
-      "resolvedIndex": 150,
+      "declarationIndex": 151,
+      "resolvedIndex": 151,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3045,8 +3070,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 151,
-      "resolvedIndex": 151,
+      "declarationIndex": 152,
+      "resolvedIndex": 152,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3061,8 +3086,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 152,
-      "resolvedIndex": 152,
+      "declarationIndex": 153,
+      "resolvedIndex": 153,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3077,8 +3102,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 153,
-      "resolvedIndex": 153,
+      "declarationIndex": 154,
+      "resolvedIndex": 154,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3093,8 +3118,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 154,
-      "resolvedIndex": 154,
+      "declarationIndex": 155,
+      "resolvedIndex": 155,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3109,8 +3134,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 155,
-      "resolvedIndex": 155,
+      "declarationIndex": 156,
+      "resolvedIndex": 156,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3125,8 +3150,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 156,
-      "resolvedIndex": 156,
+      "declarationIndex": 157,
+      "resolvedIndex": 157,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3141,8 +3166,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 157,
-      "resolvedIndex": 157,
+      "declarationIndex": 158,
+      "resolvedIndex": 158,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3157,8 +3182,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 158,
-      "resolvedIndex": 158,
+      "declarationIndex": 159,
+      "resolvedIndex": 159,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3173,8 +3198,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 159,
-      "resolvedIndex": 159,
+      "declarationIndex": 160,
+      "resolvedIndex": 160,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3189,8 +3214,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 160,
-      "resolvedIndex": 160,
+      "declarationIndex": 161,
+      "resolvedIndex": 161,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3205,8 +3230,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 161,
-      "resolvedIndex": 161,
+      "declarationIndex": 162,
+      "resolvedIndex": 162,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3221,8 +3246,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 162,
-      "resolvedIndex": 162,
+      "declarationIndex": 163,
+      "resolvedIndex": 163,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3237,8 +3262,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 163,
-      "resolvedIndex": 163,
+      "declarationIndex": 164,
+      "resolvedIndex": 164,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3253,8 +3278,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 164,
-      "resolvedIndex": 164,
+      "declarationIndex": 165,
+      "resolvedIndex": 165,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3269,8 +3294,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 165,
-      "resolvedIndex": 165,
+      "declarationIndex": 166,
+      "resolvedIndex": 166,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3285,8 +3310,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 166,
-      "resolvedIndex": 166,
+      "declarationIndex": 167,
+      "resolvedIndex": 167,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3301,8 +3326,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 167,
-      "resolvedIndex": 167,
+      "declarationIndex": 168,
+      "resolvedIndex": 168,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3317,8 +3342,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 168,
-      "resolvedIndex": 168,
+      "declarationIndex": 169,
+      "resolvedIndex": 169,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3333,8 +3358,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 169,
-      "resolvedIndex": 169,
+      "declarationIndex": 170,
+      "resolvedIndex": 170,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3349,8 +3374,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 170,
-      "resolvedIndex": 170,
+      "declarationIndex": 171,
+      "resolvedIndex": 171,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3365,8 +3390,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 171,
-      "resolvedIndex": 171,
+      "declarationIndex": 172,
+      "resolvedIndex": 172,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3381,8 +3406,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 172,
-      "resolvedIndex": 172,
+      "declarationIndex": 173,
+      "resolvedIndex": 173,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3397,8 +3422,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 173,
-      "resolvedIndex": 173,
+      "declarationIndex": 174,
+      "resolvedIndex": 174,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3413,8 +3438,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 174,
-      "resolvedIndex": 174,
+      "declarationIndex": 175,
+      "resolvedIndex": 175,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3429,8 +3454,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 175,
-      "resolvedIndex": 175,
+      "declarationIndex": 176,
+      "resolvedIndex": 176,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3445,8 +3470,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 176,
-      "resolvedIndex": 176,
+      "declarationIndex": 177,
+      "resolvedIndex": 177,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3461,8 +3486,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 177,
-      "resolvedIndex": 177,
+      "declarationIndex": 178,
+      "resolvedIndex": 178,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3477,8 +3502,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 178,
-      "resolvedIndex": 178,
+      "declarationIndex": 179,
+      "resolvedIndex": 179,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3493,8 +3518,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 179,
-      "resolvedIndex": 179,
+      "declarationIndex": 180,
+      "resolvedIndex": 180,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3509,8 +3534,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 180,
-      "resolvedIndex": 180,
+      "declarationIndex": 181,
+      "resolvedIndex": 181,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3525,8 +3550,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 181,
-      "resolvedIndex": 181,
+      "declarationIndex": 182,
+      "resolvedIndex": 182,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3541,8 +3566,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 182,
-      "resolvedIndex": 182,
+      "declarationIndex": 183,
+      "resolvedIndex": 183,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3557,8 +3582,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 183,
-      "resolvedIndex": 183,
+      "declarationIndex": 184,
+      "resolvedIndex": 184,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3573,8 +3598,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 184,
-      "resolvedIndex": 184,
+      "declarationIndex": 185,
+      "resolvedIndex": 185,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3589,8 +3614,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 185,
-      "resolvedIndex": 185,
+      "declarationIndex": 186,
+      "resolvedIndex": 186,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3605,8 +3630,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 186,
-      "resolvedIndex": 186,
+      "declarationIndex": 187,
+      "resolvedIndex": 187,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3621,8 +3646,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 187,
-      "resolvedIndex": 187,
+      "declarationIndex": 188,
+      "resolvedIndex": 188,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3637,8 +3662,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 188,
-      "resolvedIndex": 188,
+      "declarationIndex": 189,
+      "resolvedIndex": 189,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3653,8 +3678,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 189,
-      "resolvedIndex": 189,
+      "declarationIndex": 190,
+      "resolvedIndex": 190,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3669,8 +3694,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 190,
-      "resolvedIndex": 190,
+      "declarationIndex": 191,
+      "resolvedIndex": 191,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3685,8 +3710,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 191,
-      "resolvedIndex": 191,
+      "declarationIndex": 192,
+      "resolvedIndex": 192,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3701,8 +3726,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 192,
-      "resolvedIndex": 192,
+      "declarationIndex": 193,
+      "resolvedIndex": 193,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3717,8 +3742,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 193,
-      "resolvedIndex": 193,
+      "declarationIndex": 194,
+      "resolvedIndex": 194,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3733,8 +3758,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 194,
-      "resolvedIndex": 194,
+      "declarationIndex": 195,
+      "resolvedIndex": 195,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3749,8 +3774,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 195,
-      "resolvedIndex": 195,
+      "declarationIndex": 196,
+      "resolvedIndex": 196,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3765,8 +3790,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 196,
-      "resolvedIndex": 196,
+      "declarationIndex": 197,
+      "resolvedIndex": 197,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3781,8 +3806,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 197,
-      "resolvedIndex": 197,
+      "declarationIndex": 198,
+      "resolvedIndex": 198,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3797,8 +3822,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 198,
-      "resolvedIndex": 198,
+      "declarationIndex": 199,
+      "resolvedIndex": 199,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3813,8 +3838,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 199,
-      "resolvedIndex": 199,
+      "declarationIndex": 200,
+      "resolvedIndex": 200,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3829,8 +3854,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 200,
-      "resolvedIndex": 200,
+      "declarationIndex": 201,
+      "resolvedIndex": 201,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3845,8 +3870,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 201,
-      "resolvedIndex": 201,
+      "declarationIndex": 202,
+      "resolvedIndex": 202,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3861,8 +3886,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 202,
-      "resolvedIndex": 202,
+      "declarationIndex": 203,
+      "resolvedIndex": 203,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3877,8 +3902,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 203,
-      "resolvedIndex": 203,
+      "declarationIndex": 204,
+      "resolvedIndex": 204,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3893,8 +3918,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 204,
-      "resolvedIndex": 204,
+      "declarationIndex": 205,
+      "resolvedIndex": 205,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3909,8 +3934,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 205,
-      "resolvedIndex": 205,
+      "declarationIndex": 206,
+      "resolvedIndex": 206,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3925,8 +3950,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 206,
-      "resolvedIndex": 206,
+      "declarationIndex": 207,
+      "resolvedIndex": 207,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3941,8 +3966,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 207,
-      "resolvedIndex": 207,
+      "declarationIndex": 208,
+      "resolvedIndex": 208,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3957,8 +3982,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 208,
-      "resolvedIndex": 208,
+      "declarationIndex": 209,
+      "resolvedIndex": 209,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3973,8 +3998,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 209,
-      "resolvedIndex": 209,
+      "declarationIndex": 210,
+      "resolvedIndex": 210,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3989,8 +4014,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 210,
-      "resolvedIndex": 210,
+      "declarationIndex": 211,
+      "resolvedIndex": 211,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4005,8 +4030,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 211,
-      "resolvedIndex": 211,
+      "declarationIndex": 212,
+      "resolvedIndex": 212,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4021,8 +4046,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 212,
-      "resolvedIndex": 212,
+      "declarationIndex": 213,
+      "resolvedIndex": 213,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4037,8 +4062,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 213,
-      "resolvedIndex": 213,
+      "declarationIndex": 214,
+      "resolvedIndex": 214,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4053,8 +4078,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 214,
-      "resolvedIndex": 214,
+      "declarationIndex": 215,
+      "resolvedIndex": 215,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4069,8 +4094,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 215,
-      "resolvedIndex": 215,
+      "declarationIndex": 216,
+      "resolvedIndex": 216,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4085,8 +4110,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 216,
-      "resolvedIndex": 216,
+      "declarationIndex": 217,
+      "resolvedIndex": 217,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4101,8 +4126,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 217,
-      "resolvedIndex": 217,
+      "declarationIndex": 218,
+      "resolvedIndex": 218,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4117,8 +4142,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 218,
-      "resolvedIndex": 218,
+      "declarationIndex": 219,
+      "resolvedIndex": 219,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4133,8 +4158,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 219,
-      "resolvedIndex": 219,
+      "declarationIndex": 220,
+      "resolvedIndex": 220,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4149,8 +4174,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 220,
-      "resolvedIndex": 220,
+      "declarationIndex": 221,
+      "resolvedIndex": 221,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4165,8 +4190,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 221,
-      "resolvedIndex": 221,
+      "declarationIndex": 222,
+      "resolvedIndex": 222,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4181,8 +4206,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 222,
-      "resolvedIndex": 222,
+      "declarationIndex": 223,
+      "resolvedIndex": 223,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4197,8 +4222,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 223,
-      "resolvedIndex": 223,
+      "declarationIndex": 224,
+      "resolvedIndex": 224,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4213,8 +4238,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 224,
-      "resolvedIndex": 224,
+      "declarationIndex": 225,
+      "resolvedIndex": 225,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4229,8 +4254,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 225,
-      "resolvedIndex": 225,
+      "declarationIndex": 226,
+      "resolvedIndex": 226,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4812,6 +4837,16 @@
         ".qoder/hooks/session-start.py",
         ".trae/hooks/session-start.py",
         ".zcode/hooks/session-start.py"
+      ]
+    },
+    {
+      "id": "workflow-phase-index-output-cleanup",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-phase-index-output-cleanup",
+      "patch": "context-output-cleanup",
+      "qualifiedPatch": "skill-garden/context-output-cleanup",
+      "targets": [
+        ".trellis/scripts/common/workflow_phase.py"
       ]
     },
     {
@@ -10082,7 +10117,7 @@
     {
       "target": ".codex/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10175,7 +10210,7 @@
     {
       "target": ".claude/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10268,7 +10303,7 @@
     {
       "target": ".gemini/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10361,7 +10396,7 @@
     {
       "target": ".qoder/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10454,7 +10489,7 @@
     {
       "target": ".github/copilot/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10547,7 +10582,7 @@
     {
       "target": ".codebuddy/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10640,7 +10675,7 @@
     {
       "target": ".factory/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10733,7 +10768,7 @@
     {
       "target": ".kiro/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10826,7 +10861,7 @@
     {
       "target": ".trae/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -10919,7 +10954,7 @@
     {
       "target": ".zcode/hooks/inject-workflow-state.py",
       "beforeHash": "sha256:89cef2b197dd61a731b946114207d2601b240058941ccf28622ee211d9c62eb3",
-      "afterHash": "sha256:ef7bac30318adc5b573f4575afde1efb070550c0bd0dadcefd792274804a27f1",
+      "afterHash": "sha256:38add46d40c9fdaa9aeec4f7d9d94066dc68bb66be25f7724f6e93f9e4855877",
       "changed": true,
       "originalExists": true,
       "operations": [
@@ -14582,6 +14617,26 @@
           "qualifiedId": "skill-garden/subagent-python38-prefix",
           "patch": "windows-streams",
           "qualifiedPatch": "skill-garden/windows-streams",
+          "bundle": "shared-hook-runtime",
+          "bundles": [
+            "skill-garden/shared-hook-runtime"
+          ]
+        }
+      ]
+    },
+    {
+      "target": ".trellis/scripts/common/workflow_phase.py",
+      "beforeHash": "sha256:79ee522de20246acf1e2c222e8ad180ad25aaec7fec98214a93d9e81b350d9a8",
+      "afterHash": "sha256:c265514bf97c34f9aaf6207ed4556ef70b0c173571f564179d5ca1c388e148f2",
+      "changed": true,
+      "originalExists": true,
+      "operations": [
+        {
+          "id": "workflow-phase-index-output-cleanup",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/workflow-phase-index-output-cleanup",
+          "patch": "context-output-cleanup",
+          "qualifiedPatch": "skill-garden/context-output-cleanup",
           "bundle": "shared-hook-runtime",
           "bundles": [
             "skill-garden/shared-hook-runtime"
@@ -36367,6 +36422,20 @@
         "skill-garden/shared-hook-runtime"
       ],
       "target": ".zcode/hooks/inject-subagent-context.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "workflow-phase-index-output-cleanup",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/workflow-phase-index-output-cleanup",
+      "patch": "context-output-cleanup",
+      "qualifiedPatch": "skill-garden/context-output-cleanup",
+      "bundle": "shared-hook-runtime",
+      "bundles": [
+        "skill-garden/shared-hook-runtime"
+      ],
+      "target": ".trellis/scripts/common/workflow_phase.py",
       "status": "ready",
       "required": true
     },

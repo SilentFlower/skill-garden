@@ -393,7 +393,7 @@ diff --git a/.factory/hooks/inject-workflow-state.py b/.factory/hooks/inject-wor
  # ---------------------------------------------------------------------------
  # Entry
  # ---------------------------------------------------------------------------
-@@ -404,47 +723,97 @@
+@@ -404,47 +723,106 @@
      return data if isinstance(data, dict) else {}
  
  
@@ -499,10 +499,19 @@ diff --git a/.factory/hooks/inject-workflow-state.py b/.factory/hooks/inject-wor
 +    )
 +    if breadcrumb is None:
 +        return 0
++
++    if platform in CONDITIONAL_WORKFLOW_STATE_PLATFORMS and not force_refresh:
++        # Keep the source and tracker fingerprint intact; clean only the emitted copy.
++        breadcrumb = re.sub(
++            r"^<!-- (?:BEGIN|END) skill-garden patch [^<>\r\n]+ -->(?:\r?\n|$)",
++            "",
++            breadcrumb,
++            flags=re.MULTILINE,
++        )
  
      # Kiro (CLI userPromptSubmit / IDE promptSubmit) adds a hook's stdout
      # directly to the conversation context — no JSON envelope. Emit the bare
-@@ -469,6 +838,7 @@
+@@ -469,6 +847,7 @@
      }
      print(json.dumps(output))
      return 0
