@@ -50,7 +50,7 @@ diff --git a/.trae/skills/trellis-meta/references/customize-local/change-skills-
  
 -If the goal is "make my project's AI behave differently when discussing release notes," the answer is almost always a project-local skill, not surgery on `trellis-meta/`.
 -
-+For a managed target, the durable sequence is source change -> required preflight -> transaction -> state/provenance update. For a project-private behavior, a differently named local skill or `.trellis/spec/` remains preferable to mutating a public bundled skill.
++For a managed target, the durable sequence is source change -> required preflight -> transaction -> state and Patch application record updates. For a project-private behavior, a differently named local skill or `.trellis/spec/` remains preferable to mutating a public bundled skill.
 +<!-- END skill-garden patch trellis-meta-managed-skill-edit-route v0.6 -->
  ## Modify A Command/Prompt/Workflow
  
