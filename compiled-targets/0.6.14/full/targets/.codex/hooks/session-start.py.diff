@@ -109,7 +109,17 @@ diff --git a/.codex/hooks/session-start.py b/.codex/hooks/session-start.py
  
      if get_tasks_dir and iter_active_tasks:
          try:
-@@ -452,7 +485,33 @@
+@@ -413,8 +446,7 @@
+                 f"Journal: {_repo_relative(repo_root, journal)}, {count_lines(journal)} / 2000 lines."
+             )
+ 
+-    if spec_index_paths:
+-        lines.append(f"Spec indexes: {len(spec_index_paths)} available.")
++    lines.append(f"Spec indexes: {len(spec_index_paths)} available.")
+ 
+     return "\n".join(lines)
+ 
+@@ -452,7 +484,33 @@
      return re.sub(r"\n{3,}", "\n\n", stripped).strip()
  
  
@@ -144,7 +154,7 @@ diff --git a/.codex/hooks/session-start.py b/.codex/hooks/session-start.py
      """Inject only the compact Phase Index summary for SessionStart."""
      content = read_file(workflow_path)
      if not content:
-@@ -466,6 +525,7 @@
+@@ -466,6 +524,7 @@
  
      phases = _extract_range(content, "Phase Index", "Phase 1: Plan")
      if phases:
@@ -152,7 +162,7 @@ diff --git a/.codex/hooks/session-start.py b/.codex/hooks/session-start.py
          out_lines.append(_strip_breadcrumb_tag_blocks(phases).rstrip())
  
      return "\n".join(out_lines).rstrip()
-@@ -505,7 +565,7 @@
+@@ -505,7 +564,7 @@
      output.write("\n</current-state>\n\n")
  
      output.write("<trellis-workflow>\n")
@@ -161,7 +171,28 @@ diff --git a/.codex/hooks/session-start.py b/.codex/hooks/session-start.py
      output.write("\n</trellis-workflow>\n\n")
  
      output.write("<guidelines>\n")
-@@ -530,9 +590,7 @@
+@@ -515,11 +574,15 @@
+         "are skipped for lightweight tasks.\n\n"
+     )
+ 
+-    if spec_index_paths:
+-        output.write("## Available indexes (read on demand)\n")
+-        for p in spec_index_paths:
+-            output.write(f"- {p}\n")
+-        output.write("\n")
++    if ".trellis/spec/guides/index.md" in spec_index_paths:
++        output.write("## Shared guidelines\n")
++        output.write("- .trellis/spec/guides/index.md\n\n")
++
++    output.write(
++        "Read the active task's `implement.jsonl` or `check.jsonl` for task-specific guidelines. "
++        "Find other relevant specs with "
++        "`python3 ./.trellis/scripts/spec_router.py \"<task keywords>\"`.\n\n"
++    )
+ 
+     output.write(
+         "Discover more via: "
+@@ -530,9 +593,7 @@
      task_status = _get_task_status(trellis_dir, hook_input)
      output.write(f"<task-status>\n{task_status}\n</task-status>\n\n")
  
