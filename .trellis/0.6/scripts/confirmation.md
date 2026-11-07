@@ -1,18 +1,18 @@
 # 会话内超时确认
 
-本协议只服务 Brief 首次开工、Check-All 问题处置、Push 精确计划。必须由 `ftl session -- codex|claude` 管理当前前台会话；普通原生启动、其它 Harness、无效配置和失联均继续人工确认。经校验的 auto-loop 使用原 runner，不叠加本协议。Spec 歧义、未决业务取舍和独立权限审批不能自动作答。
+本协议只服务 Brief 首次开工、Check-All 问题处置、Push 精确计划。项目默认启用，由当前原生 Codex 客户端 / App Server 或 Claude Code 提供交互工具。当前入口未注册工具、配置不可用或会话失联时，给出原因并保持人工。经校验的 auto-loop 使用原 runner，不叠加本协议。Spec 歧义、未决业务取舍和独立权限审批不能自动作答。
 
 ## 先确认能力
 
-执行 `python3 .trellis/scripts/confirmation.py status`，项目选用其它 Python 命令时沿用该命令。只有结果同时为 `bound=true`、`ready=true`、`enabled=true`，且 `kinds.<brief|check|push>=true` 才准备自动确认。`server_name` 是本次随机注册的 MCP 名称；只能调用它实际提供的 `wait`，找不到工具就回到人工。禁止给 `request_user_input` 添加 timeout 字段、启动定时唤醒或每秒询问模型。
+只从当前工具列表识别原生确认工具：Codex 为 `trellis_confirmation`，Claude 为 `flower-confirmation` 注册的 `confirm`。以本轮实际暴露的工具名调用 `{"operation":"status"}`。同时得到 `protocol=1`、`bound=true`、`ready=true`、`enabled=true` 及 `kinds.<brief|check|push>=true` 才继续。工具缺失、返回 `manual` 或读取失败时，简述工具或策略给出的原因并沿用人工。禁止把 Shell、其他 MCP、`request_user_input` 的自定义 timeout 或定时唤醒当成原生展示或有效领取。
 
 ## 冻结、展示与领取
 
 1. 先按流程 owner 形成完整材料，保留原模板、全部范围和风险。Brief 直接使用最新 `<task>/brief.md`。检查报告和 Git 计划将完整正文送入 `confirmation.py materialize` 的 stdin；结果给出 gitignored `.trellis/.runtime/confirmations/materials/<id>.md`。该文件仅用于当前跨进程校验，不是导出附件，不放入任务交付或 Git 计划。禁止用 shell 插值生成正文。
-2. 执行 `confirmation.py prepare --kind <kind> --file <正文相对路径>`。关联依据逐个加 `--basis-file <相对路径>`；检查为当前**全部待处置**条目逐个加 `--problem-id CHK-1`（同样接受 FBK/DOC）；提交必须加 `--mode push|commit-only` 及逐个 `--git-path <精确文件>`。多仓逐个加 `--repository '{"root":"仓库路径","git_paths":["精确文件"]}'`，按原计划顺序列出，当前主仓也可用此格式；任务记录、生成命令和预计输出仍完整写在原计划正文中。prepare 成功不计时。
-3. 使用返回的 `request_id` 调用本次 MCP `wait(request_id)`。控制器直接向用户完整展示冻结正文、默认动作和实际秒数，排空后开始计时；这次可信终端展示满足对应 owner 的完整展示要求，无需另输出一份正文。不得以模型结束标记、仅文件链接或自行估算时间替代。按宿主工具协议等待原调用完成，pending 时继续原等待，不创建第二次决定。
-4. 只有 `source=policy_timeout`、`decision=continue` 才执行 `confirmation.py claim --request-id <id>`。**claim 成功**且返回的 kind/action 与本次 owner 匹配，才替代该次人工范围选择。工具返回后、claim 之前到达的人工按键仍会撤销旧决定。claim 拒绝、取消、版本变化、工具失败或预算不足时保持人工；不得重试领取来重复执行，也不得把 cancelled 当成拒绝业务方案，用户回复仍由 owner 解释。
-5. 领取后仍遵守 owner 全部检查、前置条件、文件与分支范围。动作结束执行 `confirmation.py finish --request-id <id> --outcome completed|interrupted|needs_verification`，据实际结果选择；失联时如实报告已完成副作用和待核验项，不能声称撤销。活许可只存在于本次入口内存，重开不会消费旧请求。
+2. 准备 `spec`：必填 `kind`、`file`（正文相对路径）；有依据时将相对路径放入 `basis`。检查将当前**全部待处置** ID 放入 `problem_ids`（CHK/FBK/DOC）；提交必填 `mode: "push"|"commit-only"`，单仓填写 `git_paths`，多仓用 `repositories: [{"root":"仓库路径","git_paths":["精确文件"]}]` 按计划顺序列全。任务记录、生成命令和预计输出仍完整写在正文中。调用 `{"operation":"prepare","spec":{…}}` 后得到 `request_id` 和策略 `seconds`；此时未计时。
+3. 调用 `{"operation":"wait","request_id":"<id>"}`。支持直接长等待时也可使用 `{"operation":"wait","spec":{…}}` 合并准备和等待。原生界面完整展示冻结正文、默认动作和秒数，并确认绘制后开始计时；这次展示满足 owner 的完整正文要求。Codex Code Mode 使用单次 `functions.exec`，按准备返回的秒数加上展示和复核余量（30 秒）设置 `yield_time_ms`；宿主预算不足时保持人工。不得缩短时长或用助手文本、文件链接替代展示。工具仍在等待时只等待原调用，不重复准备。
+4. 只有匹配请求的 `source=policy_timeout`、`decision=continue` 才调用同一原生工具的 `{"operation":"claim","request_id":"<id>"}`。**claim 成功**且返回的 `kind`、`action` 与本次 owner 匹配，才替代本次人工范围选择。工具返回后、claim 之前到达的人工输入仍可撤销。领取失败、取消、材料变化、预算不足或工具失败时保持人工；不重试领取来重复执行。取消本身既不批准也不拒绝方案。
+5. 领取后仍遵守 owner 的全部检查、前置条件、文件与分支范围。按实际结果调用 `{"operation":"finish","request_id":"<id>","outcome":"completed|interrupted|needs_verification"}`（选择一个值）。失联时如实报告已经产生的副作用及待核验项。活许可只存在于当前入口内存，重开不会消费旧请求。
 
 ## 默认动作
 
