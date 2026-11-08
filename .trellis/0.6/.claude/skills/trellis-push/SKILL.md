@@ -116,7 +116,7 @@ git rev-list --reverse @{u}..HEAD 2>/dev/null || true
 确认前禁止 `git add`、`git commit` 或 `git push`。
 
 即将展示用户可见计划时，读取 `references/output-templates.md` 的“计划模板”和“共用展示规则”；缺失或不可读则 `阻塞`，不得凭记忆重建、缩写或自制替代模板。
-按 `.trellis/scripts/confirmation.md` 核验当前计划；匹配 `push / execute_git_plan` claim 方可执行，否则等人工。
+按 `.trellis/scripts/confirmation.md` 使用 `ftl confirm` 冻结和展示完整计划；收到匹配 `push / execute_git_plan` 的领取结果才执行，否则等人工。
 
 普通多仓只确认一次。计划已展示生成命令和预计 exact files 时，命令成功且没有出现预计列表外的新 dirty path 就沿用原确认；内容、hash 或统计变化不重问。其它计划边界变化仍按 Step 4 重新规划。
 

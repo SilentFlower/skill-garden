@@ -11,7 +11,7 @@ import re
 import stat
 import subprocess
 import sys
-import uuid
+import tempfile
 from pathlib import Path
 
 
@@ -299,7 +299,8 @@ def materialize(root, body):
     @param body: 完整文本。
     @return: gitignored材料相对路径，不含执行许可。
     """
-    if not body.strip() or len(body.encode("utf-8")) > 4 * 1024 * 1024:
+    content = body.encode("utf-8")
+    if not body.strip() or len(content) > 4 * 1024 * 1024:
         raise ValueError("确认材料为空或超过4MiB")
     directory = (root / ".trellis/.runtime/confirmations/materials").resolve()
     try:
@@ -307,9 +308,19 @@ def materialize(root, body):
     except ValueError:
         raise ValueError("材料目录超出当前项目")
     directory.mkdir(parents=True, exist_ok=True)
-    file = directory / (str(uuid.uuid4()) + ".md")
-    with file.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(body)
+    # 同一正文得到相同的材料路径，重复 prepare 不会因此绕过一次性等待。
+    file = directory / (hashlib.sha256(content).hexdigest() + ".md")
+    descriptor, name = tempfile.mkstemp(dir=directory)
+    temporary = Path(name)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(content)
+        os.link(temporary, file)
+    except FileExistsError:
+        if file.is_symlink() or not file.is_file() or file.stat().st_size != len(content) or file.read_bytes() != content:
+            raise ValueError("确认材料已变化，保持人工确认")
+    finally:
+        temporary.unlink()
     return {"file": file.relative_to(root).as_posix()}
 
 

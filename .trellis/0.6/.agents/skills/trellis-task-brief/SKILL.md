@@ -15,7 +15,7 @@ description: "从最新 prd.md、design.md、implement.md 生成、刷新、校�
 
 ## 原生会话超时确认
 
-首次评审没有明确预授权、停止要求或未决事项时，读取 `.trellis/scripts/confirmation.md` 核验当前原生工具与项目策略。将最新 Brief 交给工具完整展示；只有匹配本次材料的 `brief / implement` 单次 claim 成功，才在同轮启动任务。能力缺失或领取失败时照常展示并等人工。auto-loop 优先使用上方 runner 例外。
+首次评审没有明确预授权、停止要求或未决事项时，读取 `.trellis/scripts/confirmation.md` 核验当前原生工具与项目策略。用 `ftl confirm` 冻结最新 Brief、在对话完整展示并前台等待；只有匹配 `brief / implement` 的领取结果，才在同轮启动任务。能力缺失或领取失败时照常展示并等人工。auto-loop 优先使用上方 runner 例外。
 
 ## 核心规则
 
@@ -73,7 +73,7 @@ description: "从最新 prd.md、design.md、implement.md 生成、刷新、校�
 6. 写回 `<task>/brief.md`。如果文件已存在，仍用最新三件套派生内容覆盖旧正文。
 7. 在对话中展示 brief 正文，并说明来源文件：
    - 经校验的 auto-loop `refresh_brief`：展示后返回 runner，不进入下方交互分支；schema 1 的确认由后续 action 所有。
-   - 原生确认：按上方协议完整展示并等待；只有有效 claim 才同轮返回主 workflow 启动任务，并按实际结果记录 finish。取消或失效时转人工。已由原生界面完整展示的正文不重复输出。
+   - 原生确认：按上方协议完整展示并等待；只有有效 claim 才同轮返回主 workflow 启动任务，并按实际结果记录 finish。取消或失效时转人工。已在当前对话完整展示的正文不重复输出。
    - 无有效预授权：展示后结束当前回合，等待用户确认。
    - 有有效预授权：先完整展示，再在同一回合返回主 workflow 执行 `task.py start`，不得省略展示步骤。
 
