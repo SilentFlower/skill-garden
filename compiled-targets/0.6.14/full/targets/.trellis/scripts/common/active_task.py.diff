@@ -52,7 +52,44 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
  
  def normalize_task_ref(task_ref: str) -> str:
-@@ -509,32 +553,47 @@
+@@ -291,6 +335,7 @@
+     return _ENV_PLATFORM_ALIASES.get(platform_name, platform_name)
+ 
+ 
++# BEGIN skill-garden patch active-task-host-identity v0.6
+ def _lookup_env_context_key(platform_name: str | None) -> str | None:
+     """Resolve a context key from platform-provided environment variables.
+ 
+@@ -300,6 +345,20 @@
+     are present, there is no session-scoped active task.
+     """
+     env_platform_name = _env_platform_name(platform_name)
++    if env_platform_name is None:
++        candidates = {
++            _CONTEXT_KEY_PLATFORM_ALIASES.get(name, name)
++            for table in (_ENV_SESSION_KEYS, _ENV_CONVERSATION_KEYS, _ENV_TRANSCRIPT_KEYS)
++            for name, keys in table
++            if any(_string_value(os.environ.get(key)) for key in keys)
++        }
++        if len(candidates) > 1:
++            # Inherited variables may describe an outer tool; use the nearest host.
++            try:
++                from flower_session_host import select_platform
++            except ImportError as error:
++                raise ValueError("Multiple platform identities require an explicit platform or TRELLIS_CONTEXT_ID") from error
++            env_platform_name = select_platform(candidates)
+ 
+     for name, keys in _iter_env_keys(_ENV_SESSION_KEYS, env_platform_name):
+         for key in keys:
+@@ -320,6 +379,7 @@
+                 return _context_key(name, "transcript", value)
+ 
+     return None
++# END skill-garden patch active-task-host-identity v0.6
+ 
+ 
+ def _find_repo_root_from_cwd() -> Path | None:
+@@ -509,32 +569,47 @@
      return None
  
  
@@ -109,7 +146,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
          return None
      try:
          return full_path.relative_to(repo_root).as_posix()
-@@ -548,17 +607,30 @@
+@@ -548,17 +623,30 @@
      source_type: str,
      context_key: str | None = None,
  ) -> ActiveTask | None:
@@ -144,7 +181,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  def resolve_active_task(
      repo_root: Path,
      platform_input: dict[str, Any] | None = None,
-@@ -567,26 +639,22 @@
+@@ -567,26 +655,22 @@
      allow_single_session_fallback: bool = True,
      allow_environment_context: bool = True,
  ) -> ActiveTask:
@@ -177,7 +214,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
      if allow_single_session_fallback:
          fallback = _resolve_single_session_fallback(repo_root)
-@@ -594,15 +662,12 @@
+@@ -594,15 +678,12 @@
              return fallback
  
      return ActiveTask(None, "none", context_key)
@@ -198,7 +235,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
      sessions_dir = _runtime_sessions_dir(repo_root)
      if not sessions_dir.is_dir():
          return None
-@@ -612,13 +677,16 @@
+@@ -612,13 +693,16 @@
          return None
  
      session_file = session_files[0]
@@ -218,7 +255,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
  
  
  def _utc_now() -> str:
-@@ -647,17 +715,14 @@
+@@ -647,17 +731,14 @@
      return metadata
  
  
@@ -238,7 +275,7 @@ diff --git a/.trellis/scripts/common/active_task.py b/.trellis/scripts/common/ac
      canonical = _canonical_task_ref(task_path, repo_root)
      if canonical is None:
          return None
-@@ -667,33 +732,57 @@
+@@ -667,33 +748,57 @@
          return None
  
      context_path = _context_path(repo_root, context_key)

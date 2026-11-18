@@ -53,7 +53,7 @@
       ".zcode"
     ]
   },
-  "catalogHash": "sha256:ff4ffb5d550f224e44ad41dbbab4f274e2d5969fbe513da9fe1bb9a19528943a",
+  "catalogHash": "sha256:24f9adf9a41a8bbee559e9333158c4f6da067de6cf528f7a0588356b0ee73675",
   "catalogs": [
     {
       "id": "skill-garden"
@@ -762,6 +762,22 @@
       "incomingEdges": []
     },
     {
+      "id": "active-task-host-identity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/active-task-host-identity",
+      "patch": "runtime-state-integrity",
+      "qualifiedPatch": "skill-garden/runtime-state-integrity",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "declarationIndex": 12,
+      "resolvedIndex": 12,
+      "after": [],
+      "dependsOn": [],
+      "incomingEdges": []
+    },
+    {
       "id": "active-task-runtime-json-io",
       "catalog": "skill-garden",
       "qualifiedId": "skill-garden/active-task-runtime-json-io",
@@ -771,8 +787,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 12,
-      "resolvedIndex": 12,
+      "declarationIndex": 13,
+      "resolvedIndex": 13,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -787,8 +803,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 13,
-      "resolvedIndex": 13,
+      "declarationIndex": 14,
+      "resolvedIndex": 14,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -803,8 +819,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 14,
-      "resolvedIndex": 14,
+      "declarationIndex": 15,
+      "resolvedIndex": 15,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -819,8 +835,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 15,
-      "resolvedIndex": 15,
+      "declarationIndex": 16,
+      "resolvedIndex": 16,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -835,8 +851,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 16,
-      "resolvedIndex": 16,
+      "declarationIndex": 17,
+      "resolvedIndex": 17,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -851,8 +867,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 17,
-      "resolvedIndex": 17,
+      "declarationIndex": 18,
+      "resolvedIndex": 18,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -867,8 +883,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 18,
-      "resolvedIndex": 18,
+      "declarationIndex": 19,
+      "resolvedIndex": 19,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -883,8 +899,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 19,
-      "resolvedIndex": 19,
+      "declarationIndex": 20,
+      "resolvedIndex": 20,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -899,8 +915,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 20,
-      "resolvedIndex": 20,
+      "declarationIndex": 21,
+      "resolvedIndex": 21,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -915,8 +931,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 21,
-      "resolvedIndex": 21,
+      "declarationIndex": 22,
+      "resolvedIndex": 22,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -931,8 +947,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 22,
-      "resolvedIndex": 22,
+      "declarationIndex": 23,
+      "resolvedIndex": 23,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -947,8 +963,8 @@
       "bundles": [
         "skill-garden/control-plane-integrity"
       ],
-      "declarationIndex": 23,
-      "resolvedIndex": 23,
+      "declarationIndex": 24,
+      "resolvedIndex": 24,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -963,8 +979,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 24,
-      "resolvedIndex": 24,
+      "declarationIndex": 25,
+      "resolvedIndex": 25,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -979,8 +995,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 25,
-      "resolvedIndex": 25,
+      "declarationIndex": 26,
+      "resolvedIndex": 26,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -995,8 +1011,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 26,
-      "resolvedIndex": 26,
+      "declarationIndex": 27,
+      "resolvedIndex": 27,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1011,8 +1027,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 27,
-      "resolvedIndex": 27,
+      "declarationIndex": 28,
+      "resolvedIndex": 28,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1027,8 +1043,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 28,
-      "resolvedIndex": 28,
+      "declarationIndex": 29,
+      "resolvedIndex": 29,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1043,8 +1059,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 29,
-      "resolvedIndex": 29,
+      "declarationIndex": 30,
+      "resolvedIndex": 30,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1060,8 +1076,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 30,
-      "resolvedIndex": 30,
+      "declarationIndex": 31,
+      "resolvedIndex": 31,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1077,8 +1093,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 31,
-      "resolvedIndex": 31,
+      "declarationIndex": 32,
+      "resolvedIndex": 32,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1094,8 +1110,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 32,
-      "resolvedIndex": 32,
+      "declarationIndex": 33,
+      "resolvedIndex": 33,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1111,8 +1127,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 33,
-      "resolvedIndex": 33,
+      "declarationIndex": 34,
+      "resolvedIndex": 34,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1128,8 +1144,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 34,
-      "resolvedIndex": 34,
+      "declarationIndex": 35,
+      "resolvedIndex": 35,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1145,8 +1161,8 @@
         "skill-garden/intent-routing",
         "skill-garden/maven-verification"
       ],
-      "declarationIndex": 35,
-      "resolvedIndex": 35,
+      "declarationIndex": 36,
+      "resolvedIndex": 36,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1161,8 +1177,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 36,
-      "resolvedIndex": 36,
+      "declarationIndex": 37,
+      "resolvedIndex": 37,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1177,8 +1193,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 37,
-      "resolvedIndex": 37,
+      "declarationIndex": 38,
+      "resolvedIndex": 38,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1193,8 +1209,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 38,
-      "resolvedIndex": 38,
+      "declarationIndex": 39,
+      "resolvedIndex": 39,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1209,8 +1225,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 39,
-      "resolvedIndex": 39,
+      "declarationIndex": 40,
+      "resolvedIndex": 40,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1225,8 +1241,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 40,
-      "resolvedIndex": 40,
+      "declarationIndex": 41,
+      "resolvedIndex": 41,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1241,8 +1257,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 41,
-      "resolvedIndex": 41,
+      "declarationIndex": 42,
+      "resolvedIndex": 42,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1257,8 +1273,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 42,
-      "resolvedIndex": 42,
+      "declarationIndex": 43,
+      "resolvedIndex": 43,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1273,8 +1289,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 43,
-      "resolvedIndex": 43,
+      "declarationIndex": 44,
+      "resolvedIndex": 44,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1289,8 +1305,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 44,
-      "resolvedIndex": 44,
+      "declarationIndex": 45,
+      "resolvedIndex": 45,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1305,8 +1321,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 45,
-      "resolvedIndex": 45,
+      "declarationIndex": 46,
+      "resolvedIndex": 46,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1321,8 +1337,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 46,
-      "resolvedIndex": 46,
+      "declarationIndex": 47,
+      "resolvedIndex": 47,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1337,8 +1353,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 47,
-      "resolvedIndex": 47,
+      "declarationIndex": 48,
+      "resolvedIndex": 48,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1353,8 +1369,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 48,
-      "resolvedIndex": 48,
+      "declarationIndex": 49,
+      "resolvedIndex": 49,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1369,8 +1385,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 49,
-      "resolvedIndex": 49,
+      "declarationIndex": 50,
+      "resolvedIndex": 50,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1385,8 +1401,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 50,
-      "resolvedIndex": 50,
+      "declarationIndex": 51,
+      "resolvedIndex": 51,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1401,8 +1417,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 51,
-      "resolvedIndex": 51,
+      "declarationIndex": 52,
+      "resolvedIndex": 52,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1417,8 +1433,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 52,
-      "resolvedIndex": 52,
+      "declarationIndex": 53,
+      "resolvedIndex": 53,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1433,8 +1449,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 53,
-      "resolvedIndex": 53,
+      "declarationIndex": 54,
+      "resolvedIndex": 54,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1449,8 +1465,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 54,
-      "resolvedIndex": 54,
+      "declarationIndex": 55,
+      "resolvedIndex": 55,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1465,8 +1481,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 55,
-      "resolvedIndex": 55,
+      "declarationIndex": 56,
+      "resolvedIndex": 56,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1481,8 +1497,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 56,
-      "resolvedIndex": 56,
+      "declarationIndex": 57,
+      "resolvedIndex": 57,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1497,8 +1513,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 57,
-      "resolvedIndex": 57,
+      "declarationIndex": 58,
+      "resolvedIndex": 58,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1513,8 +1529,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 58,
-      "resolvedIndex": 58,
+      "declarationIndex": 59,
+      "resolvedIndex": 59,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1529,8 +1545,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 59,
-      "resolvedIndex": 59,
+      "declarationIndex": 60,
+      "resolvedIndex": 60,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1545,8 +1561,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 60,
-      "resolvedIndex": 60,
+      "declarationIndex": 61,
+      "resolvedIndex": 61,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1561,8 +1577,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 61,
-      "resolvedIndex": 61,
+      "declarationIndex": 62,
+      "resolvedIndex": 62,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1577,8 +1593,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 62,
-      "resolvedIndex": 62,
+      "declarationIndex": 63,
+      "resolvedIndex": 63,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1593,8 +1609,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 63,
-      "resolvedIndex": 63,
+      "declarationIndex": 64,
+      "resolvedIndex": 64,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1610,8 +1626,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 64,
-      "resolvedIndex": 64,
+      "declarationIndex": 65,
+      "resolvedIndex": 65,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1627,8 +1643,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 65,
-      "resolvedIndex": 65,
+      "declarationIndex": 66,
+      "resolvedIndex": 66,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1644,8 +1660,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 66,
-      "resolvedIndex": 66,
+      "declarationIndex": 67,
+      "resolvedIndex": 67,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1661,8 +1677,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 67,
-      "resolvedIndex": 67,
+      "declarationIndex": 68,
+      "resolvedIndex": 68,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1678,8 +1694,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 68,
-      "resolvedIndex": 68,
+      "declarationIndex": 69,
+      "resolvedIndex": 69,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1695,8 +1711,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 69,
-      "resolvedIndex": 69,
+      "declarationIndex": 70,
+      "resolvedIndex": 70,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1712,8 +1728,8 @@
         "skill-garden/intent-routing",
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 70,
-      "resolvedIndex": 70,
+      "declarationIndex": 71,
+      "resolvedIndex": 71,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1728,8 +1744,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 71,
-      "resolvedIndex": 71,
+      "declarationIndex": 72,
+      "resolvedIndex": 72,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1744,8 +1760,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 72,
-      "resolvedIndex": 72,
+      "declarationIndex": 73,
+      "resolvedIndex": 73,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1760,8 +1776,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 73,
-      "resolvedIndex": 73,
+      "declarationIndex": 74,
+      "resolvedIndex": 74,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1776,8 +1792,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 74,
-      "resolvedIndex": 74,
+      "declarationIndex": 75,
+      "resolvedIndex": 75,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1792,8 +1808,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 75,
-      "resolvedIndex": 75,
+      "declarationIndex": 76,
+      "resolvedIndex": 76,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1808,8 +1824,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 76,
-      "resolvedIndex": 76,
+      "declarationIndex": 77,
+      "resolvedIndex": 77,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1824,8 +1840,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 77,
-      "resolvedIndex": 77,
+      "declarationIndex": 78,
+      "resolvedIndex": 78,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1840,8 +1856,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 78,
-      "resolvedIndex": 78,
+      "declarationIndex": 79,
+      "resolvedIndex": 79,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1856,8 +1872,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 79,
-      "resolvedIndex": 79,
+      "declarationIndex": 80,
+      "resolvedIndex": 80,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1872,8 +1888,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 80,
-      "resolvedIndex": 80,
+      "declarationIndex": 81,
+      "resolvedIndex": 81,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1888,8 +1904,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 81,
-      "resolvedIndex": 81,
+      "declarationIndex": 82,
+      "resolvedIndex": 82,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1904,8 +1920,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 82,
-      "resolvedIndex": 82,
+      "declarationIndex": 83,
+      "resolvedIndex": 83,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1920,8 +1936,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 83,
-      "resolvedIndex": 83,
+      "declarationIndex": 84,
+      "resolvedIndex": 84,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1936,8 +1952,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 84,
-      "resolvedIndex": 84,
+      "declarationIndex": 85,
+      "resolvedIndex": 85,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1952,8 +1968,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 85,
-      "resolvedIndex": 85,
+      "declarationIndex": 86,
+      "resolvedIndex": 86,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1968,8 +1984,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 86,
-      "resolvedIndex": 86,
+      "declarationIndex": 87,
+      "resolvedIndex": 87,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -1984,8 +2000,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 87,
-      "resolvedIndex": 87,
+      "declarationIndex": 88,
+      "resolvedIndex": 88,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2000,8 +2016,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 88,
-      "resolvedIndex": 88,
+      "declarationIndex": 89,
+      "resolvedIndex": 89,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2016,8 +2032,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 89,
-      "resolvedIndex": 89,
+      "declarationIndex": 90,
+      "resolvedIndex": 90,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2032,8 +2048,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 90,
-      "resolvedIndex": 90,
+      "declarationIndex": 91,
+      "resolvedIndex": 91,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2049,8 +2065,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 91,
-      "resolvedIndex": 91,
+      "declarationIndex": 92,
+      "resolvedIndex": 92,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2066,8 +2082,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 92,
-      "resolvedIndex": 92,
+      "declarationIndex": 93,
+      "resolvedIndex": 93,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2083,8 +2099,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 93,
-      "resolvedIndex": 93,
+      "declarationIndex": 94,
+      "resolvedIndex": 94,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2100,8 +2116,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 94,
-      "resolvedIndex": 94,
+      "declarationIndex": 95,
+      "resolvedIndex": 95,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2117,8 +2133,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 95,
-      "resolvedIndex": 95,
+      "declarationIndex": 96,
+      "resolvedIndex": 96,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2134,8 +2150,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 96,
-      "resolvedIndex": 96,
+      "declarationIndex": 97,
+      "resolvedIndex": 97,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2151,8 +2167,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 97,
-      "resolvedIndex": 97,
+      "declarationIndex": 98,
+      "resolvedIndex": 98,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2168,8 +2184,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 98,
-      "resolvedIndex": 98,
+      "declarationIndex": 99,
+      "resolvedIndex": 99,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2185,8 +2201,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 99,
-      "resolvedIndex": 99,
+      "declarationIndex": 100,
+      "resolvedIndex": 100,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2202,8 +2218,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 100,
-      "resolvedIndex": 100,
+      "declarationIndex": 101,
+      "resolvedIndex": 101,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2219,8 +2235,8 @@
         "skill-garden/intent-routing",
         "skill-garden/untracked-execution"
       ],
-      "declarationIndex": 101,
-      "resolvedIndex": 101,
+      "declarationIndex": 102,
+      "resolvedIndex": 102,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2235,8 +2251,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 102,
-      "resolvedIndex": 102,
+      "declarationIndex": 103,
+      "resolvedIndex": 103,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2251,8 +2267,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 103,
-      "resolvedIndex": 103,
+      "declarationIndex": 104,
+      "resolvedIndex": 104,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2267,8 +2283,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 104,
-      "resolvedIndex": 104,
+      "declarationIndex": 105,
+      "resolvedIndex": 105,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2283,8 +2299,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 105,
-      "resolvedIndex": 105,
+      "declarationIndex": 106,
+      "resolvedIndex": 106,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2299,8 +2315,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 106,
-      "resolvedIndex": 106,
+      "declarationIndex": 107,
+      "resolvedIndex": 107,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2315,8 +2331,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 107,
-      "resolvedIndex": 107,
+      "declarationIndex": 108,
+      "resolvedIndex": 108,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2331,8 +2347,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 108,
-      "resolvedIndex": 108,
+      "declarationIndex": 109,
+      "resolvedIndex": 109,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2347,8 +2363,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 109,
-      "resolvedIndex": 109,
+      "declarationIndex": 110,
+      "resolvedIndex": 110,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2363,8 +2379,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 110,
-      "resolvedIndex": 110,
+      "declarationIndex": 111,
+      "resolvedIndex": 111,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2379,8 +2395,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 111,
-      "resolvedIndex": 111,
+      "declarationIndex": 112,
+      "resolvedIndex": 112,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2395,8 +2411,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 112,
-      "resolvedIndex": 112,
+      "declarationIndex": 113,
+      "resolvedIndex": 113,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2411,8 +2427,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 113,
-      "resolvedIndex": 113,
+      "declarationIndex": 114,
+      "resolvedIndex": 114,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2427,8 +2443,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 114,
-      "resolvedIndex": 114,
+      "declarationIndex": 115,
+      "resolvedIndex": 115,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2443,8 +2459,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 115,
-      "resolvedIndex": 115,
+      "declarationIndex": 116,
+      "resolvedIndex": 116,
       "after": [],
       "dependsOn": [
         "skill-garden/brainstorm-planning-authorization"
@@ -2466,8 +2482,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 116,
-      "resolvedIndex": 116,
+      "declarationIndex": 117,
+      "resolvedIndex": 117,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2482,8 +2498,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 117,
-      "resolvedIndex": 117,
+      "declarationIndex": 118,
+      "resolvedIndex": 118,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2498,8 +2514,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 118,
-      "resolvedIndex": 118,
+      "declarationIndex": 119,
+      "resolvedIndex": 119,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2514,8 +2530,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 119,
-      "resolvedIndex": 119,
+      "declarationIndex": 120,
+      "resolvedIndex": 120,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2530,8 +2546,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 120,
-      "resolvedIndex": 120,
+      "declarationIndex": 121,
+      "resolvedIndex": 121,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2546,8 +2562,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 121,
-      "resolvedIndex": 121,
+      "declarationIndex": 122,
+      "resolvedIndex": 122,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2562,8 +2578,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 122,
-      "resolvedIndex": 122,
+      "declarationIndex": 123,
+      "resolvedIndex": 123,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2578,8 +2594,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 123,
-      "resolvedIndex": 123,
+      "declarationIndex": 124,
+      "resolvedIndex": 124,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2594,8 +2610,8 @@
       "bundles": [
         "skill-garden/intent-routing"
       ],
-      "declarationIndex": 124,
-      "resolvedIndex": 124,
+      "declarationIndex": 125,
+      "resolvedIndex": 125,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2610,8 +2626,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 125,
-      "resolvedIndex": 125,
+      "declarationIndex": 126,
+      "resolvedIndex": 126,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2626,8 +2642,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 126,
-      "resolvedIndex": 126,
+      "declarationIndex": 127,
+      "resolvedIndex": 127,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2642,8 +2658,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 127,
-      "resolvedIndex": 127,
+      "declarationIndex": 128,
+      "resolvedIndex": 128,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2658,8 +2674,8 @@
       "bundles": [
         "skill-garden/shared-hook-runtime"
       ],
-      "declarationIndex": 128,
-      "resolvedIndex": 128,
+      "declarationIndex": 129,
+      "resolvedIndex": 129,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2674,8 +2690,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 129,
-      "resolvedIndex": 129,
+      "declarationIndex": 130,
+      "resolvedIndex": 130,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2690,8 +2706,8 @@
       "bundles": [
         "skill-garden/trellis-continue"
       ],
-      "declarationIndex": 130,
-      "resolvedIndex": 130,
+      "declarationIndex": 131,
+      "resolvedIndex": 131,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2706,8 +2722,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 131,
-      "resolvedIndex": 131,
+      "declarationIndex": 132,
+      "resolvedIndex": 132,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2722,8 +2738,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 132,
-      "resolvedIndex": 132,
+      "declarationIndex": 133,
+      "resolvedIndex": 133,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2738,8 +2754,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 133,
-      "resolvedIndex": 133,
+      "declarationIndex": 134,
+      "resolvedIndex": 134,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2754,8 +2770,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 134,
-      "resolvedIndex": 134,
+      "declarationIndex": 135,
+      "resolvedIndex": 135,
       "after": [
         "skill-garden/task-lifecycle-active-reference-import"
       ],
@@ -2777,8 +2793,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 135,
-      "resolvedIndex": 135,
+      "declarationIndex": 136,
+      "resolvedIndex": 136,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2793,8 +2809,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 136,
-      "resolvedIndex": 136,
+      "declarationIndex": 137,
+      "resolvedIndex": 137,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2809,8 +2825,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 137,
-      "resolvedIndex": 137,
+      "declarationIndex": 138,
+      "resolvedIndex": 138,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2825,8 +2841,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 138,
-      "resolvedIndex": 138,
+      "declarationIndex": 139,
+      "resolvedIndex": 139,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2841,8 +2857,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 139,
-      "resolvedIndex": 139,
+      "declarationIndex": 140,
+      "resolvedIndex": 140,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2857,8 +2873,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 140,
-      "resolvedIndex": 140,
+      "declarationIndex": 141,
+      "resolvedIndex": 141,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2873,8 +2889,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 141,
-      "resolvedIndex": 141,
+      "declarationIndex": 142,
+      "resolvedIndex": 142,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2889,8 +2905,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 142,
-      "resolvedIndex": 142,
+      "declarationIndex": 143,
+      "resolvedIndex": 143,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2905,8 +2921,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 143,
-      "resolvedIndex": 143,
+      "declarationIndex": 144,
+      "resolvedIndex": 144,
       "after": [],
       "dependsOn": [
         "skill-garden/task-lifecycle-parser-commands"
@@ -2928,8 +2944,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 144,
-      "resolvedIndex": 144,
+      "declarationIndex": 145,
+      "resolvedIndex": 145,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2944,8 +2960,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 145,
-      "resolvedIndex": 145,
+      "declarationIndex": 146,
+      "resolvedIndex": 146,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2960,8 +2976,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 146,
-      "resolvedIndex": 146,
+      "declarationIndex": 147,
+      "resolvedIndex": 147,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -2976,8 +2992,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 147,
-      "resolvedIndex": 147,
+      "declarationIndex": 148,
+      "resolvedIndex": 148,
       "after": [
         "skill-garden/task-create-initial-write"
       ],
@@ -2999,8 +3015,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 148,
-      "resolvedIndex": 148,
+      "declarationIndex": 149,
+      "resolvedIndex": 149,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3015,8 +3031,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 149,
-      "resolvedIndex": 149,
+      "declarationIndex": 150,
+      "resolvedIndex": 150,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3031,8 +3047,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 150,
-      "resolvedIndex": 150,
+      "declarationIndex": 151,
+      "resolvedIndex": 151,
       "after": [
         "skill-garden/task-lifecycle-active-pointer"
       ],
@@ -3054,8 +3070,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 151,
-      "resolvedIndex": 151,
+      "declarationIndex": 152,
+      "resolvedIndex": 152,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3070,8 +3086,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 152,
-      "resolvedIndex": 152,
+      "declarationIndex": 153,
+      "resolvedIndex": 153,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3086,8 +3102,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 153,
-      "resolvedIndex": 153,
+      "declarationIndex": 154,
+      "resolvedIndex": 154,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3102,8 +3118,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 154,
-      "resolvedIndex": 154,
+      "declarationIndex": 155,
+      "resolvedIndex": 155,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3118,8 +3134,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 155,
-      "resolvedIndex": 155,
+      "declarationIndex": 156,
+      "resolvedIndex": 156,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3134,8 +3150,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 156,
-      "resolvedIndex": 156,
+      "declarationIndex": 157,
+      "resolvedIndex": 157,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3150,8 +3166,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 157,
-      "resolvedIndex": 157,
+      "declarationIndex": 158,
+      "resolvedIndex": 158,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3166,8 +3182,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 158,
-      "resolvedIndex": 158,
+      "declarationIndex": 159,
+      "resolvedIndex": 159,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3182,8 +3198,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 159,
-      "resolvedIndex": 159,
+      "declarationIndex": 160,
+      "resolvedIndex": 160,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3198,8 +3214,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 160,
-      "resolvedIndex": 160,
+      "declarationIndex": 161,
+      "resolvedIndex": 161,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3214,8 +3230,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 161,
-      "resolvedIndex": 161,
+      "declarationIndex": 162,
+      "resolvedIndex": 162,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3230,8 +3246,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 162,
-      "resolvedIndex": 162,
+      "declarationIndex": 163,
+      "resolvedIndex": 163,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3246,8 +3262,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 163,
-      "resolvedIndex": 163,
+      "declarationIndex": 164,
+      "resolvedIndex": 164,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3262,8 +3278,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 164,
-      "resolvedIndex": 164,
+      "declarationIndex": 165,
+      "resolvedIndex": 165,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3278,8 +3294,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 165,
-      "resolvedIndex": 165,
+      "declarationIndex": 166,
+      "resolvedIndex": 166,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3294,8 +3310,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 166,
-      "resolvedIndex": 166,
+      "declarationIndex": 167,
+      "resolvedIndex": 167,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3310,8 +3326,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 167,
-      "resolvedIndex": 167,
+      "declarationIndex": 168,
+      "resolvedIndex": 168,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3326,8 +3342,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 168,
-      "resolvedIndex": 168,
+      "declarationIndex": 169,
+      "resolvedIndex": 169,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3342,8 +3358,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 169,
-      "resolvedIndex": 169,
+      "declarationIndex": 170,
+      "resolvedIndex": 170,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3358,8 +3374,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 170,
-      "resolvedIndex": 170,
+      "declarationIndex": 171,
+      "resolvedIndex": 171,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3374,8 +3390,8 @@
       "bundles": [
         "skill-garden/task-reference-contract"
       ],
-      "declarationIndex": 171,
-      "resolvedIndex": 171,
+      "declarationIndex": 172,
+      "resolvedIndex": 172,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3390,8 +3406,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 172,
-      "resolvedIndex": 172,
+      "declarationIndex": 173,
+      "resolvedIndex": 173,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3406,8 +3422,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 173,
-      "resolvedIndex": 173,
+      "declarationIndex": 174,
+      "resolvedIndex": 174,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3422,8 +3438,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 174,
-      "resolvedIndex": 174,
+      "declarationIndex": 175,
+      "resolvedIndex": 175,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3438,8 +3454,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 175,
-      "resolvedIndex": 175,
+      "declarationIndex": 176,
+      "resolvedIndex": 176,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3454,8 +3470,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 176,
-      "resolvedIndex": 176,
+      "declarationIndex": 177,
+      "resolvedIndex": 177,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3470,8 +3486,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 177,
-      "resolvedIndex": 177,
+      "declarationIndex": 178,
+      "resolvedIndex": 178,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3486,8 +3502,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 178,
-      "resolvedIndex": 178,
+      "declarationIndex": 179,
+      "resolvedIndex": 179,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3502,8 +3518,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 179,
-      "resolvedIndex": 179,
+      "declarationIndex": 180,
+      "resolvedIndex": 180,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3518,8 +3534,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 180,
-      "resolvedIndex": 180,
+      "declarationIndex": 181,
+      "resolvedIndex": 181,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3534,8 +3550,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 181,
-      "resolvedIndex": 181,
+      "declarationIndex": 182,
+      "resolvedIndex": 182,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3550,8 +3566,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 182,
-      "resolvedIndex": 182,
+      "declarationIndex": 183,
+      "resolvedIndex": 183,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3566,8 +3582,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 183,
-      "resolvedIndex": 183,
+      "declarationIndex": 184,
+      "resolvedIndex": 184,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3582,8 +3598,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 184,
-      "resolvedIndex": 184,
+      "declarationIndex": 185,
+      "resolvedIndex": 185,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3598,8 +3614,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 185,
-      "resolvedIndex": 185,
+      "declarationIndex": 186,
+      "resolvedIndex": 186,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3614,8 +3630,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 186,
-      "resolvedIndex": 186,
+      "declarationIndex": 187,
+      "resolvedIndex": 187,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3630,8 +3646,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 187,
-      "resolvedIndex": 187,
+      "declarationIndex": 188,
+      "resolvedIndex": 188,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3646,8 +3662,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 188,
-      "resolvedIndex": 188,
+      "declarationIndex": 189,
+      "resolvedIndex": 189,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3662,8 +3678,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 189,
-      "resolvedIndex": 189,
+      "declarationIndex": 190,
+      "resolvedIndex": 190,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3678,8 +3694,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 190,
-      "resolvedIndex": 190,
+      "declarationIndex": 191,
+      "resolvedIndex": 191,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3694,8 +3710,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 191,
-      "resolvedIndex": 191,
+      "declarationIndex": 192,
+      "resolvedIndex": 192,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3710,8 +3726,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 192,
-      "resolvedIndex": 192,
+      "declarationIndex": 193,
+      "resolvedIndex": 193,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3726,8 +3742,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 193,
-      "resolvedIndex": 193,
+      "declarationIndex": 194,
+      "resolvedIndex": 194,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3742,8 +3758,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 194,
-      "resolvedIndex": 194,
+      "declarationIndex": 195,
+      "resolvedIndex": 195,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3758,8 +3774,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 195,
-      "resolvedIndex": 195,
+      "declarationIndex": 196,
+      "resolvedIndex": 196,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3774,8 +3790,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 196,
-      "resolvedIndex": 196,
+      "declarationIndex": 197,
+      "resolvedIndex": 197,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3790,8 +3806,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 197,
-      "resolvedIndex": 197,
+      "declarationIndex": 198,
+      "resolvedIndex": 198,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3806,8 +3822,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 198,
-      "resolvedIndex": 198,
+      "declarationIndex": 199,
+      "resolvedIndex": 199,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3822,8 +3838,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 199,
-      "resolvedIndex": 199,
+      "declarationIndex": 200,
+      "resolvedIndex": 200,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3838,8 +3854,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 200,
-      "resolvedIndex": 200,
+      "declarationIndex": 201,
+      "resolvedIndex": 201,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3854,8 +3870,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 201,
-      "resolvedIndex": 201,
+      "declarationIndex": 202,
+      "resolvedIndex": 202,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3870,8 +3886,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 202,
-      "resolvedIndex": 202,
+      "declarationIndex": 203,
+      "resolvedIndex": 203,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3886,8 +3902,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 203,
-      "resolvedIndex": 203,
+      "declarationIndex": 204,
+      "resolvedIndex": 204,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3902,8 +3918,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 204,
-      "resolvedIndex": 204,
+      "declarationIndex": 205,
+      "resolvedIndex": 205,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3918,8 +3934,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 205,
-      "resolvedIndex": 205,
+      "declarationIndex": 206,
+      "resolvedIndex": 206,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3934,8 +3950,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 206,
-      "resolvedIndex": 206,
+      "declarationIndex": 207,
+      "resolvedIndex": 207,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3950,8 +3966,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 207,
-      "resolvedIndex": 207,
+      "declarationIndex": 208,
+      "resolvedIndex": 208,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3966,8 +3982,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 208,
-      "resolvedIndex": 208,
+      "declarationIndex": 209,
+      "resolvedIndex": 209,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3982,8 +3998,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 209,
-      "resolvedIndex": 209,
+      "declarationIndex": 210,
+      "resolvedIndex": 210,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -3998,8 +4014,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 210,
-      "resolvedIndex": 210,
+      "declarationIndex": 211,
+      "resolvedIndex": 211,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4014,8 +4030,8 @@
       "bundles": [
         "skill-garden/trellis-meta"
       ],
-      "declarationIndex": 211,
-      "resolvedIndex": 211,
+      "declarationIndex": 212,
+      "resolvedIndex": 212,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4030,8 +4046,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 212,
-      "resolvedIndex": 212,
+      "declarationIndex": 213,
+      "resolvedIndex": 213,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4046,8 +4062,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 213,
-      "resolvedIndex": 213,
+      "declarationIndex": 214,
+      "resolvedIndex": 214,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4062,8 +4078,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 214,
-      "resolvedIndex": 214,
+      "declarationIndex": 215,
+      "resolvedIndex": 215,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4078,8 +4094,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 215,
-      "resolvedIndex": 215,
+      "declarationIndex": 216,
+      "resolvedIndex": 216,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4094,8 +4110,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 216,
-      "resolvedIndex": 216,
+      "declarationIndex": 217,
+      "resolvedIndex": 217,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4110,8 +4126,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 217,
-      "resolvedIndex": 217,
+      "declarationIndex": 218,
+      "resolvedIndex": 218,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4126,8 +4142,8 @@
       "bundles": [
         "skill-garden/trellis-session-insight"
       ],
-      "declarationIndex": 218,
-      "resolvedIndex": 218,
+      "declarationIndex": 219,
+      "resolvedIndex": 219,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4142,8 +4158,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 219,
-      "resolvedIndex": 219,
+      "declarationIndex": 220,
+      "resolvedIndex": 220,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4158,8 +4174,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 220,
-      "resolvedIndex": 220,
+      "declarationIndex": 221,
+      "resolvedIndex": 221,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4174,8 +4190,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 221,
-      "resolvedIndex": 221,
+      "declarationIndex": 222,
+      "resolvedIndex": 222,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4190,8 +4206,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 222,
-      "resolvedIndex": 222,
+      "declarationIndex": 223,
+      "resolvedIndex": 223,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4206,8 +4222,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 223,
-      "resolvedIndex": 223,
+      "declarationIndex": 224,
+      "resolvedIndex": 224,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4222,8 +4238,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 224,
-      "resolvedIndex": 224,
+      "declarationIndex": 225,
+      "resolvedIndex": 225,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4238,8 +4254,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 225,
-      "resolvedIndex": 225,
+      "declarationIndex": 226,
+      "resolvedIndex": 226,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4254,8 +4270,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 226,
-      "resolvedIndex": 226,
+      "declarationIndex": 227,
+      "resolvedIndex": 227,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4270,8 +4286,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 227,
-      "resolvedIndex": 227,
+      "declarationIndex": 228,
+      "resolvedIndex": 228,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4286,8 +4302,8 @@
       "bundles": [
         "skill-garden/trellis-update-spec"
       ],
-      "declarationIndex": 228,
-      "resolvedIndex": 228,
+      "declarationIndex": 229,
+      "resolvedIndex": 229,
       "after": [],
       "dependsOn": [],
       "incomingEdges": []
@@ -4917,6 +4933,16 @@
       "qualifiedPatch": "skill-garden/context-output-cleanup",
       "targets": [
         ".trellis/scripts/common/workflow_phase.py"
+      ]
+    },
+    {
+      "id": "active-task-host-identity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/active-task-host-identity",
+      "patch": "runtime-state-integrity",
+      "qualifiedPatch": "skill-garden/runtime-state-integrity",
+      "targets": [
+        ".trellis/scripts/common/active_task.py"
       ]
     },
     {
@@ -8480,10 +8506,21 @@
     {
       "target": ".trellis/scripts/common/active_task.py",
       "beforeHash": "sha256:28a81f8828538fb70a15c88edd90eda9d685adbde8862f67f630bce5b27d9832",
-      "afterHash": "sha256:e20b1227d5a3112c2ecc1975f7cd4749efaa1bf576f76a99cb77cbe1780792db",
+      "afterHash": "sha256:aaaf550c0861e53c0455f327e3ee068124a5a7850d8b32d96be79c50cb732184",
       "changed": true,
       "originalExists": true,
       "operations": [
+        {
+          "id": "active-task-host-identity",
+          "catalog": "skill-garden",
+          "qualifiedId": "skill-garden/active-task-host-identity",
+          "patch": "runtime-state-integrity",
+          "qualifiedPatch": "skill-garden/runtime-state-integrity",
+          "bundle": "control-plane-integrity",
+          "bundles": [
+            "skill-garden/control-plane-integrity"
+          ]
+        },
         {
           "id": "active-task-runtime-json-io",
           "catalog": "skill-garden",
@@ -29963,6 +30000,20 @@
         "skill-garden/task-reference-contract"
       ],
       "target": ".trellis/scripts/common/task_utils.py",
+      "status": "ready",
+      "required": true
+    },
+    {
+      "id": "active-task-host-identity",
+      "catalog": "skill-garden",
+      "qualifiedId": "skill-garden/active-task-host-identity",
+      "patch": "runtime-state-integrity",
+      "qualifiedPatch": "skill-garden/runtime-state-integrity",
+      "bundle": "control-plane-integrity",
+      "bundles": [
+        "skill-garden/control-plane-integrity"
+      ],
+      "target": ".trellis/scripts/common/active_task.py",
       "status": "ready",
       "required": true
     },
